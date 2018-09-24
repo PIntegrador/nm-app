@@ -1,13 +1,4 @@
-$fontText: 'Nunito Sans',
-sans-serif;
-$fontTitle: 'Montserrat',
-sans-serif;
-$tamDashboard: 100px;
-$fondoBlanco: rgb(250, 250, 250);
-$fondoDash: rgb(75, 75, 75);
-$fondoGris: rgb(200, 200, 200);
-$fondoGrisOscuto: rgb(150, 150, 150);
-$negroTexto: rgb(15, 15, 15);
+@import '../../../../public/css/variables.scss';
 * {
     margin: 0;
     padding: 0;
@@ -22,24 +13,12 @@ $negroTexto: rgb(15, 15, 15);
     width: $tamDashboard;
     background-color: $fondoDash;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: flex-start;
-    align-items: flex-start;
     .contActions {
         //margin-bottom: 100px;
         width: $tamDashboard;
-        order: 0;
-        flex: 0 1 auto;
-        align-self: auto;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: flex-start;
-        align-items: flex-start;
+        justify-content: space-between;
+        align-content: space-between;
+        align-items: space-between;
         >article {
             order: 0;
             flex: 0 1 auto;
@@ -47,25 +26,16 @@ $negroTexto: rgb(15, 15, 15);
             width: $tamDashboard;
             margin: 10px 0;
             //width: 100%;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
             justify-content: center;
-            align-content: flex-start;
+            align-content: center;
             align-items: center;
             >div {
-                order: 0;
-                flex: 0 1 auto;
-                align-self: auto;
                 width: 35px;
                 height: 35px;
                 border-radius: 15px;
                 background-color: $fondoGrisOscuto;
             }
             >h2 {
-                order: 0;
-                flex: 0 1 auto;
-                align-self: auto;
                 color: $fondoBlanco;
                 margin-top: 10px;
                 font-family: $fontTitle;
@@ -75,31 +45,19 @@ $negroTexto: rgb(15, 15, 15);
         }
     }
     .config {
-        order: 0;
-        flex: 0 1 auto;
-        align-self: auto;
         width: $tamDashboard;
         margin: 10px 0;
         //width: 100%;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
         justify-content: center;
-        align-content: flex-start;
+        align-content: center;
         align-items: center;
         >div {
-            order: 0;
-            flex: 0 1 auto;
-            align-self: auto;
             width: 35px;
             height: 35px;
             border-radius: 15px;
             background-color: $fondoGrisOscuto;
         }
         >h2 {
-            order: 0;
-            flex: 0 1 auto;
-            align-self: auto;
             color: $fondoBlanco;
             margin-top: 10px;
             font-family: $fontTitle;
