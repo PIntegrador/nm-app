@@ -3,16 +3,15 @@ import * as firebase from 'firebase'
 require("firebase/firestore");
 
 const config = {
-    apiKey: "AIzaSyBeCxe5RUXEogsI_Zqd6igbmQvuJazYCe0",
-    authDomain: "todolist-react-firestore.firebaseapp.com",
-    databaseURL: "https://todolist-react-firestore.firebaseio.com",
-    projectId: "todolist-react-firestore",
-    storageBucket: "todolist-react-firestore.appspot.com",
-    messagingSenderId: "601485435019"
+    apiKey: "AIzaSyAXR1w3tX7tLDql3Spdq0x0E5DRlKicibg",
+    authDomain: "nm-app-b80df.firebaseapp.com",
+    databaseURL: "https://nm-app-b80df.firebaseio.com",
+    projectId: "nm-app-b80df",
+    storageBucket: "",
+    messagingSenderId: "452799787770"
   };
-  
-firebase.initializeApp(config);
-  
+  firebase.initializeApp(config);
+
 const db = firebase.firestore();
 
 export default db;
