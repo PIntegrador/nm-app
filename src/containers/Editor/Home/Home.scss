@@ -7,24 +7,21 @@
 
 body {
     background-color: $fondoBlanco;
-    width: 100%;
-}
-
-.contHome {
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
-}
-
-.dash {
-    position: fixed;
-}
-
-.app {
-    width: 80%;
-    height: auto;
-    margin: auto;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
+    .contHome {
+        justify-content: flex-start;
+        align-content: flex-start;
+        align-items: flex-start;
+    }
+    .dash {
+        position: fixed;
+    }
+    .app {
+        width: 80%;
+        height: auto;
+        margin: 0 0 0 $dashmenutam;
+        padding: 0 auto;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+    }
 }

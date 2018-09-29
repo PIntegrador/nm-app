@@ -1,16 +1,40 @@
-.header{
-    background-color: #282c34;
-    color: #ffffff;
-    text-align: center;
-    padding: 2rem;
-    
-    img{
+@import '../../../../public/css/variables.scss';
+.headerbar {
+    background-color: #E5E5E5;
+    width: 90%;
+    height: 60px;
+    margin-left: $dashmenutam;
+    text-align: left;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    img {
         display: inline-block;
-        height: 200px;;
+        width: 92px;
+        height: auto;
+        margin: 0 0 0 25px;
     }
-
-    h1{
-        color: #61dafb;
-        font-size: 3rem;
+    .toogle {
+        width: 35px;
+        height: 35px;
+        border-radius: 15px;
+        margin: 0 0 0 25px;
+        background-color: $fondoGrisOscuto;
+        &.right {
+            float: right
+        }
+    }
+    #inputBuscar {
+        padding: 22px 20px;
+        width: 30%;
+        height: 34px;
+        border-radius: 25px;
+        margin: 0 0 0 1rem;
+        background-color: $fondoGris;
+        font-family: $fontText;
+        border: none;
+        &:focus {
+            outline: none;
+        }
     }
 }

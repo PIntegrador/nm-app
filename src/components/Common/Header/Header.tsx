@@ -1,11 +1,19 @@
 import * as React from 'react';
-
 import './Header.scss';
 
-const Header = () => {
+interface HeaderProps {
+
+    img?: string;
+}
+
+const Header = ({ img }: HeaderProps) => {
     return (
-        <section>
-          THIS IS A HEADER
+        <section className="headerbar flex-child row-flex ">
+        <img src={img} alt=""/>
+        <div className="toogle flex-child"></div>
+           <input id="inputBuscar" type="text" />
+           <div className="toogle right flex-child"></div>
+
         </section>
     )
 }

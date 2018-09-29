@@ -10,12 +10,12 @@
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
-    width: $tamDashboard;
-    background-color: $fondoDash;
+    width: $dashmenutam;
+    background-color: $fondoGris;
     height: 100%;
     .contActions {
         //margin-bottom: 100px;
-        width: $tamDashboard;
+        width: $dashmenutam;
         justify-content: space-between;
         align-content: space-between;
         align-items: space-between;
@@ -23,10 +23,9 @@
             order: 0;
             flex: 0 1 auto;
             align-self: auto;
-            width: $tamDashboard;
-            margin: 10px 0;
-            //width: 100%;
-            justify-content: center;
+            width: $dashmenutam;
+            margin: 20px 0 0 25px;
+            justify-content: flex-start;
             align-content: center;
             align-items: center;
             >div {
@@ -36,16 +35,21 @@
                 background-color: $fondoGrisOscuto;
             }
             >h2 {
-                color: $fondoBlanco;
-                margin-top: 10px;
+                color: $negroTexto;
+                margin: 10px 0 0 1rem;
                 font-family: $fontTitle;
                 font-size: 11px;
                 font-weight: 400;
             }
         }
+        #profile {
+            height: 140px;
+            justify-content: center;
+            margin: 20px 0 0 0;
+        }
     }
     .config {
-        width: $tamDashboard;
+        width: $dashmenutam;
         margin: 10px 0;
         //width: 100%;
         justify-content: center;
@@ -58,7 +62,7 @@
             background-color: $fondoGrisOscuto;
         }
         >h2 {
-            color: $fondoBlanco;
+            color: $negroTexto;
             margin-top: 10px;
             font-family: $fontTitle;
             font-size: 11px;

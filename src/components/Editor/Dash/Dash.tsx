@@ -15,28 +15,37 @@ const Dash = () => {
         <h2  className="flex-child">USUARIO</h2>
     </article>
 
-    <article id="org"  className="col-flex">
+    
+    <article id="home" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">ORGANIZA</h2>
+        <h2  className="flex-child">INICIO</h2>
     </article>
 
-    <article id="create"  className="col-flex">
+    <article id="archives" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">CREA</h2>
+        <h2  className="flex-child">GESTIÓN DE ARCHIVOS</h2>
     </article>
 
-    <article id="add"  className="col-flex">
+    <article id="proyects" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">AÑADIR</h2>
+        <h2  className="flex-child">GESTIÓN DE PROYECTOS</h2>
     </article>
 
-</section>
+    <article id="asign" className="row-flex">
+        <div className="flex-child"></div>
+        <h2  className="flex-child">POR ASIGNAR</h2>
+    </article>
 
-<article className="config col-flex flex-child" >
-    <div className="flex-child"></div>
-    <h2  className="flex-child">CONFIG</h2>
-</article>
+    <article id="trash" className="row-flex">
+        <div className="flex-child"></div>
+        <h2  className="flex-child">PAPELERA</h2>
+    </article>
 
+    <article id="config" className="row-flex">
+        <div className="flex-child"></div>
+        <h2  className="flex-child">CONFIGURACIÓN</h2>
+    </article>
+    </section>
 
 </section>
         </section>
