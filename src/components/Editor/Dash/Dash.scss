@@ -6,67 +6,90 @@
 }
 
 .dash {
-    padding: 10px 0;
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
     width: $dashmenutam;
     background-color: $fondoGris;
     height: 100%;
-    .contActions {
-        //margin-bottom: 100px;
-        width: $dashmenutam;
-        justify-content: space-between;
-        align-content: space-between;
-        align-items: space-between;
-        >article {
-            order: 0;
-            flex: 0 1 auto;
-            align-self: auto;
+    .contDash {
+        height: 100%;
+        padding: 0;
+        .contActions {
+            //margin-bottom: 100px;
             width: $dashmenutam;
-            margin: 20px 0 0 25px;
-            justify-content: flex-start;
+            justify-content: center;
             align-content: center;
             align-items: center;
-            >div {
+            height: 100%;
+            article {
+                box-sizing: border-box;
+                order: 0;
+                flex: 0 1 auto;
+                align-self: center;
+                padding: 10px 20px;
+                width: $dashmenutam;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                &:hover {
+                    background: $fondoBlanco;
+                    cursor: pointer;
+                }
+                div {
+                    flex: 0 1 auto;
+                    margin-right: 10px;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 25px;
+                    background-color: $fondoGrisOscuto;
+                }
+                h2 {
+                    flex: 1 1 auto;
+                    color: $negroTexto;
+                    font-family: $fontTitle;
+                    font-size: 11px;
+                    font-weight: 400;
+                }
+            }
+            .options {
+                flex: 1 1 auto;
+            }
+            #profile {
+                height: 140px;
+                justify-content: center;
+                &:hover {
+                    background: none;
+                    cursor: auto;
+                }
+                div {
+                    margin: 0;
+                    width: 45px;
+                    height: 45px;
+                    margin-bottom: 10px;
+                }
+                h2 {
+                    flex: 0 1 auto;
+                }
+            }
+        }
+        #config {
+            width: $dashmenutam;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            div {
                 width: 35px;
                 height: 35px;
-                border-radius: 15px;
+                border-radius: 25px;
                 background-color: $fondoGrisOscuto;
             }
-            >h2 {
+            h2 {
                 color: $negroTexto;
-                margin: 10px 0 0 1rem;
                 font-family: $fontTitle;
                 font-size: 11px;
                 font-weight: 400;
             }
-        }
-        #profile {
-            height: 140px;
-            justify-content: center;
-            margin: 20px 0 0 0;
-        }
-    }
-    .config {
-        width: $dashmenutam;
-        margin: 10px 0;
-        //width: 100%;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        >div {
-            width: 35px;
-            height: 35px;
-            border-radius: 15px;
-            background-color: $fondoGrisOscuto;
-        }
-        >h2 {
-            color: $negroTexto;
-            margin-top: 10px;
-            font-family: $fontTitle;
-            font-size: 11px;
-            font-weight: 400;
         }
     }
 }

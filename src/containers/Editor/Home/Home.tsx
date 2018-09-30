@@ -18,7 +18,11 @@ export class Home extends React.Component {
             <div className="app flex-child col-flex">
             <h2>Aqui van componentes que hacen la vista del inicio</h2>
             </div>
-           
+
+            <article className="addFolder">
+                <div></div>
+                <div></div>
+            </article>           
         </div>
     }
 }
