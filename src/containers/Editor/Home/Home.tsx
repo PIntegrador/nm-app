@@ -8,8 +8,15 @@ import '../../../../public/css/flex.scss'
 import './Home.scss';
 import Header from '../../../components/Common/Header/Header';
 import { Link } from 'react-router-dom';
+import { firebaseStore } from '../../../store/FsActionStore';
 
 export class Home extends React.Component {
+    constructor (props:any) {
+        super (props);
+
+        firebaseStore.read();
+
+    }
     render(){
         return <div className="contHome row-flex">  
             <Dash/>
@@ -18,8 +25,7 @@ export class Home extends React.Component {
 
             <div className="app flex-child col-flex">
                 <Link to = "FolderName"> 
-                    <div className="folder" >
-
+                    <div className="folder2" >
                     </div>
                 </Link>
             </div>
@@ -27,26 +33,3 @@ export class Home extends React.Component {
         </div>
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
