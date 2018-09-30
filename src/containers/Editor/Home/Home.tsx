@@ -7,6 +7,7 @@ import Dash from '../../../components/Editor/Dash/Dash';
 import '../../../../public/css/flex.scss'
 import './Home.scss';
 import Header from '../../../components/Common/Header/Header';
+import { Link } from 'react-router-dom';
 
 export class Home extends React.Component {
     render(){
@@ -16,7 +17,11 @@ export class Home extends React.Component {
             img="./assets/img/logo.png"/>
 
             <div className="app flex-child col-flex">
-            <h2>Aqui van componentes que hacen la vista del inicio</h2>
+                <Link to = "FolderName"> 
+                    <div className="folder" >
+
+                    </div>
+                </Link>
             </div>
            
         </div>
