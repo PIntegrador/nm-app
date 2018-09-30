@@ -5,7 +5,7 @@ import '../../../../public/css/flex.scss'
 
 const RouteBar = () => {
     return (
-        <div>
+        <div className="routeBar">
             RouteBar
         </div>
     )

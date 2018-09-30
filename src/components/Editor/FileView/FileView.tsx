@@ -20,10 +20,7 @@ export class FileView extends React.Component <FileViewProps> {
     }
     
     render(){
-
-        {console.log("El folder es" , this.props.folders )}
         
-
         return  (
             <div className="contFolder">
             <p> Encontró estos folders </p>

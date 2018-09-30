@@ -5,7 +5,7 @@ import '../../../../public/css/flex.scss'
 
 const SortBar = () => {
     return (
-        <div>
+        <div className="sortBar">
             SortBar
         </div>
     )

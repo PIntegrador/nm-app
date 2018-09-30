@@ -12,14 +12,12 @@ class FsActionStore {
 
     @action handleNameFilter (nameFilter : string) {
         this.nameFilter = nameFilter;
-        console.log(this.nameFilter);
+        console.log(this.nameFilter, "ChangeName");
     }
 
     @action cleanList() {
         this.arrayFolders = [];
     }
-
-
 
     @action read() {
         this.cleanList();
@@ -57,9 +55,7 @@ class FsActionStore {
                     id: doc.id
                 };
 
-                //console.log(element, 'Encontrado: ' + element.name);
                 this.arrayFolders.push(element);
-                //console.log(element, 'Encontrado Array: ' + this.arrayFolders);
 
             });
         });

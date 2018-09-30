@@ -27,7 +27,6 @@ import { observer } from 'mobx-react';
             <div className="app flex-child col-flex">
                 <RouteBar />
                 <SortBar />
-                {console.log("ESTE FOLDER DE MIERDA,", arrayFolders)}
                 <FileView folders={arrayFolders}/>
                 
             </div>
