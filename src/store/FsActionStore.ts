@@ -8,7 +8,12 @@ class FsActionStore {
 
     @observable arrayFolders: any = [];
 
-    @observable nameFilterInput: string = "";
+    @observable nameFilter: string = "";
+
+    @action handleNameFilter (nameFilter : string) {
+        this.nameFilter = nameFilter;
+        console.log(this.nameFilter);
+    }
 
     @action cleanList() {
         this.arrayFolders = [];
@@ -37,58 +42,56 @@ class FsActionStore {
         });
     }
 
-    @action filterName(name: string) {
+    @action filterName() {
         this.cleanList();
 
-        var ref = db.collection("demothree").doc("folder");//ruta
-        ref.collection("post").where('DBname', "==", name).get().then((querySnapshot) => {
+        let ref = db.collection("Folders");//ruta        
+        ref.where('name', "==", this.nameFilter).get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
 
-                var element = {
-                    DBname: doc.data().DBname,
-                    Description: doc.data().Description,
-                    Tagnames: doc.data().Tagnames,
+                let element = {
+                    name: doc.data().name,
+                    description: doc.data().description,
+                    favorited: doc.data().favorited,
+                    tagnames: doc.data().tagnames,
                     id: doc.id
                 };
 
-                console.log(element, 'Encontrado: ' + element.DBname);
+                //console.log(element, 'Encontrado: ' + element.name);
                 this.arrayFolders.push(element);
+                //console.log(element, 'Encontrado Array: ' + this.arrayFolders);
+
             });
         });
-    }
 
-    @action filterTag(name: string) {
-        this.cleanList();
-
-        var ref = db.collection("demothree").doc("folder");//ruta
-        ref.collection("post").where('DBname', "==", name).get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-
-                var element = {
-                    DBname: doc.data().DBname,
-                    Description: doc.data().Description,
-                    Tagnames: doc.data().Tagnames,
-                    id: doc.id
-                };
-
-                console.log(element, 'Encontrado: ' + element.DBname);
-                this.arrayFolders.push(element);
-            });
-        });
     }
 
 
-    @action keyPressed = (e: KeyboardEvent) => {
-        // use e.keyCode in here
-        if (e.keyCode == 13) {//enter
-            this.filterName(this.nameFilterInput);
-        }
-    };
 
     @action onClickTag() {
 
     }
 
+    
+    @action filterTag(name: string) {
+        this.cleanList();
+
+        var ref = db.collection("demothree").doc("folder");//ruta
+        ref.collection("post").where('name', "==", name).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+
+                var element = {
+                    DBname: doc.data().DBname,
+                    Description: doc.data().Description,
+                    Tagnames: doc.data().Tagnames,
+                    id: doc.id
+                };
+
+                console.log(element, 'Encontrado: ' + element.DBname);
+                this.arrayFolders.push(element);
+            });
+        });
+    }
 }
 
 export const firebaseStore = new FsActionStore();
