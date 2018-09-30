@@ -9,8 +9,10 @@ import './Home.scss';
 import Header from '../../../components/Common/Header/Header';
 
 import { homeEditorStore } from '../../../store/HomeEditorStore';
-import FolderAddButton from '../../../components/Editor/AddFolder/FolderAddButton/FolderAddButton';
 import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
+import FolderDisplay from '../../../components/Editor/AddFolder/FolderDisplay/FolderDisplay';
+import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
+import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
 
 export class Home extends React.Component {
     render(){
@@ -20,11 +22,12 @@ export class Home extends React.Component {
             img="./assets/img/logo.png"/>
 
             <div className="app flex-child col-flex">
-            <h2>Aqui van componentes que hacen la vista del inicio</h2>
+                <FolderDisplay />
             </div>
 
-            <FolderAddButton />
-            <FolderPopUp />       
+            <FloatingButton />
+            <FolderPopUp /> 
+            <AddMenu />      
         </div>
     }
 }

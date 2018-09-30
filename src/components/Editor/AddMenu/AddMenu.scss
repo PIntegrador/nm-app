@@ -1,0 +1,76 @@
+@import '../../../../public/css/variables.scss';
+.addMenu {
+    width: 220px;
+    height: 130px;
+    border-radius: 15px;
+    background: $fondoBlanco;
+    box-shadow: 2px 2px 10px 2px  rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    padding: 15px 0;
+    .exit {
+        margin: 0;
+        border-radius: 100px;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        transform: rotate(45deg);
+        div {
+            background: $fondoGris;
+            width: 3px;
+            height: 15px;
+            border-radius: 10px;
+            margin-left: -9px;
+            &:last-child {
+                margin-right: -16px;
+                width: 15px;
+                height: 3px;
+            }
+        }
+        &:hover {
+            cursor: pointer;
+            div {
+                background: $fondoGrisOscuto;
+            }
+        }
+    }
+    article {
+        display: flex;
+        flex-flow: row;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 auto;
+        width: 100%;
+        padding: 0 25px;
+        &:hover {
+            background: $fondoGris;
+            cursor: pointer;
+        }
+        div {
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            background: $fondoGrisOscuto;
+            margin-right: 25px;
+        }
+        h1 {
+            flex: 1 1 auto;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}

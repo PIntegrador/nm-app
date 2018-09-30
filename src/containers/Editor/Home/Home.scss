@@ -11,15 +11,16 @@ body {
         justify-content: flex-start;
         align-content: flex-start;
         align-items: flex-start;
+        height: 100%;
     }
     .dash {
         position: fixed;
     }
     .app {
-        width: 80%;
+        width: 83%;
         height: auto;
         margin: 0 0 0 $dashmenutam;
-        padding: 0 auto;
+        padding: 0 20px;
         justify-content: flex-start;
         align-content: center;
         align-items: center;

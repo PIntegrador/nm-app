@@ -18,19 +18,27 @@ const FolderPopUp = observer(() => {
                 <h1>Crear Nueva Carpeta</h1>
                 <form onSubmit={(e) => {
                     e.preventDefault();
+                    homeEditorStore.newFolder.tags = homeEditorStore.tags;
+                    homeEditorStore.addNewFolder();
+                    homeEditorStore.popUpAddStatus();
+                    homeEditorStore.clearTags();
                 }}>
                     <ul>
                         <li>
                             <label>Archivos</label>
-                            <input type="text" name="archivo" placeholder="Archivos.csv" />
+                            <input type="text" name="archivo" placeholder="Archivos.csv"/>
                         </li>
                         <li>
                             <label>Nombre</label>
-                            <input type="text" name="nombre" placeholder="Nombre de la Carpeta" />
+                            <input type="text" name="nombre" placeholder="Nombre de la Carpeta" onChange={(e) => {
+                                homeEditorStore.newFolder.name = e.target.value;
+                            }}/>
                         </li>
                         <li>
                             <label>Descipción</label>
-                            <input type="text" name="descipcion" placeholder="Descripción del Contenido de la Carpeta" />
+                            <input type="text" name="descipcion" placeholder="Descripción del Contenido de la Carpeta"  onChange={(e) => {
+                                homeEditorStore.newFolder.description = e.target.value;
+                            }}/>
                         </li>
                         <li className="tags">
                             <label>Etiquetas</label>
@@ -60,7 +68,7 @@ const FolderPopUp = observer(() => {
                             <label className="tagAmount"><b>{3-homeEditorStore.tags.length}</b>/3</label>
                             
                         </li>
-                        <li><button type="reset" onClick={()=>homeEditorStore.clearTags()}>CANCELAR</button><button type="submit">IMPORTAR</button></li>
+                        <li><button type="reset" onClick={()=>homeEditorStore.clearTags()}>CANCELAR</button><button type="submit">CREAR</button></li>
                     </ul>
                 </form>
             </article>
