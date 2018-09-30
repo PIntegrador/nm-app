@@ -8,6 +8,10 @@ import '../../../../public/css/flex.scss'
 import './Home.scss';
 import Header from '../../../components/Common/Header/Header';
 
+import { homeEditorStore } from '../../../store/HomeEditorStore';
+import FolderAddButton from '../../../components/Editor/AddFolder/FolderAddButton/FolderAddButton';
+import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
+
 export class Home extends React.Component {
     render(){
         return <div className="contHome row-flex">  
@@ -19,10 +23,8 @@ export class Home extends React.Component {
             <h2>Aqui van componentes que hacen la vista del inicio</h2>
             </div>
 
-            <article className="addFolder">
-                <div></div>
-                <div></div>
-            </article>           
+            <FolderAddButton />
+            <FolderPopUp />       
         </div>
     }
 }
