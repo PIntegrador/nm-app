@@ -10,14 +10,14 @@ const FolderDisplay = observer(() => {
                 <article className="folder" key={elem}>
                     <article className="name">
                         <div className="fav" style={{
-                            background: elem.favorite === false ? "grey" : "yellow"
+                            background: elem.favorited === false ? "grey" : "yellow"
                         }}></div>
                         <h1>{elem.name}</h1>
                     </article>
                     <span className="description">{elem.description}</span>
                     <article className="tags">
                         <ul>
-                            {elem.tags.map((tag: any, index: number) =>
+                            {elem.tagnames.map((tag: any, index: number) =>
                                 <li key={tag}>
                                     <span>{tag}</span>
                                 </li>

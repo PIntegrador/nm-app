@@ -13,13 +13,6 @@ const AddMenu = observer(() => {
             style={{
                 display: homeEditorStore.addMenu === true ? "flex" : "none"
             }}>
-            
-            <div className="exit" onClick={() => {
-                homeEditorStore.addMenuStatus()
-            }}>
-                <div></div>
-                <div></div>
-            </div>
             <article><div></div><h1>Subir Carpeta</h1></article>
             <article><div></div><h1>Subir Archivo</h1></article>
             <article onClick={() => {

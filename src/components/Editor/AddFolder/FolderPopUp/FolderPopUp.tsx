@@ -16,36 +16,39 @@ const FolderPopUp = observer(() => {
                     homeEditorStore.clearTags()
                 }}><div></div><div></div></article>
                 <h1>Crear Nueva Carpeta</h1>
-                <form onSubmit={(e) => {
+                <form  id="createFolderForm" onSubmit={(e) => {
                     e.preventDefault();
-                    homeEditorStore.newFolder.tags = homeEditorStore.tags;
-                    homeEditorStore.addNewFolder();
+                    homeEditorStore.newFolder.tagnames = homeEditorStore.tags;
                     homeEditorStore.popUpAddStatus();
+                    homeEditorStore.addNewFolder();
                     homeEditorStore.clearTags();
+                    homeEditorStore.clearFolder();
+                    const myForm:HTMLFormElement  = document.querySelector("#createFolderForm");
+                    myForm.reset();
                 }}>
                     <ul>
                         <li>
                             <label>Archivos</label>
-                            <input type="text" name="archivo" placeholder="Archivos.csv"/>
+                            <input type="text" name="archivo" placeholder="Archivos.csv" />
                         </li>
                         <li>
                             <label>Nombre</label>
                             <input type="text" name="nombre" placeholder="Nombre de la Carpeta" onChange={(e) => {
                                 homeEditorStore.newFolder.name = e.target.value;
-                            }}/>
+                            }} />
                         </li>
                         <li>
                             <label>Descipción</label>
-                            <input type="text" name="descipcion" placeholder="Descripción del Contenido de la Carpeta"  onChange={(e) => {
+                            <input type="text" name="descipcion" placeholder="Descripción del Contenido de la Carpeta" onChange={(e) => {
                                 homeEditorStore.newFolder.description = e.target.value;
-                            }}/>
+                            }} />
                         </li>
                         <li className="tags">
                             <label>Etiquetas</label>
                             <ul>
                                 {homeEditorStore.tags.map((elem: any, index: number) =>
                                     <li key={elem} style={{
-                                        display: elem.length >= 1 ? "flex": "none"
+                                        display: elem.length >= 1 ? "flex" : "none"
                                     }}>
                                         <span>{elem}</span>
                                         <p onClick={() => {
@@ -54,21 +57,26 @@ const FolderPopUp = observer(() => {
                                         }}>×</p>
                                     </li>
                                 )}
-                                
+
                             </ul>
                             <input type="text" name="etiquetas" placeholder="Etiquetas"
-                            onChange={(e) => {
-                                homeEditorStore.addTags(e.target.value+" ");
-                            }}
-                            onEmptied={() => {
-                                homeEditorStore.clearTags();
-                            }}
+                                onChange={(e) => {
+                                    homeEditorStore.addTags(e.target.value + " ");
+                                }}
+                                onEmptied={() => {
+                                    homeEditorStore.clearTags();
+                                }}
                             //value={homeEditorStore.tags.join(" ") == this.value ?  this.value : homeEditorStore.tags.join("")}
                             />
-                            <label className="tagAmount"><b>{3-homeEditorStore.tags.length}</b>/3</label>
-                            
+                            <label className="tagAmount"><b>{3 - homeEditorStore.tags.length}</b>/3</label>
+
                         </li>
-                        <li><button type="reset" onClick={()=>homeEditorStore.clearTags()}>CANCELAR</button><button type="submit">CREAR</button></li>
+                        <li>
+                            <button type="reset" onClick={() => {
+                                homeEditorStore.clearTags()
+                                }}>RESET</button>
+                            <button type="submit">CREAR</button>
+                        </li>
                     </ul>
                 </form>
             </article>

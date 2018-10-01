@@ -1,5 +1,5 @@
 import { observable, action, computed } from 'mobx';
-
+import db from '../../config/firebaseConfig';
 
 class HomeEditorStore {
     // >>>>>> ADD FOLDER VARIABLES AND FUNCTIONS <<<<<<
@@ -38,18 +38,36 @@ class HomeEditorStore {
     @action clearTags() {
         this.tags = [];
     };
+    @action clearFolder() {
+        this.newFolder = {
+            archives: [],
+            favorited: false,
+            name: "",
+            description: "",
+            tagnames: [],
+        };
+    }
 
     // --- Folder Display ---
     @observable newFolder: any = {
-        favorite: false,
+        archives: [],
+        favorited: false,
         name: "",
         description: "",
-        tags: []
+        tagnames: [],
     };
+
     @observable folders: any[] = [];
 
     @action addNewFolder(){
         this.folders.push(this.newFolder);
+        db.collection("TestFolders").add(this.newFolder)
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
     }
 
 }

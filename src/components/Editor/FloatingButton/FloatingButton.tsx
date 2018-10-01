@@ -6,7 +6,9 @@ import { homeEditorStore } from '../../../store/HomeEditorStore';
 
 const FloatingButton = observer(() => {
     return (
-        <article className="floatingButton" onClick={() => { homeEditorStore.addMenuStatus() }}>
+        <article className="floatingButton" onClick={() => {
+            homeEditorStore.addMenuStatus();
+        }}>
             <div></div>
             <div></div>
         </article>

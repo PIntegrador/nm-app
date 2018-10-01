@@ -12,9 +12,11 @@
     width: $dashmenutam;
     background-color: $fondoGris;
     height: 100%;
+    flex-wrap: nowrap;
     .contDash {
         height: 100%;
         padding: 0;
+        flex-wrap: nowrap;
         .contActions {
             //margin-bottom: 100px;
             width: $dashmenutam;
