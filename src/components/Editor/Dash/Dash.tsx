@@ -12,38 +12,39 @@ const Dash = () => {
 
     <article id="profile" className="col-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">USUARIO</h2>
+        <h2  className="flex-child">Nombre del Usuario</h2>
+        <p  className="flex-child">Ver Perfil</p>
     </article>
 
     
     <article id="home" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">INICIO</h2>
+        <h2  className="flex-child">Inicio</h2>
     </article>
 
     <article id="archives" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">GESTIÓN DE ARCHIVOS</h2>
+        <h2  className="flex-child">Gestión de Archivos</h2>
     </article>
 
-    <article id="proyects" className="row-flex">
+    <article id="projects" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">GESTIÓN DE PROYECTOS</h2>
+        <h2  className="flex-child">Gestión de proyectos</h2>
     </article>
 
     <article id="asign" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">POR ASIGNAR</h2>
+        <h2  className="flex-child">Por Asignar</h2>
     </article>
 
     <article id="trash" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">PAPELERA</h2>
+        <h2  className="flex-child">Papelera</h2>
     </article>
 
     <article id="config" className="row-flex">
         <div className="flex-child"></div>
-        <h2  className="flex-child">CONFIGURACIÓN</h2>
+        <h2  className="flex-child">Configuración</h2>
     </article>
     </section>
 

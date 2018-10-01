@@ -14,11 +14,9 @@ export class Home extends React.Component {
             <Dash/>
             <Header 
             img="./assets/img/logo.png"/>
-
             <div className="app flex-child col-flex">
             <h2>Aqui van componentes que hacen la vista del inicio</h2>
             </div>
-           
         </div>
     }
 }
