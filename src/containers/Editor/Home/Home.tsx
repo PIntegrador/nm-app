@@ -13,8 +13,11 @@ import { firebaseStore } from '../../../store/FsActionStore';
 export class Home extends React.Component {
     constructor (props:any) {
         super (props);
-
-        firebaseStore.read();
+        let counter = firebaseStore.counter;
+        if (firebaseStore.counter == 0) {
+            firebaseStore.read();
+            counter++;
+        }
 
     }
     render(){
