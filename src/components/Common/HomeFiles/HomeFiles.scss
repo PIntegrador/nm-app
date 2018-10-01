@@ -1,0 +1,39 @@
+@import '../../../../public/css/variables.scss';
+.allCont {
+    width: 100%;
+    margin: 1rem;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.filesCont {
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    .fileCont {
+        border: 1px solid #D1D1D1;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin: 2rem 0 2rem 0;
+        height: 138px;
+        width: 126px;
+        .fileDisplay {
+            height: 70%;
+            padding: auto;
+            img {
+                margin: auto
+            }
+        }
+        .fileInfo {
+            width: 100%;
+            height: 30%;
+            padding: 5px;
+        }
+        h6,
+        h3 {
+            text-align: center;
+        }
+    }
+}
