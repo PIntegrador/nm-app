@@ -37,7 +37,7 @@ class FsActionStore {
                     id: doc.id
                 };
                 this.arrayFolders.push(element);
-                this.arrayFoldersBackUp.push (element);
+                this.arrayFoldersBackUp=this.arrayFolders;
                 console.log(this.arrayFolders);
             });
         });
@@ -49,21 +49,50 @@ class FsActionStore {
     }
 
     @action filterName() {
+    
         if (this.arrayFolders.some((e: any) => {
-
-            return e.name == this.nameFilter;
+            return e.name.toLowerCase() == this.nameFilter.toLowerCase();
         })){
-            console.log("This is filtering")
-
-            this.arrayFoldersBackUp = this.arrayFolders.filter((e: any) => {
-                return e.name == this.nameFilter;
+            console.log("This is filtering");
+            this.arrayFolders = this.arrayFolders.filter((e: any) => {
+                return e.name.toLowerCase() == this.nameFilter.toLowerCase();
             });
         } else {
-            console.log("This is not filtering")
-
-            this.read();
+            console.log("This is not filtering");
+            this.arrayFolders = this.arrayFoldersBackUp;
         }
         
+    }
+
+    @action sortByName(order: number) {
+        console.log(this.arrayFolders[0], "Antes de sort");
+
+        function compareDescendente(a : any, b : any, order1: number, order2: number ) {
+            if (a.name[0] < b.name[0])
+              return -1;
+            if (a.name[0] > b.name[0])
+              return 1;
+            return 0;
+          }
+          function compareAscendente(a : any, b : any, order1: number, order2: number ) {
+            if (a.name[0] < b.name[0])
+              return 1;
+            if (a.name[0] > b.name[0])
+              return -1;
+            return 0;
+          }
+
+          if (order==0) {
+            this.arrayFolders.replace (this.arrayFolders.slice().sort(compareAscendente));
+          } 
+          if (order ==1 ) {
+            this.arrayFolders.replace (this.arrayFolders.slice().sort(compareDescendente));
+          }
+
+
+          
+        console.log(this.arrayFolders[0], "Despues de sort");
+
     }
 
 

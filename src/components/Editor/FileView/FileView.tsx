@@ -7,13 +7,14 @@ import './FileView.scss';
 import Header from '../../../components/Common/Header/Header';
 import { Link } from 'react-router-dom';
 import { Folder } from '../Folder/Folder';
+import { observer } from 'mobx-react';
 
 interface FileViewProps {
 
     folders: any[];
 }
 
-export class FileView extends React.Component <FileViewProps> {
+@observer export class FileView extends React.Component <FileViewProps> {
     constructor (props : any) {
         super (props);
         
