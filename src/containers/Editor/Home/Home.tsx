@@ -7,6 +7,8 @@ import Dash from '../../../components/Editor/Dash/Dash';
 import '../../../../public/css/flex.scss'
 import './Home.scss';
 import Header from '../../../components/Common/Header/Header';
+import { Link } from 'react-router-dom';
+import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
 
 import { homeEditorStore } from '../../../store/HomeEditorStore';
@@ -25,6 +27,7 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
         homeEditorStore.readProject('Projects')
         homeEditorStore.readFolder('Folders')
         homeEditorStore.readArchive('Archives')
+        firebaseStore.read();
     }
     render(){
         return <div className="contHome row-flex">  
@@ -33,8 +36,8 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
             <Dash/>
          
             <div className="app flex-child col-flex">
-            {}
-            <Header 
+            
+               <Header 
             img="./assets/img/logo.png"/>
 
             <FloatingButton />
@@ -42,6 +45,11 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
             <div className="homeInfo col-flex">
             <HomeProjects
             projectArray = {homeEditorStore.projectArray} />
+               <Link to = "folders"> 
+                    <div className="folder2" >
+                        Ir aqui
+                    </div>
+                </Link>
             <HomeFolders
             folderArray = {homeEditorStore.folderArray} />
             <HomeFiles 
@@ -50,29 +58,6 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
             </div>
           
             </div>
-        </div>
+            </div>
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

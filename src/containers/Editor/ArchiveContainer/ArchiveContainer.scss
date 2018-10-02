@@ -6,31 +6,25 @@
 }
 
 body {
-    background-color: $defaultBackground;
+    background-color: $fondoBlanco;
     .contHome {
         justify-content: flex-start;
         align-content: flex-start;
         align-items: flex-start;
-        height: 100%;
     }
     .dash {
         position: fixed;
     }
     .app {
-        margin: 0 0 0 $dashmenutam;
         width: 100%;
         height: auto;
+        margin: 0 0 0 $dashmenutam;
+        padding: 0 auto;
         justify-content: flex-start;
-        align-content: flex-start;
-        align-items: flex-start;
-        .homeInfo {
-            width: 95%;
-            margin: 60px 0 0 0;
-            justify-content: flex-start;
-            align-content: flex-start;
-            align-items: flex-start;
-        }
+        align-content: center;
+        align-items: center;
     }
+
     .folder2 {
         width: 100px;
         height: 100px;
