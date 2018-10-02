@@ -7,12 +7,17 @@ import Dash from '../../../components/Editor/Dash/Dash';
 import '../../../../public/css/flex.scss'
 import './Home.scss';
 import Header from '../../../components/Common/Header/Header';
+import { observer } from 'mobx-react';
+
+import { homeEditorStore } from '../../../store/HomeEditorStore';
+import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
+import FolderDisplay from '../../../components/Editor/AddFolder/FolderDisplay/FolderDisplay';
+import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
+import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
+import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 import HomeProjects from '../../../components/Common/HomeProjects/HomeProjects';
 import HomeFolders from '../../../components/Common/HomeFolders/HomeFolders';
 import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
-
-import {homeEditorStore} from '../../../store/HomeEditorStore'
-import { observer } from 'mobx-react';
 
 @observer export class Home extends React.Component {
     constructor(props:any){
@@ -23,12 +28,17 @@ import { observer } from 'mobx-react';
     }
     render(){
         return <div className="contHome row-flex">  
+          <FolderPopUp />
+            <FilePopUp /> 
             <Dash/>
          
             <div className="app flex-child col-flex">
             {}
             <Header 
             img="./assets/img/logo.png"/>
+
+            <FloatingButton />
+            <AddMenu />      
             <div className="homeInfo col-flex">
             <HomeProjects
             projectArray = {homeEditorStore.projectArray} />

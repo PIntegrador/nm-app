@@ -1,3 +1,8 @@
+* {
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
 $fontText: 'PT Sans',
 sans-serif;
 $fontTitle: 'PT Sans',
@@ -11,6 +16,14 @@ $defaultBackground: #FAFAFA;
 $fontsizeOne: 10pt;
 $fontsizeTwo: 14pt;
 $fontsizeThree: 10pt;
+p,
+label,
+span,
+a {
+    text-decoration: none;
+    font-family: $fontText;
+}
+
 p,
 h2,
 h1,
