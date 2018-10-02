@@ -49,11 +49,13 @@ class HomeEditorStore {
     }
 
     @action uploadNewFile(file: any) {
+        if(typeof file != 'undefined'){
         let storageRef = storage.ref();
         let testFilesRef = storageRef.child('Archives/' + file.name);
 
         testFilesRef.put(file);
         this.newFile.fileURL = testFilesRef.fullPath+"";
+        }
     }
 
     @action addNewFile() {

@@ -5,15 +5,16 @@ import { firebaseStore } from '../../../store/FsActionStore';
 interface HeaderProps {
 
     img?: string;
+    fav?: string;
 }
 
-const Header = ({ img }: HeaderProps) => {
+const Header = ({ img, fav }: HeaderProps) => {
     return (
         <section className="headerbar flex-child row-flex ">
             <div className="leftSide">
                 <img src={img} alt="" />
                 <div className="toogle flex-child">
-                    <img src="./assets/img/star.png" />
+                <img src={fav} />
                 </div>
                 <div className="searchBar">
                     <form onSubmit={(e) => {

@@ -21,10 +21,12 @@ import { observer } from 'mobx-react';
         
         return <div className="contHome row-flex">  
             <Dash/>
-            <Header 
-            img="./assets/img/logo.png"/>
+          
 
             <div className="app flex-child col-flex">
+            <Header 
+            img="./assets/img/logo.png"
+            fav="./assets/img/star.png"/>
                 <RouteBar />
                 <SortBar />
                 <FileView folders={arrayFolders}/>

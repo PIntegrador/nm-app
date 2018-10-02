@@ -24,7 +24,7 @@ const FilePopUp = observer(() => {
                 <DropZone />
                 <form id="createFileForm" onSubmit={(e) => {
                     e.preventDefault();
-                    if(typeof homeEditorStore.accepted != "undefined"){
+                    if(typeof homeEditorStore.accepted[0] != "undefined"){
                         homeEditorStore.newFile.tagnames = homeEditorStore.tags;
                         homeEditorStore.uploadNewFile(homeEditorStore.accepted[0]);
                         homeEditorStore.addNewFile();
@@ -43,7 +43,7 @@ const FilePopUp = observer(() => {
                             <label>Archivo</label>
                             <input type="text" name="archivo" placeholder="Archivo.csv" value={
                                 (typeof homeEditorStore.accepted[0] != 'undefined') ? homeEditorStore.accepted[0].name : ""} disabled />
-                            <button>Subir Archivo</button>
+                            <button disabled >Subir Archivo</button>
                         </li>
                         <li>
                             <label>Nombre</label>

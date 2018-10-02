@@ -31,25 +31,21 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
     }
     render(){
         return <div className="contHome row-flex">  
-          <FolderPopUp />
-            <FilePopUp /> 
+        
             <Dash/>
          
             <div className="app flex-child col-flex">
             
                <Header 
-            img="./assets/img/logo.png"/>
+            img="./assets/img/logo.png"
+            fav="./assets/img/star.png"/>
 
             <FloatingButton />
             <AddMenu />      
             <div className="homeInfo col-flex">
             <HomeProjects
             projectArray = {homeEditorStore.projectArray} />
-               <Link to = "folders"> 
-                    <div className="folder2" >
-                        Ir aqui
-                    </div>
-                </Link>
+             
             <HomeFolders
             folderArray = {homeEditorStore.folderArray} />
             <HomeFiles 
@@ -58,6 +54,8 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
             </div>
           
             </div>
+            <FolderPopUp />
+            <FilePopUp /> 
             </div>
     }
 }
