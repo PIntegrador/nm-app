@@ -24,9 +24,12 @@ import { observer } from 'mobx-react';
     render(){
         return <div className="contHome row-flex">  
             <Dash/>
+         
+            <div className="app flex-child col-flex">
+            {}
             <Header 
             img="./assets/img/logo.png"/>
-            <div className="app flex-child col-flex">
+            <div className="homeInfo col-flex">
             <HomeProjects
             projectArray = {homeEditorStore.projectArray} />
             <HomeFolders
@@ -34,6 +37,8 @@ import { observer } from 'mobx-react';
             <HomeFiles 
              img="./assets/img/file.png"
              archiveArray = {homeEditorStore.archiveArray}/>
+            </div>
+          
             </div>
         </div>
     }

@@ -15,7 +15,7 @@ const HomeFolders = observer(( {folderArray} : HomeFoldersProps) => {
         {
                 folderArray.map((elem:any) => {
                     return   <article className="flex-child row-flex folderCont">
-                    <div className="flex-child  folderDisplay">
+                    <div className="flex-child  folderDisplay col-flex">
                     <h3>{elem.name}</h3>
                     </div>
                     <div className="flex-child  folderInfo">

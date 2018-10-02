@@ -16,12 +16,17 @@ body {
         position: fixed;
     }
     .app {
-        width: 80%;
+        width: 100%;
+        margin-left: $dashmenutam;
         height: auto;
-        margin: 0 0 0 $dashmenutam;
-        padding: 0 auto;
         justify-content: flex-start;
         align-content: center;
         align-items: center;
+        .homeInfo {
+            width: 95%;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: flex-start;
+        }
     }
 }

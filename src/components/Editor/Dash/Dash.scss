@@ -1,21 +1,13 @@
 @import '../../../../public/css/variables.scss';
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .dash {
     padding: 10px 0;
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
     width: $dashmenutam;
-    background-color: $fondoGris;
     height: 100%;
     .contActions {
-        //margin-bottom: 100px;
-        width: $dashmenutam;
+        width: 100%;
         justify-content: space-between;
         align-content: space-between;
         align-items: space-between;

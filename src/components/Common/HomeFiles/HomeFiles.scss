@@ -1,7 +1,6 @@
 @import '../../../../public/css/variables.scss';
 .allCont {
     width: 100%;
-    margin: 1rem;
     justify-content: flex-start;
     align-content: flex-start;
     align-items: flex-start;
@@ -12,16 +11,20 @@
     justify-content: flex-start;
     align-content: flex-start;
     align-items: flex-start;
+    margin: 2rem 0 2rem 0;
     .fileCont {
         border: 1px solid #D1D1D1;
         box-sizing: border-box;
         border-radius: 5px;
-        margin: 2rem 0 2rem 0;
         height: 138px;
         width: 126px;
+        margin: 0 1rem 0 0;
         .fileDisplay {
             height: 70%;
             padding: auto;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
             img {
                 margin: auto
             }

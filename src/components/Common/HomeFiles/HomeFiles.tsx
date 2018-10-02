@@ -15,10 +15,10 @@ const HomeFiles = observer (({ img, archiveArray }: HomeFoldersProps) => {
         {
                 archiveArray.map((elem:any) => {
                     return   <article className="flex-child fileCont">
-                    <div className=" fileDisplay">
+                    <div className=" fileDisplay col-flex">
                   <img src={img} alt=""/>
                     </div>
-                   <h3>{elem.name}</h3>
+                   <h3 key={elem.id}>{elem.name}</h3>
                    <h6>extensión</h6>
                     </article>
                 })
