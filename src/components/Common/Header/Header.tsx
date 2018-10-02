@@ -19,7 +19,12 @@ const Header = ({ img }: HeaderProps) => {
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     firebaseStore.filterName();
-                }}>
+                }}
+                onChange={(e) => {
+                    e.preventDefault();
+                    firebaseStore.filterName();
+                }}
+                >
                     <button type="submit">
                     &#128269;</button>
 

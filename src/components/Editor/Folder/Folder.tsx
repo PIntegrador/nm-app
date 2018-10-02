@@ -11,28 +11,28 @@ interface FolderProps {
     favorited: boolean;
 }
 
-export const Folder = ({id, title, text, tags, favorited }: FolderProps) => {
+export const Folder = ({ id, title, text, tags, favorited }: FolderProps) => {
     return (
-        <Link to={`/folders/${id}`}> 
-                <article className="folder">
-            <div className="elemsTitle">
-            <div className="favorite">
-                <img src="./assets/img/star.png"/>
-            </div>
-            <h2>{title}</h2>
-            </div>
-            <div className="description">
-            <p>{text}</p>
+        <Link to={`/folders/${id}`}>
+            <article className="folder">
+                <div className="elemsTitle">
+                    <div className="favorite">
+                        <img src="./assets/img/star.png" />
+                    </div>
+                    <h2>{title}</h2>
+                </div>
+                <div className="description">
+                    <p>{text}</p>
 
-            </div>
-            <div className="tagContainer">
-            {
+                </div>
+                <div className="tagContainer">
+                    {
                         tags.map((elem: any) => {
                             return <div key={elem} className="tag flex-child hvr-grow">{elem}</div>
                         })
                     }
-            </div>
-        </article>
+                </div>
+            </article>
         </Link>
 
     )

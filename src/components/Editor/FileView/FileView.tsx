@@ -24,7 +24,7 @@ interface FileViewProps {
         
         return  (
             <div className="contFolder">
-            <p> Encontró estos folders </p>
+            <p></p>
             
 
             {

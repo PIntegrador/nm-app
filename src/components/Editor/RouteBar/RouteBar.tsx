@@ -6,7 +6,9 @@ import '../../../../public/css/flex.scss'
 const RouteBar = () => {
     return (
         <div className="routeBar">
-            RouteBar
+            <span>&#128269;</span><span>Nombre de la carpeta</span>
+
+            
         </div>
     )
 }
