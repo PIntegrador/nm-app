@@ -7,10 +7,10 @@ import './ArchiveContainer.scss';
 import Dash from '../../../components/Editor/Dash/Dash';
 import Header from '../../../components/Common/Header/Header';
 import RouteBar from '../../../components/Editor/RouteBar/RouteBar';
-import SortBar from '../../../components/Editor/SortBar/SortBar';
-import { FileView } from '../../../components/Editor/FileView/FileView';
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
+import { ArchiveView } from '../../../components/Editor/ArchiveView/ArchiveView';
+import SortBarArchive from '../../../components/Editor/SortBarArchive/SortBarArchive';
 
 
 @observer export  class ArchiveContainer extends React.Component {
@@ -23,17 +23,17 @@ import { observer } from 'mobx-react';
     render(){
         const folderID = this.getFolderId();
         console.log(folderID, "IDFolder");
-        let arrayFolders = firebaseStore.arrayFolders;
+        let arrayArchives = firebaseStore.arrayArchive;
 
         return <div className="contHome row-flex">  
             <Dash/>
             <Header 
-            img="./assets/img/logo.png"/>
+            img="../assets/img/logo.png"/>
 
             <div className="app flex-child col-flex">
                 <RouteBar />
-                <SortBar />
-                <FileView folders={arrayFolders}/>
+                <SortBarArchive />
+                <ArchiveView archives={arrayArchives}/>
                 
             </div>
            

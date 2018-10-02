@@ -1,37 +1,44 @@
 @import '../../../../public/css/variables.scss';
+
 a {
     text-decoration: none;
     color: $fondoGrisOscuto;
 }
+
 .contFolder {
     margin: 0 0 25px 0;
-    width: 100%;
+    width: 95%;
     font-family: $fontTitle;
-    padding:  10px 50px;
+
     .folder {
         width: 100%;
         margin-top: 25px;
         border-bottom: 1px solid $fondoGris;
         padding-bottom: 20px;
+
         .elemsTitle {
             display: flex;
             flex-direction: row;
             align-items: center;
+
             .favorite {
                 width: 18px;
                 height: 18px;
                 margin-top: -2px;
                 margin-right: 20px;
+
                 img {
                     width: 100%;
                     height: 100%;
                 }
             }
+
             h2 {
                 width: 100%;
                 font-size: 20px;
             }
         }
+
         .description {
             p {
                 padding: 5px 0 20px 0;
@@ -41,12 +48,14 @@ a {
                 color: $fondoGris;
                 font-style: italic;
                 font-size: 14px;
-            
+
             }
         }
+
         .tagContainer {
             display: flex;
             flex-direction: row;
+
             .tag {
                 margin-right: 15px;
                 padding: 5px 15px;
@@ -59,6 +68,6 @@ a {
 
             }
         }
-        }
-
     }
+
+}

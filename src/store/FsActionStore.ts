@@ -9,6 +9,12 @@ class FsActionStore {
     @observable arrayFolders: any = [];
 
     @observable arrayFoldersBackUp: any = [];
+
+    
+    @observable arrayArchive: any = [];
+
+    @observable arrayArchiveBackUp: any = [];
+
     @observable nameFilter: string = "";
 
     @observable counter: number = 0;
@@ -19,6 +25,7 @@ class FsActionStore {
 
     @action cleanList() {
         this.arrayFolders = [];
+        this.arrayArchive = [];
     }
 
     @action read() {
@@ -39,6 +46,29 @@ class FsActionStore {
                 this.arrayFolders.push(element);
                 this.arrayFoldersBackUp=this.arrayFolders;
                 console.log(this.arrayFolders);
+            });
+        });
+
+        let refArchive = db.collection("Archives");//ruta        
+        refArchive.get().then((querySnapshot) => {
+
+            querySnapshot.forEach((doc) => {
+
+                let element = {
+                    name: doc.data().name,
+                    description: doc.data().description,
+                    favorited: doc.data().favorited,
+                    tagnames: doc.data().tagnames,
+                    id: doc.id,
+                    idFolder: doc.data().IDFolder,
+                    idArchive: doc.data().IDArchive,
+                    size: "O MB",
+                    upDate: "Sin Fecha",
+                    modDate: "Sin Fecha",
+                    IDD: "001"
+                };
+                this.arrayArchive.push(element);
+                this.arrayArchiveBackUp=this.arrayArchive;
             });
         });
 
@@ -63,7 +93,21 @@ class FsActionStore {
             console.log("This is not filtering");
             this.arrayFolders = this.arrayFoldersBackUp;
         }
-        
+    }
+
+    @action filterNameArchive() {
+    
+        if (this.arrayArchive.some((e: any) => {
+            return e.name.toLowerCase() == this.nameFilter.toLowerCase();
+        })){
+            console.log("This is filtering");
+            this.arrayArchive = this.arrayArchive.filter((e: any) => {
+                return e.name.toLowerCase() == this.nameFilter.toLowerCase();
+            });
+        } else {
+            console.log("This is not filtering");
+            this.arrayArchive = this.arrayArchiveBackUp;
+        }
     }
 
     @action sortByName(order: number) {
