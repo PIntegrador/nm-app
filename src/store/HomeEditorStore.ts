@@ -1,8 +1,8 @@
 import { observable, action, computed } from 'mobx';
-import db from '../../config/firebaseConfig';
-
+import db, { storage } from '../../config/firebaseConfig';
+import { firebaseStore } from './FsActionStore';
 class HomeEditorStore {
-    // >>>>>> ADD FOLDER VARIABLES AND FUNCTIONS <<<<<<
+    // >>>>>> FLOATING VARIABLES AND FUNCTIONS <<<<<<
 
     // --- AddMenu ---
     @observable addMenu: boolean = false;
@@ -11,11 +11,69 @@ class HomeEditorStore {
         this.addMenu = !this.addMenu;
     };
 
-    // --- PopUp Window ---
-    @observable popUpAdd: boolean = false;
+    // >>>>>> ADD FILE VARIABLES AND FUNCTIONS <<<<<<
 
-    @action popUpAddStatus() {
-        this.popUpAdd = !this.popUpAdd;
+    // --- PopUp Window ---
+
+    @observable filePopUpAdd: boolean = false;
+
+    @action filePopUpAddStatus() {
+        this.filePopUpAdd = !this.filePopUpAdd;
+    };
+
+    // --- Drop Zone ---
+
+    @observable accepted: any[] = [];
+    @observable rejected: any[] = [];
+    @observable files: any[] = [];
+    @observable newFile: any = {
+        IDFile: "File ID",
+        IDFolder: "Folder ID",
+        description: "",
+        favorited: false,
+        fileURL: "",
+        name: "",
+        tagnames: [],
+    };
+
+    @action clearFile() {
+        this.newFile = {
+            IDFile: "File ID",
+            IDFolder: "Folder ID",
+            description: "",
+            favorited: false,
+            fileURL: "",
+            name: "",
+            tagnames: [],
+        };
+    }
+
+    @action uploadNewFile(file: any) {
+        let storageRef = storage.ref();
+        let testFilesRef = storageRef.child('TestFiles/' + file.name);
+
+        testFilesRef.put(file);
+        this.newFile.fileURL = testFilesRef.fullPath+"";
+    }
+
+    @action addNewFile() {
+        this.files.push(this.newFile);
+        db.collection("TestFiles").add(this.newFile)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    }
+
+    // >>>>>> ADD FOLDER VARIABLES AND FUNCTIONS <<<<<<
+
+    // --- PopUp Window ---
+    @observable folderPopUpAdd: boolean = false;
+
+    @action folderPopUpAddStatus() {
+        this.folderPopUpAdd = !this.folderPopUpAdd;
     };
 
     // --- Tags ---
@@ -59,15 +117,15 @@ class HomeEditorStore {
 
     @observable folders: any[] = [];
 
-    @action addNewFolder(){
+    @action addNewFolder() {
         this.folders.push(this.newFolder);
         db.collection("TestFolders").add(this.newFolder)
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
     }
 
 }

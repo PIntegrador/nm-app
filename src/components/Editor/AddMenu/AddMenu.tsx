@@ -14,9 +14,11 @@ const AddMenu = observer(() => {
                 display: homeEditorStore.addMenu === true ? "flex" : "none"
             }}>
             <article><div></div><h1>Subir Carpeta</h1></article>
-            <article><div></div><h1>Subir Archivo</h1></article>
             <article onClick={() => {
-                homeEditorStore.popUpAddStatus();
+                homeEditorStore.filePopUpAddStatus();
+            }}><div></div><h1>Subir Archivo</h1></article>
+            <article onClick={() => {
+                homeEditorStore.folderPopUpAddStatus();
             }}><div></div><h1>Crear Carpeta</h1></article>
         </section>
     )

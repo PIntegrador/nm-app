@@ -1,5 +1,24 @@
 @import '../../../../../public/css/variables.scss';
-.modalFolderAdd {
+h1,
+h2,
+h3 {
+    font-family: $fontTitle;
+}
+
+p,
+label,
+span,
+a {
+    text-decoration: none;
+    font-family: $fontText;
+}
+
+* {
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.modalFileAdd {
     background: rgba(17, 17, 17, 0.75);
     position: absolute;
     top: 0;
@@ -13,20 +32,16 @@
     align-items: center;
     .popUp {
         background: #f2f2f2;
-        padding: 40px 60px;
+        padding:40px 60px;
         width: 600px;
-        height: 400px;
+        height: 470px;
         border-radius: 15px;
         position: relative;
         overflow: hidden;
         transition: all 0.2s ease;
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
         h1 {
             margin-bottom: 20px;
+            text-align: center;
         }
         .exit {
             margin: 0;
@@ -61,10 +76,93 @@
                 }
             }
         }
+        .dropzone {
+            .dragAndDrop {
+                width: 100%;
+                height: 100px;
+                border: none;
+                border-radius: 15px;
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                h1 {
+                    margin: 0;
+                    color: $fondoGris;
+                    &::selection {
+                        background: none;
+                    }
+                }
+                .empty {
+                    border: dotted 2px $fondoGris;
+                    border-radius: 15px;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .accepted {
+                    border: dotted 2px green;
+                    border-radius: 15px;
+                    background: none;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column;
+                    align-items: center;
+                    justify-content: center;
+                    h1 {
+                        color: green;
+                        font-size: 20px;
+                        text-transform: uppercase;
+                    }
+                    p {
+                        margin-top: 10px;
+                        font-size: 12px;
+                        text-align: center;
+                        color: $fondoGrisOscuto;
+                        width: 500px;
+                    }
+                }
+                .rejected {
+                    border: dotted 2px red;
+                    border-radius: 15px;
+                    background: none;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column;
+                    align-items: center;
+                    justify-content: center;
+                    h1 {
+                        color: red;
+                        font-size: 20px;
+                        text-transform: uppercase;
+                    }
+                    p {
+                        margin-top: 10px;
+                        font-size: 12px;
+                        text-align: center;
+                        color: $fondoGrisOscuto;
+                        width: 500px;
+                    }
+                }
+                &:hover {
+                    cursor: alias;
+                }
+                &:active {
+                    border: dotted 2px $fondoGrisOscuto;
+                    h1 {
+                        color: $fondoGrisOscuto;
+                    }
+                }
+            }
+        }
         form {
-            flex: 1 1 auto;
             width: 100%;
-            height: 100%;
             height: fit-content;
             display: flex;
             flex-flow: column;
@@ -76,23 +174,20 @@
                 height: fit-content;
                 display: flex;
                 flex-flow: column;
-                justify-content: space-around;
+                justify-content: center;
                 align-content: center;
                 align-items: flex-end;
                 li {
-                    box-sizing: border-box;
-                    height: 40px;
+                    height: 35px;
                     display: flex;
                     justify-content: center;
                     align-content: center;
                     align-items: center;
-                    width: 85%;
-                    margin-bottom: 15px;
+                    width: 87%;
+                    margin-bottom: 10px;
                     position: relative;
-                    &:last-child {
-                        width: 100%;
-                        margin: 0;
-                        height: 45px;
+                    * {
+                        margin: 0 0 0 10px;
                     }
                     label {
                         width: 100px;
@@ -108,10 +203,15 @@
                         border: none;
                         background: white;
                         height: 90%;
-                        padding: 0 10px;
+                        padding: 0 10px;                        
                         border-radius: 5px;
                         outline: none;
-                        padding-right: 10px;
+                    }
+                    button {
+                        flex: 0 1 auto;
+                        height: 90%;
+                        margin: 0;
+                        margin-left: 10px;
                     }
                 }
                 button {
@@ -121,7 +221,7 @@
                     height: 30px;
                     width: 100px;
                     border-radius: 5px;
-                    margin:0 0 0 10px;
+                    margin-top: 10px;
                     color: white;
                     background: $negroTexto;
                     border: none;
@@ -144,15 +244,15 @@
                         align-items: center;
                         align-content: center;
                         justify-content: center;
+                        margin: 0;
                         li {
                             margin: 0;
                             flex: 0 1 auto;
-                            padding: 0 10px;
                             height: 30px;
                             max-width: 111px;
                             background: $fondoGris;
                             border-radius: 15px;
-                            margin-right: 10px;
+                            margin-left: 10px;
                             span{
                                 font-size: 11px;
                                 text-transform: uppercase;
@@ -175,6 +275,7 @@
                                 box-sizing: border-box;
                                 background: $fondoBlanco;
                                 padding: 0 3px;
+                                margin: 0 10px;
                                 border-radius: 10px;
                                 &::selection{
                                     background: none;
@@ -194,8 +295,8 @@
                     }
                     .tagAmount {
                         width: fit-content;
-                        left: 377px;
-                        top: 13px;
+                        left: 367px;
+                        top: 11px;
                         letter-spacing: 0.1em;
                     }
                 }

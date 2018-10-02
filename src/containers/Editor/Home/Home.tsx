@@ -13,6 +13,7 @@ import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/Folder
 import FolderDisplay from '../../../components/Editor/AddFolder/FolderDisplay/FolderDisplay';
 import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
 import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
+import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 
 export class Home extends React.Component {
     render(){
@@ -26,7 +27,8 @@ export class Home extends React.Component {
             </div>
 
             <FloatingButton />
-            <FolderPopUp /> 
+            <FolderPopUp />
+            <FilePopUp /> 
             <AddMenu />      
         </div>
     }

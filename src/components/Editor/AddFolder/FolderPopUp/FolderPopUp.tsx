@@ -5,21 +5,23 @@ import { observer } from 'mobx-react';
 import { homeEditorStore } from '../../../../store/HomeEditorStore';
 const FolderPopUp = observer(() => {
     return (
-        <section className='modalAdd'
+        <section className='modalFolderAdd'
             style={{
-                display: homeEditorStore.popUpAdd === true ? "flex" : "none"
+                display: homeEditorStore.folderPopUpAdd === true ? "flex" : "none"
             }}
         >
             <article className="popUp">
                 <article className="exit" onClick={() => {
-                    homeEditorStore.popUpAddStatus()
+                    homeEditorStore.folderPopUpAddStatus()
                     homeEditorStore.clearTags()
+                    const myForm:HTMLFormElement  = document.querySelector("#createFolderForm");
+                    myForm.reset();
                 }}><div></div><div></div></article>
                 <h1>Crear Nueva Carpeta</h1>
                 <form  id="createFolderForm" onSubmit={(e) => {
                     e.preventDefault();
                     homeEditorStore.newFolder.tagnames = homeEditorStore.tags;
-                    homeEditorStore.popUpAddStatus();
+                    homeEditorStore.folderPopUpAddStatus();
                     homeEditorStore.addNewFolder();
                     homeEditorStore.clearTags();
                     homeEditorStore.clearFolder();
