@@ -13,11 +13,9 @@ import { firebaseStore } from '../../../store/FsActionStore';
 export class Home extends React.Component {
     constructor (props:any) {
         super (props);
-        let counter = firebaseStore.counter;
-        if (firebaseStore.counter == 0) {
-            firebaseStore.read();
-            counter++;
-        }
+
+        firebaseStore.read();
+        
 
     }
     render(){
@@ -27,9 +25,9 @@ export class Home extends React.Component {
             img="./assets/img/logo.png"/>
 
             <div className="app flex-child col-flex">
-                <Link to = "FolderName"> 
+                <Link to = "folders"> 
                     <div className="folder2" >
-                    Ir aqui
+                        Ir aqui
                     </div>
                 </Link>
             </div>

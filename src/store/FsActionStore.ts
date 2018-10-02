@@ -41,6 +41,8 @@ class FsActionStore {
                 console.log(this.arrayFolders);
             });
         });
+
+        
     }
 
     @action getFromLocalStore(element: string) {

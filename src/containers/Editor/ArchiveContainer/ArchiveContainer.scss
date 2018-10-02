@@ -1,0 +1,61 @@
+@import '../../../../public/css/variables.scss';
+.contFolder {
+    margin: 25px 0;
+    width: 100%;
+    .folder {
+        width: 100%;
+        margin-top: 25px;
+        >h2 {
+            width: 100%;
+            font-family: $fontTitle;
+            font-size: 28px;
+        }
+        >p {
+            margin-top: 10px;
+            text-align: justify;
+            width: 100%;
+            font-family: $fontText;
+            font-size: 14px;
+        }
+        .cont {
+            width: auto;
+            justify-content: flex-start;
+            align-content: stretch;
+            align-items: center;
+            .contFolderTags {
+                justify-content: flex-start;
+                align-content: stretch;
+                align-items: flex-start;
+                margin-top: 10px;
+                .folderTags {
+                    width: auto;
+                    margin-right: 15px;
+                    padding: 5px 15px;
+                    background-color: $fondoGris;
+                    border-radius: 5px;
+                    font-family: $fontText;
+                    color: $negroTexto;
+                    font-size: 10px;
+                    font-weight: 700;
+                }
+            }
+            .starButton {
+                margin-top: 10px;
+                background-color: $fondoGrisOscuto;
+                width: 20px;
+                height: 20px;
+                &:hover {
+                    background-color: $fondoGris;
+                }
+            }
+        }
+        &::after {
+            margin-top: 25px;
+            display: block;
+            content: "";
+            background-color: $fondoGrisOscuto;
+            height: 2px;
+            width: 100%;
+        }
+    }
+}

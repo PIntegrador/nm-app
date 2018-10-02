@@ -31,7 +31,7 @@ interface FileViewProps {
                 (this.props.folders != null) ? (
                 this.props.folders.map((elem:any) => {
                     console.log(this.props.folders, "QUE VERGA")
-                     return <Folder key={elem.id} title = {elem.name} text = {elem.description} tags = {elem.tagnames} favorited = {elem.favorited}/>
+                     return <Folder key={elem.id} id={elem.id} title = {elem.name} text = {elem.description} tags = {elem.tagnames} favorited = {elem.favorited}/>
                 }) ) : console.log("Como estas")
             }
             </div>

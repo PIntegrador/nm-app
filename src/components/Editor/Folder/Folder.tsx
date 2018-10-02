@@ -1,17 +1,20 @@
 import * as React from 'react';
 
 import '../../../../public/css/flex.scss'
+import { Link } from 'react-router-dom';
 
 interface FolderProps {
+    id: string;
     title: string;
     text?: string;
     tags: any[];
     favorited: boolean;
 }
 
-export const Folder = ({ title, text, tags, favorited }: FolderProps) => {
+export const Folder = ({id, title, text, tags, favorited }: FolderProps) => {
     return (
-        <article className="folder">
+        <Link to={`/folders/${id}`}> 
+                <article className="folder">
             <div className="elemsTitle">
             <div className="favorite">
                 <img src="./assets/img/star.png"/>
@@ -30,5 +33,7 @@ export const Folder = ({ title, text, tags, favorited }: FolderProps) => {
                     }
             </div>
         </article>
+        </Link>
+
     )
 }
