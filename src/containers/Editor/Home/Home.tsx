@@ -9,29 +9,55 @@ import './Home.scss';
 import Header from '../../../components/Common/Header/Header';
 import { Link } from 'react-router-dom';
 import { firebaseStore } from '../../../store/FsActionStore';
+import { observer } from 'mobx-react';
 
-export class Home extends React.Component {
-    constructor (props:any) {
-        super (props);
+import { homeEditorStore } from '../../../store/HomeEditorStore';
+import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
+import FolderDisplay from '../../../components/Editor/AddFolder/FolderDisplay/FolderDisplay';
+import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
+import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
+import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
+import HomeProjects from '../../../components/Common/HomeProjects/HomeProjects';
+import HomeFolders from '../../../components/Common/HomeFolders/HomeFolders';
+import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
 
+@observer export class Home extends React.Component {
+    constructor(props:any){
+        super(props);
+        homeEditorStore.readProject('Projects')
+        homeEditorStore.readFolder('Folders')
+        homeEditorStore.readArchive('Archives')
         firebaseStore.read();
-        
-
     }
     render(){
         return <div className="contHome row-flex">  
+          <FolderPopUp />
+            <FilePopUp /> 
             <Dash/>
-            <Header 
+         
+            <div className="app flex-child col-flex">
+            
+               <Header 
             img="./assets/img/logo.png"/>
 
-            <div className="app flex-child col-flex">
-                <Link to = "folders"> 
+            <FloatingButton />
+            <AddMenu />      
+            <div className="homeInfo col-flex">
+            <HomeProjects
+            projectArray = {homeEditorStore.projectArray} />
+               <Link to = "folders"> 
                     <div className="folder2" >
                         Ir aqui
                     </div>
                 </Link>
+            <HomeFolders
+            folderArray = {homeEditorStore.folderArray} />
+            <HomeFiles 
+             img="./assets/img/file.png"
+             archiveArray = {homeEditorStore.archiveArray}/>
             </div>
-           
-        </div>
+          
+            </div>
+            </div>
     }
 }

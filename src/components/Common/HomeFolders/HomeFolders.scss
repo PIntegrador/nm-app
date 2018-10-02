@@ -1,0 +1,34 @@
+@import '../../../../public/css/variables.scss';
+.allCont {
+    width: 100%;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.foldersCont {
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    .folderCont {
+        border: 1px solid #D1D1D1;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin: 2rem 1rem 2rem 0;
+        .folderDisplay {
+            width: 117px;
+            height: 66px;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            background-color: $fondoGris;
+        }
+        .folderInfo {
+            width: 60px;
+            height: 66px;
+            background-color: $fondoBlanco;
+            padding: 5px;
+        }
+    }
+}

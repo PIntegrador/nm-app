@@ -1,14 +1,13 @@
 @import '../../../../public/css/variables.scss';
 .headerbar {
     background-color: #E5E5E5;
-    width: 90%;
-    margin-left: $dashmenutam;
-    
+    width: 100%;
     padding: 8px 20px 8px 20px;
     text-align: center;
     justify-content: space-between;
     align-content: center;
     align-items: center;
+    position: fixed;
     .leftSide {
         display: flex;
         flex-direction: row;
@@ -29,11 +28,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-            img {
-                width: 60%;
-                height: 60%;
-                margin: 0;
-            }
+        img {
+            width: 60%;
+            height: 60%;
+            margin: 0;
+        }
         &.right {
             float: right
         }
@@ -54,7 +53,6 @@
             font-size: 12pt;
             color: $fondoGrisOscuto;
             border: none;
-
             &:focus {
                 outline: none;
             }
@@ -68,10 +66,6 @@
             padding: 0;
             color: $fondoGrisOscuto;
             cursor: pointer;
-            
         }
-
     }
-
-
 }

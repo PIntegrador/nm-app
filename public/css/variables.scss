@@ -1,3 +1,8 @@
+* {
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
 $fontText: 'PT Sans',
 sans-serif;
 $fontTitle: 'PT Sans',
@@ -8,5 +13,32 @@ $fondoGris:#C4C4C4;
 $fondoGrisClaro: #F1F1F0;
 $fondoGrisOscuto:#4D4D4D;
 $negroTexto: rgb(15, 15, 15);
+$defaultBackground: #FAFAFA;
+$fontsizeOne: 10pt;
+$fontsizeTwo: 14pt;
+$fontsizeThree: 10pt;
+p,
+label,
+span,
+a {
+    text-decoration: none;
+    font-family: $fontText;
+}
 
+p,
+h2,
+h1,
+h3,
+h6 {
+    font-family: $fontText;
+}
 
+h1 {
+    font-size: $fontsizeTwo;
+}
+
+h3 {
+    font-family: $fontTitle;
+    font-weight: 500;
+    font-size: $fontsizeOne;
+}
