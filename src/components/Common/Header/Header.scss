@@ -2,39 +2,76 @@
 .headerbar {
     background-color: #E5E5E5;
     width: 90%;
-    height: 60px;
     margin-left: $dashmenutam;
-    text-align: left;
-    justify-content: flex-start;
+    
+    padding: 8px 20px 8px 20px;
+    text-align: center;
+    justify-content: space-between;
     align-content: center;
     align-items: center;
+    .leftSide {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 600px;
+        align-items: center;
+    }
     img {
         display: inline-block;
-        width: 92px;
         height: auto;
-        margin: 0 0 0 25px;
     }
     .toogle {
         width: 35px;
         height: 35px;
-        border-radius: 15px;
+        border-radius: 200px;
         margin: 0 0 0 25px;
-        background-color: $fondoGrisOscuto;
+        background-color: $fondoBlanco;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+            img {
+                width: 60%;
+                height: 60%;
+                margin: 0;
+            }
         &.right {
             float: right
         }
     }
-    #inputBuscar {
-        padding: 22px 20px;
-        width: 30%;
+    .searchBar {
+        background: $fondoBlanco;
+        border-radius: 200px;
         height: 34px;
-        border-radius: 25px;
-        margin: 0 0 0 1rem;
-        background-color: $fondoGris;
-        font-family: $fontText;
-        border: none;
-        &:focus {
-            outline: none;
+        #inputBuscar {
+            height: 34px;
+            width: 300px;
+            border-radius: 200px;
+            box-sizing: border-box;
+            padding: 0 20px;
+            padding-left: 0;
+            font-weight: bold;
+            font-family: $fontText;
+            font-size: 12pt;
+            color: $fondoGrisOscuto;
+            border: none;
+
+            &:focus {
+                outline: none;
+            }
         }
+        button {
+            background: none;
+            border: none;
+            width: 34px;
+            height: 34px;
+            margin-left: 10px;
+            padding: 0;
+            color: $fondoGrisOscuto;
+            cursor: pointer;
+            
+        }
+
     }
+
+
 }

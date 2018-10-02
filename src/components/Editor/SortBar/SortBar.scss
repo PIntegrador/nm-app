@@ -2,7 +2,49 @@
 
 .sortBar{
     width: 100%;
-    height: 30px;
-    background-color: $fondoGris;
-    cursor: pointer;
+    background-color: $fondoGrisClaro;
+    color: $fondoGris;
+    font-family: $fontText;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 20px;
+    p {
+        margin-right: 20px;
+    }
+    .sortSelector {
+        background: $fondoBlanco;
+        border-radius: 100px;
+        margin-right: 40px;
+        position: relative;
+        select {
+            width: 200px;
+            font-size: 15px;
+            color: $fondoGrisOscuto;
+            font-weight: 400;
+            padding: 10px 10px;
+            padding-left: 30px;
+            background: transparent;
+            border: none;
+            -moz-appearance: none; 
+            -webkit-appearance: none; 
+            appearance: none;
+            &:focus {
+                outline: none;
+            }
+        }
+        &:after {
+            content: "";
+            width: 0; 
+            height: 0; 
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid $fondoGrisOscuto;
+            position: absolute;
+            right: 10px;
+            top: 15px;
+        }
+    }
+
 }

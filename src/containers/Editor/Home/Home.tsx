@@ -29,6 +29,7 @@ export class Home extends React.Component {
             <div className="app flex-child col-flex">
                 <Link to = "FolderName"> 
                     <div className="folder2" >
+                    Ir aqui
                     </div>
                 </Link>
             </div>

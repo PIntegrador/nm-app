@@ -10,27 +10,32 @@ interface HeaderProps {
 const Header = ({ img }: HeaderProps) => {
     return (
         <section className="headerbar flex-child row-flex ">
+            <div className="leftSide">
             <img src={img} alt="" />
             <div className="toogle flex-child">
+                 <img src="./assets/img/star.png"/>
             </div>
-            <div>
+            <div className="searchBar">
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     firebaseStore.filterName();
                 }}>
+                    <button type="submit">
+                    &#128269;</button>
 
-                    <input id="inputBuscar" type="text" onChange={
+                    <input placeholder="Busca por etiquetas o palabras clave" id="inputBuscar" type="text" onChange={
                         (e: any) => {
                             e.preventDefault();
                             firebaseStore.handleNameFilter(e.target.value);
                         }
                     } />
-                    <button type="submit">Buscar</button>
 
                 </form>
 
             </div>
 
+            </div>
+            
             <div className="toogle right flex-child"></div>
 
         </section>

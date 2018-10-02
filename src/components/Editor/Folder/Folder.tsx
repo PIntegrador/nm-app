@@ -9,23 +9,26 @@ interface FolderProps {
     favorited: boolean;
 }
 
-export const Folder = ({ title, text, tags }: FolderProps) => {
+export const Folder = ({ title, text, tags, favorited }: FolderProps) => {
     return (
         <article className="folder">
+            <div className="elemsTitle">
+            <div className="favorite">
+                <img src="./assets/img/star.png"/>
+            </div>
             <h2>{title}</h2>
+            </div>
+            <div className="description">
             <p>{text}</p>
-            <section className="cont row-flex">
 
-                <div className="contFolderTags flex-child row-flex">
-                    {
+            </div>
+            <div className="tagContainer">
+            {
                         tags.map((elem: any) => {
-                            return <article key={elem} className="folderTags flex-child hvr-grow">{elem}</article>
+                            return <div key={elem} className="tag flex-child hvr-grow">{elem}</div>
                         })
                     }
-                </div>
-
-                <div className="starButton flex-child hvr-grow"></div>
-            </section>
+            </div>
         </article>
     )
 }
