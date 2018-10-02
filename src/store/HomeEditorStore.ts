@@ -50,7 +50,7 @@ class HomeEditorStore {
 
     @action uploadNewFile(file: any) {
         let storageRef = storage.ref();
-        let testFilesRef = storageRef.child('TestFiles/' + file.name);
+        let testFilesRef = storageRef.child('Archives/' + file.name);
 
         testFilesRef.put(file);
         this.newFile.fileURL = testFilesRef.fullPath+"";
@@ -58,7 +58,7 @@ class HomeEditorStore {
 
     @action addNewFile() {
         this.files.push(this.newFile);
-        db.collection("TestFiles").add(this.newFile)
+        db.collection("Archives").add(this.newFile)
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
             })
@@ -119,13 +119,71 @@ class HomeEditorStore {
 
     @action addNewFolder() {
         this.folders.push(this.newFolder);
-        db.collection("TestFolders").add(this.newFolder)
+        db.collection("Folders").add(this.newFolder)
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
             })
             .catch(function (error) {
                 console.error("Error adding document: ", error);
             });
+    }
+
+
+    @observable projectArray: any = [];
+    @observable folderArray: any = [];
+    @observable archiveArray: any = [];
+
+    
+    @action readProject(collection: string) {
+        this.projectArray = []
+        let ref = db.collection(collection).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                let ele = {
+                    name: doc.data().name,
+                    description: doc.data().description,
+                    id: doc.id
+                };
+                this.projectArray.push(ele);
+            });
+        });
+      
+    }
+
+    @action readFolder(collection: string) {
+        this.folderArray = []
+        let ref = db.collection(collection).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                let ele = {
+                    archives: doc.data().archives,
+                    description: doc.data().description,
+                    favorited: doc.data().favorited,
+                    name: doc.data().name,
+                    tagnames: doc.data().tagnames,
+                    id: doc.id
+                };
+                this.folderArray.push(ele);
+            });
+        });
+      
+    }
+
+    @action readArchive(collection: string) {
+        this.archiveArray = []
+        let ref = db.collection(collection).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                let ele = {
+                    idFolder: doc.data().IDFolder,
+                    description: doc.data().description,
+                    fileURL: doc.data().fileURL,
+                    favorited: doc.data().favorited,
+                    name: doc.data().name,
+                    tagnames: doc.data().tagnames,
+                    id: doc.id
+                };
+                this.archiveArray.push(ele);
+            });
+        });
+      
     }
 
 }

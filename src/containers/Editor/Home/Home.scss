@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: $fondoBlanco;
+    background-color: $defaultBackground;
     .contHome {
         justify-content: flex-start;
         align-content: flex-start;
@@ -17,13 +17,18 @@ body {
         position: fixed;
     }
     .app {
-        width: 83%;
-        height: auto;
         margin: 0 0 0 $dashmenutam;
-        padding: 0 20px;
+        width: 100%;
+        height: auto;
         justify-content: flex-start;
-        align-content: center;
-        align-items: center;
+        align-content: flex-start;
+        align-items: flex-start;
+        .homeInfo {
+            width: 95%;
+            margin: 60px 0 0 0;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: flex-start;
+        }
     }
-    
 }

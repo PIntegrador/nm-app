@@ -1,13 +1,13 @@
 @import '../../../../public/css/variables.scss';
 .headerbar {
     background-color: #E5E5E5;
-    width: 90%;
+    width: 100%;
     height: 60px;
-    margin-left: $dashmenutam;
     text-align: left;
     justify-content: flex-start;
     align-content: center;
     align-items: center;
+    position: fixed;
     img {
         display: inline-block;
         width: 92px;
