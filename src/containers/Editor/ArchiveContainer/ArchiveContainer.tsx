@@ -22,8 +22,6 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
         firebaseStore.filterFolderIDArchive();
         //
 
-        firebaseStore.handleFavoritedArchive(true);
-        firebaseStore.filterFavoritedArchive();
         //
     }
     getFolderId() {
