@@ -34,6 +34,7 @@ const Header = ({ img, fav }: HeaderProps) => {
                             (e: any) => {
                                 e.preventDefault();
                                 firebaseStore.handleNameFilter(e.target.value);
+                                firebaseStore.handleNameArchive(e.target.value);
                             }
                         } />
 

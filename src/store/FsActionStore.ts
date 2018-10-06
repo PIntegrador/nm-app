@@ -10,17 +10,31 @@ class FsActionStore {
 
     @observable arrayFoldersBackUp: any = [];
 
-    
     @observable arrayArchive: any = [];
 
     @observable arrayArchiveBackUp: any = [];
 
     @observable nameFilter: string = "";
 
+    @observable nameFilterArchive: string = "";
+
+    @observable folderIDFilterArchive: string = "";
+
     @observable counter: number = 0;
+
     @action handleNameFilter(nameFilter: string) {
         this.nameFilter = nameFilter;
         console.log(this.nameFilter, "ChangeName");
+    }
+
+    @action handleNameArchive(nameFilterArchive: string) {
+        this.nameFilterArchive = nameFilterArchive;
+        console.log(this.nameFilterArchive, "ChangeNameArchive");
+    }
+
+    @action handleFolderIDArchive(folderIDFilterArchive: string) {
+        this.folderIDFilterArchive = folderIDFilterArchive;
+        console.log(this.folderIDFilterArchive, "ChangeFolderIDArchive");
     }
 
     @action cleanList() {
@@ -45,7 +59,6 @@ class FsActionStore {
                 };
                 this.arrayFolders.push(element);
                 this.arrayFoldersBackUp=this.arrayFolders;
-                console.log(this.arrayFolders);
             });
         });
 
@@ -72,11 +85,15 @@ class FsActionStore {
             });
         });
 
-        
     }
 
     @action getFromLocalStore(element: string) {
         localStorage.setItem(element, JSON.stringify(this.arrayFolders));
+        return JSON.parse(localStorage.getItem(element))
+    }
+
+    @action getFromLocalStoreArchive(element: string) {
+        localStorage.setItem(element, JSON.stringify(this.arrayArchive));
         return JSON.parse(localStorage.getItem(element))
     }
 
@@ -98,11 +115,28 @@ class FsActionStore {
     @action filterNameArchive() {
     
         if (this.arrayArchive.some((e: any) => {
-            return e.name.toLowerCase() == this.nameFilter.toLowerCase();
+            return e.name.toLowerCase() == this.nameFilterArchive.toLowerCase();
         })){
             console.log("This is filtering");
             this.arrayArchive = this.arrayArchive.filter((e: any) => {
-                return e.name.toLowerCase() == this.nameFilter.toLowerCase();
+                return e.name.toLowerCase() == this.nameFilterArchive.toLowerCase();
+            });
+        } else {
+            console.log("This is not filtering");
+            this.arrayArchive = this.arrayArchiveBackUp;
+        }
+    }
+
+    @action filterFolderIDArchive() {
+
+        this.arrayArchive = this.arrayArchiveBackUp;
+    
+        if (this.arrayArchive.some((e: any) => {
+            return e.idFolder.toLowerCase() == this.folderIDFilterArchive.toLowerCase();
+        })){
+            console.log("This is filtering");
+            this.arrayArchive = this.arrayArchive.filter((e: any) => {
+                return e.idFolder.toLowerCase() == this.folderIDFilterArchive.toLowerCase();
             });
         } else {
             console.log("This is not filtering");

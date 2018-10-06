@@ -12,33 +12,41 @@ import { observer } from 'mobx-react';
 import { ArchiveView } from '../../../components/Editor/ArchiveView/ArchiveView';
 import SortBarArchive from '../../../components/Editor/SortBarArchive/SortBarArchive';
 
+@observer export class ArchiveContainer extends React.Component {
+    constructor(props:any){
+        super(props);
+        const folderID = this.getFolderId();
 
-@observer export  class ArchiveContainer extends React.Component {
-
+        //filtrar
+        firebaseStore.handleFolderIDArchive(folderID);
+        firebaseStore.filterFolderIDArchive();
+        //
+        
+    }
     getFolderId() {
         let locationWindow = window.location.pathname;
         let locationArray = locationWindow.split('/');
+
         return locationArray.slice(-1)[0];
     }
-    render(){
-        const folderID = this.getFolderId();
-        console.log(folderID, "IDFolder");
+    render() {
+        
         let arrayArchives = firebaseStore.arrayArchive;
 
-        return <div className="contHome row-flex">  
-            <Dash/>
-          
+        return <div className="contHome row-flex">
+            <Dash />
+
 
             <div className="app flex-child col-flex">
-            <Header 
-            img="../assets/img/logo.png"
-            fav="../assets/img/star.png"/>
+                <Header
+                    img="../assets/img/logo.png"
+                    fav="../assets/img/star.png" />
                 <RouteBar />
                 <SortBarArchive />
-                <ArchiveView archives={arrayArchives}/>
-                
+                <ArchiveView archives={arrayArchives} />
+
             </div>
-           
+
         </div>
     }
 }
