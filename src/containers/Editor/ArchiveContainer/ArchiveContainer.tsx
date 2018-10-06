@@ -10,7 +10,7 @@ import RouteBar from '../../../components/Editor/RouteBar/RouteBar';
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
 import { ArchiveView } from '../../../components/Editor/ArchiveView/ArchiveView';
-import SortBarArchive from '../../../components/Editor/SortBarArchive/SortBarArchive';
+import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBarArchive';
 
 @observer export class ArchiveContainer extends React.Component {
     constructor(props:any){
@@ -21,7 +21,6 @@ import SortBarArchive from '../../../components/Editor/SortBarArchive/SortBarArc
         firebaseStore.handleFolderIDArchive(folderID);
         firebaseStore.filterFolderIDArchive();
         //
-        
     }
     getFolderId() {
         let locationWindow = window.location.pathname;
@@ -35,7 +34,7 @@ import SortBarArchive from '../../../components/Editor/SortBarArchive/SortBarArc
 
         return <div className="contHome row-flex">
             <Dash />
-            
+
             <div className="app flex-child col-flex">
                 <Header
                     img="../assets/img/logo.png"

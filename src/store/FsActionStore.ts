@@ -175,7 +175,63 @@ class FsActionStore {
 
     }
 
+    @action sortArchivesByName(order: boolean) {
+        //console.log(this.arrayArchive[0], "Antes de sort Archive");
 
+        function compareDescendente(a : any, b : any, order1: number, order2: number ) {
+            if (a.name[0] < b.name[0])
+              return -1;
+            if (a.name[0] > b.name[0])
+              return 1;
+            return 0;
+          }
+          function compareAscendente(a : any, b : any, order1: number, order2: number ) {
+            if (a.name[0] < b.name[0])
+              return 1;
+            if (a.name[0] > b.name[0])
+              return -1;
+            return 0;
+          }
+
+          if (order) {
+            this.arrayArchive.replace (this.arrayArchive.slice().sort(compareAscendente));
+          } 
+          if (!order) {
+            this.arrayArchive.replace (this.arrayArchive.slice().sort(compareDescendente));
+          }
+          
+        //console.log(this.arrayArchive[0], "Despues de sort Archives");
+
+    }
+
+    @action sortArchivesBySize(order: boolean) {
+        //console.log(this.arrayArchive[0], "Antes de sort Archive");
+
+        function compareDescendente(a : any, b : any, order1: number, order2: number ) {
+            if (a.size[0] < b.size[0])
+              return -1;
+            if (a.size[0] > b.size[0])
+              return 1;
+            return 0;
+          }
+          function compareAscendente(a : any, b : any, order1: number, order2: number ) {
+            if (a.size[0] < b.size[0])
+              return 1;
+            if (a.size[0] > b.size[0])
+              return -1;
+            return 0;
+          }
+
+          if (order) {
+            this.arrayArchive.replace (this.arrayArchive.slice().sort(compareAscendente));
+          } 
+          if (!order) {
+            this.arrayArchive.replace (this.arrayArchive.slice().sort(compareDescendente));
+          }
+          
+        //console.log(this.arrayArchive[0], "Despues de sort Archives");
+
+    }
 
 }
 

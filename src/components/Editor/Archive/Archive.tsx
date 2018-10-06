@@ -18,7 +18,7 @@ export const Archive = ({ id, title, text, tags, favorited, upDate, modDate, siz
     return (
         <article className="archive">
             <h3 className="idArchive">{id}</h3>
-            <h3 className="nameArchive hvr-grow">{title}</h3>
+            <h3 className="nameArchive">{title}</h3>
             <h3 className="sizeArchive">{size}</h3>
             <h3 className="upDateArchive">{upDate}</h3>
             <h3 className="modDateArchive">{modDate}</h3>

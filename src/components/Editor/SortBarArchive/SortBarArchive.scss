@@ -57,6 +57,12 @@
             font-family: $fontText;
             color: $fondoGrisOscuto;
             margin-right: 40px;
+
+            >img{
+                margin-left: 5px;
+                width: 8px;
+                height: 8px;
+            }
         }
 
         .SortArchiveSize {
