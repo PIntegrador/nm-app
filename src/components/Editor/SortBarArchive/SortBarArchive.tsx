@@ -28,6 +28,15 @@ let orderSize: boolean;
         }
     }
 
+    getIconSize() {
+        if (orderSize) {
+            return "/assets/svg/iconSort/up.svg";
+        }
+        if (!orderSize) {
+            return "/assets/svg/iconSort/down.svg";
+        }
+    }
+
     render() {
 
         return (
@@ -45,14 +54,14 @@ let orderSize: boolean;
                     <img src={this.getIconName()} className="hvr-icon" />
                     </h3>
 
-
-
-                    <h3 className="SortArchiveSize" onClick={(e) => {
+                    <h3 className="SortArchiveSize hvr-icon-pulse" onClick={(e) => {
                         e.preventDefault();
                        
                         orderSize = !orderSize;
                         firebaseStore.sortArchivesBySize(orderSize);
-                    }}>Peso</h3>
+                    }}>Peso
+                    <img src={this.getIconSize()} className="hvr-icon" />
+                    </h3>
                     <h3 className="SortArchiveUpDate">Fecha de Subida</h3>
                     <h3 className="SortArchiveModDate">Ultima Modificacion</h3>
                     <p className="SortArchiveDesc">Descripcion</p>

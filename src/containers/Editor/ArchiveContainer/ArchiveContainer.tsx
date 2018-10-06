@@ -17,9 +17,13 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
         super(props);
         const folderID = this.getFolderId();
 
-        //filtrar
+        //filter
         firebaseStore.handleFolderIDArchive(folderID);
         firebaseStore.filterFolderIDArchive();
+        //
+
+        firebaseStore.handleFavoritedArchive(true);
+        firebaseStore.filterFavoritedArchive();
         //
     }
     getFolderId() {
