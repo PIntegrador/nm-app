@@ -24,12 +24,12 @@ interface ArchiveViewProps {
         return  (
             <div className="contArchive">
             <p></p>
-            
+
             {
                 (this.props.archives != null) ? (
                 this.props.archives.map((elem:any) => {
                      return <Archive key={elem.id} id={elem.IDD} title = {elem.name} text = {elem.description} tags = {elem.tagnames} favorited = {elem.favorited} upDate = {elem.upDate} modDate = {elem.modDate} size = {elem.size}/>
-                }) ) : console.log("Como estas")
+                }) ) : <p className="noArchives">No hay elementos en esta carpeta</p>
             }
             </div>
         )

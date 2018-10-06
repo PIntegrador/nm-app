@@ -140,7 +140,7 @@ class FsActionStore {
             });
         } else {
             console.log("This is not filtering");
-            this.arrayArchive = this.arrayArchiveBackUp;
+            this.arrayArchive = null;
         }
     }
 

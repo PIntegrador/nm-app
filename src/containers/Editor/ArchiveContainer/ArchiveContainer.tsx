@@ -30,13 +30,12 @@ import SortBarArchive from '../../../components/Editor/SortBarArchive/SortBarArc
         return locationArray.slice(-1)[0];
     }
     render() {
-        
+
         let arrayArchives = firebaseStore.arrayArchive;
 
         return <div className="contHome row-flex">
             <Dash />
-
-
+            
             <div className="app flex-child col-flex">
                 <Header
                     img="../assets/img/logo.png"
