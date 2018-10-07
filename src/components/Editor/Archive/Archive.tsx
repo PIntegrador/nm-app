@@ -30,6 +30,10 @@ export class Archive extends React.Component<FolderProps> {
                 <h3 className="sizeArchive">{this.props.size}</h3>
                 <h3 className="upDateArchive">{this.props.upDate}</h3>
                 <h3 className="modDateArchive">{this.props.modDate}</h3>
+                
+        {/*This will check if the string description have more than  80 chars, 
+        if it has, it will cut it and show a button of Read more*/}
+
                 <p className="desArchive">
                     {this.props.text.length > 80 ? this.state.lessText : this.props.text}
                     {this.props.text.length > 80 ?
