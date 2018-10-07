@@ -17,9 +17,13 @@ interface FolderProps {
 export class Archive extends React.Component<FolderProps> {
     state = {
         lessText: this.props.text.slice(0, 80),
-
+        isHidden : false
     }
-
+    toogleHidden () {
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
 
     render() {
 
@@ -36,16 +40,26 @@ export class Archive extends React.Component<FolderProps> {
 
                 <p className="desArchive">
                     {this.props.text.length > 80 ? this.state.lessText : this.props.text}
-                    {this.props.text.length > 80 ?
+
+                    {/*Once the text is shown and the button displayed, when the button is
+                    clicked it will dissapear*/}
+                    
+                    {!this.state.isHidden ? (
+                        this.props.text.length > 80  ?
+
 
                         <button onClick={
                             (e: any) => {
                                 e.preventDefault();
-                                this.setState({ lessText: this.props.text })
+                                this.state.lessText = this.props.text;
+                                this.toogleHidden();
                             }
                         }> ...Leer más</button> :
 
                         console.log("it wont render")
+                        
+                        ) : console.log("it wont render")
+
                     }
 
                 </p>
