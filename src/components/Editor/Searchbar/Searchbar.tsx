@@ -19,7 +19,7 @@ const Searchbar = () => {
             }}>
             
             <button type="submit">
-                &#128269;</button>
+                &#xe986;</button>
 
             
                 <input placeholder="Busca por palabras clave" id="inputBuscar" type="text" onChange={
