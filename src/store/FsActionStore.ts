@@ -10,7 +10,6 @@ class FsActionStore {
 
     @observable arrayFoldersBackUp: any = [];
 
-    
     @observable arrayArchive: any = [];
 
     @observable arrayArchiveBackUp: any = [];
@@ -35,12 +34,17 @@ class FsActionStore {
         ref.get().then((querySnapshot) => {
 
             querySnapshot.forEach((doc) => {
-
+                function IDGenerator() {
+                    return '_' + Math.random().toString(26).substr(2, 9);
+                }
+                let tagNamesObjs = doc.data().tagnames.map((element:any) => {
+                    return {id: IDGenerator, name: element}
+                });
                 let element = {
                     name: doc.data().name,
                     description: doc.data().description,
                     favorited: doc.data().favorited,
-                    tagnames: doc.data().tagnames,
+                    tagnames: tagNamesObjs,
                     id: doc.id
                 };
                 this.arrayFolders.push(element);
