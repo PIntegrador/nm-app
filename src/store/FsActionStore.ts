@@ -82,13 +82,18 @@ class FsActionStore {
 
     @action filterName() {
     
+        this.arrayFolders = this.arrayFoldersBackUp;
+
         if (this.arrayFolders.some((e: any) => {
-            return e.name.toLowerCase() == this.nameFilter.toLowerCase();
+            console.log( this.nameFilter.toLowerCase().toString(), "substring");
+            return e.name.toLowerCase().indexOf(this.nameFilter.toLowerCase());
+        
         })){
             console.log("This is filtering");
-            this.arrayFolders = this.arrayFolders.filter((e: any) => {
-                return e.name.toLowerCase() == this.nameFilter.toLowerCase();
-            });
+
+            this.arrayFolders = this.arrayFolders.filter((e:any) => {
+                return e.name.toLowerCase().includes(this.nameFilter.toLowerCase());
+            })
         } else {
             console.log("This is not filtering");
             this.arrayFolders = this.arrayFoldersBackUp;
@@ -97,17 +102,22 @@ class FsActionStore {
 
     @action filterNameArchive() {
     
+        this.arrayArchive = this.arrayArchiveBackUp;
+
         if (this.arrayArchive.some((e: any) => {
-            return e.name.toLowerCase() == this.nameFilter.toLowerCase();
+            return e.name.toLowerCase().indexOf(this.nameFilter.toLowerCase());
+        
         })){
             console.log("This is filtering");
-            this.arrayArchive = this.arrayArchive.filter((e: any) => {
-                return e.name.toLowerCase() == this.nameFilter.toLowerCase();
-            });
+
+            this.arrayArchive = this.arrayArchive.filter((e:any) => {
+                return e.name.toLowerCase().includes(this.nameFilter.toLowerCase());
+            })
         } else {
             console.log("This is not filtering");
             this.arrayArchive = this.arrayArchiveBackUp;
         }
+
     }
 
     @action sortByName(order: number) {
