@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import '../../../../public/css/flex.scss'
 import { Link } from 'react-router-dom';
+import { Tag } from '../Tag/Tag';
 
 interface FolderProps {
     id: string;
@@ -28,7 +29,7 @@ export const Folder = ({ id, title, text, tags, favorited }: FolderProps) => {
                 <div className="tagContainer">
                     {
                         tags.map((elem: any) => {
-                            return <div key={elem} className="tag flex-child hvr-grow">{elem}</div>
+                            return <Tag key={elem.id} id={elem.id} name ={elem.name} />
                         })
                     }
                 </div>
