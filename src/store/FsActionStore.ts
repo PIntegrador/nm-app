@@ -16,10 +16,32 @@ class FsActionStore {
 
     @observable nameFilter: string = "";
 
+    @observable nameFilterArchive: string = "";
+
+    @observable folderIDFilterArchive: string = "";
+
+    @observable favoritedArchive: boolean = false;
+
     @observable counter: number = 0;
+
     @action handleNameFilter(nameFilter: string) {
         this.nameFilter = nameFilter;
         console.log(this.nameFilter, "ChangeName");
+    }
+
+    @action handleNameArchive(nameFilterArchive: string) {
+        this.nameFilterArchive = nameFilterArchive;
+        console.log(this.nameFilterArchive, "ChangeNameArchive");
+    }
+
+    @action handleFolderIDArchive(folderIDFilterArchive: string) {
+        this.folderIDFilterArchive = folderIDFilterArchive;
+        console.log(this.folderIDFilterArchive, "ChangeFolderIDArchive");
+    }
+
+    @action handleFavoritedArchive(favoritedArchive: boolean) {
+        this.favoritedArchive = favoritedArchive;
+        console.log(this.favoritedArchive, "ChangeFavoritedArchive");
     }
 
     @action cleanList() {
@@ -90,18 +112,20 @@ class FsActionStore {
         return JSON.parse(localStorage.getItem(element))
     }
 
-    /*The filterName function will execute each time the input Search change */
+    @action getFromLocalStoreArchive(element: string) {
+        localStorage.setItem(element, JSON.stringify(this.arrayArchive));
+        return JSON.parse(localStorage.getItem(element))
+    }
+
     @action filterName() {
 
         this.arrayFolders = this.arrayFoldersBackUp;
         /*Here it will compare the string, if it have a coincidence will filter, 
         if not it will return the backup*/
-
         if (this.arrayFolders.some((e: any) => {
-            console.log(this.nameFilter.toLowerCase().toString(), "substring");
-            return e.name.toLowerCase().indexOf(this.nameFilter.toLowerCase());
-
+            return e.name.toLowerCase() == this.nameFilter.toLowerCase();
         })) {
+  
             /*Here it is filtering, it will show a list with all the elements 
             that have a casuality with the string written in the input*/
             console.log("This is filtering");
@@ -114,6 +138,9 @@ class FsActionStore {
             this.arrayFolders = this.arrayFoldersBackUp;
         }
     }
+
+    //some filter methods doesnt need to redefine the array to backup, 
+    //in order to make the filter works with the archives of each folder, not all the db
 
     @action filterNameArchive() {
 
@@ -135,8 +162,44 @@ class FsActionStore {
 
     }
 
+    @action filterFavoritedArchive() {
+        
+        if (this.arrayArchive != null) {
+
+        //the filter only works if the boolean is true
+            if (this.arrayArchive.some((e: any) => {
+                return e.favorited == this.filterFavoritedArchive;
+            })) {
+                this.arrayArchive = this.arrayArchive.filter((e: any) => {
+                    return e.favorited == this.filterFavoritedArchive;
+                });
+            } else {
+                console.log("This is not filtering Favorited");
+                //this.arrayArchive = null;
+
+                //if is not favorite, reset the actual folder's archives
+                this.filterFolderIDArchive();
+            }
+        }
+    }
+
+    @action filterFolderIDArchive() {
+
+        this.arrayArchive = this.arrayArchiveBackUp;
+
+        if (this.arrayArchive.some((e: any) => {
+            return e.idFolder.toLowerCase() == this.folderIDFilterArchive.toLowerCase();
+        })) {
+            this.arrayArchive = this.arrayArchive.filter((e: any) => {
+                return e.idFolder.toLowerCase() == this.folderIDFilterArchive.toLowerCase();
+            });
+        } else {
+            console.log("This is not filtering");
+            this.arrayArchive = null;
+        }
+    }
+
     @action sortByName(order: number) {
-        console.log(this.arrayFolders[0], "Antes de sort");
 
         function compareDescendente(a: any, b: any, order1: number, order2: number) {
             if (a.name[0] < b.name[0])
@@ -153,20 +216,78 @@ class FsActionStore {
             return 0;
         }
 
-        if (order == 0) {
-            this.arrayFolders.replace(this.arrayFolders.slice().sort(compareAscendente));
+        if (this.arrayFolders != null) {
+            if (order == 0) {
+                this.arrayFolders.replace(this.arrayFolders.slice().sort(compareAscendente));
+            }
+            if (order == 1) {
+                this.arrayFolders.replace(this.arrayFolders.slice().sort(compareDescendente));
+            }
         }
-        if (order == 1) {
-            this.arrayFolders.replace(this.arrayFolders.slice().sort(compareDescendente));
+
+    }
+
+    @action sortArchivesByName(order: boolean) {
+        //console.log(this.arrayArchive[0], "Antes de sort Archive");
+
+        function compareDescendente(a: any, b: any, order1: number, order2: number) {
+            if (a.name[0] < b.name[0])
+                return -1;
+            if (a.name[0] > b.name[0])
+                return 1;
+            return 0;
         }
+        function compareAscendente(a: any, b: any, order1: number, order2: number) {
+            if (a.name[0] < b.name[0])
+                return 1;
+            if (a.name[0] > b.name[0])
+                return -1;
+            return 0;
+        }
+        if (this.arrayArchive != null) {
+            if (order) {
+                this.arrayArchive.replace(this.arrayArchive.slice().sort(compareAscendente));
+            }
+            if (!order) {
+                this.arrayArchive.replace(this.arrayArchive.slice().sort(compareDescendente));
+            }
+}
 
-
-
+        //console.log(this.arrayArchive[0], "Despues de sort Archives");
         console.log(this.arrayFolders[0], "Despues de sort");
 
     }
 
+    @action sortArchivesBySize(order: boolean) {
+        //console.log(this.arrayArchive[0], "Antes de sort Archive");
 
+        function compareDescendente(a: any, b: any, order1: number, order2: number) {
+            if (a.size[0] < b.size[0])
+                return -1;
+            if (a.size[0] > b.size[0])
+                return 1;
+            return 0;
+        }
+        function compareAscendente(a: any, b: any, order1: number, order2: number) {
+            if (a.size[0] < b.size[0])
+                return 1;
+            if (a.size[0] > b.size[0])
+                return -1;
+            return 0;
+        }
+
+        if (this.arrayArchive != null) {
+            if (order) {
+                this.arrayArchive.replace(this.arrayArchive.slice().sort(compareAscendente));
+            }
+            if (!order) {
+                this.arrayArchive.replace(this.arrayArchive.slice().sort(compareDescendente));
+            }
+        }
+
+        //console.log(this.arrayArchive[0], "Despues de sort Archives");
+
+    }
 
 }
 

@@ -12,5 +12,4 @@ function tamApp() {
     var tam = (tamHTML - tamDash) + ".px";
     app.style.width = tam;
     var tamApp = $('.app').width();
-    console.log("asdfsadfasdf", app.style.width);
 }

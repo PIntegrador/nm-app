@@ -17,6 +17,31 @@ const Header = ({ img, fav }: HeaderProps) => {
                 <div className="toogle flex-child">
                 <img src={fav} />
                 </div>
+                <div className="searchBar">
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        firebaseStore.filterName();
+                        firebaseStore.filterNameArchive();
+                    }}
+                        onChange={(e) => {
+                            e.preventDefault();
+                            firebaseStore.filterName();
+                            firebaseStore.filterNameArchive();
+                        }}>
+                        <button type="submit">
+                            &#128269;</button>
+
+                        <input placeholder="Busca por etiquetas o palabras clave" id="inputBuscar" type="text" onChange={
+                            (e: any) => {
+                                e.preventDefault();
+                                firebaseStore.handleNameFilter(e.target.value);
+                                firebaseStore.handleNameArchive(e.target.value);
+                            }
+                        } />
+
+                    </form>
+
+                </div>
                 <Searchbar />
 
             </div>
