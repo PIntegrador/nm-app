@@ -26,13 +26,17 @@ class HomeEditorStore {
     @observable accepted: any[] = [];
     @observable rejected: any[] = [];
     @observable files: any[] = [];
+    @observable today: any = new Date();
     @observable newFile: any = {
         IDFile: "File ID",
         IDFolder: "Folder ID",
+        name: "",
+        extension: "",
+        size: "",
+        creationDate: "",
         description: "",
         favorited: false,
         fileURL: "",
-        name: "",
         tagnames: [],
     };
 
@@ -40,21 +44,24 @@ class HomeEditorStore {
         this.newFile = {
             IDFile: "File ID",
             IDFolder: "Folder ID",
+            name: "",
+            extension: "",
+            size: "",
+            creationDate: "",
             description: "",
             favorited: false,
             fileURL: "",
-            name: "",
             tagnames: [],
         };
     }
 
     @action uploadNewFile(file: any) {
-        if(typeof file != 'undefined'){
-        let storageRef = storage.ref();
-        let testFilesRef = storageRef.child('Archives/' + file.name);
+        if (typeof file != 'undefined') {
+            let storageRef = storage.ref();
+            let testFilesRef = storageRef.child('Archives/' + file.name);
 
-        testFilesRef.put(file);
-        this.newFile.fileURL = testFilesRef.fullPath+"";
+            testFilesRef.put(file);
+            this.newFile.fileURL = testFilesRef.fullPath + "";
         }
     }
 
@@ -67,6 +74,23 @@ class HomeEditorStore {
             .catch(function (error) {
                 console.error("Error adding document: ", error);
             });
+    }
+
+    @action getDate() {
+        let dd:any = this.today.getDate();
+        let mm:any = this.today.getMonth() + 1; //January is 0!
+        let yyyy:any = this.today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        this.today = mm + '/' + dd + '/' + yyyy;
+        console.log("fecha: " + this.today);
     }
 
     // >>>>>> ADD FOLDER VARIABLES AND FUNCTIONS <<<<<<
@@ -135,7 +159,7 @@ class HomeEditorStore {
     @observable folderArray: any = [];
     @observable archiveArray: any = [];
 
-    
+
     @action readProject(collection: string) {
         this.projectArray = []
         let ref = db.collection(collection).get().then((querySnapshot) => {
@@ -148,7 +172,7 @@ class HomeEditorStore {
                 this.projectArray.push(ele);
             });
         });
-      
+
     }
 
     @action readFolder(collection: string) {
@@ -166,7 +190,7 @@ class HomeEditorStore {
                 this.folderArray.push(ele);
             });
         });
-      
+
     }
 
     @action readArchive(collection: string) {
@@ -185,7 +209,7 @@ class HomeEditorStore {
                 this.archiveArray.push(ele);
             });
         });
-      
+
     }
 
 }

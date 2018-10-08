@@ -19,7 +19,7 @@ const HomeFiles = observer (({ img, archiveArray }: HomeFoldersProps) => {
                   <img src={img} alt=""/>
                     </div>
                    <h3 key={elem.id}>{elem.name}</h3>
-                   <h6>extensión</h6>
+                   <h6 key={elem.id}>{elem.extension}</h6>
                     </article>
                 })
 

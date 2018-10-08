@@ -11,6 +11,9 @@ import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
 import { ArchiveView } from '../../../components/Editor/ArchiveView/ArchiveView';
 import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBarArchive';
+import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
+import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
+import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 
 @observer export class ArchiveContainer extends React.Component {
     constructor(props:any){
@@ -36,7 +39,7 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
 
         return <div className="contHome row-flex">
             <Dash />
-
+            <FloatingButton />
             <div className="app flex-child col-flex">
                 <Header
                     img="../assets/img/logo.png"
@@ -46,7 +49,8 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
                 <ArchiveView archives={arrayArchives} />
 
             </div>
-
+            <FolderPopUp />
+            <FilePopUp /> 
         </div>
     }
 }

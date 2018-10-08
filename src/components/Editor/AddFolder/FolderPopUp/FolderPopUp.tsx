@@ -31,17 +31,17 @@ const FolderPopUp = observer(() => {
                     <ul>
                         <li>
                             <label>Archivos</label>
-                            <input type="text" name="archivo" placeholder="Archivos.csv" />
+                            <input required type="text" name="archivo" placeholder="Archivos.csv" />
                         </li>
                         <li>
                             <label>Nombre</label>
-                            <input type="text" name="nombre" placeholder="Nombre de la Carpeta" onChange={(e) => {
+                            <input required type="text" name="nombre" placeholder="Nombre de la Carpeta" onChange={(e) => {
                                 homeEditorStore.newFolder.name = e.target.value;
                             }} />
                         </li>
                         <li>
                             <label>Descipción</label>
-                            <input type="text" name="descipcion" placeholder="Descripción del Contenido de la Carpeta" onChange={(e) => {
+                            <input required type="text" name="descipcion" placeholder="Descripción del Contenido de la Carpeta" onChange={(e) => {
                                 homeEditorStore.newFolder.description = e.target.value;
                             }} />
                         </li>
@@ -61,7 +61,7 @@ const FolderPopUp = observer(() => {
                                 )}
 
                             </ul>
-                            <input type="text" name="etiquetas" placeholder="Etiquetas"
+                            <input required type="text" name="etiquetas" placeholder="Etiquetas"
                                 onChange={(e) => {
                                     homeEditorStore.addTags(e.target.value + " ");
                                 }}

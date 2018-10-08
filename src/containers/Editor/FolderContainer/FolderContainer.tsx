@@ -11,6 +11,9 @@ import SortBar from '../../../components/Editor/SortBar/SortBar';
 import { FileView } from '../../../components/Editor/FileView/FileView';
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
+import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
+import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
+import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
 
 
 @observer export  class FolderContainer extends React.Component {
@@ -21,7 +24,7 @@ import { observer } from 'mobx-react';
         
         return <div className="contHome row-flex">  
             <Dash/>
-          
+            <FloatingButton />
 
             <div className="app flex-child col-flex">
             <Header 
@@ -32,7 +35,8 @@ import { observer } from 'mobx-react';
                 <FileView folders={arrayFolders}/>
                 
             </div>
-           
+            <FolderPopUp />
+            <FilePopUp /> 
         </div>
     }
 }
