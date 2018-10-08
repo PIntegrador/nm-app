@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './Header.scss';
 import { firebaseStore } from '../../../store/FsActionStore';
+import Searchbar from '../../Editor/Searchbar/Searchbar';
 
 interface HeaderProps {
 
@@ -41,6 +42,7 @@ const Header = ({ img, fav }: HeaderProps) => {
                     </form>
 
                 </div>
+                <Searchbar />
 
             </div>
 
