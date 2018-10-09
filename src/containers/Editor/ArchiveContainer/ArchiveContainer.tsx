@@ -39,7 +39,7 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
 
             <div className="app flex-child col-flex">
                 <Header
-                    img="../assets/img/logo.png"
+                    img="../assets/img/logo-positivo-negativo.png"
                     fav="../assets/img/star.png" />
                 <RouteBar />
                 <SortBarArchive />

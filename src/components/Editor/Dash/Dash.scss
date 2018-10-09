@@ -9,10 +9,14 @@
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
+    top: 0;
+    left: 0;
     width: $dashmenutam;
-    background-color: $fondoGris;
+    background-color: $darkColor;
+    color: $white;
     height: 100%;
     flex-wrap: nowrap;
+    overflow-x: hidden;
     .contDash {
         height: 100%;
         padding: 0;
@@ -35,8 +39,9 @@
                 align-content: center;
                 align-items: center;
                 &:hover {
-                    background: $fondoBlanco;
+                    background: $activeSection;
                     cursor: pointer;
+                    color: $darkColor;
                 }
                 div {
                     flex: 0 1 auto;
@@ -48,9 +53,8 @@
                 }
                 h2 {
                     flex: 1 1 auto;
-                    color: $negroTexto;
                     font-family: $fontTitle;
-                    font-size: 11px;
+                    font-size: $fontsizeOne;
                     font-weight: 400;
                 }
             }
@@ -63,6 +67,7 @@
                 &:hover {
                     background: none;
                     cursor: auto;
+                    color: $white;
                 }
                 div {
                     margin: 0;
@@ -87,11 +92,19 @@
                 background-color: $fondoGrisOscuto;
             }
             h2 {
-                color: $negroTexto;
                 font-family: $fontTitle;
-                font-size: 11px;
+                font-size: $fontsizeOne;
                 font-weight: 400;
             }
+        }
+        a:link {
+            color: $white;
+        }
+        a:visited {
+            color: $white;
+        }
+        a:active {
+            color: $darkColor;
         }
     }
 }

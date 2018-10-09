@@ -7,28 +7,27 @@ import { firebaseStore } from '../../../store/FsActionStore';
 const Searchbar = () => {
     return (
         <div className="searchBar">
-        <form onSubmit={(e) => {
+        <form onSubmit={(e)=> {
             e.preventDefault();
             firebaseStore.filterName();
             firebaseStore.filterNameArchive();
-        }}
+            }}
             onChange={(e) => {
-                e.preventDefault();
-                firebaseStore.filterName();
-                firebaseStore.filterNameArchive();
+            e.preventDefault();
+            firebaseStore.filterName();
+            firebaseStore.filterNameArchive();
             }}>
-            
-            <button type="submit">
-                &#xe986;</button>
 
-            
-                <input placeholder="Busca por palabras clave" id="inputBuscar" type="text" onChange={
-                    (e: any) => {
-                        e.preventDefault();
-                        firebaseStore.handleNameFilter(e.target.value);
-                    }
-                } />
-            
+            <button type="submit">
+                &#128269;</button>
+
+            <input placeholder="Busca por etiquetas o palabras clave" id="inputBuscar" type="text" onChange={ (e:
+                any)=> {
+            e.preventDefault();
+            firebaseStore.handleNameFilter(e.target.value);
+            firebaseStore.handleNameArchive(e.target.value);
+            }
+            } />
 
         </form>
 

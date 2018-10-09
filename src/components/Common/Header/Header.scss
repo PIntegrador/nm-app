@@ -1,15 +1,14 @@
 @import '../../../../public/css/variables.scss';
 .headerbar {
     background-color: #E5E5E5;
+    text-align: left;
     width: 100%;
-    padding: 8px 20px 8px 20px;
-    margin-left: 116px;
-    text-align: center;
-    justify-content: space-between;
+    height: 60px;
+    justify-content: flex-start;
     align-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: fixed;
-    
+    z-index: 10;
     .leftSide {
         display: flex;
         flex-direction: row;

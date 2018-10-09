@@ -1,49 +1,46 @@
 @import '../../../../public/css/variables.scss';
-
-.sortBar{
+.sortBar {
     width: 100%;
     background-color: $fondoGrisClaro;
-    color: $fondoGris;
+    color: $fondoGrisOscuto;
     font-family: $fontText;
     font-weight: bold;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 15px;
-
+    margin: 60px 0 0 0;
     padding-left: 20px;
-    
     height: 40px;
+    position: fixed;
     p {
         margin-right: 20px;
     }
     .sortSelector {
-        background: $fondoBlanco;
+        background-color: $fondoBlanco;
         border-radius: 100px;
         margin-right: 40px;
         position: relative;
         select {
             width: 200px;
             font-size: 15px;
-            color: $fondoGrisOscuto;
+            color: #000000;
             font-weight: 400;
             height: 26px;
             padding-left: 30px;
             background: transparent;
             border: none;
-            -moz-appearance: none; 
-            -webkit-appearance: none; 
+            -moz-appearance: none;
+            -webkit-appearance: none;
             appearance: none;
             cursor: pointer;
-
             &:focus {
                 outline: none;
             }
         }
         &:after {
             content: "";
-            width: 0; 
-            height: 0; 
+            width: 0;
+            height: 0;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
             border-top: 5px solid $fondoGrisOscuto;
@@ -52,5 +49,4 @@
             top: 15px;
         }
     }
-
 }

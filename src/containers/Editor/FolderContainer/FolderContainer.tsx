@@ -25,10 +25,11 @@ import { observer } from 'mobx-react';
 
             <div className="app flex-child col-flex">
             <Header 
-            img="./assets/img/logo.png"
+            img="./assets/img/logo-positivo-negativo.png"
             fav="./assets/img/star.png"/>
-                <RouteBar />
+        
                 <SortBar />
+                <RouteBar />
                 <FileView folders={arrayFolders}/>
                 
             </div>

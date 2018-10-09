@@ -5,50 +5,25 @@ import Searchbar from '../../Editor/Searchbar/Searchbar';
 
 interface HeaderProps {
 
-    img?: string;
-    fav?: string;
+img?: string;
+fav?: string;
 }
 
 const Header = ({ img, fav }: HeaderProps) => {
-    return (
-        <section className="headerbar flex-child row-flex ">
-            <div className="leftSide">
-                <img src={img} alt="" />
-                <div className="toogle flex-child">
-                <img src={fav} />
-                </div>
-                <div className="searchBar">
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        firebaseStore.filterName();
-                        firebaseStore.filterNameArchive();
-                    }}
-                        onChange={(e) => {
-                            e.preventDefault();
-                            firebaseStore.filterName();
-                            firebaseStore.filterNameArchive();
-                        }}>
-                        <button type="submit">
-                            &#128269;</button>
+return (
+<section className="row-flex headerbar flex-child">
+    <div className="leftSide">
+        <img src={img} alt="" />
+        <div className="toogle flex-child">
+            <img src={fav} />
+        </div>
+       <Searchbar />
 
-                        <input placeholder="Busca por etiquetas o palabras clave" id="inputBuscar" type="text" onChange={
-                            (e: any) => {
-                                e.preventDefault();
-                                firebaseStore.handleNameFilter(e.target.value);
-                                firebaseStore.handleNameArchive(e.target.value);
-                            }
-                        } />
+    </div>
 
-                    </form>
+    <div className="toogle right flex-child"></div>
 
-                </div>
-                <Searchbar />
-
-            </div>
-
-            <div className="toogle right flex-child"></div>
-
-        </section>
-    )
+</section>
+)
 }
 export default Header;
