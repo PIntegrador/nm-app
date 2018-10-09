@@ -21,8 +21,7 @@ return (
 
     </div>
 
-    <div className="toogle right flex-child"></div>
-
+  
 </section>
 )
 }

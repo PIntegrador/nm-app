@@ -1,6 +1,7 @@
 @import '../../../../public/css/variables.scss';
 .headerbar {
-    background-color: #E5E5E5;
+    background-color: rgb(243, 243, 243);
+    padding: 0 0 0 25px;
     text-align: left;
     width: 100%;
     height: 60px;
@@ -12,13 +13,14 @@
     .leftSide {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: 600px;
         align-items: center;
     }
     img {
         display: inline-block;
-        height: auto;
+        width: auto;
+        height: 45px;
     }
     .toogle {
         width: 35px;
@@ -42,20 +44,23 @@
         background: $fondoBlanco;
         border-radius: 200px;
         height: 34px;
+        margin: 0 0 0 25px;
         #inputBuscar {
             height: 34px;
+            background: $fondoBlanco;
             width: 300px;
             border-radius: 200px;
             box-sizing: border-box;
             padding: 0 20px;
             padding-left: 0;
-            font-weight: bold;
+            font-weight: 500;
             font-family: $fontText;
-            font-size: 12pt;
-            color: $fondoGrisOscuto;
+            font-size: $fontsizeOne;
+            color: $fontHintColor;
             border: none;
             &:focus {
                 outline: none;
+                color: $fontColor;
             }
         }
         button {

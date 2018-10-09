@@ -22,42 +22,80 @@ import HomeFolders from '../../../components/Common/HomeFolders/HomeFolders';
 import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
 
 @observer export class Home extends React.Component {
-    constructor(props:any){
-        super(props);
-        homeEditorStore.readProject('Projects')
-        homeEditorStore.readFolder('Folders')
-        homeEditorStore.readArchive('Archives')
-        firebaseStore.read();
-    }
-    render(){
-        return <div className="contHome row-flex">  
-              
-            <Dash/>
- 
-            <div className="app flex-child col-flex">
-            <Header 
-            img="./assets/img/logo-positivo-negativo.png"
-            fav="./assets/img/star.png"/>
+constructor(props:any){
+super(props);
+homeEditorStore.readProject('Projects')
+homeEditorStore.readFolder('Folders')
+homeEditorStore.readArchive('Archives')
+firebaseStore.read();
+}
+render(){
+return <div className="contHome row-flex">
+
+    <Dash />
+
+    <div className="app flex-child col-flex">
+        <Header img="./assets/svg/logo.svg" fav="./assets/img/star.png" />
+
+
+        <FloatingButton />
+        <AddMenu />
+        <div className="homeInfo col-flex">
+
+            <section className="allCont col-flex">
+                <h1 className="flex-child ">Proyectos</h1>
+                <div className="flex-child  row-flex projectsCont">
+
+                    {
+                    homeEditorStore.projectArray.map((elem:any) => {
+                    return (
+                    <HomeProjects id={elem.id} name={elem.name} />)
+                    })
+
+                    }
+                </div>
+
+            </section>
+
+              <section className="allCont col-flex">
+        <h1 className="flex-child ">Carpetas</h1>
+        <div className="flex-child  row-flex foldersCont">
+
+        {
+                homeEditorStore.folderArray.map((elem:any) => {
+                    return (
+                        <HomeFolders name={elem.name} numFiles = {elem.archives.length} />
+                    )
+                })
+
+            }
+      
+        </div>
+     
+        </section>
            
 
-            <FloatingButton />
-            <AddMenu />      
-                <div className="homeInfo col-flex">
-                <HomeProjects
-                projectArray = {homeEditorStore.projectArray} />
-                
-                <HomeFolders
-                folderArray = {homeEditorStore.folderArray} />
-                <HomeFiles 
-                img="./assets/img/file.png"
-                archiveArray = {homeEditorStore.archiveArray}/>
+            <section className="allCont col-flex">
+                <h1 className="flex-child ">Archivos</h1>
+                <div className="flex-child  row-flex filesCont">
+                    {
+                    homeEditorStore.archiveArray.map((elem:any) => {
+                    return ( <HomeFiles img="./assets/img/file.png" id={elem.id} name={elem.name} />)
+                    })
+
+                    }
+
                 </div>
-          
-            </div>
-            <FolderPopUp />
-            <FilePopUp /> 
+
+            </section>
+
+        </div>
+
+    </div>
+    <FolderPopUp />
+    <FilePopUp />
 
 
-            </div>
-    }
+</div>
+}
 }

@@ -4,30 +4,19 @@ import { observer } from 'mobx-react';
 
 interface HomeFoldersProps {
 img : string;
-archiveArray: any [];
+id: string;
+name: string;
 }
 
-const HomeFiles = observer (({ img, archiveArray }: HomeFoldersProps) => {
+const HomeFiles = observer (({ img, id, name }: HomeFoldersProps) => {
     return (
-        <section className="allCont col-flex">
-        <h1 className="flex-child ">Archivos</h1>
-        <div className="flex-child  row-flex filesCont">
-        {
-                archiveArray.map((elem:any) => {
-                    return   <article className="flex-child fileCont">
+        <article className="flex-child fileCont">
                     <div className=" fileDisplay col-flex">
                   <img src={img} alt=""/>
                     </div>
-                   <h3 key={elem.id}>{elem.name}</h3>
-                   <h6>extensión</h6>
+                   <h3 key={id}>{name}</h3>
+                   <h6>.csv</h6>
                     </article>
-                })
-
-            }
-      
-        </div>
-     
-        </section>
     )
 })
 export default HomeFiles;

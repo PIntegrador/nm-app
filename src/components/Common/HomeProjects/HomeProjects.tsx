@@ -3,30 +3,19 @@ import './HomeProjects.scss';
 import { observer } from 'mobx-react';
 
 interface HomeProjectsProps {
-    projectArray : any[];
+    id : string;
+    name: string;
 }
 
-const HomeProjects = observer(( { projectArray}: HomeProjectsProps) => {
+const HomeProjects = observer(( { id, name}: HomeProjectsProps) => {
     return (
-        <section className="allCont col-flex">
-        <h1 className="flex-child ">Proyectos</h1>
-        <div className="flex-child  row-flex projectsCont">
-    
-          {
-                projectArray.map((elem:any) => {
-                    return  <article className="flex-child projectCont">
-                    <div className="projectDisplay">
-                    </div>
-                    <div className="projectInfo">
-                     <h3 key={elem.id}> {elem.name} </h3>
-                    </div>
-                    </article>
-                })
-
-            }
+        <article className="flex-child projectCont">
+        <div className="projectDisplay">
         </div>
-     
-        </section>
+        <div className="projectInfo">
+         <h3 key={id}> {name} </h3>
+        </div>
+        </article>
     )
 })
 export default HomeProjects;

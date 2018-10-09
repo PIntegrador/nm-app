@@ -35,6 +35,7 @@
                 align-self: center;
                 padding: 10px 20px;
                 width: $dashmenutam;
+                height: 55px;
                 justify-content: center;
                 align-content: center;
                 align-items: center;
@@ -46,15 +47,15 @@
                 div {
                     flex: 0 1 auto;
                     margin-right: 10px;
-                    width: 35px;
-                    height: 35px;
+                    width: 15px;
+                    height: 15px;
                     border-radius: 25px;
-                    background-color: $fondoGrisOscuto;
+                    background-color: $white;
                 }
                 h2 {
                     flex: 1 1 auto;
                     font-family: $fontTitle;
-                    font-size: $fontsizeOne;
+                    font-size: $fontsizeThree;
                     font-weight: 400;
                 }
             }
@@ -86,14 +87,14 @@
             align-content: center;
             align-items: center;
             div {
-                width: 35px;
-                height: 35px;
+                width: 15px;
+                height: 15px;
                 border-radius: 25px;
-                background-color: $fondoGrisOscuto;
+                background-color: $white;
             }
             h2 {
                 font-family: $fontTitle;
-                font-size: $fontsizeOne;
+                font-size: $fontsizeThree;
                 font-weight: 400;
             }
         }

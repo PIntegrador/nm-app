@@ -3,32 +3,50 @@
     box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Hind+Madurai');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
 $fontText: 'PT Sans',
 sans-serif;
-$fontTitle: 'PT Sans',
+$fontTitle: 'Hind Madurai',
 sans-serif;
 $dashmenutam: 233px;
-$fondoBlanco: rgb(250, 250, 250);
+$fondoBlanco: rgb(250,
+250,
+250);
 $fondoGris:#C4C4C4;
 $fondoGrisClaro: #F1F1F0;
 $fondoGrisOscuto:#4D4D4D;
-$negroTexto: rgb(15, 15, 15);
-$white: rgb(250, 250, 250);
+$negroTexto: rgb(15,
+15,
+15);
+$white: rgb(250,
+250,
+250);
+$white2: #FAFAFA;
 $fontColor: #666666;
 $titleColor: #4D4D4D;
 $fontHintColor: #B2B2B2;
-$fontsizeOne: 10pt;
+$fontsizeOne: 12pt;
 $fontsizeTwo: 14pt;
 $fontsizeThree: 10pt;
 $primaryColor: #F66880;
 $secondaryColor: #10E6C5;
 $thirdColor: #FDC741;
+$secondaryColorOpacity: rgba(16,
+230,
+198,
+0.459);
+$secondaryColorHover: rgb(18,
+201,
+173);
 $darkColor: #310432;
 $activeSection: #BEBFD8;
 $accentColor: #F66880;
 $selectedColor: #BEBFD8;
 $validColor: #10E6C5;
-$wrongColor: rgb(240, 59, 59);
+$wrongColor: rgb(240,
+59,
+59);
 $defaultBackground: #FAFAFA;
 p,
 label,
@@ -40,14 +58,15 @@ a {
 
 p,
 h2,
-h1,
 h3,
 h6 {
     font-family: $fontText;
 }
 
 h1 {
+    font-family: $fontTitle;
     font-size: $fontsizeTwo;
+    font-weight: bold;
 }
 
 h3 {

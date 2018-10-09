@@ -9,7 +9,7 @@ const Dash = () => {
         <section className='dash flex-child'>
             <section className="contDash">
 
-                <section className="contActions flex-child col-flex">
+                <section className="col-flex contActions flex-child">
 
                     <article id="profile" className="col-flex">
                         <div className="flex-child"></div>
