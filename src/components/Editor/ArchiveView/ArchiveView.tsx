@@ -10,7 +10,6 @@ import { Archive } from '../Archive/Archive';
 import { observer } from 'mobx-react';
 
 interface ArchiveViewProps {
-
     archives: any[];
 }
 

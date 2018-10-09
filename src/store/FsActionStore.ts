@@ -53,8 +53,8 @@ class FsActionStore {
         this.cleanList();
 
         let ref = db.collection("Folders");//ruta        
-        ref.get().then((querySnapshot) => {
-
+        ref.onSnapshot((querySnapshot) => {
+            console.log( "Cambió");
             querySnapshot.forEach((doc) => {
                 /*Here is the way how the tags are made components, it will need an unique id
                 so i'll generate that with that function*/ 
@@ -82,7 +82,7 @@ class FsActionStore {
         });
 
         let refArchive = db.collection("Archives");//ruta        
-        refArchive.get().then((querySnapshot) => {
+        refArchive.onSnapshot((querySnapshot) => {
 
             querySnapshot.forEach((doc) => {
 
@@ -104,7 +104,7 @@ class FsActionStore {
             });
         });
 
-
+        
     }
 
     @action getFromLocalStore(element: string) {

@@ -16,18 +16,13 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
     constructor(props:any){
         super(props);
         const folderID = this.getFolderId();
-
         //filter
         firebaseStore.handleFolderIDArchive(folderID);
         firebaseStore.filterFolderIDArchive();
-        //
-
-        //
     }
     getFolderId() {
         let locationWindow = window.location.pathname;
         let locationArray = locationWindow.split('/');
-
         return locationArray.slice(-1)[0];
     }
     render() {
@@ -39,9 +34,9 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
 
             <div className="app flex-child col-flex">
                 <Header
-                    img="../assets/img/logo-positivo-negativo.png"
+                    img="../assets/svg/logo.svg"
                     fav="../assets/img/star.png" />
-                <RouteBar />
+                <RouteBar  />
                 <SortBarArchive />
                 <ArchiveView archives={arrayArchives} />
 

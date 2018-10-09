@@ -29,11 +29,11 @@ export class Archive extends React.Component<FolderProps> {
 
         return (
             <article className="archive">
-                <h3 className="idArchive">{this.props.id}</h3>
-                <h3 className="nameArchive hvr-grow">{this.props.title}</h3>
-                <h3 className="sizeArchive">{this.props.size}</h3>
-                <h3 className="upDateArchive">{this.props.upDate}</h3>
-                <h3 className="modDateArchive">{this.props.modDate}</h3>
+                <p className="idArchive">{this.props.id}</p>
+                <p className="nameArchive hvr-grow">{this.props.title}</p>
+                <p className="sizeArchive">{this.props.size}</p>
+                <p className="upDateArchive">{this.props.upDate}</p>
+                <p className="modDateArchive">{this.props.modDate}</p>
                 
         {/*This will check if the string description have more than  80 chars, 
         if it has, it will cut it and show a button of Read more*/}

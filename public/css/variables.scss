@@ -29,6 +29,7 @@ $fontHintColor: #B2B2B2;
 $fontsizeOne: 12pt;
 $fontsizeTwo: 14pt;
 $fontsizeThree: 10pt;
+$fontsizeFour: 9pt;
 $primaryColor: #F66880;
 $secondaryColor: #10E6C5;
 $thirdColor: #FDC741;
@@ -59,6 +60,7 @@ a {
 p,
 h2,
 h3,
+h4,
 h6 {
     font-family: $fontText;
 }
@@ -72,5 +74,14 @@ h1 {
 h3 {
     font-family: $fontTitle;
     font-weight: 500;
+    font-size: $fontsizeOne;
+}
+
+h4 {
+    font-weight: 500;
+    font-size: $fontsizeFour;
+}
+
+p {
     font-size: $fontsizeOne;
 }

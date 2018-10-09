@@ -137,8 +137,9 @@ class HomeEditorStore {
 
     
     @action readProject(collection: string) {
-        this.projectArray = []
-        let ref = db.collection(collection).get().then((querySnapshot) => {
+        let ref = db.collection(collection).onSnapshot((querySnapshot) => {
+            this.projectArray = []
+
             querySnapshot.forEach((doc) => {
                 let ele = {
                     name: doc.data().name,
@@ -152,8 +153,9 @@ class HomeEditorStore {
     }
 
     @action readFolder(collection: string) {
-        this.folderArray = []
-        let ref = db.collection(collection).get().then((querySnapshot) => {
+        let ref = db.collection(collection).onSnapshot((querySnapshot) => {
+            this.folderArray = []
+
             querySnapshot.forEach((doc) => {
                 let ele = {
                     archives: doc.data().archives,
@@ -170,9 +172,12 @@ class HomeEditorStore {
     }
 
     @action readArchive(collection: string) {
-        this.archiveArray = []
-        let ref = db.collection(collection).get().then((querySnapshot) => {
+
+        let ref = db.collection(collection).onSnapshot((querySnapshot) => {
+            this.archiveArray = []
+
             querySnapshot.forEach((doc) => {
+
                 let ele = {
                     idFolder: doc.data().IDFolder,
                     description: doc.data().description,
@@ -184,6 +189,7 @@ class HomeEditorStore {
                 };
                 this.archiveArray.push(ele);
             });
+
         });
       
     }

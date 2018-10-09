@@ -24,10 +24,7 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
 @observer export class Home extends React.Component {
 constructor(props:any){
 super(props);
-homeEditorStore.readProject('Projects')
-homeEditorStore.readFolder('Folders')
-homeEditorStore.readArchive('Archives')
-firebaseStore.read();
+
 }
 render(){
 return <div className="contHome row-flex">
@@ -58,13 +55,14 @@ return <div className="contHome row-flex">
             </section>
 
               <section className="allCont col-flex">
-        <h1 className="flex-child ">Carpetas</h1>
+              <Link to="/folders">
+        <h1 className="flex-child ">Carpetas</h1></Link>
         <div className="flex-child  row-flex foldersCont">
 
         {
                 homeEditorStore.folderArray.map((elem:any) => {
                     return (
-                        <HomeFolders name={elem.name} numFiles = {elem.archives.length} />
+                        <HomeFolders name={elem.name} numFiles = {elem.archives.length} id={elem.id} />
                     )
                 })
 

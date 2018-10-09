@@ -25,8 +25,6 @@ interface FileViewProps {
         return  (
             <div className="contFolder">
             <p></p>
-            
-
             {
                 (this.props.folders != null) ? (
                 this.props.folders.map((elem:any) => {
