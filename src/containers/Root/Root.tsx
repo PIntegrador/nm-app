@@ -7,6 +7,8 @@ import { FolderContainer } from '../Editor/FolderContainer/FolderContainer';
 import { ArchiveContainer } from '../Editor/ArchiveContainer/ArchiveContainer';
 import { firebaseStore } from '../../../src/store/FsActionStore';
 import { homeEditorStore } from '../../../src/store/HomeEditorStore';
+import Register from '../Register/Register';
+import { Login } from '../Login/Login';
 
 
 export class Root extends React.Component {
@@ -23,7 +25,9 @@ export class Root extends React.Component {
             <Router>
                 <div>
 
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={Login} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/home" component={Home} />
                     <Route exact path="/folders" component={FolderContainer} />
                     <Route path="/folders/:folder" component={ArchiveContainer} />
                 </div>

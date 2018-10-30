@@ -1,5 +1,5 @@
 import { observable, action, computed } from 'mobx';
-import db, { storage } from '../../config/firebaseConfig';
+import { db, storage } from '../../config/firebaseConfig';
 import { firebaseStore } from './FsActionStore';
 class HomeEditorStore {
     // >>>>>> FLOATING VARIABLES AND FUNCTIONS <<<<<<

@@ -3,6 +3,8 @@ import * as firebase from 'firebase'
 // Required for side-effects
 require("firebase/firestore");
 require("firebase/storage");
+require("firebase/auth");
+
 
 const config = {
     apiKey: "AIzaSyAXR1w3tX7tLDql3Spdq0x0E5DRlKicibg",
@@ -16,5 +18,6 @@ const config = {
 
 export const db = firebase.firestore();
 export const storage = firebase.storage();
+export const auth =  firebase.auth();
 
 export default db;
