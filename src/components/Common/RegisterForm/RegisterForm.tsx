@@ -20,9 +20,9 @@ const RegisterForm = observer(withRouter((formRegisterProps) => {
             }
             }>
                 <span>Name</span>
-                <input className="name" type="text" placeholder="Santiago" />
+                <input className="name" type="text" placeholder="Nombre" />
                 <span>Last Name</span>
-                <input className="name" type="text" placeholder="Mondragón" />
+                <input className="name" type="text" placeholder="Apellidos" />
                 <span>Email</span>
                 <input id="mail" type="email" placeholder="tucorreo@gmail.com" onChange={e => { authStore.handleInput(e.target.value, "email") }} />
                 <span>Password</span>
@@ -40,7 +40,7 @@ const RegisterForm = observer(withRouter((formRegisterProps) => {
                 >I already have an account</button>
 
                 <button onClick={() => {
-                    authStore.cerrarSesion();
+                    authStore.signOut();
                 }}>Log Out</button>
 
             </form>

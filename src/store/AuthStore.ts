@@ -28,25 +28,18 @@ class AuthStore {
 
     constructor() {
 
-        auth.onAuthStateChanged(function(user){
-            if(user){
-                console.log(user);
-            } else {
-                console.log("no funcionooooo")
-            }
-        });
-
         auth.onAuthStateChanged((receivedUser) => {
             if (receivedUser) {
                 this.user = receivedUser;
                 this.isLogged = true;
-                console.log(this.isLogged);
+                console.log("Usuario logueado: " + this.isLogged);
             } else {
                 this.user = null;
                 this.isLogged = false;
                 console.log("no hay user")
             }
         });
+
     }
 
     @action login(email: any, pass: any) {
@@ -60,12 +53,29 @@ class AuthStore {
         auth.createUserWithEmailAndPassword(email, pass)
             .catch(error => {
                 this.error = error.message;
+                return;
             });
+        //si logra registar
+        this.createUserInDB();
         this.login(email, pass);
     }
 
-    @action cerrarSesion() {
+    @action signOut() {
         auth.signOut();
+    }
+
+    @action createUserInDB() {
+        // Add a new document with a generated id.
+        db.collection("Users").add({
+            userName: this.name + " " + this.lastName,
+            email: this.email
+        })
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
     }
 
 
