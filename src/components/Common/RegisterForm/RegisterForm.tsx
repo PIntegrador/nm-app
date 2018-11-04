@@ -29,9 +29,11 @@ const RegisterForm = observer(withRouter((formRegisterProps) => {
                 <input id="pass" type="password" placeholder="••••••••" onChange={e => { authStore.handleInput(e.target.value, "pass") }} />
 
                 <button type="submit" onClick={() => {
+
                     authStore.register(authStore.email, authStore.password);
-                    if (authStore.isLogged)
+                    if (authStore.isLogged) {
                         formRegisterProps.history.push("/home");
+                    }
                 }}>Register</button>
 
                 <button id="toLogin" onClick={() => {

@@ -2,6 +2,22 @@ import { observable, action, computed, extendObservable } from 'mobx';
 import { db, storage, auth } from '../../config/firebaseConfig';
 
 class AuthStore {
+
+    constructor() {
+        auth.onAuthStateChanged((receivedUser) => {
+            if (receivedUser) {
+                this.user = receivedUser;
+                this.isLogged = true;
+                console.log("Usuario logueado: " + this.isLogged);
+            } else {
+                this.user = null;
+                this.isLogged = false;
+                console.log("no hay user")
+            }
+        });
+
+    }
+
     @observable user: any = null;
     @observable error: any = null;
     @observable isLogged: boolean = false;
@@ -26,22 +42,6 @@ class AuthStore {
         }
     }
 
-    constructor() {
-
-        auth.onAuthStateChanged((receivedUser) => {
-            if (receivedUser) {
-                this.user = receivedUser;
-                this.isLogged = true;
-                console.log("Usuario logueado: " + this.isLogged);
-            } else {
-                this.user = null;
-                this.isLogged = false;
-                console.log("no hay user")
-            }
-        });
-
-    }
-
     @action login(email: any, pass: any) {
         auth.signInWithEmailAndPassword(email, pass)
             .catch(error => {
@@ -55,8 +55,12 @@ class AuthStore {
                 this.error = error.message;
                 return;
             });
-        //si logra registar
+
+        //pasa el return si logra crearlo, si da error, no
+
+        //escribe en la base de datos
         this.createUserInDB();
+        //si logra registar
         this.login(email, pass);
     }
 
@@ -77,8 +81,6 @@ class AuthStore {
                 console.error("Error adding document: ", error);
             });
     }
-
-
 
 }
 
