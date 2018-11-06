@@ -24,8 +24,12 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
 @observer export class Home extends React.Component {
     constructor(props: any) {
         super(props);
-
+        //
+        homeEditorStore.readProject('Projects')
+        homeEditorStore.readFolder('Folders')
+        homeEditorStore.readArchive('Archives')
     }
+    
     render() {
         return <div className="contHome row-flex">
 

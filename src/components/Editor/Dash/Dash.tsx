@@ -17,7 +17,7 @@ const Dash = () => {
 
                     <section className="options">
                     
-                        <Link to="/">
+                        <Link to="/home">
                             <article id="home" className="row-flex">
                                 <div className="flex-child icon"></div>
                                 <h2 className="flex-child title">Home</h2>
