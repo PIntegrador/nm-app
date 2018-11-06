@@ -13,7 +13,7 @@ const RegisterForm = observer(withRouter((formRegisterProps) => {
 
     return (
 
-        <article>
+        <article className="regCont">
             <h1>Register Form</h1>
             <form onSubmit={(e) => {
                 e.preventDefault();

@@ -1,47 +1,42 @@
 @import '../../../../public/css/variables.scss';
 @import '../../../../public/css/flex.scss';
 
-.appCont {
+.searchBar {
+    height: auto;
+
+    margin: 15px 0;
+
+    margin-left: 25px;
+
     width: 100%;
-    padding-top: 50px;
-    >h2 {
+
+    form {
+
         width: 100%;
-        font-family: $fontTitle;
-        font-size: 22px;
-        font-weight: 700;
-        color: $negroTexto;
-    }
-    #inputBuscar {
-        padding: 22px 20px;
-        width: 95%;
-        margin: 10px 0;
-        height: 35px;
-        border-radius: 5px;
-        background-color: $fondoGris;
-        font-family: $fontText;
-        border: none;
-        &:focus {
-            outline: none;
-        }
-    }
-    .contTags {
-        margin-top: 10px;
-        width: 100%;
-        height: auto;
-        justify-content: flex-start;
-        align-content: stretch;
-        align-items: flex-start;
-        .tag {
-            width: auto;
-            margin-right: 15px;
-            padding: 12px 25px;
-            background-color: $fondoGris;
-            border-radius: 5px;
+
+        #inputBuscar {
+            height: 34px;
+            box-sizing: border-box;
+
+            font-weight: 500;
             font-family: $fontText;
-            color: $negroTexto;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: $fontsizeOne;
+            color: $fontHintColor;
+            border: none;
+            &:focus {
+                outline: none;
+                color: $fontColor;
+            }
+            padding: 18px 20px;
+            width: 100%;
+            border-radius: 25px;
+            background-color: $fondoGrisClaro;
+            font-family: $fontText;
+            border: none;
         }
+
+        
+
     }
 }
 

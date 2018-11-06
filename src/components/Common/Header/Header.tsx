@@ -13,10 +13,6 @@ const Header = ({ img, fav }: HeaderProps) => {
 return (
 <section className="row-flex headerbar flex-child">
     <div className="leftSide">
-        <img src={img} alt="" />
-        <div className="toogle flex-child">
-            <img src={fav} />
-        </div>
        <Searchbar />
 
     </div>

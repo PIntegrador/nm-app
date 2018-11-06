@@ -17,10 +17,12 @@
     height: 100%;
     flex-wrap: nowrap;
     overflow-x: hidden;
+
     .contDash {
         height: 100%;
         padding: 0;
         flex-wrap: nowrap;
+
         .contActions {
             //margin-bottom: 100px;
             width: $dashmenutam;
@@ -28,7 +30,8 @@
             align-content: center;
             align-items: center;
             height: 100%;
-            article {
+            
+            >article {
                 box-sizing: border-box;
                 order: 0;
                 flex: 0 1 auto;
@@ -39,30 +42,65 @@
                 justify-content: center;
                 align-content: center;
                 align-items: center;
+                
                 &:hover {
-                    background: $activeSection;
+                    background-color: $activeSection;
                     cursor: pointer;
-                    color: $darkColor;
                 }
-                div {
+
+                >div {
                     flex: 0 1 auto;
                     margin-right: 10px;
                     width: 15px;
                     height: 15px;
                     border-radius: 25px;
-                    background-color: $white;
                 }
-                h2 {
+                >h2 {
                     flex: 1 1 auto;
                     font-family: $fontTitle;
                     font-size: $fontsizeOne;
                     font-weight: 400;
                 }
             }
-            .options {
+
+            >.options {
                 flex: 1 1 auto;
+
+                width: 100%;
+
+                article {
+                    color: $white;
+                    box-sizing: border-box;
+                    order: 0;
+                    flex: 0 1 auto;
+                    align-self: center;
+                    padding: 10px 20px;
+                    width: $dashmenutam;
+                    height: 55px;
+                    justify-content: center;
+                    align-content: center;
+                    align-items: center;
+                    &:hover {
+                        background-color: $activeSection;
+                        cursor: pointer;
+                    }
+                    >div {
+                        flex: 0 1 auto;
+                        margin-right: 10px;
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 25px;
+                    }
+                    >h2 {
+                        flex: 1 1 auto;
+                        font-family: $fontTitle;
+                        font-size: $fontsizeOne;
+                        font-weight: 400;
+                    }
+                }
             }
-            #profile {
+
+            >#profile {
                 height: 140px;
                 justify-content: center;
                 &:hover {
@@ -80,32 +118,24 @@
                     flex: 0 1 auto;
                 }
             }
-        }
-        #config {
-            width: $dashmenutam;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
-            div {
-                width: 15px;
-                height: 15px;
-                border-radius: 25px;
-                background-color: $white;
+
+            >#config {
+                width: $dashmenutam;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                >div {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 25px;
+                }
+                >h2 {
+                    font-family: $fontTitle;
+                    font-size: $fontsizeOne;
+                    font-weight: 400;
+                }
             }
-            h2 {
-                font-family: $fontTitle;
-                font-size: $fontsizeOne;
-                font-weight: 400;
-            }
         }
-        a:link {
-            color: $white;
-        }
-        a:visited {
-            color: $white;
-        }
-        a:active {
-            color: $darkColor;
-        }
+        
     }
 }

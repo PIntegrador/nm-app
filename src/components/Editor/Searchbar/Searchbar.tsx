@@ -4,6 +4,10 @@ import './Searchbar.scss';
 import '../../../../public/css/flex.scss'
 import { firebaseStore } from '../../../store/FsActionStore';
 
+/*
+<button type="submit">
+&#128269;</button>*/
+
 const Searchbar = () => {
     return (
         <div className="searchBar">
@@ -18,8 +22,6 @@ const Searchbar = () => {
             firebaseStore.filterNameArchive();
             }}>
 
-            <button type="submit">
-                &#128269;</button>
 
             <input placeholder="Busca por etiquetas o palabras clave" id="inputBuscar" type="text" onChange={ (e:
                 any)=> {
