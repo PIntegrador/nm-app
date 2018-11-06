@@ -34,13 +34,16 @@
             height: 100%;
             width: 100%;
 
-            >article {
+            article {
+
+                text-transform: uppercase;
+
                 width: 100%;
                 box-sizing: border-box;
                 order: 0;
                 flex: 0 1 auto;
                 align-self: center;
-                padding: 10px 20px;
+                padding: 20px 30px;
                 width: $dashmenutam;
                 height: 55px;
                 justify-content: center;
@@ -52,17 +55,26 @@
                     cursor: pointer;
                 }
 
-                >div {
+                >.icon {
                     flex: 0 1 auto;
-                    width: 15px;
-                    height: 15px;
+                    width: 20px;
+                    height: 20px;
+
+                    background-color: $white;
+                    border-radius: 15px;
+
+                    margin-right: 20px;
                 }
 
-                >h2 {
+                >.title {
                     flex: 1 1 auto;
                     font-family: $fontTitle;
                     font-size: $fontsizeOne;
-                    font-weight: 400;
+
+                    font-size: 14px;
+
+                    color: $white;
+                    font-weight: 300;
                 }
             }
 
@@ -71,41 +83,12 @@
 
                 width: 100%;
 
-                article {
-                    color: $white;
-                    box-sizing: border-box;
-                    order: 0;
-                    flex: 0 1 auto;
-                    align-self: center;
-                    padding: 10px 20px;
-                    width: 100%;
-                    height: 55px;
-                    justify-content: center;
-                    align-content: center;
-                    align-items: center;
-
-                    &:hover {
-                        background-color: $activeSection;
-                        cursor: pointer;
-                    }
-
-                    >div {
-                        flex: 0 1 auto;
-                        width: 15px;
-                        height: 15px;
-                    }
-
-                    >h2 {
-                        flex: 1 1 auto;
-                        font-family: $fontTitle;
-                        font-size: $fontsizeOne;
-                        font-weight: 400;
-                    }
-                }
+                color: $white;
             }
 
             >#logo {
-                height: 140px;
+                padding: 0;
+                height: 110px;
                 width: 100%;
                 justify-content: center;
 
@@ -116,7 +99,7 @@
                 }
 
                 >div {
-                    background-image: url('/assets/img/logo-positivo-negativo.png');  
+                    background-image: url('/assets/img/logo-positivo-negativo.png');
                     width: 110px;
                     background-position: center;
                     background-size: cover;
@@ -127,22 +110,7 @@
             }
 
             >#config {
-                width: $dashmenutam;
-                justify-content: center;
-                align-content: center;
-                align-items: center;
-
-                >div {
-                    width: 15px;
-                    height: 15px;
-                    border-radius: 25px;
-                }
-
-                >h2 {
-                    font-family: $fontTitle;
-                    font-size: $fontsizeOne;
-                    font-weight: 400;
-                }
+        
             }
         }
 

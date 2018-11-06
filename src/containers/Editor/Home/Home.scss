@@ -20,8 +20,6 @@ body {
         }
 
         .app {
-            margin: 0 0 0 $dashmenutam;
-            width: 100%;
             padding: 0;
             justify-content: flex-start;
             align-content: flex-start;
@@ -30,7 +28,7 @@ body {
             .homeInfo {
                 width: 100%;
 
-                margin-top: 80px;
+                margin-top: $tamHeader;
 
                 justify-content: flex-start;
                 align-content: flex-start;
@@ -49,7 +47,8 @@ body {
                     flex: 0 1 auto;
                     align-self: auto;
 
-                    width: 95%;
+                    
+                    width: $tamApp;
                     justify-content: flex-start;
                     align-content: flex-start;
                     align-items: flex-start;

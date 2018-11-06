@@ -21,7 +21,7 @@ export class Root extends React.Component {
         homeEditorStore.readProject('Projects')
         homeEditorStore.readFolder('Folders')
         homeEditorStore.readArchive('Archives')
-        }
+    }
 
     render(){
         return (

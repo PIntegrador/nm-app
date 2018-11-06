@@ -2,6 +2,7 @@ import * as React from 'react';
 import './Header.scss';
 import { firebaseStore } from '../../../store/FsActionStore';
 import Searchbar from '../../Editor/Searchbar/Searchbar';
+import ProfileMenu from '../../../containers/Editor/ProfileMenu/ProfileMenu';
 
 interface HeaderProps {
 
@@ -11,16 +12,16 @@ interface HeaderProps {
 
 const Header = ({ img, fav }: HeaderProps) => {
     return (
-        <section className="row-flex headerbar flex-child">
+        <section className="headerbar flex-child">
 
-            <section className="contSides">
+            <section className="flex-child contSides">
 
                 <div className="leftSide">
                     <Searchbar />
                 </div>
 
                 <div className="rightSide">
-
+                    <ProfileMenu />
                 </div>
             </section>
 
