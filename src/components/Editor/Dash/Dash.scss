@@ -1,4 +1,5 @@
 @import '../../../../public/css/variables.scss';
+
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +22,7 @@
     .contDash {
         height: 100%;
         padding: 0;
+        width: 100%;
         flex-wrap: nowrap;
 
         .contActions {
@@ -30,8 +32,10 @@
             align-content: center;
             align-items: center;
             height: 100%;
-            
+            width: 100%;
+
             >article {
+                width: 100%;
                 box-sizing: border-box;
                 order: 0;
                 flex: 0 1 auto;
@@ -42,7 +46,7 @@
                 justify-content: center;
                 align-content: center;
                 align-items: center;
-                
+
                 &:hover {
                     background-color: $activeSection;
                     cursor: pointer;
@@ -50,11 +54,10 @@
 
                 >div {
                     flex: 0 1 auto;
-                    margin-right: 10px;
                     width: 15px;
                     height: 15px;
-                    border-radius: 25px;
                 }
+
                 >h2 {
                     flex: 1 1 auto;
                     font-family: $fontTitle;
@@ -75,22 +78,23 @@
                     flex: 0 1 auto;
                     align-self: center;
                     padding: 10px 20px;
-                    width: $dashmenutam;
+                    width: 100%;
                     height: 55px;
                     justify-content: center;
                     align-content: center;
                     align-items: center;
+
                     &:hover {
                         background-color: $activeSection;
                         cursor: pointer;
                     }
+
                     >div {
                         flex: 0 1 auto;
-                        margin-right: 10px;
                         width: 15px;
                         height: 15px;
-                        border-radius: 25px;
                     }
+
                     >h2 {
                         flex: 1 1 auto;
                         font-family: $fontTitle;
@@ -100,22 +104,25 @@
                 }
             }
 
-            >#profile {
+            >#logo {
                 height: 140px;
+                width: 100%;
                 justify-content: center;
+
                 &:hover {
                     background: none;
                     cursor: auto;
                     color: $white;
                 }
-                div {
-                    margin: 0;
-                    width: 45px;
+
+                >div {
+                    background-image: url('/assets/img/logo-positivo-negativo.png');  
+                    width: 110px;
+                    background-position: center;
+                    background-size: cover;
                     height: 45px;
-                    margin-bottom: 10px;
-                }
-                h2 {
-                    flex: 0 1 auto;
+
+                    border-radius: 0;
                 }
             }
 
@@ -124,11 +131,13 @@
                 justify-content: center;
                 align-content: center;
                 align-items: center;
+
                 >div {
                     width: 15px;
                     height: 15px;
                     border-radius: 25px;
                 }
+
                 >h2 {
                     font-family: $fontTitle;
                     font-size: $fontsizeOne;
@@ -136,6 +145,6 @@
                 }
             }
         }
-        
+
     }
 }

@@ -1,27 +1,65 @@
 @import '../../../../public/css/variables.scss';
+
 .headerbar {
     background-color: $fondoBlanco;
-    
-    text-align: left;
+
     width: 100%;
     height: 60px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    align-content: center;
-    align-items: flex-start;
+    align-content: flex-start;
+    align-items: center;
+
     position: fixed;
     z-index: 10;
-    
-    .leftSide {
+
+    >.contSides {
+
+        width: 95%;
+        height: 100%;
+
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        width: 600px;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: flex-start;
+        align-items: flex-start;
+
+        .leftSide {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            order: 0;
+            flex: 0 1 auto;
+            align-self: auto;
+
+            width: 450px;
+            height: 100%;
+            align-items: center;
+
+            .searchBar {
+                //in the component
+            }
+
+        }
+
+        .rightSide {
+            order: 0;
+            flex: 0 1 auto;
+            align-self: auto;
+
+            width: 200px;
+            height: 100%;
+            background-color: aquamarine;
+        }
     }
 
-    .searchBar {
-        
-        //in the component
-       
-    }
 }

@@ -11,14 +11,13 @@ const Dash = () => {
 
                 <section className="col-flex flex-child contActions">
 
-                    <article id="profile" className="col-flex">
+                    <article id="logo" className="col-flex">
                         <div className="flex-child"></div>
-                        <h2 className="flex-child">Usuario</h2>
                     </article>
 
                     <section className="options">
+                    
                         <Link to="/">
-
                             <article id="home" className="row-flex">
                                 <div className="flex-child"></div>
                                 <h2 className="flex-child">Inicio</h2>

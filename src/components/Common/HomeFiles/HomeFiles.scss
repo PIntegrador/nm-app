@@ -1,46 +1,60 @@
 @import '../../../../public/css/variables.scss';
-.allCont {
-    width: 100%;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
-    border-bottom: 1px solid #D1D1D1;
-}
 
 .filesCont {
 
     justify-content: flex-start;
     align-content: flex-start;
     align-items: flex-start;
-    margin: 2rem 0 2rem 0;
+    margin: 1rem 0;
 
     .fileCont {
         border: 1px solid #D1D1D1;
         box-sizing: border-box;
         border-radius: 5px;
 
-        height: 150px;
-        width: 180px;
+        height: $tamViewIconY;
+        width: $tamViewIconX;
 
-        margin: 0 1rem 1rem 0;
+        margin: 0 $marginViewIconX $marginViewIconY 0;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+
         .fileDisplay {
-            height: 70%;
-            padding: auto;
+            width: 50%;
+            height: 50%;
+
             justify-content: center;
             align-content: center;
             align-items: center;
-            img {
-                margin: auto
-            }
+
+            background-color: $fondoGris;
+
+            order: 0;
+            flex: 0 1 auto;
+            align-self: auto;
+
+            margin-top: 15px;
+
+            margin-bottom: 10px;
+
         }
+
         .fileInfo {
-            width: 100%;
-            height: 30%;
             padding: 5px;
-        }
-        h6,
-        h3 {
+
             text-align: center;
+
+            order: 0;
+            flex: 0 1 auto;
+            align-self: auto;
+            font-size: 13px;
+
         }
+
     }
 }

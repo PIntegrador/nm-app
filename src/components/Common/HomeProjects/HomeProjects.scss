@@ -1,39 +1,52 @@
 @import '../../../../public/css/variables.scss';
-.allCont {
-    width: 100%;
-    margin: 1rem;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
-    border-bottom: 2px solid #D1D1D1;
-}
 
 .projectsCont {
     justify-content: flex-start;
     align-content: flex-start;
     align-items: flex-start;
-    margin: 2rem 0 2rem 0;
+    margin: 1rem 0;
 
     .projectCont {
 
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
         
-        height: 150px;
-        width: 180px;
+        height: $tamViewIconY;
+        width: $tamViewIconX;
 
         border: 1px solid #D1D1D1;
         box-sizing: border-box;
         border-radius: 5px;
-        margin: 0 1rem 1rem 0;
+        margin: 0 $marginViewIconX $marginViewIconY 0;
+
         .projectDisplay {
-            width: 157px;
-            height: 89px;
+            width: 50%;
+            height: 50%;
             background-color: $fondoGris;
+
+            order: 0;
+            flex: 0 1 auto;
+            align-self: auto;
+            
+            margin-top: 15px;
+
+            margin-bottom: 10px;
         }
+
         .projectInfo {
-            width: 157px;
-            height: 45px;
-            background-color: $fondoBlanco;
             padding: 5px;
+
+            order: 0;
+            flex: 0 1 auto;
+            align-self: auto;
+            font-size: 15px;
+
+            text-align: center;
+            font-size: 13px;
         }
     }
 }
