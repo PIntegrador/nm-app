@@ -11,9 +11,9 @@ interface HomeFoldersProps {
 }
 
 const HomeFiles = observer(({ img, id, name }: HomeFoldersProps) => {
-
+    
     return (
-        <Link to=''>
+        <Link to={`/archives/${id}`}>
             <article className="flex-child fileCont">
             
                 <div className=" fileDisplay col-flex">

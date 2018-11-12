@@ -10,7 +10,7 @@ interface HomeProjectsProps {
 
 const HomeProjects = observer(( { id, name}: HomeProjectsProps) => {
     return (
-        <Link to="">
+    <Link to={`/projects/${id}`}>
 
         <article className="flex-child projectCont">
         
