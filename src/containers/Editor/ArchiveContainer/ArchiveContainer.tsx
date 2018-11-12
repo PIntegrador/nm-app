@@ -33,9 +33,7 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header
-                    img="../assets/svg/logo.svg"
-                    fav="../assets/img/star.png" />
+                <Header />
                 <RouteBar  />
                 <SortBarArchive />
                 <ArchiveView archives={arrayArchives} />

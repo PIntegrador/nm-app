@@ -10,14 +10,14 @@ interface HomeProjectsProps {
 
 const HomeProjects = observer(( { id, name}: HomeProjectsProps) => {
     return (
-        <Link to="">
+    <Link to={`/projects/${id}`}>
 
         <article className="flex-child projectCont">
+        
         <div className="projectDisplay">
         </div>
-        <div className="projectInfo">
-         <h3 key={id}> {name} </h3>
-        </div>
+        <h3 className="projectInfo" key={id}> {name} </h3>
+        
         </article>
         </Link>
     )

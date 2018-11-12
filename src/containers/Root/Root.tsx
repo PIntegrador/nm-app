@@ -6,6 +6,7 @@ import { Home }  from '../Editor/Home/Home';
 import { FolderContainer } from '../Editor/FolderContainer/FolderContainer';
 import { ArchiveContainer } from '../Editor/ArchiveContainer/ArchiveContainer';
 import { firebaseStore } from '../../../src/store/FsActionStore';
+import { authStore } from '../../../src/store/AuthStore';
 import { homeEditorStore } from '../../../src/store/HomeEditorStore';
 import Register from '../Register/Register';
 import { Login } from '../Login/Login';
@@ -15,10 +16,12 @@ export class Root extends React.Component {
     constructor(props:any){
         super(props);
         firebaseStore.read();
+        //
+        authStore.signOut();
         homeEditorStore.readProject('Projects')
         homeEditorStore.readFolder('Folders')
         homeEditorStore.readArchive('Archives')
-        }
+    }
 
     render(){
         return (

@@ -11,7 +11,7 @@ interface loginFormProps {
 
 const LoginForm = observer(withRouter((formLoginProps) => {
     return (
-        <article>
+        <article className="logCont">
             <div>
                 <h1>Log In Form</h1>
             </div>
@@ -28,7 +28,10 @@ const LoginForm = observer(withRouter((formLoginProps) => {
                         formLoginProps.history.push("/register");
                     }}
                 >I do not have an account, I wish to register</button>
-                <button type="submit">Log In</button>
+                <button id="toLogin" type="submit" onClick={() => {
+                    authStore.login(authStore.email, authStore.password);
+                    }}
+                >Log In</button>
             </form>
         </article>
     )

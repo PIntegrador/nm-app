@@ -13,25 +13,27 @@ const RegisterForm = observer(withRouter((formRegisterProps) => {
 
     return (
 
-        <article>
+        <article className="regCont">
             <h1>Register Form</h1>
             <form onSubmit={(e) => {
                 e.preventDefault();
             }
             }>
                 <span>Name</span>
-                <input className="name" type="text" placeholder="Santiago" />
+                <input className="name" type="text" placeholder="Nombre" />
                 <span>Last Name</span>
-                <input className="name" type="text" placeholder="Mondragón" />
+                <input className="name" type="text" placeholder="Apellidos" />
                 <span>Email</span>
                 <input id="mail" type="email" placeholder="tucorreo@gmail.com" onChange={e => { authStore.handleInput(e.target.value, "email") }} />
                 <span>Password</span>
                 <input id="pass" type="password" placeholder="••••••••" onChange={e => { authStore.handleInput(e.target.value, "pass") }} />
 
                 <button type="submit" onClick={() => {
+
                     authStore.register(authStore.email, authStore.password);
-                    if (authStore.isLogged)
+                    if (authStore.isLogged) {
                         formRegisterProps.history.push("/home");
+                    }
                 }}>Register</button>
 
                 <button id="toLogin" onClick={() => {
@@ -40,7 +42,7 @@ const RegisterForm = observer(withRouter((formRegisterProps) => {
                 >I already have an account</button>
 
                 <button onClick={() => {
-                    authStore.cerrarSesion();
+                    authStore.signOut();
                 }}>Log Out</button>
 
             </form>

@@ -1,4 +1,6 @@
 * {
+    padding: 0;
+    margin: 0;
     transition: all 0.2s ease;
     box-sizing: border-box;
 }
@@ -10,9 +12,9 @@ sans-serif;
 $fontTitle: 'Hind Madurai',
 sans-serif;
 $dashmenutam: 233px;
-$fondoBlanco: rgb(250,
-250,
-250);
+$fondoBlanco: rgb(255,
+255,
+255);
 $fondoGris:#C4C4C4;
 $fondoGrisClaro: #F1F1F0;
 $fondoGrisOscuto:#4D4D4D;
@@ -49,6 +51,17 @@ $wrongColor: rgb(240,
 59,
 59);
 $defaultBackground: #FAFAFA;
+
+$tamViewIconX: 150px;
+$tamViewIconY: 160px;
+
+$marginViewIconX: 35px;
+$marginViewIconY: 25px;
+
+$tamApp: 94%;
+
+$tamHeader: 70px;
+
 p,
 label,
 span,

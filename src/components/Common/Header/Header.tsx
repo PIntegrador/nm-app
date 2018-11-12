@@ -2,27 +2,30 @@ import * as React from 'react';
 import './Header.scss';
 import { firebaseStore } from '../../../store/FsActionStore';
 import Searchbar from '../../Editor/Searchbar/Searchbar';
+import ProfileMenu from '../../../containers/Editor/ProfileMenu/ProfileMenu';
 
 interface HeaderProps {
 
-img?: string;
-fav?: string;
+    img?: string;
+    fav?: string;
 }
 
 const Header = ({ img, fav }: HeaderProps) => {
-return (
-<section className="row-flex headerbar flex-child">
-    <div className="leftSide">
-        <img src={img} alt="" />
-        <div className="toogle flex-child">
-            <img src={fav} />
-        </div>
-       <Searchbar />
+    return (
+        <section className="headerbar flex-child">
 
-    </div>
+            <section className="flex-child contSides">
 
-  
-</section>
-)
+                <div className="leftSide">
+                    <Searchbar />
+                </div>
+
+                <div className="rightSide">
+                    <ProfileMenu />
+                </div>
+            </section>
+
+        </section>
+    )
 }
 export default Header;

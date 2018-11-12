@@ -1,4 +1,5 @@
 @import '../../../../public/css/variables.scss';
+
 * {
     margin: 0;
     padding: 0;
@@ -17,10 +18,13 @@
     height: 100%;
     flex-wrap: nowrap;
     overflow-x: hidden;
+
     .contDash {
         height: 100%;
         padding: 0;
+        width: 100%;
         flex-wrap: nowrap;
+
         .contActions {
             //margin-bottom: 100px;
             width: $dashmenutam;
@@ -28,84 +32,87 @@
             align-content: center;
             align-items: center;
             height: 100%;
+            width: 100%;
+
             article {
+
+                text-transform: uppercase;
+
+                width: 100%;
                 box-sizing: border-box;
                 order: 0;
                 flex: 0 1 auto;
                 align-self: center;
-                padding: 10px 20px;
+                padding: 0 30px;
                 width: $dashmenutam;
                 height: 55px;
                 justify-content: center;
                 align-content: center;
                 align-items: center;
+
                 &:hover {
-                    background: $activeSection;
+                    background-color: $activeSection;
                     cursor: pointer;
-                    color: $darkColor;
                 }
-                div {
+
+                >.icon {
                     flex: 0 1 auto;
-                    margin-right: 10px;
-                    width: 15px;
-                    height: 15px;
-                    border-radius: 25px;
+                    width: 20px;
+                    height: 20px;
+
                     background-color: $white;
+                    border-radius: 15px;
+
+                    margin-right: 15px;
                 }
-                h2 {
+
+                >.title {
                     flex: 1 1 auto;
                     font-family: $fontTitle;
                     font-size: $fontsizeOne;
-                    font-weight: 400;
+
+                    font-size: 14px;
+
+                    color: $white;
+                    font-weight: 300;
                 }
             }
-            .options {
+
+            >.options {
                 flex: 1 1 auto;
+
+                width: 100%;
+
+                color: $white;
             }
-            #profile {
-                height: 140px;
+
+            >#logo {
+                padding: 0;
+                height: 110px;
+                width: 100%;
                 justify-content: center;
+
                 &:hover {
                     background: none;
                     cursor: auto;
                     color: $white;
                 }
-                div {
-                    margin: 0;
-                    width: 45px;
+
+                >div {
+                    background-image: url('/assets/img/logo-positivo-negativo.png');
+                    width: 110px;
+                    background-position: center;
+                    background-size: cover;
                     height: 45px;
-                    margin-bottom: 10px;
-                }
-                h2 {
-                    flex: 0 1 auto;
+
+                    border-radius: 0;
                 }
             }
-        }
-        #config {
-            width: $dashmenutam;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
-            div {
-                width: 15px;
-                height: 15px;
-                border-radius: 25px;
-                background-color: $white;
-            }
-            h2 {
-                font-family: $fontTitle;
-                font-size: $fontsizeOne;
-                font-weight: 400;
+
+            >#config {
+        
             }
         }
-        a:link {
-            color: $white;
-        }
-        a:visited {
-            color: $white;
-        }
-        a:active {
-            color: $darkColor;
-        }
+
     }
 }

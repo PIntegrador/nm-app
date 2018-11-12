@@ -1,77 +1,67 @@
 @import '../../../../public/css/variables.scss';
+
 .headerbar {
-    background-color: rgb(243, 243, 243);
-    padding: 0 0 0 25px;
-    text-align: left;
-    width: 100%;
-    height: 60px;
+    background-color: $fondoBlanco;
+
+    height: $tamHeader;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-content: center;
-    align-items: flex-start;
+    align-items: center;
+
     position: fixed;
     z-index: 10;
-    .leftSide {
+
+    >.contSides {
+
+        width: $tamApp;
+        height: 100%;
+
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        width: 600px;
-        align-items: center;
-    }
-    img {
-        display: inline-block;
-        width: auto;
-        height: 45px;
-    }
-    .toogle {
-        width: 35px;
-        height: 35px;
-        border-radius: 200px;
-        margin: 0 0 0 25px;
-        background-color: $fondoBlanco;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        img {
-            width: 60%;
-            height: 60%;
-            margin: 0;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: flex-start;
+        align-items: flex-start;
+
+        .leftSide {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            order: 0;
+            flex: 0 1 auto;
+            align-self: auto;
+
+            width: 40%;
+            height: 100%;
+            align-items: center;
+
+            .searchBar {
+                //in the component
+            }
+
         }
-        &.right {
-            float: right
-        }
-    }
-    .searchBar {
-        background: $fondoBlanco;
-        border-radius: 200px;
-        height: 34px;
-        margin: 0 0 0 25px;
-        #inputBuscar {
-            height: 34px;
-            background: $fondoBlanco;
-            width: 300px;
-            border-radius: 200px;
-            box-sizing: border-box;
-            padding: 0 20px;
-            padding-left: 0;
-            font-weight: 500;
-            font-family: $fontText;
-            font-size: $fontsizeOne;
-            color: $fontHintColor;
-            border: none;
-            &:focus {
-                outline: none;
-                color: $fontColor;
+
+        .rightSide {
+            order: 0;
+            flex: 0 1 auto;
+            align-self: auto;
+
+            width: 200px;
+            height: 100%;
+
+            .profileMenu {
+                //in the component
             }
         }
-        button {
-            background: none;
-            border: none;
-            width: 34px;
-            height: 34px;
-            margin-left: 10px;
-            padding: 0;
-            color: $fondoGrisOscuto;
-            cursor: pointer;
-        }
     }
+
 }
