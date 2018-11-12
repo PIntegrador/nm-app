@@ -10,6 +10,7 @@ import { authStore } from '../../../src/store/AuthStore';
 import { homeEditorStore } from '../../../src/store/HomeEditorStore';
 import Register from '../Register/Register';
 import { Login } from '../Login/Login';
+import { ProjectContainer } from '../Editor/ProjectContainer/ProjectContainer';
 
 
 export class Root extends React.Component {
@@ -32,6 +33,7 @@ export class Root extends React.Component {
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/folders" component={FolderContainer} />
+                    <Route exact path="/projects" component={ProjectContainer} />
                     <Route path="/folders/:folder" component={ArchiveContainer} />
                 </div>
             </Router>

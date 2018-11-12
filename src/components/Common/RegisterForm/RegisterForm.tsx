@@ -14,18 +14,17 @@ const RegisterForm = observer(withRouter((formRegisterProps) => {
     return (
 
         <article className="regCont">
-            <h1>Register Form</h1>
+            <div>
+                <img src="/assets/img/logo-in-white.png" alt="Logo de Vibo"/>
+                <h1>Te damos la bienvenida</h1>
+            </div>
             <form onSubmit={(e) => {
                 e.preventDefault();
             }
             }>
-                <span>Name</span>
                 <input className="name" type="text" placeholder="Nombre" />
-                <span>Last Name</span>
                 <input className="name" type="text" placeholder="Apellidos" />
-                <span>Email</span>
                 <input id="mail" type="email" placeholder="tucorreo@gmail.com" onChange={e => { authStore.handleInput(e.target.value, "email") }} />
-                <span>Password</span>
                 <input id="pass" type="password" placeholder="••••••••" onChange={e => { authStore.handleInput(e.target.value, "pass") }} />
 
                 <button type="submit" onClick={() => {

@@ -30,11 +30,14 @@ const Dash = () => {
                                 <h2 className="flex-child title">Mis Archivos</h2>
                             </article>
                         </Link>
+                        
+                        <Link to="/projects">
 
                         <article id="proyects" className="row-flex">
                             <div className="flex-child icon"></div>
                             <h2 className="flex-child title">Mis Proyectos</h2>
                         </article>
+                        </Link>
 
                         <article id="asign" className="row-flex">
                             <div className="flex-child icon"></div>

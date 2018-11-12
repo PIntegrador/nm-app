@@ -1,17 +1,35 @@
 .regCont {
+
+
     box-sizing: border-box;
     flex: 0 1 auto;
     margin: 0;
-    padding: 35px 40px;
-    width: 500px;
-    border-radius: 2px;
+    padding: 35px 60px;
+    width: 466px;
+    border-radius: 9px;
+    background: #FFFFFF;
 
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-content: center;
     align-items: center;
+    z-index: 10;
+    div {
 
+        h1 {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+        img {
+            margin: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+    }
     form {
         width: 100%;
         span {
@@ -22,51 +40,73 @@
             color: #008b8b;
         }
         input {
-            margin-bottom: 20px;
+
+
+            background: rgba(250, 250, 250, 0.04);
+            margin-bottom: 10px;
             margin-top: 10px;
             width: 100%;
-            height: 40px;
+            padding: 7px 10px;
             box-sizing: border-box;
-            padding: 0;
             border: none;
             outline: none;
             text-indent: 10px;
-            border-bottom: solid 1px  #9999993d;
+            border-radius: 9px;
+            border: 2px solid #C2C2C2;
             transition: all 0.1s ease;
-            &:focus {
+            cursor: pointer;
+
+            font-weight: bold;
+            color: #C4BEBE;
+            font-size: 18px;
+
+            &:active {
+                cursor: text;
+            }
+            /*&:focus {
                 border-bottom: solid 2px  #008b8b;
             }
             &:hover{
                 border-bottom: solid 2px  #008b8b;
                 cursor: pointer;
             }
+            */
             &::placeholder {
-                color: #aaa;
-                font-size: 10px;
+                font-weight: bold;
+                color: #C4BEBE;
+                font-size: 18px;
             }
         }
-        
+
         button {
             box-sizing: border-box;
-            font-weight: 600;
             padding: 0;
             margin-bottom: 10px;
             width: 100%;
-            height: 50px;
+            height: 42px;
             border: none;
-            background: #008b8b;
+            background: #F66880;
             color: white;
-            border-radius: 2px;
+            border-radius: 9px;
             outline: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+/*
             &:hover{
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                cursor: pointer;
                 background: #028585;
             }
-            &#toLogin {
+*/
+
+            &#toLogin{
+                font-weight: bold;
+                text-align: center;
                 background: #fff;
-                color: #008b8b;
+                color: #666666;
+                font-size: 14px;
+
                 &:hover {
                     background: rgb(250, 250, 250);
                 }

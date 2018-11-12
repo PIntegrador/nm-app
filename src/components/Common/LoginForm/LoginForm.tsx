@@ -13,25 +13,28 @@ const LoginForm = observer(withRouter((formLoginProps) => {
     return (
         <article className="logCont">
             <div>
-                <h1>Log In Form</h1>
+                <img src="/assets/img/logo-in-white.png" alt="Logo de Vibo"/>
+                <h1>Te damos la bienvenida</h1>
             </div>
             <form onSubmit={(event) => {
                 event.preventDefault();
                 formLoginProps.history.push("/home")
             }
             }>
-                <span>E-Mail</span>
-                <input className="mail" type="email" placeholder="example@gmail.com" onChange={e => {authStore.handleInput(e.target.value, "email")} }/>
-                <span>Password</span>
-                <input className="pass" type="password" placeholder="••••••••" onChange={e => {authStore.handleInput(e.target.value, "pass")} } />
+                <input className="mail" type="email" placeholder="Correo" onChange={e => {authStore.handleInput(e.target.value, "email")} }/>
+                <input className="pass" type="password" placeholder="Escribe tu contraseña" onChange={e => {authStore.handleInput(e.target.value, "pass")} } />
                 <button id="toRegister" onClick={() => {
                         formLoginProps.history.push("/register");
                     }}
-                >I do not have an account, I wish to register</button>
+                >No tengo una cuenta, deseo registrarme</button>
                 <button id="toLogin" type="submit" onClick={() => {
                     authStore.login(authStore.email, authStore.password);
                     }}
-                >Log In</button>
+                >Ingresar</button>
+
+                <p>
+                Al continuar, aceptas las <a>Condiciones del servicio</a> y la <a>Política de privacidad.</a> 
+                </p>
             </form>
         </article>
     )
