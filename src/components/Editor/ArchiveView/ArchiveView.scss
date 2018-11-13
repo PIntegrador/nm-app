@@ -16,7 +16,6 @@
         color: $fondoGrisOscuto;
     }
     .archive {
-        margin: 0 0 0 25px;
         order: 0;
         flex: 0 1 auto;
         align-self: auto;
@@ -66,8 +65,8 @@
             margin-right: 40px;
         }
         .desArchive {
-            width: 300px;
-            font-size: $fontsizeOne;
+            width: 250px;
+            font-size: $fontsizeInfo;
             font-family: $fontText;
             color: $fondoGrisOscuto;
             margin-right: 40px;

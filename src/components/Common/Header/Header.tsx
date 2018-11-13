@@ -11,6 +11,7 @@ interface HeaderProps {
 }
 
 const Header = ({ img, fav }: HeaderProps) => {
+
     return (
         <section className="headerbar flex-child">
 

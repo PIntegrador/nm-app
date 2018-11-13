@@ -25,9 +25,9 @@ import HomeFiles from '../../../components/Common/HomeFiles/HomeFiles';
     constructor(props: any) {
         super(props);
         //
-        homeEditorStore.readProject('Projects')
-        homeEditorStore.readFolder('Folders')
-        homeEditorStore.readArchive('Archives')
+        homeEditorStore.readProject('Projects');
+        homeEditorStore.readFolder('Folders');
+        homeEditorStore.readArchive('Archives');
     }
     
     render() {

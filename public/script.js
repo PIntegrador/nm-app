@@ -1,7 +1,4 @@
 window.addEventListener("resize", tamApp);
-window.addEventListener("load", tamApp);
-window.addEventListener("scroll", tamApp);
-window.addEventListener("unload	", tamApp);
 
 const app = document.getElementsByClassName('app')[0];
 const dash = document.getElementsByClassName('dash')[0];
