@@ -1,0 +1,31 @@
+@import '../../../../public/css/variables.scss';
+.SortButton {
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    background: #F2F2F2;
+    position: fixed;
+    top: 105px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    cursor: pointer;
+    div {
+        background: $white;
+        width: 100%;
+        height: 100%;
+    }
+    .list {
+        background: url('/assets/svg/toggle-icon.svg');
+
+    }
+    .grid {
+        background: url('/assets/svg/toggle-icon-grid.svg');
+    }
+    &:hover {
+        box-shadow: 1px 2px 8px 1px rgba(0,0,0,.2);
+
+    }
+}

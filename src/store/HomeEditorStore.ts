@@ -6,6 +6,8 @@ class HomeEditorStore {
 
     // --- AddMenu ---
     @observable addMenu: boolean = false;
+    
+    @observable sortButState: string = 'list';
 
     @action addMenuStatus() {
         this.addMenu = !this.addMenu;

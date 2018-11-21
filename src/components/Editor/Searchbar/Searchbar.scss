@@ -23,16 +23,24 @@
             font-size: $fontsizeOne;
             color: $fontHintColor;
             border: none;
+
+            transition: all ease-in-out .3s;
+
             &:focus {
                 outline: none;
                 color: $fontColor;
+                border-radius: 25px;
             }
             padding: 18px 20px;
             width: 100%;
-            border-radius: 25px;
+            border-radius: 5px;
             background-color: $fondoGrisClaro;
             font-family: $fontText;
             border: none;
+
+            &:hover{
+                /*border-radius: 10px;*/
+            }
         }
 
         

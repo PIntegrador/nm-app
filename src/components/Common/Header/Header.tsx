@@ -5,6 +5,7 @@ import Searchbar from '../../Editor/Searchbar/Searchbar';
 import ProfileMenu from '../../../containers/Editor/ProfileMenu/ProfileMenu';
 
 interface HeaderProps {
+
     img?: string;
     fav?: string;
 }
