@@ -1,9 +1,10 @@
-const app = document.getElementsByClassName('app')[0];
-const dash = document.getElementsByClassName('dash')[0];
-const header = document.getElementsByClassName('headerbar')[0];
-
 function tamApp() {
+    let app = document.getElementsByClassName('app')[0];
+    let dash = document.getElementsByClassName('dash')[0];
+    let header = document.getElementsByClassName('headerbar')[0];
+
     console.log("Update header size");
+
     if (header != null) {
         let tamHTML = $(document).width();
         let tamDash = $('.dash').width();
@@ -19,8 +20,11 @@ function tamApp() {
     }
 }
 
+setInterval(tamApp, 200);
+
 tamApp();
 
 header.addEventListener("load", tamApp);
+document.addEventListener("resize", tamApp);
 window.addEventListener("resize", tamApp);
 window.addEventListener("load", tamApp);
