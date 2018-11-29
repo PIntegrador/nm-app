@@ -4,14 +4,12 @@ a {
     color: $fondoGrisOscuto;
 }
 
-.routeBar {
-    margin: $tamHeader 0 0 0;
-}
-
 .contFolder {
     margin: 0 0 0 25px;
     width: 95%;
+    min-height: auto;
     font-family: $fontTitle;
+    flex-wrap: nowrap;
     .folder {
         width: 100%;
         margin-top: 25px;

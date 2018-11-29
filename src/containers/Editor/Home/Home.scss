@@ -8,80 +8,86 @@
 
 body {
     background-color: $defaultBackground;
+    overflow: hidden;
 
     .contHome {
+        display: flex;
+        flex-direction: row;
         justify-content: flex-start;
         align-content: flex-start;
         align-items: flex-start;
         height: 100%;
 
         .dash {
-            position: fixed;
+            flex: 18% 0 1;
+            height: 100vh;
         }
 
         .app {
-            padding: 0;
-            justify-content: flex-start;
-            align-content: flex-start;
-            align-items: flex-start;
+            flex: 82% 0 1;
+            flex-wrap: nowrap;
+            position: relative;
 
-            .homeInfo {
-                width: 100%;
+            .scroll {
+                height: 100vh;
+                overflow-y: scroll;
+                .homeInfo {
+                    width: 100%;
+                    min-height: fit-content;
 
-                margin-top: $tamHeader;
-
-                justify-content: flex-start;
-                align-content: flex-start;
-                align-items: flex-start;
-
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-                align-content: flex-start;
-                align-items: center;
-
-                .allCont {
-
-                    order: 0;
-                    flex: 0 1 auto;
-                    align-self: auto;
-
-                    
-                    width: $tamApp;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
                     justify-content: flex-start;
                     align-content: flex-start;
-                    align-items: flex-start;
+                    align-items: center;
 
-                    height: auto;
+                    .allCont {
 
-                    border-bottom: 1px solid #D1D1D1;
+                        order: 0;
+                        flex: 0 1 auto;
+                        align-self: auto;
+                        flex-wrap: nowrap;
 
-                    margin-bottom: 25px;
+                        width: $tamApp;
+                        justify-content: flex-start;
+                        align-content: flex-start;
+                        align-items: flex-start;
 
-                    .moduleCont{
-                        width: 100%;
-                    }
-                    .titleContainer {
+                        height: fit-content;
 
-                        display: flex;
-                        flex-direction: row;
-                        height: 20px;
-                        margin: 40px 0;
-                        .ico {
-                            width: 16px;
-                            margin-right: 15px;
-                            .modulesAsTitles {
-                                fill: $darkColor;
+                        border-bottom: 1px solid #D1D1D1;
+
+                        margin-bottom: 25px;
+
+                        .moduleCont {
+                            width: 100%;
+                        }
+
+                        .titleContainer {
+
+                            display: flex;
+                            flex-direction: row;
+                            height: 20px;
+                            margin: 40px 0;
+
+                            .ico {
+                                width: 16px;
+                                margin-right: 15px;
+
+                                .modulesAsTitles {
+                                    fill: $darkColor;
+                                }
+                            }
+
+                            h1 {
+                                color: $fontColor;
+                                font-size: $fontsizeTwo;
+                                font-weight: bold;
                             }
                         }
-                        h1 {
-                            color: $fontColor;
-                            font-size: $fontsizeTwo;
-                            font-weight: bold;
-                        }
-                    }
 
+                    }
                 }
             }
         }

@@ -28,8 +28,9 @@ import { observer } from 'mobx-react';
         
                 <SortBar />
                 <RouteBar />
+                <section className="scroll">
                 <FileView folders={arrayFolders}/>
-                
+                </section>
             </div>
            
         </div>

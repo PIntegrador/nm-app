@@ -40,6 +40,7 @@ import SortButton from '../../../components/Editor/SortButton/SortButton';
                 <FloatingButton />
                 <SortButton state= {homeEditorStore.sortButState} />
                 <AddMenu />
+                <section className="scroll">
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
@@ -125,8 +126,9 @@ import SortButton from '../../../components/Editor/SortButton/SortButton';
                     </section>
 
                 </div>
-
+                </section>
             </div>
+            
             <FolderPopUp />
             <FilePopUp />
 

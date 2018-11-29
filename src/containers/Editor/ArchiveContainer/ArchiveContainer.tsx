@@ -36,8 +36,9 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
                 <Header />
                 <RouteBar  />
                 <SortBarArchive />
-                <ArchiveView archives={arrayArchives} />
-
+                <section className="scroll">
+                    <ArchiveView archives={arrayArchives} />
+                </section>
             </div>
 
         </div>

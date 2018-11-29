@@ -13,19 +13,13 @@ body {
         align-items: flex-start;
     }
     .dash {
-        position: fixed;
     }
     .app {
-        width: 100%;
         height: auto;
-        margin: 0 0 0 $dashmenutam;
         padding: 0 auto;
         justify-content: flex-start;
         align-content: center;
         align-items: center;
-        .routeBar {
-            margin: $tamHeader 0 0 0;
-        }
     }
     .folder2 {
         width: 100px;
