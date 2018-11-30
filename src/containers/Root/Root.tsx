@@ -19,9 +19,9 @@ export class Root extends React.Component {
         firebaseStore.read();
         //
         authStore.signOut();
-        homeEditorStore.readProject('Projects')
-        homeEditorStore.readFolder('Folders')
-        homeEditorStore.readArchive('Archives')
+        homeEditorStore.readProject('Projects');
+        homeEditorStore.readFolder('Folders');
+        homeEditorStore.readArchive('Archives');
     }
 
     render(){
@@ -35,6 +35,9 @@ export class Root extends React.Component {
                     <Route exact path="/folders" component={FolderContainer} />
                     <Route exact path="/projects" component={ProjectContainer} />
                     <Route path="/folders/:folder" component={ArchiveContainer} />
+
+                    {/* FolderContainer is the view for "Mis Archivos",
+                    Archive Container is the view inside a folder of "Mis Archivos"*/}
                 </div>
             </Router>
 

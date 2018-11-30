@@ -9,6 +9,8 @@ import Header from '../../../components/Common/Header/Header';
 import { FileView } from '../../../components/Editor/FileView/FileView';
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
+import SortButton from '../../../components/Editor/SortButton/SortButton';
+import { homeEditorStore } from '../../../store/HomeEditorStore';
 
 
 @observer export class FolderContainer extends React.Component {
@@ -23,6 +25,7 @@ import { observer } from 'mobx-react';
 
             <div className="app flex-child col-flex">
                 <Header />
+                <SortButton state= {homeEditorStore.sortButState} />
                 <section className="scroll">
                     <FileView folders={arrayFolders} />
                 </section>

@@ -11,6 +11,8 @@ import { observer } from 'mobx-react';
 import RouteBar from '../../../components/Editor/RouteBar/RouteBar';
 import SortBar from '../../../components/Editor/SortBar/SortBar';
 import { SortBarArchive } from '../SortBarArchive/SortBarArchive';
+import { homeEditorStore } from '../../../store/HomeEditorStore';
+import { Module } from '../../../components/Editor/Module/Module';
 
 interface FileViewProps {
 
@@ -26,16 +28,18 @@ interface FileViewProps {
 
         return (
             <div className="contFolder">
-                <p></p>
 
-                <RouteBar folderName = {""} />
-                <SortBarArchive />
-                {
-                    (this.props.folders != null) ? (
-                        this.props.folders.map((elem: any) => {
-                            return <Folder key={elem.id} id={elem.id} title={elem.name}/>
-                        })) : console.log("Como estas")
-                }
+                <RouteBar folderName={""} />
+                {(homeEditorStore.sortButState == 'list')?<SortBarArchive />:""}
+                <div className="flex-child  row-flex moduleCont">
+                    <p></p>
+                    {
+                        (this.props.folders != null) ? (
+                            this.props.folders.map((elem: any) => {
+                                return <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
+                            })) : console.log("Como estas")
+                    }
+                </div>
             </div>
         )
     }

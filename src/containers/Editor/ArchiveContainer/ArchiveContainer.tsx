@@ -9,6 +9,8 @@ import Header from '../../../components/Common/Header/Header';
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
 import { ArchiveView } from '../../../components/Editor/ArchiveView/ArchiveView';
+import SortButton from '../../../components/Editor/SortButton/SortButton';
+import { homeEditorStore } from '../../../store/HomeEditorStore';
 
 let folderName: string = "folder name";
 
@@ -28,6 +30,7 @@ let folderName: string = "folder name";
     }
     render() {
 
+        let arrayFolders = firebaseStore.arrayFolders;
         let arrayArchives = firebaseStore.arrayArchive;
 
         return <div className="contHome row-flex">
@@ -35,8 +38,9 @@ let folderName: string = "folder name";
 
             <div className="app flex-child col-flex">
                 <Header/>
+                <SortButton state= {homeEditorStore.sortButState} />
                 <section className="scroll">
-                    <ArchiveView archives={arrayArchives} folderName = {folderName} />
+                    <ArchiveView archives={arrayArchives} folders={arrayFolders} folderName = {folderName} />
                 </section>
             </div>
 
