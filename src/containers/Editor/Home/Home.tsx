@@ -78,7 +78,6 @@ interface HomeProps {
                                 homeEditorStore.projectArray.map((elem: any) => {
                                     return (
                                         <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} />
-
                                     )
                                 })
                             }
@@ -132,7 +131,6 @@ interface HomeProps {
                                     )
                                 })
                             }
-
                         </div>
 
                     </section>

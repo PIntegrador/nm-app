@@ -7,6 +7,9 @@ import { observer } from 'mobx-react';
 
 let orderName: boolean;
 let orderSize: boolean;
+let orderMod: boolean;
+let orderUp: boolean;
+let orderTipe: boolean;
 
 @observer export class SortBarArchive extends React.Component {
 
@@ -15,6 +18,9 @@ let orderSize: boolean;
 
         orderName = true;
         orderSize = true;
+        orderMod = true;
+        orderUp = true;
+        orderTipe = true;
         //the default value is order by name
         firebaseStore.sortArchivesByName(orderName);
     }
@@ -37,13 +43,38 @@ let orderSize: boolean;
         }
     }
 
+    getIconUp() {
+        if (orderUp) {
+            return "/assets/svg/iconSort/up.svg";
+        }
+        if (!orderUp) {
+            return "/assets/svg/iconSort/down.svg";
+        }
+    }
+
+    getIconMod() {
+        if (orderMod) {
+            return "/assets/svg/iconSort/up.svg";
+        }
+        if (!orderMod) {
+            return "/assets/svg/iconSort/down.svg";
+        }
+    }
+
+    getIconTipe() {
+        if (orderTipe) {
+            return "/assets/svg/iconSort/up.svg";
+        }
+        if (!orderTipe) {
+            return "/assets/svg/iconSort/down.svg";
+        }
+    }
+
     render() {
 
         return (
             <div className="sortBarArchive" >
                 <section className="cont">
-                    <h4 className="SortArchiveId">ID</h4>
-
 
                     <h4 className="SortArchiveName hvr-icon-pulse" onClick={(e) => {
                         e.preventDefault();
@@ -59,12 +90,15 @@ let orderSize: boolean;
                        
                         orderSize = !orderSize;
                         firebaseStore.sortArchivesBySize(orderSize);
-                    }}>Peso
+                    }}>Tamaño
                     <img src={this.getIconSize()} className="hvr-icon" />
                     </h4>
-                    <h4 className="SortArchiveUpDate">Fecha de Subida</h4>
-                    <h4 className="SortArchiveModDate">Ultima Modificacion</h4>
-                    <h4 className="SortArchiveDesc">Descripcion</h4>
+                    <h4 className="SortArchiveModDate hvr-icon-pulse">Última Modificación
+                    <img src={this.getIconMod()} className="hvr-icon" /></h4>
+                    <h4 className="SortArchiveTipo hvr-icon-pulse">Tipo
+                    <img src={this.getIconTipe()} className="hvr-icon" /></h4>
+                    <h4 className="SortArchiveUpDate hvr-icon-pulse">Fecha de Creación
+                    <img src={this.getIconUp()} className="hvr-icon" /></h4>
                 </section>
             </div>
         )

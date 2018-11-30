@@ -3,6 +3,7 @@ import { observable, action, computed, extendObservable } from 'mobx';
 import db from '../../config/firebaseConfig';
 
 import { KeyboardEvent } from "react";
+import { homeEditorStore } from './HomeEditorStore';
 
 class FsActionStore {
 
@@ -19,6 +20,8 @@ class FsActionStore {
     @observable nameFilterArchive: string = "";
 
     @observable folderIDFilterArchive: string = "";
+    
+    @observable actualProject: any = {};
 
 
     @observable favoritedArchive: boolean = false;
@@ -38,6 +41,12 @@ class FsActionStore {
     @action handleFolderIDArchive(folderIDFilterArchive: string) {
         this.folderIDFilterArchive = folderIDFilterArchive;
         console.log(this.folderIDFilterArchive, "ChangeFolderIDArchive");
+    }
+
+    @action getActualProject (projectID: string) {
+        this.actualProject = homeEditorStore.projectArray.find((e:any) => {
+            return e.id == projectID;    
+        });
     }
 
     @action handleFavoritedArchive(favoritedArchive: boolean) {
@@ -120,7 +129,7 @@ class FsActionStore {
 
     @action filterName() {
 
-        this.arrayFolders = this.arrayFoldersBackUp;
+        //this.arrayFolders = this.arrayFoldersBackUp;
         /*Here it will compare the string, if it have a coincidence will filter, 
         if not it will return the backup*/
         if (this.arrayFolders.some((e: any) => {
@@ -144,22 +153,27 @@ class FsActionStore {
     //in order to make the filter works with the archives of each folder, not all the db
 
     @action filterNameArchive() {
-
-        this.arrayArchive = this.arrayArchiveBackUp;
-
-        if (this.arrayArchive.some((e: any) => {
-            return e.name.toLowerCase().indexOf(this.nameFilter.toLowerCase());
-
-        })) {
-            console.log("This is filtering");
-
-            this.arrayArchive = this.arrayArchive.filter((e: any) => {
-                return e.name.toLowerCase().includes(this.nameFilter.toLowerCase());
-            })
+        let tempfolderArchives = this.arrayArchive;
+        //this.arrayArchive = this.arrayArchiveBackUp;
+        if (this.nameFilterArchive != '') {
+            if (this.arrayArchive.some((e: any) => {
+                return e.name.toLowerCase().indexOf(this.nameFilter.toLowerCase());
+    
+            })) {
+                console.log("This is filtering");
+    
+                this.arrayArchive = this.arrayArchive.filter((e: any) => {
+                    return e.name.toLowerCase().includes(this.nameFilter.toLowerCase());
+                })
+            } else {
+                console.log("This is not filtering");
+                this.arrayArchive = tempfolderArchives;
+            }
         } else {
-            console.log("This is not filtering");
-            this.arrayArchive = this.arrayArchiveBackUp;
+            this.arrayArchive = tempfolderArchives;
+ 
         }
+        
 
     }
 
@@ -199,6 +213,8 @@ class FsActionStore {
             this.arrayArchive = null;
         }
     }
+
+
 
     @action sortByName(order: number) {
 

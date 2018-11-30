@@ -1,16 +1,14 @@
 @import '../../../../public/css/variables.scss';
 .sortBar {
     width: 100%;
-    background-color: $fondoGrisClaro;
     color: $fondoGrisOscuto;
     font-family: $fontText;
     font-weight: bold;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 20px;
-    height: 40px;
-    z-index: 4;
+
+    margin-top: 15px;
     p {
         margin-right: 20px;
     }

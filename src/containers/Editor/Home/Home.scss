@@ -17,23 +17,42 @@ body {
         justify-content: flex-start;
         align-content: flex-start;
         align-items: flex-start;
+        flex-wrap: nowrap;
         height: 100%;
 
         .dash {
             flex: 18% 0 1;
             height: 100vh;
             min-width: 233px;
+            max-width: 233px;
         }
 
         .app {
-            flex: 82% 0 1;
+            flex: 100% 0 1;
             flex-wrap: nowrap;
             position: relative;
 
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: center;
+
+            height: 100vh;
+
             .scroll {
-                height: 90vh;
+                overflow-y: auto;
                 min-width: 100%;
-                overflow-y: scroll;
+                height: 90vh;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-content: flex-start;
+                align-items: center;
+
                 .homeInfo {
                     width: 100%;
                     min-height: fit-content;
@@ -95,4 +114,18 @@ body {
             }
         }
     }
+}
+
+.scroll {
+    width: 100%;
+    overflow-y: auto;
+
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
 }

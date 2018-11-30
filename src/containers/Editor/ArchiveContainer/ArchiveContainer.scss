@@ -1,28 +1,103 @@
 @import '../../../../public/css/variables.scss';
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    background-color: $fondoBlanco;
-    .contHome {
-        justify-content: flex-start;
-        align-content: flex-start;
-        align-items: flex-start;
+.contArchive {
+    width: $tamViewFiles;
+    min-height: auto;
+    flex-wrap: nowrap;
+
+    .noArchives {
+
+        width: 100%;
+        height: 100%;
+        
+        margin-top: 100px;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        >.cont {
+            width: 200px;
+            height:  200px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+
+            background-color: $fondoGrisClaro;
+            border-radius: 100px; 
+
+            >img {
+                width: 40px;
+                margin-bottom: 20px;
+            }
+
+            >p {
+                width: 70%;
+                text-align: center;
+                font-size: $fontsizeOne;
+                font-family: $fontText;
+                color: $fondoGrisOscuto;
+            }
+        }
     }
-    .dash {
-    }
-    .app {
-        height: auto;
-        padding: 0 auto;
+
+    .archive {
+
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+        width: 100%;
+        margin-top: 25px;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: flex-start;
         align-content: center;
         align-items: center;
-    }
-    .folder2 {
-        width: 100px;
-        height: 100px;
+        font-weight: 500;
+        border-bottom: 1px solid $fondoGris;
+
+        .nameArchive {
+            width: 20%;
+            font-size: $fontsizeOne;
+            font-family: $fontText;
+            color: $fondoGrisOscuto;
+        }
+
+        .sizeArchive {
+            width: 20%;
+            font-size: $fontsizeOne;
+            font-family: $fontText;
+            color: $fondoGrisOscuto;
+        }
+
+        .upDateArchive {
+            width: 20%;
+            font-size: $fontsizeOne;
+            font-family: $fontText;
+            color: $fondoGrisOscuto;
+        }
+
+        .modDateArchive {
+            width: 20%;
+            font-size: $fontsizeOne;
+            font-family: $fontText;
+            color: $fondoGrisOscuto;
+        }
+
+        .tipeDateArchive {
+            width: 20%;
+            font-size: $fontsizeOne;
+            font-family: $fontText;
+            color: $fondoGrisOscuto;
+        }
     }
 }

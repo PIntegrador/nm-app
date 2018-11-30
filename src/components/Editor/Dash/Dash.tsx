@@ -25,33 +25,34 @@ const Dash = observer(withRouter((dashProps) => {
 
                         <Link to="/home">
                             <article id="home" className="row-flex">
-                                <div className="flex-child icon"></div>
+                                <img src="/assets/svg/home.svg" className="flex-child icon" />
                                 <h2 className="flex-child title">Home</h2>
                             </article>
                         </Link>
 
                         <Link to="/folders">
                             <article id="archives" className="row-flex">
-                                <div className="flex-child icon"></div>
+                                <img src="/assets/svg/file.svg" className="flex-child icon" />
                                 <h2 className="flex-child title">Mis Archivos</h2>
                             </article>
                         </Link>
 
                         <Link to="/projects">
 
-                            <article id="proyects" className="row-flex">
-                                <div className="flex-child icon"></div>
-                                <h2 className="flex-child title">Mis Proyectos</h2>
-                            </article>
+                        <article id="proyects" className="row-flex">
+                                <img src="/assets/svg/proyectos.svg" className="flex-child icon" />
+                            <h2 className="flex-child title">Mis Proyectos</h2>
+                        </article>
+
                         </Link>
 
                         <article id="asign" className="row-flex">
-                            <div className="flex-child icon"></div>
+                                <img src="/assets/svg/asignar.svg" className="flex-child icon" />
                             <h2 className="flex-child title">Por Asignar</h2>
                         </article>
 
                         <article id="trash" className="row-flex">
-                            <div className="flex-child icon"></div>
+                                <img src="/assets/svg/papelera.svg" className="flex-child icon" />
                             <h2 className="flex-child title">Papelera</h2>
                         </article>
 
@@ -61,7 +62,8 @@ const Dash = observer(withRouter((dashProps) => {
                         authStore.signOut();
                         dashProps.history.push("/");
                     }} id="config" className="row-flex">
-                        <div className="flex-child icon"></div>
+                       <img src="/assets/svg/config.svg" className="flex-child icon" />
+
                         <h2 className="flex-child title">Configuración</h2>
                     </article>
 
