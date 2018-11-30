@@ -3,6 +3,7 @@ import { observable, action, computed, extendObservable } from 'mobx';
 import db from '../../config/firebaseConfig';
 
 import { KeyboardEvent } from "react";
+import { homeEditorStore } from './HomeEditorStore';
 
 class FsActionStore {
 
@@ -19,6 +20,8 @@ class FsActionStore {
     @observable nameFilterArchive: string = "";
 
     @observable folderIDFilterArchive: string = "";
+    
+    @observable actualProject: any = {};
 
     @observable favoritedArchive: boolean = false;
 
@@ -37,6 +40,12 @@ class FsActionStore {
     @action handleFolderIDArchive(folderIDFilterArchive: string) {
         this.folderIDFilterArchive = folderIDFilterArchive;
         console.log(this.folderIDFilterArchive, "ChangeFolderIDArchive");
+    }
+
+    @action getActualProject (projectID: string) {
+        this.actualProject = homeEditorStore.projectArray.find((e:any) => {
+            return e.id == projectID;    
+        });
     }
 
     @action handleFavoritedArchive(favoritedArchive: boolean) {
@@ -198,6 +207,8 @@ class FsActionStore {
             this.arrayArchive = null;
         }
     }
+
+
 
     @action sortByName(order: number) {
 

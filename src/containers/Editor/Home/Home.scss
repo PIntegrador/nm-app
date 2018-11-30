@@ -16,16 +16,18 @@ body {
         justify-content: flex-start;
         align-content: flex-start;
         align-items: flex-start;
+        flex-wrap: nowrap;
         height: 100%;
 
         .dash {
             flex: 18% 0 1;
             height: 100vh;
             min-width: 233px;
+            max-width: 233px;
         }
 
         .app {
-            flex: 82% 0 1;
+            flex: 100% 0 1;
             flex-wrap: nowrap;
             position: relative;
 

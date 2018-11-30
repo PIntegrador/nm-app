@@ -15,21 +15,21 @@
         width: 100%;
 
         #inputBuscar {
+            
             height: 34px;
             box-sizing: border-box;
 
             font-weight: 500;
             font-family: $fontText;
             font-size: $fontsizeOne;
-            color: $fontHintColor;
             border: none;
 
             transition: all ease-in-out .3s;
-
+            font-weight: 900;
+            color: #000000;
             &:focus {
                 outline: none;
                 color: $fontColor;
-                border-radius: 25px;
             }
             padding: 18px 20px;
             width: 100%;
@@ -40,6 +40,12 @@
 
             &:hover{
                 /*border-radius: 10px;*/
+            }
+
+            &::placeholder {
+                font-weight: 900;
+                color: $fontHintColor;
+
             }
         }
 

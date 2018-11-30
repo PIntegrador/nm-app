@@ -23,7 +23,7 @@ const Searchbar = () => {
             }}>
 
 
-            <input placeholder="Busca por etiquetas o palabras clave" id="inputBuscar" type="text" onChange={ (e:
+            <input placeholder="Buscar en VIBO" id="inputBuscar" type="text" onChange={ (e:
                 any)=> {
             e.preventDefault();
             firebaseStore.handleNameFilter(e.target.value);
