@@ -6,33 +6,31 @@ import './FolderContainer.scss';
 
 import Dash from '../../../components/Editor/Dash/Dash';
 import Header from '../../../components/Common/Header/Header';
-import RouteBar from '../../../components/Editor/RouteBar/RouteBar';
-import SortBar from '../../../components/Editor/SortBar/SortBar';
 import { FileView } from '../../../components/Editor/FileView/FileView';
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
+import SortButton from '../../../components/Editor/SortButton/SortButton';
+import { homeEditorStore } from '../../../store/HomeEditorStore';
 
 
-@observer export  class FolderContainer extends React.Component {
+@observer export class FolderContainer extends React.Component {
 
-    render(){
+    render() {
 
         let arrayFolders = firebaseStore.arrayFolders;
-        
-        return <div className="contHome row-flex">  
-            <Dash/>
-          
+
+        return <div className="contHome row-flex">
+            <Dash />
+
 
             <div className="app flex-child col-flex">
-            <Header />
-        
-                <SortBar />
-                <RouteBar />
+                <Header />
+                <SortButton state= {homeEditorStore.sortButState} />
                 <section className="scroll">
-                <FileView folders={arrayFolders}/>
+                    <FileView folders={arrayFolders} />
                 </section>
             </div>
-           
+
         </div>
     }
 }

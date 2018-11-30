@@ -8,29 +8,38 @@ import Header from '../../../components/Common/Header/Header';
 import { Link } from 'react-router-dom';
 import { Folder } from '../Folder/Folder';
 import { observer } from 'mobx-react';
+import RouteBar from '../../../components/Editor/RouteBar/RouteBar';
+import SortBar from '../../../components/Editor/SortBar/SortBar';
+import { SortBarArchive } from '../SortBarArchive/SortBarArchive';
+import { homeEditorStore } from '../../../store/HomeEditorStore';
+import { Module } from '../../../components/Editor/Module/Module';
 
 interface FileViewProps {
 
     folders: any[];
 }
 
-@observer export class FileView extends React.Component <FileViewProps> {
-    constructor (props : any) {
-        super (props);
-        
+@observer export class FileView extends React.Component<FileViewProps> {
+    constructor(props: any) {
+        super(props);
     }
-    
-    render(){
-        
-        return  (
+
+    render() {
+
+        return (
             <div className="contFolder">
-            <p></p>
-            {
-                (this.props.folders != null) ? (
-                this.props.folders.map((elem:any) => {
-                     return <Folder key={elem.id} id={elem.id} title = {elem.name} text = {elem.description} tags = {elem.tagnames} favorited = {elem.favorited}/>
-                }) ) : console.log("Como estas")
-            }
+
+                <RouteBar folderName={""} />
+                {(homeEditorStore.sortButState == 'list')?<SortBarArchive />:""}
+                <div className="flex-child  row-flex moduleCont">
+                    <p></p>
+                    {
+                        (this.props.folders != null) ? (
+                            this.props.folders.map((elem: any) => {
+                                return <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
+                            })) : console.log("Como estas")
+                    }
+                </div>
             </div>
         )
     }

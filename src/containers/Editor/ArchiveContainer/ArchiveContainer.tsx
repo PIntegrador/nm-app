@@ -6,16 +6,19 @@ import './ArchiveContainer.scss';
 
 import Dash from '../../../components/Editor/Dash/Dash';
 import Header from '../../../components/Common/Header/Header';
-import RouteBar from '../../../components/Editor/RouteBar/RouteBar';
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
 import { ArchiveView } from '../../../components/Editor/ArchiveView/ArchiveView';
-import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBarArchive';
+import SortButton from '../../../components/Editor/SortButton/SortButton';
+import { homeEditorStore } from '../../../store/HomeEditorStore';
+
+let folderName: string = "folder name";
 
 @observer export class ArchiveContainer extends React.Component {
     constructor(props:any){
         super(props);
         const folderID = this.getFolderId();
+       
         //filter
         firebaseStore.handleFolderIDArchive(folderID);
         firebaseStore.filterFolderIDArchive();
@@ -27,17 +30,17 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
     }
     render() {
 
+        let arrayFolders = firebaseStore.arrayFolders;
         let arrayArchives = firebaseStore.arrayArchive;
 
         return <div className="contHome row-flex">
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header />
-                <RouteBar  />
-                <SortBarArchive />
+                <Header/>
+                <SortButton state= {homeEditorStore.sortButState} />
                 <section className="scroll">
-                    <ArchiveView archives={arrayArchives} />
+                    <ArchiveView archives={arrayArchives} folders={arrayFolders} folderName = {folderName} />
                 </section>
             </div>
 

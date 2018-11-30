@@ -7,31 +7,26 @@ import { Tag } from '../Tag/Tag';
 interface FolderProps {
     id: string;
     title: string;
-    text?: string;
-    tags: any[];
-    favorited: boolean;
 }
 
-export const Folder = ({ id, title, text, tags, favorited }: FolderProps) => {
+export const Folder = ({ id, title}: FolderProps) => {
     return (
         <Link to={`/folders/${id}`}>
             <article className="folder">
-                <div className="elemsTitle">
-                    <div className="favorite">
-                        <img src="./assets/img/star.png" />
-                    </div>
+                <div className="title">
                     <h2>{title}</h2>
                 </div>
-                <div className="description">
-                    <p>{text}</p>
-
+                <div className="peso">
+                    <h2>--</h2>
                 </div>
-                <div className="tagContainer">
-                    {
-                        tags.map((elem: any) => {
-                            return <Tag key={elem.id} id={elem.id} name ={elem.name} />
-                        })
-                    }
+                <div className="up">
+                    <h2>--</h2>
+                </div>
+                <div className="mod">
+                    <h2>--</h2>
+                </div>
+                <div className="tipe">
+                    <h2>--</h2>
                 </div>
             </article>
         </Link>

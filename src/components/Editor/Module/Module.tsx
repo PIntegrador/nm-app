@@ -19,7 +19,7 @@ interface ModuleProps {
     assignGridStyle() {
         if (this.props.gridStyle == 'grid') {
             return (
-                <article className="flex-child row-flex moduleGrid">
+                <article draggable className="flex-child row-flex moduleGrid">
                     <div className="flex-child  moduleIconCont col-flex">
                         {this.assignIcon()}
                     </div>
@@ -28,7 +28,7 @@ interface ModuleProps {
             )
         } else {
             return (
-                <article className="flex-child row-flex moduleList">
+                <article draggable className="flex-child row-flex moduleList">
                     <div className="nameCont">
                         <div className="flex-child moduleIconCont col-flex">
                             {this.assignIcon()}

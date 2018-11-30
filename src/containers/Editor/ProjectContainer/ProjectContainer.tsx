@@ -27,6 +27,8 @@ import { Link } from 'react-router-dom';
 
             <div className="app flex-child col-flex">
                 <Header />
+                <RouteBar folderName = {""} />
+
                 <SortButton state={homeEditorStore.sortButState} />
                 <section className="allCont col-flex projectContainer">
                 {/* Delete all in <Link /> to quit title 
@@ -61,8 +63,6 @@ import { Link } from 'react-router-dom';
                         </div>
 
                     </section>
-
-
 
             </div>
 

@@ -11,15 +11,14 @@
     align-content: center;
     align-items: center;
 
-    border: 1px solid #E0E0E0;
-    background: #FAFAFA;
-
-    box-sizing: border-box;
+    border: 1px solid $fondoGris;
+    background: none;
     border-radius: 9px;
 
     margin: 0 $marginViewIconX $marginViewIconY 0;
 
     .moduleIconCont {
+
         width: 50%;
         height: 50%;
         justify-content: center;
@@ -61,18 +60,14 @@ a.superCont {
     
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
         align-content: center;
         align-items: center;
     
-        border-bottom: 1px solid #E0E0E0;
-        background: #FAFAFA;
+        border-bottom: 1px solid $fondoGris;
     
         box-sizing: border-box;
-        border-radius: 9px;
-    
-        margin: 0;
-        padding: 0 20px;
         .moduleListText {
             text-align: center;
             font-size: 13px;
@@ -81,6 +76,7 @@ a.superCont {
         .nameCont {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             justify-content: flex-start;
             align-content: center;
             align-items: center;

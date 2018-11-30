@@ -11,17 +11,16 @@ import { firebaseStore } from '../../../store/FsActionStore';
 const Searchbar = () => {
     return (
         <div className="searchBar">
-        <form onSubmit={(e)=> {
-            e.preventDefault();
-            firebaseStore.filterName();
-            firebaseStore.filterNameArchive();
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                firebaseStore.filterName();
+                firebaseStore.filterNameArchive();
             }}
-            onChange={(e) => {
-            e.preventDefault();
-            firebaseStore.filterName();
-            firebaseStore.filterNameArchive();
-            }}>
-
+                onChange={(e) => {
+                    e.preventDefault();
+                    firebaseStore.filterName();
+                    firebaseStore.filterNameArchive();
+                }}>
 
             <input placeholder="Buscar en VIBO" id="inputBuscar" type="text" onChange={ (e:
                 any)=> {
@@ -31,9 +30,10 @@ const Searchbar = () => {
             }
             } />
 
-        </form>
 
-    </div>
+            </form>
+
+        </div>
     )
 }
 export default Searchbar;

@@ -1,63 +1,110 @@
 @import '../../../../public/css/variables.scss';
+
 a {
     text-decoration: none;
     color: $fondoGrisOscuto;
 }
 
 .contFolder {
-    margin: 0 0 0 25px;
-    width: 95%;
+    width: $tamViewFiles;
     min-height: auto;
-    font-family: $fontTitle;
     flex-wrap: nowrap;
+
+    margin-left: 35px; 
+
     .folder {
         width: 100%;
         margin-top: 25px;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
         border-bottom: 1px solid $fondoGris;
-        padding-bottom: 20px;
-        .elemsTitle {
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+
+        >.title {
             display: flex;
             flex-direction: row;
             align-items: center;
-            .favorite {
-                width: 18px;
-                height: 18px;
-                margin-top: -2px;
-                margin-right: 20px;
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-            h2 {
+            width: 20%;
+
+            padding-right: 15px;
+
+            >h2 {
                 width: 100%;
-                font-size: 20px;
+                font-size: $fontsizeOne;
+                font-family: $fontTitle;
+                font-weight: 400;
             }
         }
-        .description {
-            p {
-                padding: 5px 0 20px 0;
-                margin-top: 10px;
-                text-align: justify;
-                width: 100%;
-                color: $fondoGris;
-                font-style: italic;
-                font-size: 14px;
-            }
-        }
-        .tagContainer {
+
+        >.peso {
             display: flex;
             flex-direction: row;
-            .tag {
-                margin-right: 15px;
-                padding: 5px 15px;
-                background-color: $fondoGris;
-                border-radius: 10px;
-                font-family: $fondoGris;
-                color: $negroTexto;
-                font-size: 10px;
-                font-weight: 700;
+            align-items: center;
+            width: 20%;
+
+            padding-right: 15px;
+
+            >h2 {
+                width: 100%;
+                font-size: $fontsizeOne;
+                font-family: $fontTitle;
+                font-weight: 400;
             }
         }
+
+        >.up {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 20%;
+
+            padding-right: 15px;
+
+            >h2 {
+                width: 100%;
+                font-size: $fontsizeOne;
+                font-family: $fontTitle;
+                font-weight: 400;
+            }
+        }
+
+        >.mod {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 20%;
+
+            padding-right: 15px;
+
+            >h2 {
+                width: 100%;
+                font-size: $fontsizeOne;
+                font-family: $fontTitle;
+                font-weight: 400;
+            }
+        }
+
+        >.tipe {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 20%;
+
+            padding-right: 15px;
+
+            >h2 {
+                width: 100%;
+                font-size: $fontsizeOne;
+                font-family: $fontTitle;
+                font-weight: 400;
+            }
+        }
+
     }
 }

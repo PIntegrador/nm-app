@@ -15,6 +15,7 @@ $dashmenutam: 233px;
 $fondoBlanco: rgb(255,
 255,
 255);
+$tamViewFiles: 75%;
 $fondoGris:#C4C4C4;
 $fondoGrisClaro: #F1F1F0;
 $fondoGrisOscuto:#4D4D4D;
@@ -28,7 +29,7 @@ $white2: #FAFAFA;
 $fontColor: #666666;
 $titleColor: #4D4D4D;
 $fontHintColor: #B2B2B2;
-$fontsizeOne: 11pt;
+$fontsizeOne: 10pt;
 $fontsizeTwo: 14pt;
 $fontsizeThree: 10pt;
 $fontsizeFour: 9pt;
@@ -98,4 +99,24 @@ h4 {
 
 p {
     font-size: $fontsizeOne;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: none; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $selectedColor; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $darkColor; 
 }

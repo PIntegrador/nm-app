@@ -119,7 +119,6 @@ import SortButton from '../../../components/Editor/SortButton/SortButton';
                                     )
                                 })
                             }
-
                         </div>
 
                     </section>
