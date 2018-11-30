@@ -52,7 +52,7 @@
             order: 0;
             flex: 0 1 auto;
             align-self: auto;
-            font-family: $fontText;
+            font-family: $fontTitle;
             color: $fondoGrisOscuto;
             font-weight: 700;
             font-size: 14px;
@@ -68,34 +68,49 @@
             order: 0;
             flex: 0 1 auto;
             align-self: auto;
-            font-family: $fontText;
+            font-family: $fontTitle;
             color: $fondoGrisOscuto;
             font-weight: 700;
             font-size: 14px;
 
             width: 20%;
+            >img {
+                margin-left: 5px;
+                width: 8px;
+                height: 8px;
+            }
         }
         .SortArchiveUpDate {
             order: 0;
             flex: 0 1 auto;
             align-self: auto;
-            font-family: $fontText;
+            font-family: $fontTitle;
             color: $fondoGrisOscuto;
             font-weight: 700;
             font-size: 14px;
 
             width: 20%;
+            >img {
+                margin-left: 5px;
+                width: 8px;
+                height: 8px;
+            }
         }
         .SortArchiveModDate {
             order: 0;
             flex: 0 1 auto;
             align-self: auto;
-            font-family: $fontText;
+            font-family: $fontTitle;
             color: $fondoGrisOscuto;
             font-weight: 700;
             font-size: 14px;
 
             width: 20%;
+            >img {
+                margin-left: 5px;
+                width: 8px;
+                height: 8px;
+            }
         }
     }
 }

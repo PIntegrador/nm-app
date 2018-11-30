@@ -6,16 +6,17 @@ import './ArchiveContainer.scss';
 
 import Dash from '../../../components/Editor/Dash/Dash';
 import Header from '../../../components/Common/Header/Header';
-import RouteBar from '../../../components/Editor/RouteBar/RouteBar';
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
 import { ArchiveView } from '../../../components/Editor/ArchiveView/ArchiveView';
-import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBarArchive';
+
+let folderName: string = "folder name";
 
 @observer export class ArchiveContainer extends React.Component {
     constructor(props:any){
         super(props);
         const folderID = this.getFolderId();
+       
         //filter
         firebaseStore.handleFolderIDArchive(folderID);
         firebaseStore.filterFolderIDArchive();
@@ -33,11 +34,9 @@ import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBa
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header />
-                <RouteBar  />
-                <SortBarArchive />
+                <Header/>
                 <section className="scroll">
-                    <ArchiveView archives={arrayArchives} />
+                    <ArchiveView archives={arrayArchives} folderName = {folderName} />
                 </section>
             </div>
 

@@ -28,7 +28,7 @@ interface FileViewProps {
             <div className="contFolder">
                 <p></p>
 
-                <RouteBar />
+                <RouteBar folderName = {""} />
                 <SortBarArchive />
                 {
                     (this.props.folders != null) ? (

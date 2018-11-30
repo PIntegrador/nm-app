@@ -40,22 +40,6 @@ a {
             }
         }
 
-        >.title {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 20%;
-
-            padding-right: 15px;
-
-            >h2 {
-                width: 100%;
-                font-size: 14px;
-                font-family: $fontTitle;
-                font-weight: 400;
-            }
-        }
-
         >.peso {
             display: flex;
             flex-direction: row;

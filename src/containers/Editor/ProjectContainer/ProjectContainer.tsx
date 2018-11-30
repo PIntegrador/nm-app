@@ -22,7 +22,7 @@ import { observer } from 'mobx-react';
 
             <div className="app flex-child col-flex">
                 <Header />
-                <RouteBar  />
+                <RouteBar folderName = {""} />
 
             </div>
 

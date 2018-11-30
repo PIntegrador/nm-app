@@ -1,16 +1,30 @@
 @import '../../../../public/css/variables.scss';
+
 .routeBar {
     width: 100%;
+
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
     align-items: center;
 
     margin-top: 25px;
-    h3 {
+
+    >h3 {
         font-family: $fontTitle;
         font-weight: bold;
         color: $fondoGrisOscuto;
         margin-right: 10px;
+        cursor: pointer;
+    }
+
+    >h4 {
+        font-family: $fontText;
+        font-weight: bold;
+        color: $fondoGrisOscuto;
+        /*margin-right: 15px;*/
         cursor: pointer;
     }
 }
