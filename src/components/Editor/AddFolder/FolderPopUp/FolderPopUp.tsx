@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 import { homeEditorStore } from '../../../../store/HomeEditorStore';
 const FolderPopUp = observer(() => {
     return (
-        <section className='modalFolderAdd'
+        <section className='modalFolderAdd modal'
             style={{
                 display: homeEditorStore.folderPopUpAdd === true ? "flex" : "none"
             }}
@@ -14,35 +14,25 @@ const FolderPopUp = observer(() => {
                 <article className="exit" onClick={() => {
                     homeEditorStore.folderPopUpAddStatus()
                     homeEditorStore.clearTags()
-                    const myForm:HTMLFormElement  = document.querySelector("#createFolderForm");
+                    const myForm: HTMLFormElement = document.querySelector("#createFolderForm");
                     myForm.reset();
                 }}><div></div><div></div></article>
                 <h1>Crear Nueva Carpeta</h1>
-                <form  id="createFolderForm" onSubmit={(e) => {
+                <form id="createFolderForm" onSubmit={(e: any) => {
                     e.preventDefault();
                     homeEditorStore.newFolder.tagnames = homeEditorStore.tags;
                     homeEditorStore.folderPopUpAddStatus();
                     homeEditorStore.addNewFolder();
                     homeEditorStore.clearTags();
                     homeEditorStore.clearFolder();
-                    const myForm:HTMLFormElement  = document.querySelector("#createFolderForm");
+                    const myForm: HTMLFormElement = document.querySelector("#createFolderForm");
                     myForm.reset();
                 }}>
                     <ul>
                         <li>
-                            <label>Archivos</label>
-                            <input type="text" name="archivo" placeholder="Archivos.csv" />
-                        </li>
-                        <li>
                             <label>Nombre</label>
-                            <input type="text" name="nombre" placeholder="Nombre de la Carpeta" onChange={(e) => {
+                            <input type="text" name="nombre" placeholder="Nombre de la Carpeta" onChange={(e: any) => {
                                 homeEditorStore.newFolder.name = e.target.value;
-                            }} />
-                        </li>
-                        <li>
-                            <label>Descipción</label>
-                            <input type="text" name="descipcion" placeholder="Descripción del Contenido de la Carpeta" onChange={(e) => {
-                                homeEditorStore.newFolder.description = e.target.value;
                             }} />
                         </li>
                         <li className="tags">
@@ -62,7 +52,7 @@ const FolderPopUp = observer(() => {
 
                             </ul>
                             <input type="text" name="etiquetas" placeholder="Etiquetas"
-                                onChange={(e) => {
+                                onChange={(e: any) => {
                                     homeEditorStore.addTags(e.target.value + " ");
                                 }}
                                 onEmptied={() => {
@@ -76,8 +66,17 @@ const FolderPopUp = observer(() => {
                         <li>
                             <button type="reset" onClick={() => {
                                 homeEditorStore.clearTags()
-                                }}>RESET</button>
-                            <button type="submit">CREAR</button>
+                            }}>RESET</button>
+                            <button
+                                onClick={() => {
+                                    // ----- TESTING ------
+                                    homeEditorStore.confirmUpload("Carpeta", homeEditorStore.newFolder.name);
+                                    function upload() {
+                                        homeEditorStore.setToFalse()
+                                    }
+                                    setTimeout(upload, 12000);
+                                    // ----- TESTING ------
+                                }} type="submit">CREAR</button>
                         </li>
                     </ul>
                 </form>

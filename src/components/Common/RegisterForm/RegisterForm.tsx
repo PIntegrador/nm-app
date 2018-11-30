@@ -15,35 +15,44 @@ const RegisterForm = observer(withRouter((formRegisterProps) => {
 
         <article className="regCont">
             <div>
-                <img src="/assets/img/logo-in-white.png" alt="Logo de Vibo"/>
+                <img src="/assets/img/logo-in-white.png" alt="Logo de Vibo" />
                 <h1>Te damos la bienvenida</h1>
             </div>
-            <form onSubmit={(e) => {
+            <form onSubmit={(e:any) => {
                 e.preventDefault();
+                if(authStore.isLogged){
+                    formRegisterProps.history.push("/home");
+                } else {
+                    
+                }
             }
             }>
                 <input className="name" type="text" placeholder="Nombre" />
                 <input className="name" type="text" placeholder="Apellidos" />
-                <input id="mail" type="email" placeholder="tucorreo@gmail.com" onChange={e => { authStore.handleInput(e.target.value, "email") }} />
-                <input id="pass" type="password" placeholder="••••••••" onChange={e => { authStore.handleInput(e.target.value, "pass") }} />
+                <input
+                    id="mail"
+                    type="email"
+                    placeholder="tucorreo@gmail.com"
+                    onChange={(e:any) => {
+                        authStore.credentials.email = e.target.value;
+                    }} />
+                <input
+                    id="pass"
+                    type="password"
+                    placeholder="••••••••"
+                    onChange={(e:any) => {
+                        authStore.credentials.password = e.target.value;
+                    }} />
 
                 <button type="submit" onClick={() => {
-
-                    authStore.register(authStore.email, authStore.password);
-                    if (authStore.isLogged) {
-                        formRegisterProps.history.push("/home");
-                    }
+                    authStore.register(authStore.credentials.email, authStore.credentials.password, "Editor");
+                   
                 }}>Register</button>
 
                 <button id="toLogin" onClick={() => {
                     formRegisterProps.history.push("/");
                 }}
                 >I already have an account</button>
-
-                <button onClick={() => {
-                    authStore.signOut();
-                }}>Log Out</button>
-
             </form>
         </article>
     )

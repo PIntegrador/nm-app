@@ -23,6 +23,7 @@ class FsActionStore {
     
     @observable actualProject: any = {};
 
+
     @observable favoritedArchive: boolean = false;
 
     @observable counter: number = 0;

@@ -13,13 +13,16 @@ const AddMenu = observer(() => {
             style={{
                 display: homeEditorStore.addMenu === true ? "flex" : "none"
             }}>
-            <article><div></div><h1>Subir Carpeta</h1></article>
             <article onClick={() => {
                 homeEditorStore.filePopUpAddStatus();
             }}><div></div><h1>Subir Archivo</h1></article>
-            <article onClick={() => {
+            <article onClick={() =>{
                 homeEditorStore.folderPopUpAddStatus();
             }}><div></div><h1>Crear Carpeta</h1></article>
+            <hr/>
+            <article onClick={() => {
+                homeEditorStore.projectPopUpAddStatus();
+            }}><div></div><h1>Crear Proyecto</h1></article>
         </section>
     )
 });

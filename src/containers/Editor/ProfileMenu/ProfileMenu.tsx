@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './ProfileMenu.scss';
 import { firebaseStore } from '../../../store/FsActionStore';
+import { authStore } from '../../../store/AuthStore';
 
 interface ProfileMenuProps {
 
@@ -11,7 +12,7 @@ const ProfileMenu = ({}: ProfileMenuProps) => {
        <section className="profileMenu">
        
        <div className="profileImg"></div>
-       <h3 className="profileName">Nestor Tobar</h3>
+       <h3 className="profileName">{authStore.credentials.email}</h3>
        <div className="profileDropDown"></div>
 
        </section>

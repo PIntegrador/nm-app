@@ -20,14 +20,26 @@ import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 import { Module } from '../../../components/Editor/Module/Module';
 import { element } from 'prop-types';
 import SortButton from '../../../components/Editor/SortButton/SortButton';
+import ProjectPopUp from '../../../components/Editor/AddProject/AddProject';
+import AddProject from '../../../components/Editor/AddProject/AddProject';
+import { authStore } from '../../../store/AuthStore';
+import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
 
-@observer export class Home extends React.Component {
+interface HomeProps {
+    history : any
+}
+
+@observer export class Home extends React.Component <HomeProps> {
     constructor(props: any) {
         super(props);
         //
         homeEditorStore.readProject('Projects');
         homeEditorStore.readFolder('Folders');
         homeEditorStore.readArchive('Archives');
+
+        if(!authStore.isLogged){
+            props.history.push ("/");
+        }
     }
 
     render() {
@@ -129,7 +141,8 @@ import SortButton from '../../../components/Editor/SortButton/SortButton';
             
             <FolderPopUp />
             <FilePopUp />
-
+            <AddProject />
+            <UploadConfirmation />
 
         </div>
     }
