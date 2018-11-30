@@ -1,16 +1,20 @@
 @import '../../../../public/css/variables.scss';
 
 .contArchive {
-    width: 75%;
+    width: $tamViewFiles;
     min-height: auto;
     flex-wrap: nowrap;
+
+    margin-left: 35px; 
     .noArchives {
         margin-top: 35px;
-        font-size: 11px;
+        font-size: $fontsizeOne;
         font-family: $fontText;
         color: $fondoGrisOscuto;
     }
+
     .archive {
+
         order: 0;
         flex: 0 1 auto;
         align-self: auto;

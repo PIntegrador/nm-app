@@ -6,9 +6,11 @@ a {
 }
 
 .contFolder {
-    width: 75%;
+    width: $tamViewFiles;
     min-height: auto;
     flex-wrap: nowrap;
+
+    margin-left: 35px; 
 
     .folder {
         width: 100%;
@@ -34,7 +36,7 @@ a {
 
             >h2 {
                 width: 100%;
-                font-size: 14px;
+                font-size: $fontsizeOne;
                 font-family: $fontTitle;
                 font-weight: 400;
             }
@@ -50,7 +52,7 @@ a {
 
             >h2 {
                 width: 100%;
-                font-size: 14px;
+                font-size: $fontsizeOne;
                 font-family: $fontTitle;
                 font-weight: 400;
             }
@@ -66,7 +68,7 @@ a {
 
             >h2 {
                 width: 100%;
-                font-size: 14px;
+                font-size: $fontsizeOne;
                 font-family: $fontTitle;
                 font-weight: 400;
             }
@@ -82,7 +84,7 @@ a {
 
             >h2 {
                 width: 100%;
-                font-size: 14px;
+                font-size: $fontsizeOne;
                 font-family: $fontTitle;
                 font-weight: 400;
             }
@@ -98,7 +100,7 @@ a {
 
             >h2 {
                 width: 100%;
-                font-size: 14px;
+                font-size: $fontsizeOne;
                 font-family: $fontTitle;
                 font-weight: 400;
             }
