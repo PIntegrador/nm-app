@@ -11,29 +11,29 @@ import { firebaseStore } from '../../../store/FsActionStore';
 const Searchbar = () => {
     return (
         <div className="searchBar">
-        <form onSubmit={(e)=> {
-            e.preventDefault();
-            firebaseStore.filterName();
-            firebaseStore.filterNameArchive();
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                firebaseStore.filterName();
+                firebaseStore.filterNameArchive();
             }}
-            onChange={(e) => {
-            e.preventDefault();
-            firebaseStore.filterName();
-            firebaseStore.filterNameArchive();
-            }}>
+                onChange={(e) => {
+                    e.preventDefault();
+                    firebaseStore.filterName();
+                    firebaseStore.filterNameArchive();
+                }}>
 
 
-            <input placeholder="Busca por etiquetas o palabras clave" id="inputBuscar" type="text" onChange={ (e:
-                any)=> {
-            e.preventDefault();
-            firebaseStore.handleNameFilter(e.target.value);
-            firebaseStore.handleNameArchive(e.target.value);
-            }
-            } />
+                <input placeholder="Buscar en Vibo" id="inputBuscar" type="text" onChange={(e:
+                    any) => {
+                    e.preventDefault();
+                    firebaseStore.handleNameFilter(e.target.value);
+                    firebaseStore.handleNameArchive(e.target.value);
+                }
+                } />
 
-        </form>
+            </form>
 
-    </div>
+        </div>
     )
 }
 export default Searchbar;

@@ -42,8 +42,6 @@ let orderSize: boolean;
         return (
             <div className="sortBarArchive" >
                 <section className="cont">
-                    <h4 className="SortArchiveId">ID</h4>
-
 
                     <h4 className="SortArchiveName hvr-icon-pulse" onClick={(e) => {
                         e.preventDefault();
@@ -59,12 +57,12 @@ let orderSize: boolean;
                        
                         orderSize = !orderSize;
                         firebaseStore.sortArchivesBySize(orderSize);
-                    }}>Peso
+                    }}>Tamaño
                     <img src={this.getIconSize()} className="hvr-icon" />
                     </h4>
-                    <h4 className="SortArchiveUpDate">Fecha de Subida</h4>
-                    <h4 className="SortArchiveModDate">Ultima Modificacion</h4>
-                    <h4 className="SortArchiveDesc">Descripcion</h4>
+                    <h4 className="SortArchiveModDate">Última Modificación</h4>
+                    <h4 className="SortArchiveTipo">Tipo</h4>
+                    <h4 className="SortArchiveUpDate">Fecha de Creación</h4>
                 </section>
             </div>
         )

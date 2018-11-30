@@ -113,3 +113,17 @@ body {
         }
     }
 }
+
+.scroll{
+    width: 100%;
+    overflow-y: auto;
+
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: center;
+}
