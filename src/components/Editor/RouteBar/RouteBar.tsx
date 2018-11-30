@@ -5,13 +5,14 @@ import '../../../../public/css/flex.scss'
 
 interface RouteProps {
     folderName: string;
+    mainTitle: string;
 }
 
-const RouteBar = ({ folderName }: RouteProps) => {
+const RouteBar = ({ mainTitle, folderName }: RouteProps) => {
 
     return (
         <div className="routeBar">
-            <h3>Mis Archivos</h3>
+            <h3>{mainTitle}</h3>
             <h4>{folderName}</h4>
         </div>
     )

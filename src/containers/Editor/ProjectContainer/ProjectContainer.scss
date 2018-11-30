@@ -1,10 +1,10 @@
 @import '../../../../public/css/variables.scss';
 
-
 .projectContainer {
-    width: 94%;
+    width: $tamViewFiles;
+    min-height: auto;
+    flex-wrap: nowrap;
 
-    
     .titleContainer {
 
         display: flex;

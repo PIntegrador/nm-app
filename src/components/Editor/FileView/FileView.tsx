@@ -29,7 +29,7 @@ interface FileViewProps {
         return (
             <div className="contFolder">
 
-                <RouteBar folderName={""} />
+                <RouteBar mainTitle="Mis Archivos" folderName={""} />
                 {(homeEditorStore.sortButState == 'list')?<SortBarArchive />:""}
                 <div className="flex-child  row-flex moduleCont">
                     <p></p>
