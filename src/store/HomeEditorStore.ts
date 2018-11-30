@@ -1,17 +1,31 @@
 import { observable, action, computed } from 'mobx';
 import { db, storage } from '../../config/firebaseConfig';
 import { firebaseStore } from './FsActionStore';
+import UploadConfirmation from '../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
 class HomeEditorStore {
     // >>>>>> FLOATING VARIABLES AND FUNCTIONS <<<<<<
 
     // --- AddMenu ---
     @observable addMenu: boolean = false;
-    
+
     @observable sortButState: string = 'list';
+
+    @observable uploadConfirmation: boolean = false;
+
+    @observable recentUpload: string = "";
 
     @action addMenuStatus() {
         this.addMenu = !this.addMenu;
     };
+
+    @action confirmUpload(type: string, upload: string) {
+        this.uploadConfirmation = true;
+        this.recentUpload = type + ": " + upload;
+    }
+
+    @action setToFalse() {
+        this.uploadConfirmation = !this.uploadConfirmation
+    }
 
     // >>>>>> ADD FILE VARIABLES AND FUNCTIONS <<<<<<
 
@@ -35,6 +49,7 @@ class HomeEditorStore {
         favorited: false,
         fileURL: "",
         name: "",
+        link: "",
         tagnames: [],
     };
 
@@ -51,12 +66,12 @@ class HomeEditorStore {
     }
 
     @action uploadNewFile(file: any) {
-        if(typeof file != 'undefined'){
-        let storageRef = storage.ref();
-        let testFilesRef = storageRef.child('Archives/' + file.name);
+        if (typeof file != 'undefined') {
+            let storageRef = storage.ref();
+            let testFilesRef = storageRef.child('Archives/' + file.name);
 
-        testFilesRef.put(file);
-        this.newFile.fileURL = testFilesRef.fullPath+"";
+            testFilesRef.put(file);
+            this.newFile.fileURL = testFilesRef.fullPath + "";
         }
     }
 
@@ -80,11 +95,62 @@ class HomeEditorStore {
         this.folderPopUpAdd = !this.folderPopUpAdd;
     };
 
+    @action addNewFolder() {
+        this.folders.push(this.newFolder);
+        db.collection("Folders").add(this.newFolder)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    }
+
+    @action clearFolder() {
+        this.newFolder = {
+            archives: [],
+            favorited: false,
+            name: "",
+            description: "",
+            tagnames: [],
+        };
+    }
+
+    // >>>>>> ADD PROJECT VARIABLES AND FUNCTIONS <<<<<<
+
+    // --- PopUp Window ---
+    @observable projectPopUpAdd: boolean = false;
+
+    @action projectPopUpAddStatus() {
+        this.projectPopUpAdd = !this.projectPopUpAdd;
+    };
+
+    @action addNewProject() {
+        this.projects.push(this.newFolder);
+        db.collection("Projects").add(this.newProject)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    }
+
+    @action clearProject() {
+        this.newProject = {
+            archives: [],
+            favorited: false,
+            name: "",
+            description: "",
+            tagnames: [],
+        };
+    }
+
     // --- Tags ---
     @observable tags: string[] = [];
 
     @action addTags(string: string) {
-        let tags = string.split(" ");
+        let tags = string.toUpperCase().split(" ");
         let tempArray = tags.filter(tag => tag.length >= 1);
         if (tempArray.length <= 3) {
             this.tags = tempArray
@@ -100,18 +166,17 @@ class HomeEditorStore {
     @action clearTags() {
         this.tags = [];
     };
-    @action clearFolder() {
-        this.newFolder = {
-            archives: [],
-            favorited: false,
-            name: "",
-            description: "",
-            tagnames: [],
-        };
-    }
 
     // --- Folder Display ---
     @observable newFolder: any = {
+        archives: [],
+        favorited: false,
+        name: "",
+        tagnames: [],
+    };
+
+    // --- Folder Display ---
+    @observable newProject: any = {
         archives: [],
         favorited: false,
         name: "",
@@ -120,28 +185,16 @@ class HomeEditorStore {
     };
 
     @observable folders: any[] = [];
-
-    @action addNewFolder() {
-        this.folders.push(this.newFolder);
-        db.collection("Folders").add(this.newFolder)
-            .then(function (docRef) {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch(function (error) {
-                console.error("Error adding document: ", error);
-            });
-    }
-
+    @observable projects: any[] = [];
 
     @observable projectArray: any = [];
     @observable folderArray: any = [];
     @observable archiveArray: any = [];
 
-    
+
     @action readProject(collection: string) {
         let ref = db.collection(collection).onSnapshot((querySnapshot) => {
             this.projectArray = []
-
             querySnapshot.forEach((doc) => {
                 let ele = {
                     name: doc.data().name,
@@ -151,13 +204,11 @@ class HomeEditorStore {
                 this.projectArray.push(ele);
             });
         });
-      
     }
 
     @action readFolder(collection: string) {
         let ref = db.collection(collection).onSnapshot((querySnapshot) => {
             this.folderArray = []
-
             querySnapshot.forEach((doc) => {
                 let ele = {
                     archives: doc.data().archives,
@@ -170,16 +221,14 @@ class HomeEditorStore {
                 this.folderArray.push(ele);
             });
         });
-      
+
     }
 
     @action readArchive(collection: string) {
 
         let ref = db.collection(collection).onSnapshot((querySnapshot) => {
             this.archiveArray = []
-
             querySnapshot.forEach((doc) => {
-
                 let ele = {
                     idFolder: doc.data().IDFolder,
                     description: doc.data().description,
@@ -193,7 +242,7 @@ class HomeEditorStore {
             });
 
         });
-      
+
     }
 
 }

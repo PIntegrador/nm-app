@@ -12,6 +12,7 @@ body {
 
     .contHome {
         display: flex;
+        flex-wrap: nowrap;
         flex-direction: row;
         justify-content: flex-start;
         align-content: flex-start;
@@ -30,7 +31,8 @@ body {
             position: relative;
 
             .scroll {
-                height: 100vh;
+                height: 90vh;
+                min-width: 100%;
                 overflow-y: scroll;
                 .homeInfo {
                     width: 100%;

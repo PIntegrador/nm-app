@@ -13,28 +13,45 @@ const LoginForm = observer(withRouter((formLoginProps) => {
     return (
         <article className="logCont">
             <div>
-                <img src="/assets/img/logo-in-white.png" alt="Logo de Vibo"/>
+                <img src="/assets/img/logo-in-white.png" alt="Logo de Vibo" />
                 <h1>Te damos la bienvenida</h1>
             </div>
-            <form onSubmit={(event) => {
+            <form onSubmit={(event:any) => {
                 event.preventDefault();
-                formLoginProps.history.push("/home")
+                authStore.login(authStore.credentials.email, authStore.credentials.password);
+                if(authStore.isLogged){
+                    console.log(authStore.isLogged);
+                    formLoginProps.history.push("/home");
+                } else {
+                    
+                }
             }
             }>
-                <input className="mail" type="email" placeholder="Correo" onChange={e => {authStore.handleInput(e.target.value, "email")} }/>
-                <input className="pass" type="password" placeholder="Escribe tu contraseña" onChange={e => {authStore.handleInput(e.target.value, "pass")} } />
-                <button id="toRegister" onClick={() => {
+                <input
+                    className="mail"
+                    type="email"
+                    placeholder="Correo"
+                    onChange={(e:any) => {
+                        authStore.credentials.email = e.target.value;
+                    }} />
+                <input
+                    className="pass"
+                    type="password"
+                    placeholder="Escribe tu contraseña"
+                    onChange={(e:any) => {
+                        authStore.credentials.password = e.target.value;
+                    }} />
+                <button
+                    id="toRegister"
+                    onClick={() => {
                         formLoginProps.history.push("/register");
                     }}
                 >No tengo una cuenta, deseo registrarme</button>
-                <button id="toLogin" type="submit" onClick={() => {
-                    authStore.login(authStore.email, authStore.password);
-                    }}
+                <button
+                    id="toLogin"
+                    type="submit"
                 >Ingresar</button>
-
-                <p>
-                Al continuar, aceptas las <a>Condiciones del servicio</a> y la <a>Política de privacidad.</a> 
-                </p>
+                <p>Al continuar, aceptas las <a>Condiciones del servicio</a> y la <a>Política de privacidad.</a></p>
             </form>
         </article>
     )

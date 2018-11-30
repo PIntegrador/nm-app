@@ -6,7 +6,7 @@ import DropZone from '../DropZone/DropZone'
 import { homeEditorStore } from '../../../../store/HomeEditorStore';
 const FilePopUp = observer(() => {
     return (
-        <section className='modalFileAdd'
+        <section className='modalFileAdd modal'
             style={{
                 display: homeEditorStore.filePopUpAdd === true ? "flex" : "none"
             }}
@@ -15,24 +15,24 @@ const FilePopUp = observer(() => {
                 <article className="exit" onClick={() => {
                     homeEditorStore.filePopUpAddStatus();
                     homeEditorStore.clearTags();
-                    const myForm:HTMLFormElement  = document.querySelector("#createFileForm");
+                    const myForm: HTMLFormElement = document.querySelector("#createFileForm");
                     myForm.reset();
-                    homeEditorStore.accepted= [];
-                    homeEditorStore.rejected= [];
+                    homeEditorStore.accepted = [];
+                    homeEditorStore.rejected = [];
                 }}><div></div><div></div></article>
                 <h1>Importar Base de Datos</h1>
                 <DropZone />
-                <form id="createFileForm" onSubmit={(e) => {
+                <form id="createFileForm" onSubmit={(e: any) => {
                     e.preventDefault();
-                    if(typeof homeEditorStore.accepted[0] != "undefined"){
+                    if (typeof homeEditorStore.accepted[0] != "undefined") {
                         homeEditorStore.newFile.tagnames = homeEditorStore.tags;
                         homeEditorStore.uploadNewFile(homeEditorStore.accepted[0]);
                         homeEditorStore.addNewFile();
                         homeEditorStore.clearFile();
                         homeEditorStore.clearTags();
                         homeEditorStore.filePopUpAddStatus();
-                        homeEditorStore.accepted= [];
-                        const myForm:HTMLFormElement  = document.querySelector("#createFolderForm");
+                        homeEditorStore.accepted = [];
+                        const myForm: HTMLFormElement = document.querySelector("#createFolderForm");
                         myForm.reset();
                     } else {
                         alert("It must be a valid file type (.csv)")
@@ -47,13 +47,19 @@ const FilePopUp = observer(() => {
                         </li>
                         <li>
                             <label>Nombre</label>
-                            <input type="text" name="nombre" placeholder="Nombre" onChange={(e)=>{
+                            <input type="text" name="nombre" placeholder="Nombre" onChange={(e: any) => {
                                 homeEditorStore.newFile.name = e.target.value;
-                            }}/>
+                            }} />
+                        </li>
+                        <li>
+                            <label>Referencia</label>
+                            <input type="link" name="link" placeholder="Link de Referencia" onChange={(e: any) => {
+                                homeEditorStore.newFile.link = e.target.value;
+                            }} />
                         </li>
                         <li>
                             <label>Descipción</label>
-                            <input type="text" name="descipcion" placeholder="Descripción de la base de datos" onChange={(e)=>{
+                            <input type="text" name="descipcion" placeholder="Descripción de la base de datos" onChange={(e: any) => {
                                 homeEditorStore.newFile.description = e.target.value;
                             }} />
                         </li>
@@ -74,7 +80,7 @@ const FilePopUp = observer(() => {
 
                             </ul>
                             <input type="text" name="etiquetas" placeholder="Etiquetas"
-                                onChange={(e) => {
+                                onChange={(e: any) => {
                                     homeEditorStore.addTags(e.target.value + " ");
                                 }}
                                 onEmptied={() => {
@@ -84,7 +90,16 @@ const FilePopUp = observer(() => {
                             <label className="tagAmount"><b>{3 - homeEditorStore.tags.length}</b>/3</label>
 
                         </li>
-                        <button type="submit">IMPORTAR</button>
+                        <button
+                            onClick={() => {
+                                // ----- TESTING ------
+                                homeEditorStore.confirmUpload("Archivo", homeEditorStore.newFile.name);
+                                function upload() {
+                                    homeEditorStore.setToFalse()
+                                }
+                                setTimeout(upload, 12000);
+                                // ----- TESTING ------
+                            }} type="submit">IMPORTAR</button>
                     </ul>
                 </form>
 

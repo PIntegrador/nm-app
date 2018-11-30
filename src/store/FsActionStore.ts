@@ -20,6 +20,7 @@ class FsActionStore {
 
     @observable folderIDFilterArchive: string = "";
 
+
     @observable favoritedArchive: boolean = false;
 
     @observable counter: number = 0;

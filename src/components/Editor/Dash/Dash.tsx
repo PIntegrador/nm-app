@@ -2,9 +2,15 @@ import * as React from 'react';
 
 import './Dash.scss';
 import '../../../../public/css/flex.scss'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { authStore } from '../../../store/AuthStore';
+import { observer } from 'mobx-react';
 
-const Dash = () => {
+interface loginFormProps {
+
+}
+
+const Dash = observer(withRouter((dashProps) => {
     return (
         <section className='dash flex-child'>
             <section className="contDash">
@@ -16,7 +22,7 @@ const Dash = () => {
                     </article>
 
                     <section className="options">
-                    
+
                         <Link to="/home">
                             <article id="home" className="row-flex">
                                 <div className="flex-child icon"></div>
@@ -30,13 +36,13 @@ const Dash = () => {
                                 <h2 className="flex-child title">Mis Archivos</h2>
                             </article>
                         </Link>
-                        
+
                         <Link to="/projects">
 
-                        <article id="proyects" className="row-flex">
-                            <div className="flex-child icon"></div>
-                            <h2 className="flex-child title">Mis Proyectos</h2>
-                        </article>
+                            <article id="proyects" className="row-flex">
+                                <div className="flex-child icon"></div>
+                                <h2 className="flex-child title">Mis Proyectos</h2>
+                            </article>
                         </Link>
 
                         <article id="asign" className="row-flex">
@@ -50,8 +56,11 @@ const Dash = () => {
                         </article>
 
                     </section>
-                    
-                    <article id="config" className="row-flex">
+
+                    <article onClick={() => {
+                        authStore.signOut();
+                        dashProps.history.push("/");
+                    }} id="config" className="row-flex">
                         <div className="flex-child icon"></div>
                         <h2 className="flex-child title">Configuración</h2>
                     </article>
@@ -61,5 +70,6 @@ const Dash = () => {
             </section>
         </section>
     )
-}
+}));
+
 export default Dash;
