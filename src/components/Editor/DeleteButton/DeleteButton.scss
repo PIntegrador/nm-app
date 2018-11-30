@@ -1,0 +1,27 @@
+@import '../../../../public/css/variables.scss';
+
+.buttonDelete{
+
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    background: #F2F2F2;
+    position: fixed;
+    top: 105px;
+    right: 115px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    transition: .2s all ease-in-out;
+    >img{
+        width: 55%;
+        height: 55%;
+        background-image: url('/img/svg/ui/delete.svg');
+    }
+    &:hover {
+        box-shadow: 1px 2px 8px 1px rgba(0,0,0,.2);
+    }
+}

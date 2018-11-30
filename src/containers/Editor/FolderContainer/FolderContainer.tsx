@@ -12,6 +12,8 @@ import { observer } from 'mobx-react';
 import SortButton from '../../../components/Editor/SortButton/SortButton';
 import { homeEditorStore } from '../../../store/HomeEditorStore';
 
+import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
+
 
 @observer export class FolderContainer extends React.Component {
 
@@ -26,6 +28,7 @@ import { homeEditorStore } from '../../../store/HomeEditorStore';
             <div className="app flex-child col-flex">
                 <Header />
                 <SortButton state= {homeEditorStore.sortButState} />
+                <DeleteButton />
                 <section className="scroll">
                     <FileView folders={arrayFolders} />
                 </section>

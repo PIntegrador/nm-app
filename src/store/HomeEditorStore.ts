@@ -96,14 +96,17 @@ class HomeEditorStore {
     };
 
     @action addNewFolder() {
-        this.folders.push(this.newFolder);
         db.collection("Folders").add(this.newFolder)
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
+
+                this.newFolder.id = docRef.id;
+
+                this.folders.push(this.newFolder);
             })
             .catch(function (error) {
                 console.error("Error adding document: ", error);
-            });
+        });
     }
 
     @action clearFolder() {
@@ -113,6 +116,7 @@ class HomeEditorStore {
             name: "",
             description: "",
             tagnames: [],
+            id: ""
         };
     }
 
