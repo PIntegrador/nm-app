@@ -29,9 +29,28 @@ body {
             flex-wrap: nowrap;
             position: relative;
 
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-content: flex-start;
+            align-items: center;
+
+            height: 100vh;
+
             .scroll {
-                height: 100vh;
-                overflow-y: scroll;
+                width: 100%;
+                overflow-y: auto;
+
+                height: auto;
+
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-content: stretch;
+                align-items: center;
+
                 .homeInfo {
                     width: 100%;
                     min-height: fit-content;
