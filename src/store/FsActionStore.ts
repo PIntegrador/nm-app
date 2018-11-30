@@ -23,7 +23,6 @@ class FsActionStore {
     
     @observable actualProject: any = {};
 
-
     @observable favoritedArchive: boolean = false;
 
     @observable counter: number = 0;
@@ -153,8 +152,7 @@ class FsActionStore {
     //in order to make the filter works with the archives of each folder, not all the db
 
     @action filterNameArchive() {
-        let tempfolderArchives = this.arrayArchive;
-        //this.arrayArchive = this.arrayArchiveBackUp;
+        this.arrayArchive = this.arrayArchiveBackUp;
         if (this.nameFilterArchive != '') {
             if (this.arrayArchive.some((e: any) => {
                 return e.name.toLowerCase().indexOf(this.nameFilter.toLowerCase());
@@ -167,11 +165,8 @@ class FsActionStore {
                 })
             } else {
                 console.log("This is not filtering");
-                this.arrayArchive = tempfolderArchives;
+                this.arrayArchive = this.arrayArchiveBackUp;
             }
-        } else {
-            this.arrayArchive = tempfolderArchives;
- 
         }
         
 

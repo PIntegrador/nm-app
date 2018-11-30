@@ -31,7 +31,6 @@ interface ArchiveViewProps {
                 {(homeEditorStore.sortButState == 'list')?<SortBarArchive />:""}
                 <div className="flex-child  row-flex moduleCont">
                     <p></p>
-
                     {
                         (this.props.archives != null) ? (
                             this.props.archives.map((elem: any) => {
