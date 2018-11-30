@@ -27,7 +27,7 @@ interface ArchiveViewProps {
 
         return (
             <div className="contArchive">
-                <RouteBar folderName={this.props.folderName} />
+                <RouteBar mainTitle="Mis Archivos" folderName={this.props.folderName} />
                 {(homeEditorStore.sortButState == 'list')?<SortBarArchive />:""}
                 <div className="flex-child  row-flex moduleCont">
                     <p></p>
