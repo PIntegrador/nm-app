@@ -22,14 +22,14 @@ const Searchbar = () => {
                     firebaseStore.filterNameArchive();
                 }}>
 
+            <input placeholder="Buscar en VIBO" id="inputBuscar" type="text" onChange={ (e:
+                any)=> {
+            e.preventDefault();
+            firebaseStore.handleNameFilter(e.target.value);
+            firebaseStore.handleNameArchive(e.target.value);
+            }
+            } />
 
-                <input placeholder="Buscar en Vibo" id="inputBuscar" type="text" onChange={(e:
-                    any) => {
-                    e.preventDefault();
-                    firebaseStore.handleNameFilter(e.target.value);
-                    firebaseStore.handleNameArchive(e.target.value);
-                }
-                } />
 
             </form>
 

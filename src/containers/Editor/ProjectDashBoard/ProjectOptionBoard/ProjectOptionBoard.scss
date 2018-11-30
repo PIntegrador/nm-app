@@ -1,0 +1,119 @@
+@import '../../../../../public/css/variables.scss';
+
+.projectBoardComponent {
+    background: #F2F4F6;
+
+    flex-grow: 2;
+    height: -moz-available;          
+    height: -webkit-fill-available; 
+    height: fill-available;
+    width: -moz-available;          
+    width: -webkit-fill-available; 
+    width: fill-available;
+
+.taskSuperContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    .tasksContainer {
+        width: 320px;
+        background: white;
+        box-shadow: 4px 4px 25px rgba(57, 57, 57, 0.12);
+        border-radius: 9px;
+        position: relative;
+        margin: 25px;
+        .title {
+            font-family: $fontText;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 15px;
+            padding: 32px 0 20px 0;
+
+        }
+        .tasks {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            .task {
+
+            width: 90%;
+            background: #F6F8F9;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            padding: 12px;
+                p {
+                    font-family: $fontText;
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: #666666;
+
+                }
+                .lowerBarContainer {
+                    margin-top: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .colaborators {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        .colaborator {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 10px;
+                        background: #10BFE6;
+                        margin-right: 5px;
+
+                        }
+                    }
+                    .buttons {
+                        .icon {
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 10px;
+                            background: gray;
+                        }
+                    }
+                }
+            }
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 12px;
+            top: 0;
+            border-radius: 12px 12px 0 0 ;
+        }
+    }
+    .toDoContainer {
+        .title {
+            color: #F66880;
+        }
+        &:after {
+            background: #F66880;
+        }
+    }
+    .doingContainer {
+        .title {
+            color: #FDC741;
+        }
+        &:after {
+            background: #FDC741;
+        }
+    }
+    .doneContainer {
+        .title {
+            color: #10E6C5;
+        }
+        &:after {
+            background: #10E6C5;
+        }
+    }
+
+}
+
+}
