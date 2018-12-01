@@ -9,7 +9,7 @@ const DeleteButton = observer(() => {
     this.onDragOver = (ev:any) => {
         ev.preventDefault();
     }
-
+    
     this.onDrop = (ev:any) => {
         ev.preventDefault();
         moduleStore.deleteFolderByID();

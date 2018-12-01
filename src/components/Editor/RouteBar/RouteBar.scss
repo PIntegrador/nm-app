@@ -18,14 +18,15 @@
         color: $fontColor;
         font-size: $fontsizeTwo;
         font-weight: bold;
+        margin-right: 15px; 
         cursor: pointer;
     }
 
     >h4 {
+        margin-right: 15px; 
         font-family: $fontText;
         font-weight: bold;
         color: $fondoGrisOscuto;
-        /*margin-right: 15px;*/
         cursor: pointer;
     }
 }

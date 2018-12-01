@@ -8,6 +8,8 @@ class ModuleStore {
 
     @observable idTemp: string = "";
 
+    //idTempo is the id of the dragged element
+
     @action deleteFileByID() {
         if (this.idTemp != '') {
             let refArchive = db.collection("Archives").doc(this.idTemp);
@@ -15,6 +17,7 @@ class ModuleStore {
             refArchive.delete().then(function () {
                 console.log("Document successfully deleted!");
                 this.idTemp = "";
+                return;
             }).catch(function (error) {
                 console.error("Error removing document: ", error);
             });
@@ -34,6 +37,7 @@ class ModuleStore {
             refArchive.delete().then(function () {
                 console.log("Document successfully deleted!");
                 this.idTemp = "";
+                return;
             }).catch(function (error) {
                 console.error("Error removing document: ", error);
             });
