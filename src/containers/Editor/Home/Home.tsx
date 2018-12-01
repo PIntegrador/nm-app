@@ -53,15 +53,13 @@ interface HomeProps {
             <div className="app flex-child col-flex">
                 <Header user={firebaseStore.userInfo.email}/>
                 <FloatingButton />
-                <SortButton state={addStore.sortButState}/>
+                <SortButton state={homeEditorStore.sortButState}/>
                 <AddMenu />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
-                        {firebaseStore.listAllArchives.map((e:any) => {
-                            return <p>{e.name} es tipo {e.type} tags {(e.tagnames)}</p>
-                        })}
+                      
                         <Link to="/projects">
                             <div className="titleContainer">
                             <div className="ico">
@@ -106,9 +104,10 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                [].map((elem: any) => {
+                                firebaseStore.listAllArchives.map((elem: any) => {
+                                    if(elem.type == 'folder') 
                                     return (
-                                        <Module key={elem.id} gridStyle='' type='folder' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
 
                                     )
                                 })
@@ -132,8 +131,9 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                [].map((elem: any) => {
-                                    return (<Module key={elem.id} gridStyle={''} type='file' name={elem.name} numFiles={0} id={elem.id} />
+                                firebaseStore.listAllArchives.map((elem: any) => {
+                                    if(elem.type == 'file') 
+                                    return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 })
                             }
