@@ -2,6 +2,7 @@
 import { observable, action, computed, extendObservable } from 'mobx';
 import db from '../../config/firebaseConfig';
 import { readFileSync } from 'fs';
+import { Children } from 'react';
 
 class FsActionStore {
     constructor() {
@@ -67,12 +68,21 @@ class FsActionStore {
         let temp:any = []
 
         dbRef.onSnapshot((querySnapshot:any) => {
-            this.listAllArchives = []
             querySnapshot.forEach((doc:any) => {
                 this.userArchivesID.map( (e:any) => {
+                    this.listAllArchives = []
+
                     if(doc.data().id == e){
                         let ele  = {
-                            name: doc.data().name
+                            name: doc.data().name,
+                            type: doc.data().type,
+                            id: doc.data().id,
+                            parent: doc.data().parent,
+                            size: doc.data().size,
+                            sourceURL: doc.data().sourceURL,
+                            fileURL: doc.data().fileURL,
+                            tagnames: doc.data().tagnames,
+                            children: doc.data().children,
                         }
                          temp.push(ele);
                         
