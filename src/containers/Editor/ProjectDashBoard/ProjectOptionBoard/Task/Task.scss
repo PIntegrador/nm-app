@@ -1,0 +1,23 @@
+.task {
+    .lowerBarContainer{
+
+        .buttons {
+            background: red;
+
+        }
+        button {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+
+            .icon {
+                background: white;
+                svg {
+                    fill:  #43484D;
+                }
+            }
+        }
+    }
+}
