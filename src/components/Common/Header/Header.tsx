@@ -8,9 +8,10 @@ interface HeaderProps {
 
     img?: string;
     fav?: string;
+    user: string;
 }
 
-const Header = ({ img, fav }: HeaderProps) => {
+const Header = ({ img, fav, user }: HeaderProps) => {
 
     return (
         <section className="headerbar flex-child">
@@ -22,7 +23,7 @@ const Header = ({ img, fav }: HeaderProps) => {
                 </div>
 
                 <div className="rightSide">
-                    <ProfileMenu />
+                    <ProfileMenu mail = {user}/>
                 </div>
             </section>
 

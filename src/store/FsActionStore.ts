@@ -10,13 +10,16 @@ class FsActionStore {
     /* the main idea is to make this store more easy to understand, 
     in orther to make it works, lets try to make the title oh the variables more intuitive */
 
-    @observable listAllArchives: any[] = null;
+    @observable listAllArchives: any = [];
 
-    @observable userDataBase: any = null;
+    @observable userInfo: any = {};
 
     @observable uidActual: string = "";
 
-    @observable listActual: any[] = [];
+    @observable listActual: any = [];
+
+    @observable userArchivesID: any = [];
+    @observable userArchives: any = [];
 
     /* This method search the document of the user in the database by the uid of the auth store,
     we need to know the id of the documents that the user have in the db */
@@ -25,54 +28,70 @@ class FsActionStore {
 
         let usersRef = db.collection("NewUsers");
 
-        let userTemp: any = [];
+        usersRef.doc(this.uidActual).onSnapshot((querySnapshot:any) => {
+            this.userInfo = {}
+            let tempUser= {
+                name: querySnapshot.data().name,
+                uid: querySnapshot.data().uid,
+                email: querySnapshot.data().email,
+                rol: querySnapshot.data().rol,
+                archives: querySnapshot.data().Archives,
+                projects: querySnapshot.data().Projects
+            }
+            let tempid = querySnapshot.data().id
+            this.userArchivesID = querySnapshot.data().Archives;
 
-        usersRef.get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                console.log(doc.data().name);
-
-                userTemp.push(doc.data());
-            });
-
-            const arrayResult = userTemp.filter((e:any) => e.uid == this.uidActual);
-
-            console.log(arrayResult[0]);
-
-            this.userDataBase = arrayResult;
+            this.userInfo = tempUser
+            this.readFiles();
+            /*
+            Aqui logro traer el arreglo pero solo filtrando sin variable :(
+            -----------------
+            let query = usersRef.where('Archives', 'array-contains', '9mmFr2Vu1N4KqQCFjkRM')
+            query.get().then((snapshot:any) => {
+                snapshot.docs.forEach( (ar:any) => {
+                    console.log(ar.id, ar.data())
+                    this.userInfo = ar.data();
+                    this.userArchives = this.userInfo.Archives;
+                    console.log(this.userArchives, 'asdfasdfalsdjbcasdjcbaosdcns')
+                })
+            })*/
         });
+       
 
-        /*
-        usersRef.where("uid", "==", uid).onSnapshot(function (querySnapshot) {
-
-            querySnapshot.forEach(function (doc) {
-
-                this.userDataBase = null;
-
-                console.log("Nombre del usuario encontrado: " + doc.data().name);
-
-                this.userDataBase = {
-                    name: doc.data().name,
-                    uid: doc.data().uid,
-                    email: doc.data().email,
-                    rol: doc.data().rol,
-                    archives: doc.data().Archives,
-                    projects: doc.data().Projects
-                }
-
-                console.log("Datos usuario actual: " + doc.data().name);
-            });
-        });*/
 
     }
 
+    //GET ALL FILES
     @action readFiles(){
         let dbRef = db.collection('NewArchives');
+        let temp:any = []
 
-        dbRef.get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                console.log(doc.id, " => ", doc.data());
+        dbRef.onSnapshot((querySnapshot:any) => {
+            this.listAllArchives = []
+            querySnapshot.forEach((doc:any) => {
+                this.userArchivesID.map( (e:any) => {
+                    if(doc.data().id == e){
+                        let ele  = {
+                            name: doc.data().name
+                        }
+                         temp.push(ele);
+                        
+                    } else {
+
+                    }
+                    return temp
+                })
+                console.log(temp, 'LOOP')
+
             });
+            this.listAllArchives = temp
         });
+
+    }
+
+
+    @action getFolders() {
+
     }
 
 

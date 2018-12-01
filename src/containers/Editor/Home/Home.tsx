@@ -34,29 +34,26 @@ interface HomeProps {
     constructor(props: any) {
         super(props);
 
-        /*
-        if(authStore.user != null){
-            let uid = authStore.user.uid;
-
-            firebaseStore.uidActual = uid;
-
-            firebaseStore.userDataBase = firebaseStore.readInfoUser();
-        }*/
-
         if(!authStore.isLogged){
             props.history.push ("/");
+        } else {
+            let uid = authStore.user.uid;
+            firebaseStore.uidActual = uid;
+            console.log(firebaseStore.uidActual,' userid')
+            firebaseStore.readInfoUser();
+            firebaseStore.readFiles();
+
         }
     }
 
     render() {
-        
-       
+        console.log(firebaseStore.userInfo.email, 'email');
         return <div className="contHome row-flex">
 
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header />
+                <Header user={firebaseStore.userInfo.email}/>
                 <FloatingButton />
                 <SortButton state={addStore.sortButState}/>
                 <AddMenu />
@@ -64,6 +61,9 @@ interface HomeProps {
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
+                        {firebaseStore.listAllArchives.map((e:any) => {
+                            return <p>{e.name}</p>
+                        })}
                         <Link to="/projects">
                             <div className="titleContainer">
                             <div className="ico">

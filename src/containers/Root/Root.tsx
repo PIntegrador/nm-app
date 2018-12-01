@@ -5,22 +5,30 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Home }  from '../Editor/Home/Home';
 import { FolderContainer } from '../Editor/FolderContainer/FolderContainer';
 import { ArchiveContainer } from '../Editor/ArchiveContainer/ArchiveContainer';
-import { firebaseStore } from '../../../src/store/FsActionStore';
 import { authStore } from '../../../src/store/AuthStore';
 import { homeEditorStore } from '../../../src/store/HomeEditorStore';
 import Register from '../Register/Register';
 import { Login } from '../Login/Login';
 import { ProjectContainer } from '../Editor/ProjectContainer/ProjectContainer';
 import { ProjectDashBoard } from '../Editor/ProjectDashBoard/ProjectDashBoard';
+import { firebaseStore } from '../../store/FsActionStore';
 
 
 export class Root extends React.Component {
     constructor(props:any){
         super(props);
         //
-        authStore.signOut();
+        firebaseStore.readFiles();
+        if(!authStore.isLogged){
+        } else {
+            let uid = authStore.user.uid;
+            firebaseStore.uidActual = uid;
+            console.log(firebaseStore.uidActual,' userid')
+            firebaseStore.readInfoUser();
+        }
 
     }
+
 
     render(){
         return (

@@ -4,15 +4,15 @@ import { firebaseStore } from '../../../store/FsActionStore';
 import { authStore } from '../../../store/AuthStore';
 
 interface ProfileMenuProps {
-
+    mail: string
 }
 
-const ProfileMenu = ({}: ProfileMenuProps) => {
+const ProfileMenu = ({mail}: ProfileMenuProps) => {
     return (
        <section className="profileMenu">
        
        <div className="profileImg"></div>
-       <h3 className="profileName">{authStore.credentials.email}</h3>
+       <h3 className="profileName">{mail}</h3>
        <div className="profileDropDown"></div>
 
        </section>
