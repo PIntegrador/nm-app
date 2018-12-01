@@ -8,19 +8,39 @@
     width: -moz-available;
     width: -webkit-fill-available;
     width: fill-available;
+    overflow: auto;
+    padding: 25px;
     .taskSuperContainer {
         display: block;
         text-align: center;
+        .addTask {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            p {
+                width: 360px;
+                background: #FFFFFF;
+                box-shadow: 4px 4px 25px rgba(57, 57, 57, 0.12);
+                border-radius: 7px;
+                text-align: left;
+                padding: 10px 20px;
+                font-family: $fontText;
+                font-weight: normal;
+                font-size: 15px;
+                color: #666666;
+                cursor: pointer;
+            }
+        }
         .tasksContainer {
             width: 320px;
             background: white;
             box-shadow: 4px 4px 25px rgba(57, 57, 57, 0.12);
             border-radius: 9px;
             position: relative;
-            margin:  25px 25px  0 25px;
+            margin: 25px 25px 0 25px;
             display: inline-block;
             text-align: left;
-
             .title {
                 font-family: $fontText;
                 font-size: 16px;
@@ -55,8 +75,6 @@
                         position: absolute;
                         top: 0;
                         right: 0;
-
-
                     }
                     .lowerBarContainer {
                         margin-top: 10px;
@@ -79,7 +97,6 @@
                                 align-items: center;
                                 justify-content: center;
                                 cursor: pointer;
-
                                 .icon {
                                     width: 10px;
                                     height: 10px;
@@ -104,7 +121,6 @@
                                 border-radius: 10px;
                                 background: transparent;
                                 cursor: pointer;
-
                                 svg {
                                     path {
                                         fill: #666666;
