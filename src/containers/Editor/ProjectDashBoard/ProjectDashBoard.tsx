@@ -40,8 +40,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                 <Header />
                 <ProjectMenu /> 
                 <ProjectOptionBoard />
-                <div className="div">
-                asdhfasdf</div>
+
             </div>
 
         </div>
