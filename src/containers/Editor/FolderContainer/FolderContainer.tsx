@@ -19,18 +19,17 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 
     render() {
 
-        let arrayFolders = firebaseStore.arrayFolders;
 
         return <div className="contHome row-flex">
             <Dash />
 
 
             <div className="app flex-child col-flex">
-                <Header />
-                <SortButton state= {homeEditorStore.sortButState} />
+                <Header user={firebaseStore.userInfo.email}/>
+                <SortButton state= '' />
                 <DeleteButton />
                 <section className="scroll">
-                    <FileView folders={arrayFolders} />
+                    <FileView folders={[]} />
                 </section>
             </div>
 

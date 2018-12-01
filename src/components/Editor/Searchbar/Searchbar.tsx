@@ -13,20 +13,20 @@ const Searchbar = () => {
         <div className="searchBar">
             <form onSubmit={(e) => {
                 e.preventDefault();
-                firebaseStore.filterName();
-                firebaseStore.filterNameArchive();
+           //     firebaseStore.filterName();
+             //   firebaseStore.filterNameArchive();
             }}
                 onChange={(e) => {
                     e.preventDefault();
-                    firebaseStore.filterName();
-                    firebaseStore.filterNameArchive();
+               //     firebaseStore.filterName();
+                 //   firebaseStore.filterNameArchive();
                 }}>
 
             <input placeholder="Buscar en VIBO" id="inputBuscar" type="text" onChange={ (e:
                 any)=> {
             e.preventDefault();
-            firebaseStore.handleNameFilter(e.target.value);
-            firebaseStore.handleNameArchive(e.target.value);
+           // firebaseStore.handleNameFilter(e.target.value);
+            //firebaseStore.handleNameArchive(e.target.value);
             }
             } />
 

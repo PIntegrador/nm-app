@@ -20,15 +20,15 @@ import { Link } from 'react-router-dom';
 
     render() {
 
-        let arrayArchives = firebaseStore.arrayArchive;
+        let arrayArchives = [];
 
         return <div className="contHome row-flex">
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header />
+            <Header user={firebaseStore.userInfo.email}/>
 
-                <SortButton state={homeEditorStore.sortButState} />
+                <SortButton state={''} />
 
                 <section className="scroll">
                 <section className="col-flex projectContainer">
@@ -40,9 +40,9 @@ import { Link } from 'react-router-dom';
                         
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                homeEditorStore.projectArray.map((elem: any) => {
+                                [].map((elem: any) => {
                                     return (
-                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle={''} type='project' name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 })
                             }

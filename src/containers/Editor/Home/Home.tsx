@@ -24,6 +24,7 @@ import ProjectPopUp from '../../../components/Editor/AddProject/AddProject';
 import AddProject from '../../../components/Editor/AddProject/AddProject';
 import { authStore } from '../../../store/AuthStore';
 import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
+import { addStore } from '../../../store/AddDataStore';
 
 interface HomeProps {
     history : any
@@ -32,30 +33,33 @@ interface HomeProps {
 @observer export class Home extends React.Component <HomeProps> {
     constructor(props: any) {
         super(props);
-        //
-        homeEditorStore.readProject('Projects');
-        homeEditorStore.readFolder('Folders');
-        homeEditorStore.readArchive('Archives');
 
         if(!authStore.isLogged){
             props.history.push ("/");
+        } else {
+            let uid = authStore.user.uid;
+            firebaseStore.uidActual = uid;
+            console.log(firebaseStore.uidActual,' userid')
+            firebaseStore.readInfoUser();
         }
     }
 
     render() {
+        console.log(firebaseStore.userInfo.email, 'email');
         return <div className="contHome row-flex">
 
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header />
+                <Header user={firebaseStore.userInfo.email}/>
                 <FloatingButton />
-                <SortButton state= {homeEditorStore.sortButState} />
+                <SortButton state={homeEditorStore.sortButState}/>
                 <AddMenu />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
+                      
                         <Link to="/projects">
                             <div className="titleContainer">
                             <div className="ico">
@@ -75,9 +79,9 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                homeEditorStore.projectArray.map((elem: any) => {
+                                [].map((elem: any) => {
                                     return (
-                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle='' type='project' name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 })
                             }
@@ -100,7 +104,8 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                homeEditorStore.folderArray.map((elem: any) => {
+                                firebaseStore.listAllArchives.map((elem: any) => {
+                                    if(elem.type == 'folder') 
                                     return (
                                         <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
 
@@ -126,7 +131,8 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                homeEditorStore.archiveArray.map((elem: any) => {
+                                firebaseStore.listAllArchives.map((elem: any) => {
+                                    if(elem.type == 'file') 
                                     return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 })
@@ -143,6 +149,7 @@ interface HomeProps {
             <FilePopUp />
             <AddProject />
             <UploadConfirmation />
+           
 
         </div>
     }

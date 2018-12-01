@@ -22,7 +22,7 @@ let orderTipe: boolean;
         orderUp = true;
         orderTipe = true;
         //the default value is order by name
-        firebaseStore.sortArchivesByName(orderName);
+      //  firebaseStore.sortArchivesByName(orderName);
     }
 
     getIconName() {
@@ -79,7 +79,7 @@ let orderTipe: boolean;
                     <h4 className="SortArchiveName hvr-icon-pulse" onClick={(e) => {
                         e.preventDefault();
                         orderName = !orderName;
-                        firebaseStore.sortArchivesByName(orderName);
+                 //       firebaseStore.sortArchivesByName(orderName);
                     }}>Nombre
                     
                     <img src={this.getIconName()} className="hvr-icon" />
@@ -89,7 +89,7 @@ let orderTipe: boolean;
                         e.preventDefault();
                        
                         orderSize = !orderSize;
-                        firebaseStore.sortArchivesBySize(orderSize);
+                  //      firebaseStore.sortArchivesBySize(orderSize);
                     }}>Tamaño
                     <img src={this.getIconSize()} className="hvr-icon" />
                     </h4>

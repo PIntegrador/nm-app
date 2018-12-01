@@ -3,35 +3,35 @@ import './FilePopUp.scss';
 import { observer } from 'mobx-react';
 import DropZone from '../DropZone/DropZone'
 
-import { homeEditorStore } from '../../../../store/HomeEditorStore';
+import { addStore } from '../../../../store/AddDataStore';
 const FilePopUp = observer(() => {
     return (
         <section className='modalFileAdd modal'
             style={{
-                display: homeEditorStore.filePopUpAdd === true ? "flex" : "none"
+               display: addStore.filePopUpAdd === true ? "flex" : "none"
             }}
         >
             <article className="popUp">
                 <article className="exit" onClick={() => {
-                    homeEditorStore.filePopUpAddStatus();
-                    homeEditorStore.clearTags();
+                   addStore.filePopUpAddStatus();
+                    addStore.clearTags();
                     const myForm: HTMLFormElement = document.querySelector("#createFileForm");
                     myForm.reset();
-                    homeEditorStore.accepted = [];
-                    homeEditorStore.rejected = [];
+                    addStore.accepted = [];
+                    addStore.rejected = [];
                 }}><div></div><div></div></article>
                 <h1>Importar Base de Datos</h1>
                 <DropZone />
                 <form id="createFileForm" onSubmit={(e: any) => {
                     e.preventDefault();
-                    if (typeof homeEditorStore.accepted[0] != "undefined") {
-                        homeEditorStore.newFile.tagnames = homeEditorStore.tags;
-                        homeEditorStore.uploadNewFile(homeEditorStore.accepted[0]);
-                        homeEditorStore.addNewFile();
-                        homeEditorStore.clearFile();
-                        homeEditorStore.clearTags();
-                        homeEditorStore.filePopUpAddStatus();
-                        homeEditorStore.accepted = [];
+                    if (typeof addStore.accepted[0] != "undefined") {
+                        addStore.newFile.tagnames = addStore.tags;
+                        addStore.uploadNewFile(addStore.accepted[0]);
+                        addStore.addNewFile();
+                        addStore.clearFile();
+                        addStore.clearTags();
+                        addStore.filePopUpAddStatus();
+                        addStore.accepted = [];
                         const myForm: HTMLFormElement = document.querySelector("#createFolderForm");
                         myForm.reset();
                     } else {
@@ -42,60 +42,63 @@ const FilePopUp = observer(() => {
                         <li>
                             <label>Archivo</label>
                             <input type="text" name="archivo" placeholder="Archivo.csv" value={
-                                (typeof homeEditorStore.accepted[0] != 'undefined') ? homeEditorStore.accepted[0].name : ""} disabled />
+                                (typeof addStore.accepted[0] != 'undefined') ? addStore.accepted[0].name : ""
+                                } disabled />
                             <button disabled >Subir Archivo</button>
                         </li>
                         <li>
                             <label>Nombre</label>
                             <input type="text" name="nombre" placeholder="Nombre" onChange={(e: any) => {
-                                homeEditorStore.newFile.name = e.target.value;
+                                addStore.newFile.name = e.target.value;
                             }} />
                         </li>
                         <li>
                             <label>Referencia</label>
                             <input type="link" name="link" placeholder="Link de Referencia" onChange={(e: any) => {
-                                homeEditorStore.newFile.link = e.target.value;
+                               addStore.newFile.link = e.target.value;
                             }} />
                         </li>
                         <li>
                             <label>Descipción</label>
                             <input type="text" name="descipcion" placeholder="Descripción de la base de datos" onChange={(e: any) => {
-                                homeEditorStore.newFile.description = e.target.value;
+                               addStore.newFile.description = e.target.value;
                             }} />
                         </li>
                         <li className="tags">
                             <label>Etiquetas</label>
                             <ul>
-                                {homeEditorStore.tags.map((elem: any, index: number) =>
+                                {addStore.tags.map((elem: any, index: number) =>
                                     <li key={elem} style={{
                                         display: elem.length >= 1 ? "flex" : "none"
                                     }}>
                                         <span>{elem}</span>
                                         <p onClick={() => {
-                                            homeEditorStore.eliminateTag(elem);
+                                            addStore.eliminateTag(elem);
                                             console.log(elem);
                                         }}>×</p>
                                     </li>
-                                )}
+                                ) }
 
                             </ul>
                             <input type="text" name="etiquetas" placeholder="Etiquetas"
                                 onChange={(e: any) => {
-                                    homeEditorStore.addTags(e.target.value + " ");
+                                   addStore.addTags(e.target.value + " ");
                                 }}
                                 onEmptied={() => {
-                                    homeEditorStore.clearTags();
+                                    addStore.clearTags();
                                 }}
                             />
-                            <label className="tagAmount"><b>{3 - homeEditorStore.tags.length}</b>/3</label>
+                            <label className="tagAmount"><b>{
+                               3 - addStore.tags.length
+                            }</b>/3</label>
 
                         </li>
                         <button
                             onClick={() => {
                                 // ----- TESTING ------
-                                homeEditorStore.confirmUpload("Archivo", homeEditorStore.newFile.name);
+                                addStore.confirmUpload("Archivo", addStore.newFile.name);
                                 function upload() {
-                                    homeEditorStore.setToFalse()
+                                    addStore.setToFalse()
                                 }
                                 setTimeout(upload, 12000);
                                 // ----- TESTING ------

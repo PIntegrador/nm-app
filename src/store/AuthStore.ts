@@ -7,7 +7,30 @@ interface authProps {
 }
 
 class AuthStore {
+    @observable user: any = null;
+    @observable error: any = null;
+    @observable isError: boolean = false;
+    @observable isNewUSer: boolean = false;
+    @observable isLogged: boolean = false;
+
+
+    @observable credentials = {
+        email: "",
+        password: "",
+        rol: "",
+    }
+    @observable newUser = {
+        email: "",
+        rol: "",
+        profilePicture: "",
+        uid: "",
+    }
     constructor() {
+        this.setIsLogged = this.setIsLogged.bind(this)
+    }
+
+
+    @action verifyuser() {
         auth.onAuthStateChanged((receivedUser) => {
             if (receivedUser) {
                 this.user = receivedUser;
@@ -21,24 +44,6 @@ class AuthStore {
                 this.isLogged = false;
             }
         });
-    }
-
-    @observable user: any = null;
-    @observable error: any = null;
-    @observable isError: boolean = false;
-    @observable isNewUSer: boolean = false;
-    @observable isLogged: boolean = false;
-
-    @observable credentials = {
-        email: "",
-        password: "",
-        rol: "",
-    }
-    @observable newUser = {
-        email: "",
-        rol: "",
-        profilePicture: "",
-        uid: "",
     }
 
     @action register(email: string, password: string, rol: string) {
@@ -65,6 +70,7 @@ class AuthStore {
         this.isLogged = value;
         console.log(this.isLogged);
     }
+
     @action login(email: string, password: string) {
         let logged = false;
         auth.signInWithEmailAndPassword(email, password)
@@ -72,6 +78,7 @@ class AuthStore {
                 let errorCode = error.code;
                 let errorMessage = error.message;
                 logged = false;
+                this.setIsLogged(false)
                 alert(errorMessage);
             });
         history.go(1);
@@ -90,7 +97,7 @@ class AuthStore {
             let img = user.email.split("@");
             this.newUser.profilePicture = img[0] + ".jpg";
             console.log("agregando usuario:")
-            db.collection("Users").add(this.newUser);
+            db.collection("NewUsers").doc(user.uid).set(this.newUser);
             console.log(this.newUser.email)
         }
     }

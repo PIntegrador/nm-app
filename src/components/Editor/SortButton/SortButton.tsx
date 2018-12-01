@@ -11,7 +11,7 @@ interface SortButtonProps {
 const SortButton = observer(( { state }: SortButtonProps) => {
     return (
         <article className="SortButton" onClick={() => {
-            state == 'list' ? homeEditorStore.sortButState = 'grid' : homeEditorStore.sortButState = 'list'
+           state == 'list' ? homeEditorStore.sortButState = 'grid' : homeEditorStore.sortButState = 'list'
         }}>
         {state== 'list' ? <div className="list" /> : <div className="grid" />}
         </article>

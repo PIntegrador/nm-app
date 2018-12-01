@@ -4,12 +4,14 @@ import { withRouter } from 'react-router';
 
 import './LoginForm.scss';
 import { authStore } from '../../../store/AuthStore';
+import { firebaseStore } from '../../../store/FsActionStore';
 
 interface loginFormProps {
 
 }
 
 const LoginForm = observer(withRouter((formLoginProps) => {
+
     return (
         <article className="logCont">
             <div>
@@ -20,8 +22,9 @@ const LoginForm = observer(withRouter((formLoginProps) => {
                 event.preventDefault();
                 authStore.login(authStore.credentials.email, authStore.credentials.password);
                 if(authStore.isLogged){
-                    console.log(authStore.isLogged);
+                    console.log(authStore.isLogged, 'islogged');
                     formLoginProps.history.push("/home");
+                    firebaseStore.readInfoUser();
                 } else {
                     
                 }
