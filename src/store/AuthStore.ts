@@ -65,6 +65,7 @@ class AuthStore {
         this.isLogged = value;
         console.log(this.isLogged);
     }
+    
     @action login(email: string, password: string) {
         let logged = false;
         auth.signInWithEmailAndPassword(email, password)

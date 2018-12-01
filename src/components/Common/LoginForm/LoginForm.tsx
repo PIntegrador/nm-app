@@ -10,6 +10,7 @@ interface loginFormProps {
 }
 
 const LoginForm = observer(withRouter((formLoginProps) => {
+
     return (
         <article className="logCont">
             <div>

@@ -14,12 +14,16 @@ interface LoginProps {
 
     constructor(props: any) {
         super(props);
-        if(authStore.isLogged){
-            props.history.push ("/home");
-        }
+
+        authStore.login("san.or.gue@gmail.com", "santy0630");
+
+        
     }
 
     render() {
+        if(authStore.isLogged){
+            this.props.history.push ("/home");
+        }
         return (
             <section className="formC"> 
                 <LoginForm/>
