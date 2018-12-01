@@ -104,13 +104,14 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                firebaseStore.listAllArchives.map((elem: any) => {
+                                  (firebaseStore.userInfo.archives != null) ?
+                                  firebaseStore.userInfo.archives.map((elem: any) => {
                                     if(elem.type == 'folder') 
                                     return (
                                         <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
 
                                     )
-                                })
+                                }) : ''
                             }
                         </div>
 
@@ -131,12 +132,15 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                firebaseStore.listAllArchives.map((elem: any) => {
+                                (firebaseStore.userInfo.archives != null) ?
+                                firebaseStore.userInfo.archives.map((elem: any) => {
                                     if(elem.type == 'file') 
                                     return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
                                     )
-                                })
-                            }
+                                }) : ''
+                             
+                            } <p></p>
+                              
                         </div>
 
                     </section>

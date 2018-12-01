@@ -64,10 +64,14 @@ class FsActionStore {
     @action readFiles(){
         let dbRef = db.collection('NewArchives');
         let temp:any = []
+        let temptags:any = []
+        let tempChildren:any = []
 
         dbRef.onSnapshot((querySnapshot:any) => {
             this.listAllArchives = []
             temp = []
+            temptags =[]
+            tempChildren = []
             querySnapshot.forEach((doc:any) => {
                 this.userArchivesID.map( (e:any) => {
                     this.listAllArchives = []
@@ -85,16 +89,17 @@ class FsActionStore {
                             children: doc.data().children,
                         }
                          temp.push(ele);
-                        
-                    } else {
-
-                    }
+                         temptags =  doc.data().tagnames;
+                         tempChildren = doc.data().children;
+                    } 
                     return temp
                 })
-                console.log(temp, 'LOOP')
 
             });
-            this.listAllArchives = temp
+            this.listAllArchives = temp;
+            this.userInfo.archives = this.listAllArchives;
+            this.userInfo.tagnames = temptags;
+            this.userInfo.children = tempChildren;
         });
 
     }
