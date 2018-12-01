@@ -32,8 +32,18 @@ import { ProjectComment } from '../ProjectComment/ProjectComment';
             return null;
         } else if (option == 'tareas') {
             return (
+
                 <div className="taskSuperContainer">
                     {/*doingContainer doneContainer*/}
+                    <div className="addTask" onClick={
+                        (e) => {
+                            projectDash.renderPopUpAddTask = true;
+                        }
+                    }>
+                        <p>
+                            Añade una nueva tarea...
+                        </p>
+                    </div>
                     <div className="toDoContainer tasksContainer">
                         <h5 className="title">
                             Tareas por hacer

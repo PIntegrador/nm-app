@@ -1,3 +1,4 @@
+@import '../../../../public/css/variables.scss';
 .projectDashBoard {
     width: 100vh;
 
@@ -8,4 +9,161 @@
     align-content: center;
     align-items: center;
 
+    width: 100vw;
+}
+
+.popUpAddTask {
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(196, 196, 196, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    .addTaskContainer {
+        width: 354px;
+        height: 403px;
+        background: #FFFFFF;
+        box-shadow: 4px 4px 25px rgba(57, 57, 57, 0.12);
+        border-radius: 7px;
+        padding: 20px;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        .formSection {
+            width: 100%;
+            .titleBar {
+                display: flex;
+                align-content: center;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row;
+                h6 {
+                    font-weight: bold;
+                    font-size: 15px;
+                    color: #666666;
+                }
+                .icon {
+                    width: 10px;
+                    height: 10px;
+                    cursor: pointer;
+                }
+            }
+            .contain {
+                padding: 20px 0;
+                input {
+                    font-family: $fontText;
+                    font-size: 12px;
+                    color: #666666;
+                    border: none;
+                    border-bottom: #808080 solid 1px;
+                    width: 100%;
+                    box-sizing: border-box;
+                    &::placeholder {
+                        font-style: italic;
+                        font-weight: normal;
+                        line-height: normal;
+                        font-size: 12px;
+                        color: #808080;
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                .addColaboratorContainer {
+                    position: relative;
+                    .addColaborator{
+                        display : flex;
+                        flex-direction: row;
+                        background: #F2F2F2;
+                        border-radius: 3px;
+                        padding: 10px;
+
+                        font-style: italic;
+                        font-weight: normal;
+                        font-size: 12px;
+
+                        color: #808080;
+
+
+                        .colicon {
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 10px;
+                            background: #10BFE6;
+                            margin-right: 5px;
+                            border: none;
+                            display: flex;
+                            align-content: center;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            .icon {
+                                width: 10px;
+                                height: 10px;
+                                border-radius: 10px;
+                                background: #10BFE6;
+                                border: none;
+                                margin-top: -5px;
+                                svg {
+                                    path {
+                                        fill: white;
+                                    }
+                                }
+                            }
+                        }
+                        p{
+
+                        }
+                    }
+                    .suggested {
+                        position: absolute;
+                        top: 0;
+                        .addColaborator {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+        .lowerbar {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            button {
+                height: 28px;
+                border: 1px solid #F2F2F2;
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 11px;
+                padding: 0 10px;
+                margin: 0 10px;
+                cursor: pointer;
+                &:focus {
+                    outline: none;
+                }
+            }
+            .cancel {
+                background: transparent;
+                color: #959595;
+            }
+            .addButt {
+                background: #310432;
+
+                height: 28px;
+                border: 1px solid #F2F2F2;
+                border-radius: 5px;
+
+
+                color: #FFFFFF;
+            }
+        }
+    }
 }
