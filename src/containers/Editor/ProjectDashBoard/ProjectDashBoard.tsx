@@ -37,7 +37,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
             <Dash />
 
             <div className="app projectDashBoard flex-child col-flex">
-                <Header />
+            <Header user={firebaseStore.userInfo.email}/>
                 <ProjectMenu /> 
                 <ProjectOptionBoard />
                 <div className="div">

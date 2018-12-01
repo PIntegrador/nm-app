@@ -26,7 +26,11 @@ class AuthStore {
         uid: "",
     }
     constructor() {
-        this.setIsLogged = this.setIsLogged.bind(this);
+        this.setIsLogged = this.setIsLogged.bind(this)
+    }
+
+
+    @action verifyuser() {
         auth.onAuthStateChanged((receivedUser) => {
             if (receivedUser) {
                 this.user = receivedUser;
@@ -41,8 +45,6 @@ class AuthStore {
             }
         });
     }
-
-
 
     @action register(email: string, password: string, rol: string) {
         this.credentials.email = email;

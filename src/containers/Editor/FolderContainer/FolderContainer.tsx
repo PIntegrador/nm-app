@@ -25,7 +25,7 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 
 
             <div className="app flex-child col-flex">
-                <Header />
+                <Header user={firebaseStore.userInfo.email}/>
                 <SortButton state= '' />
                 <DeleteButton />
                 <section className="scroll">

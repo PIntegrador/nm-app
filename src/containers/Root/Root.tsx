@@ -18,17 +18,15 @@ export class Root extends React.Component {
     constructor(props:any){
         super(props);
         //
+        authStore.verifyuser();
         firebaseStore.readFiles();
-        if(!authStore.isLogged){
-        } else {
+        if(authStore.isLogged){
             let uid = authStore.user.uid;
             firebaseStore.uidActual = uid;
             console.log(firebaseStore.uidActual,' userid')
             firebaseStore.readInfoUser();
         }
-
     }
-
 
     render(){
         return (

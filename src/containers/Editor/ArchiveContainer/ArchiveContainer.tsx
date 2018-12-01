@@ -32,7 +32,7 @@ let folderName: string = "folder name";
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header/>
+            <Header user={firebaseStore.userInfo.email}/>
                 <SortButton state= '' />
                 <section className="scroll">
                     <ArchiveView archives={[]}folders={[]} folderName = 'foldername' />

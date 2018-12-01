@@ -66,10 +66,12 @@ class FsActionStore {
         let temp:any = []
 
         dbRef.onSnapshot((querySnapshot:any) => {
+            this.listAllArchives = []
+            temp = []
             querySnapshot.forEach((doc:any) => {
                 this.userArchivesID.map( (e:any) => {
                     this.listAllArchives = []
-
+                   
                     if(doc.data().id == e){
                         let ele  = {
                             name: doc.data().name,

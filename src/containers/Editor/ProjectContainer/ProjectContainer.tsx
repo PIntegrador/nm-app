@@ -26,7 +26,7 @@ import { Link } from 'react-router-dom';
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header />
+            <Header user={firebaseStore.userInfo.email}/>
 
                 <SortButton state={''} />
 
