@@ -12,12 +12,12 @@ const DropZone = observer(() => {
                    accept=".csv, .xml, .tsv, .json, .geojson, .sf, .xlsx, .docx, .txt"
                    onDrop={(accepted, rejected) => {
                        console.log("Acc:" + accepted + " Rej:" + rejected)
-                       homeEditorStore.accepted = accepted;
-                       homeEditorStore.rejected = rejected;
+                      // homeEditorStore.accepted = accepted;
+                      // homeEditorStore.rejected = rejected;
                    }}>
                    {
 
-                      
+                      /*
                        (typeof homeEditorStore.accepted[0]+homeEditorStore.rejected[0]+"" === 'undefinedundefined') ?
                            <div className="empty"><h1>Arrastra aquí para subir archivo</h1></div> :
                            (typeof homeEditorStore.accepted[0] != 'undefined') ?
@@ -28,7 +28,7 @@ const DropZone = observer(() => {
                            <div className="rejected">
                                <h1> El formato del archivo no es valido</h1>
                                <p><b>Name:</b> {homeEditorStore.rejected[0].name} <br/> <b>Size:</b> {homeEditorStore.rejected[0].size/1000}Kb </p>
-                           </div>
+                           </div>*/
                    }
                </Dropzone>
            </div>

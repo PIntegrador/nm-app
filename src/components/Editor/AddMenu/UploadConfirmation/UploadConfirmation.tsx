@@ -8,25 +8,27 @@ const UploadConfirmation = observer(() => {
     return (
         <section className="uploadConfirmation"
             style={{
-                display: homeEditorStore.uploadConfirmation === true ? "flex" : "none"
+              //  display: homeEditorStore.uploadConfirmation === true ? "flex" : "none"
             }}>
             <header>
                 <h4>Carga Completa</h4>
                 <article
                     className="exit"
                     onClick={() => {
-                        homeEditorStore.setToFalse();
+                   //     homeEditorStore.setToFalse();
                     }}>
                     <div></div>
                     <div></div>
                 </article>
             </header>
             <article className="uploads">
-                <h3>{homeEditorStore.recentUpload}</h3>
+                <h3>{
+                    //homeEditorStore.recentUpload
+                }</h3>
                 <article
                     className="exit"
                     onClick={() => {
-                        homeEditorStore.setToFalse();
+                      //  homeEditorStore.setToFalse();
                     }}>
                     <div></div>
                     <div></div>

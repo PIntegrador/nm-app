@@ -28,13 +28,17 @@ interface ArchiveViewProps {
         return (
             <div className="contArchive">
                 <RouteBar mainTitle="Mis Archivos" folderName={this.props.folderName} />
-                {(homeEditorStore.sortButState == 'list')?<SortBarArchive />:""}
+                {
+                    //(homeEditorStore.sortButState == 'list')?<SortBarArchive />:""
+                }
                 <div className="flex-child  row-flex moduleCont">
                     <p></p>
                     {
                         (this.props.archives != null) ? (
                             this.props.archives.map((elem: any) => {
-                                return <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
+                                return <Module key={elem.id} gridStyle={
+                                    //homeEditorStore.sortButState
+                                ''} type='file' name={elem.name} numFiles={0} id={elem.id} />
                             })) : <section className="noArchives">
                                 <div className="cont">
                                     <img src="/assets/svg/modules/file.svg" alt="" />

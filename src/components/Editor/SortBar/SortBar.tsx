@@ -20,7 +20,6 @@ const SortBar = observer(() => {
                 <select name="sortDirection" onChange={
                     (e:any) => {
                         e.preventDefault();
-                        firebaseStore.sortByName(e.target.value);
                     }
                 }>
                     <option value="8" label="Ninguno"></option>

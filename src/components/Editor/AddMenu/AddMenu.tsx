@@ -8,20 +8,20 @@ const AddMenu = observer(() => {
     return (
         <section className="addMenu"
             onClick={() => {
-                homeEditorStore.addMenuStatus()
+               // homeEditorStore.addMenuStatus()
             }}
             style={{
-                display: homeEditorStore.addMenu === true ? "flex" : "none"
+           //     display: homeEditorStore.addMenu === true ? "flex" : "none"
             }}>
             <article onClick={() => {
-                homeEditorStore.filePopUpAddStatus();
+            //    homeEditorStore.filePopUpAddStatus();
             }}><div></div><h1>Subir Archivo</h1></article>
             <article onClick={() =>{
-                homeEditorStore.folderPopUpAddStatus();
+            //    homeEditorStore.folderPopUpAddStatus();
             }}><div></div><h1>Crear Carpeta</h1></article>
             <hr/>
             <article onClick={() => {
-                homeEditorStore.projectPopUpAddStatus();
+             //   homeEditorStore.projectPopUpAddStatus();
             }}><div></div><h1>Crear Proyecto</h1></article>
         </section>
     )

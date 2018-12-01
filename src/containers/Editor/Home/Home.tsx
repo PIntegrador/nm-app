@@ -32,11 +32,7 @@ interface HomeProps {
 @observer export class Home extends React.Component <HomeProps> {
     constructor(props: any) {
         super(props);
-        //
-        homeEditorStore.readProject('Projects');
-        homeEditorStore.readFolder('Folders');
-        homeEditorStore.readArchive('Archives');
-
+  
         if(!authStore.isLogged){
             props.history.push ("/");
         }
@@ -50,8 +46,7 @@ interface HomeProps {
             <div className="app flex-child col-flex">
                 <Header />
                 <FloatingButton />
-                <SortButton state= {homeEditorStore.sortButState} />
-                <AddMenu />
+                <SortButton state= '' />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
@@ -75,9 +70,9 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                homeEditorStore.projectArray.map((elem: any) => {
+                                [].map((elem: any) => {
                                     return (
-                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle='' type='project' name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 })
                             }
@@ -100,9 +95,9 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                homeEditorStore.folderArray.map((elem: any) => {
+                                [].map((elem: any) => {
                                     return (
-                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle='' type='folder' name={elem.name} numFiles={0} id={elem.id} />
 
                                     )
                                 })
@@ -126,8 +121,8 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                homeEditorStore.archiveArray.map((elem: any) => {
-                                    return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
+                                [].map((elem: any) => {
+                                    return (<Module key={elem.id} gridStyle={''} type='file' name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 })
                             }
@@ -139,10 +134,7 @@ interface HomeProps {
                 </section>
             </div>
             
-            <FolderPopUp />
-            <FilePopUp />
-            <AddProject />
-            <UploadConfirmation />
+           
 
         </div>
     }

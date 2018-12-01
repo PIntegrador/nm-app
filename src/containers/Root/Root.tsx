@@ -17,19 +17,16 @@ import { ProjectDashBoard } from '../Editor/ProjectDashBoard/ProjectDashBoard';
 export class Root extends React.Component {
     constructor(props:any){
         super(props);
-        firebaseStore.read();
         //
         authStore.signOut();
-        homeEditorStore.readProject('Projects');
-        homeEditorStore.readFolder('Folders');
-        homeEditorStore.readArchive('Archives');
+    
     }
 
     render(){
         return (
             <Router>
                 <div>
-                    <Route exact path="/" component={Login} />
+                    <Route exact path="/" component={Home} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/folders" component={FolderContainer} />

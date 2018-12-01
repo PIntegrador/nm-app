@@ -18,10 +18,7 @@ let folderName: string = "folder name";
     constructor(props:any){
         super(props);
         const folderID = this.getFolderId();
-       
-        //filter
-        firebaseStore.handleFolderIDArchive(folderID);
-        firebaseStore.filterFolderIDArchive();
+
     }
     getFolderId() {
         let locationWindow = window.location.pathname;
@@ -30,17 +27,15 @@ let folderName: string = "folder name";
     }
     render() {
 
-        let arrayFolders = firebaseStore.arrayFolders;
-        let arrayArchives = firebaseStore.arrayArchive;
 
         return <div className="contHome row-flex">
             <Dash />
 
             <div className="app flex-child col-flex">
                 <Header/>
-                <SortButton state= {homeEditorStore.sortButState} />
+                <SortButton state= '' />
                 <section className="scroll">
-                    <ArchiveView archives={arrayArchives} folders={arrayFolders} folderName = {folderName} />
+                    <ArchiveView archives={[]}folders={[]} folderName = 'foldername' />
                 </section>
             </div>
 

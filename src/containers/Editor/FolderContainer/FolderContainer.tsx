@@ -19,7 +19,6 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 
     render() {
 
-        let arrayFolders = firebaseStore.arrayFolders;
 
         return <div className="contHome row-flex">
             <Dash />
@@ -27,10 +26,10 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 
             <div className="app flex-child col-flex">
                 <Header />
-                <SortButton state= {homeEditorStore.sortButState} />
+                <SortButton state= '' />
                 <DeleteButton />
                 <section className="scroll">
-                    <FileView folders={arrayFolders} />
+                    <FileView folders={[]} />
                 </section>
             </div>
 

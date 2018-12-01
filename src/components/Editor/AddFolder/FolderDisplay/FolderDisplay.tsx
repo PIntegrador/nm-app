@@ -6,7 +6,7 @@ import { homeEditorStore } from '../../../../store/HomeEditorStore';
 const FolderDisplay = observer(() => {
     return (
         <section className='folderDisplay'>
-            {homeEditorStore.folders.map((elem: any, index: number) =>
+            {[].map((elem: any, index: number) =>
                 <article className="folder" key={elem}>
                     <article className="name">
                         <div className="fav" style={{
