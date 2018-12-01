@@ -59,8 +59,9 @@ interface HomeProps {
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
-                        {firebaseStore.listAllArchives.map((e:any) => {
-                            return <p>{e.name} es tipo {e.type} tags {(e.tagnames)}</p>
+
+                        {firebaseStore.listAllProjects.map((e:any) => {
+                            return <p>{e.name}</p>
                         })}
                         <Link to="/projects">
                             <div className="titleContainer">
