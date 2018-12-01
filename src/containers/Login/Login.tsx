@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 import LoginForm from '../../components/Common/LoginForm/LoginForm';
 import '../Login/Login.scss';
 import { authStore } from '../../store/AuthStore';
+import { firebaseStore } from '../../store/FsActionStore';
 
 interface LoginProps {
     history : any
@@ -17,13 +18,13 @@ interface LoginProps {
 
         authStore.login("san.or.gue@gmail.com", "santy0630");
 
-        
     }
+
 
     render() {
         if(authStore.isLogged){
             this.props.history.push ("/home");
-        }
+        } 
         return (
             <section className="formC"> 
                 <LoginForm/>

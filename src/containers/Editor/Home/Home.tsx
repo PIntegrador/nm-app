@@ -24,6 +24,7 @@ import ProjectPopUp from '../../../components/Editor/AddProject/AddProject';
 import AddProject from '../../../components/Editor/AddProject/AddProject';
 import { authStore } from '../../../store/AuthStore';
 import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
+import { addStore } from '../../../store/AddDataStore';
 
 interface HomeProps {
     history : any
@@ -32,25 +33,37 @@ interface HomeProps {
 @observer export class Home extends React.Component <HomeProps> {
     constructor(props: any) {
         super(props);
-  
+
         if(!authStore.isLogged){
             props.history.push ("/");
+        } else {
+            let uid = authStore.user.uid;
+            firebaseStore.uidActual = uid;
+            console.log(firebaseStore.uidActual,' userid')
+            firebaseStore.readInfoUser();
+            firebaseStore.readFiles();
+
         }
     }
 
     render() {
+        console.log(firebaseStore.userInfo.email, 'email');
         return <div className="contHome row-flex">
 
             <Dash />
 
             <div className="app flex-child col-flex">
-                <Header />
+                <Header user={firebaseStore.userInfo.email}/>
                 <FloatingButton />
-                <SortButton state= '' />
+                <SortButton state={addStore.sortButState}/>
+                <AddMenu />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
+                        {firebaseStore.listAllArchives.map((e:any) => {
+                            return <p>{e.name} es tipo {e.type} tags {(e.tagnames)}</p>
+                        })}
                         <Link to="/projects">
                             <div className="titleContainer">
                             <div className="ico">
@@ -134,6 +147,10 @@ interface HomeProps {
                 </section>
             </div>
             
+            <FolderPopUp />
+            <FilePopUp />
+            <AddProject />
+            <UploadConfirmation />
            
 
         </div>
