@@ -10,6 +10,7 @@ import { authStore } from '../../../src/store/AuthStore';
 import { homeEditorStore } from '../../../src/store/HomeEditorStore';
 import Register from '../Register/Register';
 import { Login } from '../Login/Login';
+import { Landing } from '../Landing/Landing';
 import { ProjectContainer } from '../Editor/ProjectContainer/ProjectContainer';
 import { ProjectDashBoard } from '../Editor/ProjectDashBoard/ProjectDashBoard';
 
@@ -29,7 +30,7 @@ export class Root extends React.Component {
         return (
             <Router>
                 <div>
-                    <Route exact path="/" component={ProjectDashBoard} />
+                    <Route exact path="/" component={Landing} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/folders" component={FolderContainer} />
