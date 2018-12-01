@@ -19,7 +19,7 @@ export class Root extends React.Component {
         super(props);
         //
         authStore.signOut();
-    
+
     }
 
     render(){

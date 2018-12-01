@@ -32,13 +32,24 @@ interface HomeProps {
 @observer export class Home extends React.Component <HomeProps> {
     constructor(props: any) {
         super(props);
-  
+
+        /*
+        if(authStore.user != null){
+            let uid = authStore.user.uid;
+
+            firebaseStore.uidActual = uid;
+
+            firebaseStore.userDataBase = firebaseStore.readInfoUser();
+        }*/
+
         if(!authStore.isLogged){
             props.history.push ("/");
         }
     }
 
     render() {
+        
+       
         return <div className="contHome row-flex">
 
             <Dash />
