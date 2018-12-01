@@ -1,7 +1,14 @@
 @import '../../../../public/css/variables.scss';
 .projectDashBoard {
+    width: 100vh;
+
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+
     width: 100vw;
 }
 

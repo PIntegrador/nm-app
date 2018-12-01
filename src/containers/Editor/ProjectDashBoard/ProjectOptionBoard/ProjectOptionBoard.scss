@@ -1,4 +1,5 @@
 @import '../../../../../public/css/variables.scss';
+
 .projectBoardComponent {
     background: #F2F4F6;
     flex-grow: 2;
@@ -8,6 +9,88 @@
     width: -moz-available;
     width: -webkit-fill-available;
     width: fill-available;
+
+    overflow: auto;
+
+    height: 90vh;
+
+
+    >.contComments {
+        width: 100%;
+
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        align-items: center;
+
+        overflow: auto;
+
+        >.editText {
+
+            width: 60%;
+
+            padding: 0 30px;
+
+            box-shadow: 4px 4px 25px rgba(57, 57, 57, 0.12);
+            border-radius: 7px;
+
+            margin-top: 30px;
+
+            background-color: $fondoBlanco;
+            border-radius: 15px;
+
+            height: 70px;
+            min-height: 70px;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+
+            >.img {
+                width: 50px;
+                height: 50px;
+                border-radius: 30px;
+
+                background-color: #666666;
+            }
+
+            >.inputComment {
+                width: 78%;
+                height: 50px;
+
+                background-color: $fondoGrisClaro;
+                border: none;
+                border-radius: 5px;
+
+                padding: 0 25px;
+
+                color: $fondoGrisOscuto;
+
+                font-family: $fontText;
+                font-weight: 500px;
+
+                font-size: 15px;
+            }
+
+            >.empty {
+                width: 50px;
+                height: 50px;
+            }
+
+        }
+    }
+
+    .taskSuperContainer {
+        display: block;
+        text-align: center;
+
     overflow: auto;
     padding: 25px;
     .taskSuperContainer {
@@ -48,12 +131,14 @@
                 margin-left: 15px;
                 padding: 32px 0 20px 0;
             }
+
             .tasks {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-content: center;
                 align-items: center;
+
                 .task {
                     width: 90%;
                     background: #F6F8F9;
@@ -61,12 +146,14 @@
                     margin-bottom: 12px;
                     padding: 12px;
                     position: relative;
+
                     p.descriptionTask {
                         font-family: $fontText;
                         font-size: 14px;
                         font-weight: normal;
                         color: #666666;
                     }
+
                     p.date {
                         font-family: $fontText;
                         font-size: 8px;
@@ -76,15 +163,18 @@
                         top: 0;
                         right: 0;
                     }
+
                     .lowerBarContainer {
                         margin-top: 10px;
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
+
                         .colaborators {
                             display: flex;
                             flex-direction: row;
                             justify-content: flex-start;
+
                             .colaborator {
                                 width: 20px;
                                 height: 20px;
@@ -104,6 +194,7 @@
                                     background: #10BFE6;
                                     border: none;
                                     margin-top: -5px;
+
                                     svg {
                                         path {
                                             fill: white;
@@ -112,9 +203,11 @@
                                 }
                             }
                         }
+
                         .buttons {
                             background: transparent;
                             border: none;
+
                             .icon {
                                 width: 20px;
                                 height: 20px;
@@ -131,6 +224,7 @@
                     }
                 }
             }
+
             &:after {
                 content: '';
                 position: absolute;
@@ -140,26 +234,32 @@
                 border-radius: 12px 12px 0 0;
             }
         }
+
         .toDoContainer {
             .title {
                 color: #F66880;
             }
+
             &:after {
                 background: #F66880;
             }
         }
+
         .doingContainer {
             .title {
                 color: #FDC741;
             }
+
             &:after {
                 background: #FDC741;
             }
         }
+
         .doneContainer {
             .title {
                 color: #10E6C5;
             }
+
             &:after {
                 background: #10E6C5;
             }
