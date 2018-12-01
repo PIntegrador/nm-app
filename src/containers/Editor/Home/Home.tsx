@@ -24,6 +24,7 @@ import ProjectPopUp from '../../../components/Editor/AddProject/AddProject';
 import AddProject from '../../../components/Editor/AddProject/AddProject';
 import { authStore } from '../../../store/AuthStore';
 import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
+import { addStore } from '../../../store/AddDataStore';
 
 interface HomeProps {
     history : any
@@ -57,7 +58,8 @@ interface HomeProps {
             <div className="app flex-child col-flex">
                 <Header />
                 <FloatingButton />
-                <SortButton state= '' />
+                <SortButton state={addStore.sortButState}/>
+                <AddMenu />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
@@ -145,6 +147,10 @@ interface HomeProps {
                 </section>
             </div>
             
+            <FolderPopUp />
+            <FilePopUp />
+            <AddProject />
+            <UploadConfirmation />
            
 
         </div>

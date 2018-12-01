@@ -2,11 +2,10 @@ import * as React from 'react';
 import './FolderDisplay.scss';
 import { observer } from 'mobx-react';
 
-import { homeEditorStore } from '../../../../store/HomeEditorStore';
 const FolderDisplay = observer(() => {
     return (
         <section className='folderDisplay'>
-            {[].map((elem: any, index: number) =>
+            {[/* folder */].map((elem: any, index: number) =>
                 <article className="folder" key={elem}>
                     <article className="name">
                         <div className="fav" style={{
