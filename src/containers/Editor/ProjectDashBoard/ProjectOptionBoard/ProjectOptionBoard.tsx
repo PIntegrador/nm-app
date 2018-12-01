@@ -6,6 +6,7 @@ import { projectDash } from '../../../../store/ProjectDashBoardStore';
 import { getObserverTree } from 'mobx';
 import { observer } from 'mobx-react';
 import { Task } from './Task/Task';
+import { ProjectComment } from '../ProjectComment/ProjectComment';
 
 
 @observer export class ProjectOptionBoard extends React.Component {
@@ -86,7 +87,19 @@ import { Task } from './Task/Task';
         } else if (option == 'actividad') {
             return null;
         } else if (option == 'comentarios') {
-            return null;
+            return (
+                <section className="contComments">
+                    <div className="editText">
+                        <div className="img"></div>
+                        <input className="inputComment" type="text" placeholder="Escribir un comentario..." />
+                        <div className="empty"></div>
+                    </div>
+
+                    <ProjectComment text="Este sería el texto que iría en el comentario" name="Título del Comentario" date="8:30" autor="Nestor Tobar"/>
+
+                    <ProjectComment text="Este sería el texto que iría en el comentario" name="Título del Comentario" date="8:30" autor="Nestor Tobar"/>
+                </section>
+            )
         }
     }
     render() {

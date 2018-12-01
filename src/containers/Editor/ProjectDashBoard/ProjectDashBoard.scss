@@ -1,5 +1,11 @@
 .projectDashBoard {
+    width: 100vh;
+
     display: flex;
     flex-direction: column;
-    width: 100vh;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+
 }

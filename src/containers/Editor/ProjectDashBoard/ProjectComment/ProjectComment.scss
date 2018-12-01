@@ -1,0 +1,208 @@
+@import '../../../../../public/css/variables.scss';
+
+.comment {
+
+    width: 60%;
+
+    height: fit-content;
+
+    margin-top: 25px;
+
+    box-shadow: 4px 4px 25px rgba(57, 57, 57, 0.12);
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+
+    >.cont {
+
+        background-color: $fondoBlanco;
+
+        width: 100%;
+
+        min-height: 200px;
+
+        height: auto;
+
+        border-radius: 15px 15px 0 0;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+
+        >.contInfo {
+            width: 85%;
+
+            margin-top: 40px;
+            margin-bottom: 40px;
+
+            height: auto;
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-content: center;
+            align-items: center;
+
+            >.top {
+
+                width: 100%;
+                height: 60px;
+                min-height: 60px;
+
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-content: center;
+                align-items: center;
+
+                >.img {
+                    width: 60px;
+                    height: 60px;
+
+                    border-radius: 40px;
+                    background-color: $fondoGrisOscuto;
+                }
+
+                >.contText {
+
+                    margin-left: 30px;
+
+                    width: 60%;
+
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    justify-content: flex-start;
+                    align-content: center;
+                    align-items: center;
+
+                    >h2 {
+
+                        width: 100%;
+
+                        font-size: 20px;
+                        color: $fondoGrisOscuto;
+                        font-family: $fontTitle;
+                        font-weight: 700;
+                    }
+
+                    >.cont {
+
+                        width: 100%;
+
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        justify-content: flex-start;
+                        align-content: center;
+                        align-items: flex-start;
+
+                        >h4 {
+                            font-family: $fontText;
+                            color: $fondoGrisOscuto;
+
+                            margin-right: 20px;
+
+                            font-size: 13px;
+
+                            font-weight: 600;
+                        }
+
+                        >h5 {
+                            font-family: $fontText;
+                            color: $fondoGris;
+                            font-size: 13px;
+
+                            font-weight: 400;
+                        }
+
+                    }
+                }
+
+            }
+
+            >.text {
+
+                margin-top: 30px;
+
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-content: center;
+                align-items: center;
+
+                >p {
+                    width: 100%;
+                    font-size: 14px;
+                    font-weight: 400;
+                    font-family: $fontText;
+
+                    color: $fondoGrisOscuto;
+
+                    justify-content: space-between;
+                }
+
+            }
+        }
+
+    }
+
+    >.contInput {
+
+        padding: 0 50px;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+
+        height: 100px;
+        min-height: 100px;
+        width: 100%;
+
+        background-color: $fondoGrisClaro;
+
+        border-radius: 0 0 15px 15px;
+
+        >.img {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 50px;
+
+            background-color: $fondoGrisOscuto;
+        }
+
+        >.inputComment {
+            padding: 5px 35px;
+            width: 85%;
+            height: 55px;
+
+            border: none;
+
+            border-radius: 5px;
+
+            font-family: $fontTitle;
+            color: $fondoGrisOscuto;
+            font-size: 14px;
+            font-weight: 500;
+
+            border: 1px solid $fondoGris;
+        }
+
+    }
+}
