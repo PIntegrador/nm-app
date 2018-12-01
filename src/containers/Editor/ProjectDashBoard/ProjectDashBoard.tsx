@@ -39,6 +39,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                             <div className="addColaborator" onClick={
                                 (e) => {
                                     projectDash.renderPopUpAddCollaborator = false;
+                                    //delete the element was added in array
                                     projectDash.thisProjectBackup.collaborators.pop();
                                     projectDash.handleTaskCollaborators(elem.name)
                                 }

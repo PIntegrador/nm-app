@@ -9,12 +9,8 @@
     width: -moz-available;
     width: -webkit-fill-available;
     width: fill-available;
-
     overflow: auto;
-
-    height: 90vh;
-
-
+    padding: 25px;
     >.contComments {
         width: 100%;
 
@@ -86,13 +82,6 @@
 
         }
     }
-
-    .taskSuperContainer {
-        display: block;
-        text-align: center;
-
-    overflow: auto;
-    padding: 25px;
     .taskSuperContainer {
         display: block;
         text-align: center;
