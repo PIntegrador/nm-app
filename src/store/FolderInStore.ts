@@ -9,6 +9,7 @@ class FolderInStore {
 
     @observable folderIdArchives: string = "";
     @observable folderInArchives: any = [];
+    @observable folderParentName: string = "";
 
     @action updateArchives() {
 
@@ -26,8 +27,6 @@ class FolderInStore {
                 this.folderInArchives = [];
 
                 idFolder = this.folderIdArchives;
-
-                console.log(idFolder);
 
                 if (doc.data().parent == idFolder) {
 
@@ -48,10 +47,49 @@ class FolderInStore {
                 }
             });
 
-            console.log(temp);
             this.folderInArchives = temp;
         });
     }
+
+    @action updateParentName() {
+        this.folderParentName = "";
+
+        let parentRef = db.collection("NewArchives");
+
+        parentRef.onSnapshot((querySnapshot: any) => {
+            this.folderParentName = "";
+
+            let temp: any = [];
+
+            let idFolder = this.folderIdArchives;
+
+            querySnapshot.forEach((doc: any) => {
+
+                idFolder = this.folderIdArchives;
+
+                if (doc.data().id == idFolder) {
+
+                    let ele = {
+                        name: doc.data().name,
+                        type: doc.data().type,
+                        id: doc.data().id,
+                        parent: doc.data().parent,
+                        size: doc.data().size,
+                        sourceURL: doc.data().sourceURL,
+                        fileURL: doc.data().fileURL,
+                        tagnames: doc.data().tagnames,
+                        children: doc.data().children,
+                    }
+
+                    temp.push(ele);
+                }
+            });
+
+            this.folderParentName = temp[0].name;
+        });
+    }
+
+    
 
 }
 

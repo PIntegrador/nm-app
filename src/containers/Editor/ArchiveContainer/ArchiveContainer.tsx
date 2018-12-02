@@ -15,12 +15,17 @@ import { homeEditorStore } from '../../../store/HomeEditorStore';
 
 import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 
+let folderID: any = '';
+
 @observer export class ArchiveContainer extends React.Component {
     constructor(props: any) {
         super(props);
 
-        this.updateFolder(this.getFolderId());
+        folderID = this.getFolderId();
+
+        this.updateFolder(folderID);
     }
+
     getFolderId() {
         let locationWindow = window.location.pathname;
         let locationArray = locationWindow.split('/');
@@ -30,6 +35,16 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
     updateFolder(folderID: string) {
         folderInStore.folderIdArchives = folderID;
         folderInStore.updateArchives();
+        folderInStore.updateParentName()
+    }
+
+    componentDidUpdate() {
+        if (folderID != this.getFolderId()) {
+
+            folderID = this.getFolderId();
+
+            this.updateFolder(folderID);
+        }
     }
 
     render() {
@@ -42,7 +57,7 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
                 <SortButton state={homeEditorStore.sortButState} />
                 <DeleteButton />
                 <section className="scroll">
-                    <ArchiveView archives={folderInStore.folderInArchives} folderName='' />
+                    <ArchiveView archives={folderInStore.folderInArchives} folderName={folderInStore.folderParentName} />
                 </section>
             </div>
 
