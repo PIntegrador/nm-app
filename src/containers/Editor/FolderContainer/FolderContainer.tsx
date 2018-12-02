@@ -28,7 +28,7 @@ let folderID: any = '';
     }
 
     getFolderId() {
-        let id = firebaseStore.userInfo.id;
+        let id = firebaseStore.userInfo.uid;
         return id;
     }
 
