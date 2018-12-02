@@ -21,7 +21,7 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 
 
         return <div className="contHome row-flex">
-            <Dash />
+            <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
 
 
             <div className="app flex-child col-flex">

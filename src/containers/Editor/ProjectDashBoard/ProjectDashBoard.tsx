@@ -168,7 +168,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
         let project = firebaseStore.actualProject;
         */
         return <div className="contHome row-flex">
-            <Dash />
+            <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
 
             <div className="app projectDashBoard flex-child col-flex">
                 {this.renderPopUp()}

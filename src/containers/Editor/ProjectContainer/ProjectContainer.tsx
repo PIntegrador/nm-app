@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
         let arrayArchives = [];
 
         return <div className="contHome row-flex">
-            <Dash />
+            <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
 
             <div className="app flex-child col-flex">
             <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>

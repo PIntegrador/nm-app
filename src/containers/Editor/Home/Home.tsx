@@ -48,7 +48,7 @@ interface HomeProps {
         console.log(firebaseStore.userInfo.email, 'email');
         return <div className="contHome row-flex">
 
-            <Dash state = {homeEditorStore.sideMenuState} />
+            <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
 
             <div className="app flex-child col-flex">
                 <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>

@@ -7,6 +7,7 @@ class HomeEditorStore {
 
     @observable sortButState: string = 'list';
     @observable sideMenuState: string = 'open';
+    @observable selectedMenuItem: string = 'home'
 
 }
 
