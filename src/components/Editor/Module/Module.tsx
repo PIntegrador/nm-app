@@ -34,6 +34,7 @@ interface ModuleProps {
 
     onDrop = (ev: any, idFolder:string) => {
         ev.preventDefault();
+        moduleStore.idToFolder = this.props.id;
         moduleStore.moveToFolderById();
         console.log("Drop Folder " + idFolder);
         console.log("Drop File " + moduleStore.idTemp);
