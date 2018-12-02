@@ -59,7 +59,7 @@ let folderID: any = '';
                 <DeleteButton />
                 <AddMenu idLocation={folderID} />
                 <section className="scroll">
-                    <FileView folders={firebaseStore.userInfo.archives} />
+                    <FileView folders={folderInStore.folderInArchives} />
                 </section>
             </div>
 
