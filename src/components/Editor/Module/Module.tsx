@@ -32,18 +32,20 @@ interface ModuleProps {
         ev.preventDefault();
     }
 
-    onDrop = (ev: any, idFolder:string) => {
+    onDrop = (ev: any, idFolder: string, type: string) => {
         ev.preventDefault();
-        moduleStore.idToFolder = this.props.id;
-        moduleStore.moveToFolderById();
-        console.log("Drop Folder " + idFolder);
+        if (type == 'folder'){
+            moduleStore.idToFolder = this.props.id;
+            moduleStore.moveToFolderById();
+            console.log("Drop Folder " + idFolder);
+        }
         console.log("Drop File " + moduleStore.idTemp);
     }
 
     assignGridStyle() {
         if (this.props.gridStyle == 'grid') {
             return (
-                <article draggable onDragEnd={(e) => this.onDragEnd(e)} onDragStart={(e) => this.onDragStart(e, this.props.id)} onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e, this.props.id)} key={this.props.id} className="flex-child row-flex moduleGrid">
+                <article draggable onDragEnd={(e) => this.onDragEnd(e)} onDragStart={(e) => this.onDragStart(e, this.props.id)} onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e, this.props.id, this.props.type)} key={this.props.id} className="flex-child row-flex moduleGrid">
                     <div className="flex-child  moduleIconCont col-flex">
                         {this.assignIcon()}
                     </div>
@@ -52,7 +54,7 @@ interface ModuleProps {
             )
         } else {
             return (
-                <article draggable onDragEnd={(e) => this.onDragEnd(e)} onDragStart={(e) => this.onDragStart(e, this.props.id)} onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e, this.props.id)} key={this.props.id} className="flex-child row-flex moduleList">
+                <article draggable onDragEnd={(e) => this.onDragEnd(e)} onDragStart={(e) => this.onDragStart(e, this.props.id)} onDragOver={(e) => this.onDragOver(e)} onDrop={(e) => this.onDrop(e, this.props.id, this.props.type)} key={this.props.id} className="flex-child row-flex moduleList">
                     <div className="nameCont">
                         <div className="flex-child moduleIconCont col-flex">
                             {this.assignIcon()}
