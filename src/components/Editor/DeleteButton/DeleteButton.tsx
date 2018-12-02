@@ -12,8 +12,7 @@ const DeleteButton = observer(() => {
     
     this.onDrop = (ev:any) => {
         ev.preventDefault();
-        moduleStore.deleteFolderByID();
-        moduleStore.deleteFolderByID();
+        moduleStore.deleteFileByID();
         console.log("Drop " + moduleStore.idTemp);
     }
 

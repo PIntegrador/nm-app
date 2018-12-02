@@ -87,6 +87,7 @@ class FsActionStore {
                             fileURL: doc.data().fileURL,
                             tagnames: doc.data().tagnames,
                             children: doc.data().children,
+                            owner: doc.data().owner
                         }
                          temp.push(ele);
                          temptags =  doc.data().tagnames;

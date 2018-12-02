@@ -35,7 +35,7 @@ let folderID: any = '';
     updateFolder(folderID: string) {
         folderInStore.folderIdArchives = folderID;
         folderInStore.updateArchives();
-        folderInStore.updateParentName()
+        folderInStore.updateParentName();
     }
 
     componentDidUpdate() {

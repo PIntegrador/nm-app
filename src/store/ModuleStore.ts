@@ -7,16 +7,17 @@ class ModuleStore {
     }
 
     @observable idTemp: string = "";
+    @observable idToFolder: string = "";
 
     //idTempo is the id of the dragged element
+    //idToFolder is the id of destiny folder
 
     @action deleteFileByID() {
         if (this.idTemp != '') {
-            let refArchive = db.collection("Archives").doc(this.idTemp);
+            let refArchive = db.collection("NewArchives").doc(this.idTemp);
 
             refArchive.delete().then(function () {
                 console.log("Document successfully deleted!");
-                this.idTemp = "";
                 return;
             }).catch(function (error) {
                 console.error("Error removing document: ", error);
@@ -24,23 +25,15 @@ class ModuleStore {
         }
     }
 
-    @action deleteProjectByID() {
-        let refArchive = db.collection("Projets");
+    @action moveToFolderById(){
+        if (this.idTemp != '' && this.idToFolder != '') {
 
-        //
-    }
+            let refArchive = db.collection("NewArchives").doc(this.idTemp);
 
-    @action deleteFolderByID() {
-        if (this.idTemp != '') {
-            let refArchive = db.collection("Folders").doc(this.idTemp);
+            
 
-            refArchive.delete().then(function () {
-                console.log("Document successfully deleted!");
-                this.idTemp = "";
-                return;
-            }).catch(function (error) {
-                console.error("Error removing document: ", error);
-            });
+            this.idTemp = '';
+            this.idToFolder = '';
         }
     }
 
