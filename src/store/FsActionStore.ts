@@ -22,6 +22,9 @@ class FsActionStore {
     @observable userArchivesID: any = [];
     @observable userArchives: any = [];
 
+    @observable userProjectsID: any = [];
+
+
     /* This method search the document of the user in the database by the uid of the auth store,
     we need to know the id of the documents that the user have in the db */
 
@@ -41,21 +44,11 @@ class FsActionStore {
             }
             let tempid = querySnapshot.data().id
             this.userArchivesID = querySnapshot.data().Archives;
+            this.userProjectsID = querySnapshot.data().Projects;
 
             this.userInfo = tempUser
             this.readFiles();
-            /*
-            Aqui logro traer el arreglo pero solo filtrando sin variable :(
-            -----------------
-            let query = usersRef.where('Archives', 'array-contains', '9mmFr2Vu1N4KqQCFjkRM')
-            query.get().then((snapshot:any) => {
-                snapshot.docs.forEach( (ar:any) => {
-                    console.log(ar.id, ar.data())
-                    this.userInfo = ar.data();
-                    this.userArchives = this.userInfo.Archives;
-                    console.log(this.userArchives, 'asdfasdfalsdjbcasdjcbaosdcns')
-                })
-            })*/
+          
         });
 
     }
@@ -98,17 +91,9 @@ class FsActionStore {
             });
             this.listAllArchives = temp;
             this.userInfo.archives = this.listAllArchives;
-            this.userInfo.tagnames = temptags;
-            this.userInfo.children = tempChildren;
         });
 
     }
-
-
-    @action getFolders() {
-
-    }
-
 
 }
 

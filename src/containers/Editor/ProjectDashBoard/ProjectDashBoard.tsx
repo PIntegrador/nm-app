@@ -172,7 +172,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
 
             <div className="app projectDashBoard flex-child col-flex">
                 {this.renderPopUp()}
-                 <Header user={firebaseStore.userInfo.email}/>
+                <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
                 <ProjectMenu />
 
                 <ProjectOptionBoard />

@@ -48,10 +48,10 @@ interface HomeProps {
         console.log(firebaseStore.userInfo.email, 'email');
         return <div className="contHome row-flex">
 
-            <Dash />
+            <Dash state = {homeEditorStore.sideMenuState} />
 
             <div className="app flex-child col-flex">
-                <Header user={firebaseStore.userInfo.email}/>
+                <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
                 <FloatingButton />
                 <SortButton state={homeEditorStore.sortButState}/>
                 <AddMenu />
@@ -79,11 +79,15 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
+                                
+                                (firebaseStore.userArchivesID.length != null) ?
                                 [].map((elem: any) => {
                                     return (
                                         <Module key={elem.id} gridStyle='' type='project' name={elem.name} numFiles={0} id={elem.id} />
                                     )
-                                })
+                                }) : (e:any)=> {
+                                    return <p>No tienes proyectos aún</p>
+                                }
                             }
                         </div>
 

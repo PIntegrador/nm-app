@@ -6,6 +6,7 @@ import { observable, action, computed, extendObservable } from 'mobx';
 class HomeEditorStore {
 
     @observable sortButState: string = 'list';
+    @observable sideMenuState: string = 'open';
 
 }
 
