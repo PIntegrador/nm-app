@@ -57,13 +57,17 @@ class FsActionStore {
     //GET ALL FILES
     @action readFiles() {
         let dbRef = db.collection('NewArchives');
-        let temp: any = []
+        let temp:any = []
+        let temptags:any = []
+        let tempChildren:any = []
 
         dbRef.onSnapshot((querySnapshot: any) => {
             this.listAllArchives = []
             temp = []
-            querySnapshot.forEach((doc: any) => {
-                this.userArchivesID.map((e: any) => {
+            temptags =[]
+            tempChildren = []
+            querySnapshot.forEach((doc:any) => {
+                this.userArchivesID.map( (e:any) => {
                     this.listAllArchives = []
 
                     if (doc.data().id == e) {
@@ -78,8 +82,12 @@ class FsActionStore {
                             tagnames: doc.data().tagnames,
                             children: doc.data().children,
                         }
-                        temp.push(ele);
 
+                         temp.push(ele);
+                         temptags =  doc.data().tagnames;
+                         tempChildren = doc.data().children;
+                         ele.tagnames = temptags;
+                         ele.children = tempChildren;
                     }
                     return temp
                 })
@@ -89,10 +97,9 @@ class FsActionStore {
             this.userInfo.archives = this.listAllArchives;
             console.log(this.userInfo.archives, "User Info Archives")
         });
-
     }
 
-    //GET ALL PROJECTS
+        //GET ALL PROJECTS
     @action readProjects() {
         let dbRef = db.collection('NewProjects');
         let temp: any = []
@@ -117,22 +124,19 @@ class FsActionStore {
                         ele.archives = this.listInnerArchives;
                         temp.push(ele);
 
-                    } else {
-
-                    }
-                    return temp
+                    } 
+                  return temp
                 })
 
             });
+          
             this.listAllProjects = temp;
             this.userInfo.projects = this.listAllProjects;
-
             console.log(this.userInfo.projects, "User Info Projects")
 
         });
 
     }
-
 
     @action readTasks() {
         let dbRef = db.collection('NewProjects').doc(this.projectidActual).collection('Task');

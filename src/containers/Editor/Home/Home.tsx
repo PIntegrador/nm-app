@@ -53,16 +53,13 @@ interface HomeProps {
             <div className="app flex-child col-flex">
                 <Header user={firebaseStore.userInfo.email}/>
                 <FloatingButton />
-                <SortButton state={addStore.sortButState}/>
+                <SortButton state={homeEditorStore.sortButState}/>
                 <AddMenu />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
 
-                        {firebaseStore.listAllProjects.map((e:any) => {
-                            return <p>{e.name}</p>
-                        })}
                         <Link to="/projects">
                             <div className="titleContainer">
                             <div className="ico">
@@ -107,12 +104,14 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                [].map((elem: any) => {
+                                  (firebaseStore.userInfo.archives != null) ?
+                                  firebaseStore.userInfo.archives.map((elem: any) => {
+                                    if(elem.type == 'folder') 
                                     return (
-                                        <Module key={elem.id} gridStyle='' type='folder' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
 
                                     )
-                                })
+                                }) : ''
                             }
                         </div>
 
@@ -133,11 +132,15 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                [].map((elem: any) => {
-                                    return (<Module key={elem.id} gridStyle={''} type='file' name={elem.name} numFiles={0} id={elem.id} />
+                                (firebaseStore.userInfo.archives != null) ?
+                                firebaseStore.userInfo.archives.map((elem: any) => {
+                                    if(elem.type == 'file') 
+                                    return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
                                     )
-                                })
-                            }
+                                }) : ''
+                             
+                            } <p></p>
+                              
                         </div>
 
                     </section>
