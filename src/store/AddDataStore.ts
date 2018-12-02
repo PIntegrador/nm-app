@@ -57,7 +57,8 @@ class AddDataStore {
           tagnames: [],
           type: "file",
           size: "",
-          date: ""
+          date: "",
+          owner: ""
       };
   
       @action clearFile() {
@@ -71,7 +72,8 @@ class AddDataStore {
             tagnames: [],
             type: "file",
             size: "",
-            date: ""
+            date: "",
+            owner: ""
           };
       }
 
@@ -111,7 +113,8 @@ class AddDataStore {
         tagnames: [],
         type: "folder",
         size: "",
-        date: ""    
+        date: "",
+        owner: ""   
     };
 
    
@@ -147,7 +150,8 @@ class AddDataStore {
                 tagnames: [],
                 type: "folder",
                 size: "",
-                date: ""  
+                date: "",
+                owner: ""
             };
         }
 

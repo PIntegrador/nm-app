@@ -14,6 +14,7 @@ import SortButton from '../../../components/Editor/SortButton/SortButton';
 import { homeEditorStore } from '../../../store/HomeEditorStore';
 
 import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
+import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
 
 let folderID: any = '';
 
@@ -56,6 +57,7 @@ let folderID: any = '';
                 <Header user={firebaseStore.userInfo.email} />
                 <SortButton state={homeEditorStore.sortButState} />
                 <DeleteButton />
+                <AddMenu idLocation={folderID} />
                 <section className="scroll">
                     <ArchiveView archives={folderInStore.folderInArchives} folderName={folderInStore.folderParentName} />
                 </section>

@@ -54,7 +54,7 @@ interface HomeProps {
                 <Header user={firebaseStore.userInfo.email}/>
                 <FloatingButton />
                 <SortButton state={homeEditorStore.sortButState}/>
-                <AddMenu />
+                <AddMenu idLocation={firebaseStore.userInfo.id} />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 

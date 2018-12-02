@@ -3,8 +3,10 @@ import { db, storage, auth } from '../../config/firebaseConfig';
 
 class ModuleStore {
     constructor() {
-
     }
+
+    //this module move and delete files
+    //if the file, dont have the id inside itself, the drag actions will not work
 
     @observable idTemp: string = "";
     @observable idToFolder: string = "";
@@ -15,6 +17,8 @@ class ModuleStore {
     @action deleteFileByID() {
         if (this.idTemp != '') {
             let refArchive = db.collection("NewArchives").doc(this.idTemp);
+
+            
 
             refArchive.delete().then(function () {
                 console.log("Document successfully deleted!");
