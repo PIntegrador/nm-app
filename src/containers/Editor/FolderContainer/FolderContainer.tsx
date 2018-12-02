@@ -26,10 +26,10 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 
             <div className="app flex-child col-flex">
                 <Header user={firebaseStore.userInfo.email}/>
-                <SortButton state= '' />
+                <SortButton state={homeEditorStore.sortButState} />
                 <DeleteButton />
                 <section className="scroll">
-                    <FileView folders={[]} />
+                    <FileView folders={firebaseStore.userInfo.archives} />
                 </section>
             </div>
 
