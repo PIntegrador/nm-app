@@ -59,7 +59,7 @@ interface HomeProps {
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
-                      
+
                         <Link to="/projects">
                             <div className="titleContainer">
                             <div className="ico">

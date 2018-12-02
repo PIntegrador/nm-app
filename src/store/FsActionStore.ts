@@ -11,16 +11,21 @@ class FsActionStore {
     /* the main idea is to make this store more easy to understand, 
     in orther to make it works, lets try to make the title oh the variables more intuitive */
 
-    @observable listAllArchives: any = [];
 
     @observable userInfo: any = {};
+    @observable taskInfo: any = {};
 
     @observable uidActual: string = "";
-
-    @observable listActual: any = [];
+    @observable projectidActual: string = "ppF0uGT4zbdSrhXmYw5V";
 
     @observable userArchivesID: any = [];
-    @observable userArchives: any = [];
+    @observable listAllArchives: any = [];
+
+    @observable userProjectID: any = [];
+    @observable listAllProjects: any = [];
+
+    @observable listInnerArchives: any = [];
+    @observable innerArchivesID: any = [];
 
     /* This method search the document of the user in the database by the uid of the auth store,
     we need to know the id of the documents that the user have in the db */
@@ -29,45 +34,34 @@ class FsActionStore {
 
         let usersRef = db.collection("NewUsers");
 
-        usersRef.doc(this.uidActual).onSnapshot((querySnapshot:any) => {
+        usersRef.doc(this.uidActual).onSnapshot((querySnapshot: any) => {
             this.userInfo = {}
-            let tempUser= {
+            let tempUser = {
                 name: querySnapshot.data().name,
                 uid: querySnapshot.data().uid,
                 email: querySnapshot.data().email,
-                rol: querySnapshot.data().rol,
-                archives: querySnapshot.data().Archives,
-                projects: querySnapshot.data().Projects
+                rol: querySnapshot.data().rol
             }
-            let tempid = querySnapshot.data().id
             this.userArchivesID = querySnapshot.data().Archives;
+            this.userProjectID = querySnapshot.data().Projects;
+            console.log(this.userProjectID, 'user project id')
 
             this.userInfo = tempUser
             this.readFiles();
-            /*
-            Aqui logro traer el arreglo pero solo filtrando sin variable :(
-            -----------------
-            let query = usersRef.where('Archives', 'array-contains', '9mmFr2Vu1N4KqQCFjkRM')
-            query.get().then((snapshot:any) => {
-                snapshot.docs.forEach( (ar:any) => {
-                    console.log(ar.id, ar.data())
-                    this.userInfo = ar.data();
-                    this.userArchives = this.userInfo.Archives;
-                    console.log(this.userArchives, 'asdfasdfalsdjbcasdjcbaosdcns')
-                })
-            })*/
+            this.readProjects();
+            this.readTasks();
         });
 
     }
 
     //GET ALL FILES
-    @action readFiles(){
+    @action readFiles() {
         let dbRef = db.collection('NewArchives');
         let temp:any = []
         let temptags:any = []
         let tempChildren:any = []
 
-        dbRef.onSnapshot((querySnapshot:any) => {
+        dbRef.onSnapshot((querySnapshot: any) => {
             this.listAllArchives = []
             temp = []
             temptags =[]
@@ -75,9 +69,9 @@ class FsActionStore {
             querySnapshot.forEach((doc:any) => {
                 this.userArchivesID.map( (e:any) => {
                     this.listAllArchives = []
-                   
-                    if(doc.data().id == e){
-                        let ele  = {
+
+                    if (doc.data().id == e) {
+                        let ele = {
                             name: doc.data().name,
                             type: doc.data().type,
                             id: doc.data().id,
@@ -88,28 +82,120 @@ class FsActionStore {
                             tagnames: doc.data().tagnames,
                             children: doc.data().children,
                         }
+
                          temp.push(ele);
                          temptags =  doc.data().tagnames;
                          tempChildren = doc.data().children;
-                    } 
+                         ele.tagnames = temptags;
+                         ele.children = tempChildren;
+                    }
                     return temp
                 })
 
             });
             this.listAllArchives = temp;
             this.userInfo.archives = this.listAllArchives;
-            this.userInfo.tagnames = temptags;
-            this.userInfo.children = tempChildren;
+            console.log(this.userInfo.archives, "User Info Archives")
+        });
+    }
+
+        //GET ALL PROJECTS
+    @action readProjects() {
+        let dbRef = db.collection('NewProjects');
+        let temp: any = []
+
+        dbRef.onSnapshot((querySnapshot: any) => {
+            this.listAllProjects = []
+            temp = []
+            querySnapshot.forEach((doc: any) => {
+                this.userProjectID.map((e: any) => {
+                    if (doc.data().id == e) {
+                        let ele = {
+                            name: doc.data().name,
+                            id: doc.data().id,
+                            owner: doc.data().owner,
+                            tagnames: doc.data().tagnames,
+                            team: doc.data().team,
+                            archives: [{}]
+                        }
+                        this.innerArchivesID = doc.data().archives;
+                        this.readInnerArchive(doc.data().id);
+                        console.log(this.listInnerArchives, 'List inner archives')
+                        ele.archives = this.listInnerArchives;
+                        temp.push(ele);
+
+                    } 
+                  return temp
+                })
+
+            });
+          
+            this.listAllProjects = temp;
+            this.userInfo.projects = this.listAllProjects;
+            console.log(this.userInfo.projects, "User Info Projects")
+
         });
 
     }
 
+    @action readTasks() {
+        let dbRef = db.collection('NewProjects').doc(this.projectidActual).collection('Task');
 
-    @action getFolders() {
+        dbRef.onSnapshot((querySnapshot: any) => {
+            this.taskInfo = []
 
+            querySnapshot.forEach((querySnapshot: any) => {
+                let tempTask = {
+                    date: querySnapshot.data().date,
+                    state: querySnapshot.data().state,
+                    id: querySnapshot.data().id,
+                    description: querySnapshot.data().description,
+                    team: querySnapshot.data().team
+                }
+
+                this.taskInfo.push(tempTask)
+            });
+            console.log(this.taskInfo);
+        });
     }
+    //This method search an array of archives of an array of archive id's
+    readInnerArchive(id: string) {
+        let dbRef = db.collection('NewArchives');
+        let temp: any = [];
 
+        dbRef.onSnapshot((querySnapshot: any) => {
 
+            querySnapshot.forEach((doc: any) => {
+                this.innerArchivesID.map((e: any) => {
+
+                    if (doc.data().id == e) {
+                        let ele = {
+                            name: doc.data().name,
+                            type: doc.data().type,
+                            id: doc.data().id,
+                            parent: doc.data().parent,
+                            size: doc.data().size,
+                            sourceURL: doc.data().sourceURL,
+                            fileURL: doc.data().fileURL,
+                            tagnames: doc.data().tagnames,
+                            children: doc.data().children,
+                        }
+                        console.log(ele, 'LOOP')
+
+                        temp.push(ele);
+
+                    } else {
+
+                    }
+                    return temp
+                })
+
+            });
+            console.log(temp, 'LIST INNER ARCHIVES')
+            this.listInnerArchives = temp;
+
+        });
+    }
 }
 
 export const firebaseStore = new FsActionStore();
