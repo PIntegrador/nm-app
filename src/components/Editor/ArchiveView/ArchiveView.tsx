@@ -32,7 +32,7 @@ interface ArchiveViewProps {
                 <div className="flex-child  row-flex moduleCont">
                     <p></p>
                     {
-                        (this.props.archives != null) ? (
+                        (this.props.archives[0] != null && this.props.archives[0] != null) ? (
                             this.props.archives.map((elem: any) => {
                                 return <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type={elem.type} name={elem.name} numFiles={0} id={elem.id} />
                             })) : <section className="noArchives">
