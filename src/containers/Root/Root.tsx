@@ -20,6 +20,8 @@ export class Root extends React.Component {
         //
         authStore.verifyuser();
         firebaseStore.readFiles();
+        firebaseStore.readProjects();
+        firebaseStore.readTasks()
         if(authStore.isLogged){
             let uid = authStore.user.uid;
             firebaseStore.uidActual = uid;

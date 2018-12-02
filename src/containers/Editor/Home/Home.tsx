@@ -54,12 +54,12 @@ interface HomeProps {
                 <Header user={firebaseStore.userInfo.email}/>
                 <FloatingButton />
                 <SortButton state={homeEditorStore.sortButState}/>
-                <AddMenu idLocation={firebaseStore.userInfo.id} />
+                <AddMenu idLocation={firebaseStore.userInfo.id}  />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
-                      
+
                         <Link to="/projects">
                             <div className="titleContainer">
                             <div className="ico">
