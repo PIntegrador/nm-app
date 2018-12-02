@@ -5,6 +5,7 @@ import { Children } from 'react';
 
 class FolderInStore {
     constructor() {
+
     }
 
     @observable folderIdArchives: string = "";
@@ -40,6 +41,7 @@ class FolderInStore {
                         fileURL: doc.data().fileURL,
                         tagnames: doc.data().tagnames,
                         children: doc.data().children,
+                        owner: doc.data().owner
                     }
 
                     temp.push(ele);
@@ -79,6 +81,7 @@ class FolderInStore {
                         fileURL: doc.data().fileURL,
                         tagnames: doc.data().tagnames,
                         children: doc.data().children,
+                        owner: doc.data().owner
                     }
 
                     temp.push(ele);
@@ -88,9 +91,6 @@ class FolderInStore {
             this.folderParentName = temp[0].name;
         });
     }
-
-    
-
 }
 
 export const folderInStore = new FolderInStore();
