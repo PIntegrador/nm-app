@@ -91,9 +91,6 @@
                     &.closed {
                         flex: 0 1 auto;
                         width: 30px;
-                        margin-right: 10px;
-                        transform: scale(1.2); 
-                        transition: width 0.3s;   
                     }
                     
                     &.open {
@@ -164,6 +161,11 @@
                     height: 45px;
                     border-radius: 0;
                     margin-left: -5px;
+
+                    >img {
+                        margin-left: 10px;
+
+                    }
                 }
             }
 
