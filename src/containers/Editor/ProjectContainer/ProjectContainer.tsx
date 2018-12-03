@@ -30,33 +30,34 @@ import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirm
         let arrayArchives = [];
 
         return <div className="contHome row-flex">
-            <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
+            <Dash state={homeEditorStore.sideMenuState} selected={homeEditorStore.selectedMenuItem} />
             <div className="app flex-child col-flex">
-            <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
-                <SortButton state={''} />
+                <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState} />
+
                 <section className="scroll">
                     <section className="col-flex projectContainer">
                         <RouteBar mainTitle="Mis Proyectos" folderName={""} />
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                 (firebaseStore.userInfo.projects != null) ?
-                                 firebaseStore.userInfo.projects.map((elem: any) => {
-                                    return (
-                                        <Module key={elem.id} gridStyle={''} type='project' name={elem.name} numFiles={0} id={elem.id}
-                                        size = {elem.size} date = {elem.date}  extension={elem.extension}/>
+                                (firebaseStore.userInfo.projects != null) ?
+                                    firebaseStore.userInfo.projects.map((elem: any) => {
+                                        return (
+                                            <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id}
+                                                size={elem.size} date={elem.date} extension={elem.extension} />
 
-                                    )
-                                }) : ''
+                                        )
+                                    }) : ''
                             }
                         </div>
                     </section>
                 </section>
                 <FloatingButton />
-                    <AddMenu />
-                    <FolderPopUp />
-                    <FilePopUp />
-                    <AddProject />
-                    <UploadConfirmation />
+                <SortButton state={homeEditorStore.sortButState} />
+                <AddMenu />
+                <FolderPopUp />
+                <FilePopUp />
+                <AddProject />
+                <UploadConfirmation />
             </div>
 
         </div>
