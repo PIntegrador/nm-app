@@ -12,10 +12,12 @@ class FsActionStore {
 
 
     @observable userInfo: any = {};
-    @observable taskInfo: any = {};
+    @observable taskInfo: any = [];
 
     @observable uidActual: string = "";
     @observable projectidActual: string = "";
+    @observable actualProject: any = {};
+
 
     @observable userArchivesID: any = [];
     @observable listAllArchives: any = [];
@@ -30,6 +32,26 @@ class FsActionStore {
 
     /* This method search the document of the user in the database by the uid of the auth store,
     we need to know the id of the documents that the user have in the db */
+
+    @action generateActualProject () {
+        let dbRef = db.collection('NewProjects').doc(this.projectidActual);
+        dbRef.onSnapshot((querySnapshot: any) => {
+            this.actualProject = {}
+            let actualProject = {
+                archives: querySnapshot.data().archives,
+                date: querySnapshot.data().date,
+                description: querySnapshot.data().description,
+                id: querySnapshot.data().id,
+                name: querySnapshot.data().name,
+                owner: querySnapshot.data().owner,
+                tagnames: querySnapshot.data().tagnames,
+                team: querySnapshot.data().team,
+            }
+
+            this.actualProject = actualProject;
+            console.log (this.actualProject, 'this is the actual project');
+        });
+    }
 
     @action readInfoUser() {
 
@@ -153,7 +175,7 @@ class FsActionStore {
     
                     this.taskInfo.push(tempTask)
                 });
-                console.log(this.taskInfo);
+                console.log(this.taskInfo, "CHECK IT");
             });
         }
 

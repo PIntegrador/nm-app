@@ -15,6 +15,8 @@ import { Link } from 'react-router-dom';
 import { ProjectMenu } from './ProjectMenu/ProjectMenu';
 import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
 
+let projectID: any = '';
+
 @observer export class ProjectDashBoard extends React.Component {
     constructor(props: any) {
         super(props);
@@ -22,8 +24,12 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
         /*
         firebaseStore.getActualProject(this.getProjectID());
         */
-       firebaseStore.projectidActual = this.getProjectID();
+
+       projectID = this.getProjectID();
+       firebaseStore.projectidActual = projectID;
        firebaseStore.readTasks();
+       firebaseStore.generateActualProject();
+
     }
 
     getProjectID() {
@@ -32,6 +38,16 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
         return locationArray.slice(-1)[0];
     }
 
+    componentDidUpdate() {
+        if (projectID != this.getProjectID()) {
+
+            projectID = this.getProjectID();
+            firebaseStore.projectidActual = projectID;
+            firebaseStore.readTasks();
+            firebaseStore.generateActualProject();
+
+        }
+    }
     renderSuggested() {
         if (projectDash.renderPopUpAddCollaborator == true) {
             return (
@@ -74,7 +90,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                             <div className="icon" onClick={
                                 (e) => {
                                     projectDash.renderPopUpAddTask = false;
-                                    firebaseStore.listProjectTeam = firebaseStore.userInfo.projects[0].team;
+                                    firebaseStore.listProjectTeam = firebaseStore.actualProject.team;
 
                                     projectDash.newTask.team = [];
                                     projectDash.newTask.state = '';
@@ -131,7 +147,8 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                                 <div className="suggested">
 
                                     {
-                                        this.renderSuggested()
+                                        firebaseStore.taskInfo != null ? this.renderSuggested(): ''
+                                        
                                     }
                                 </div>
 
@@ -156,7 +173,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                                 if (projectDash.newTask.description != '') {
                                     
                                     projectDash.addNewTask();
-                                    firebaseStore.listProjectTeam = firebaseStore.userInfo.projects[0].team;
+                                    firebaseStore.listProjectTeam =firebaseStore. actualProject.team;
 
                                     projectDash.newTask.team = [];
                                     projectDash.newTask.state = '';
@@ -170,7 +187,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                         }>Agregar tarea</button>
                         <button className="cancel" onClick={
                             (e) => {
-                                firebaseStore.listProjectTeam = firebaseStore.userInfo.projects[0].team;
+                                firebaseStore.listProjectTeam = firebaseStore.actualProject.team;
 
                                 projectDash.newTask.team = [];
                                 projectDash.newTask.state = '';
