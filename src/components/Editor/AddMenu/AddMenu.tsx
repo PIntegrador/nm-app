@@ -8,21 +8,31 @@ const AddMenu = observer(() => {
     return (
         <section className="addMenu"
             onClick={() => {
-               addStore.addMenuStatus()
+                addStore.addMenuStatus();
             }}
             style={{
-               display: addStore.addMenu === true ? "flex" : "none"
+                display: addStore.addMenu === true ? "flex" : "none"
             }}>
             <article onClick={() => {
                 addStore.filePopUpAddStatus();
-            }}><div></div><h1>Subir Archivo</h1></article>
-            <article onClick={() =>{
+            }}>
+                <img src="./assets/svg/subirContenido.svg" alt="Nubir Contenido" />
+                <h1>Subir Contenido</h1>
+            </article>
+            <hr/>
+            <article onClick={() => {
                 addStore.folderPopUpAddStatus();
-            }}><div></div><h1>Crear Carpeta</h1></article>
+            }}>
+                <img src="./assets/svg/nuevaCarpeta.svg" alt="Nueva Carpeta" />
+                <h1>Nueva Carpeta</h1>
+            </article>
             <hr/>
             <article onClick={() => {
                 addStore.projectPopUpAddStatus();
-            }}><div></div><h1>Crear Proyecto</h1></article>
+            }}>
+                <img src="./assets/svg/nuevoProyecto.svg" alt="Nuevo Proyecto" />
+                <h1>Nuevo Proyecto</h1>
+            </article>
         </section>
     )
 });

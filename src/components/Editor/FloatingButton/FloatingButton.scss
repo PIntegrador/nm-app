@@ -1,12 +1,12 @@
 @import '../../../../public/css/variables.scss';
 .floatingButton {
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
     border-radius: 25px;
     background: $secondaryColor;
     position: fixed;
     bottom: 40px;
-    right: 50px;
+    right: 30px;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -15,14 +15,14 @@
     
     div {
         background: $white;
-        width: 25px;
-        height: 5px;
+        width: 22px;
+        height: 4px;
         border-radius: 10px;
-        margin-left: -10px;
+        margin-left: -9px;
         &:last-child {
-            margin-left: -15px;
-            width: 5px;
-            height: 25px;
+            margin-left: -13px;
+            width: 4px;
+            height: 22px;
         }
     }
     &:hover {

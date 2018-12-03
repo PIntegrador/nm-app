@@ -52,11 +52,9 @@ interface HomeProps {
 
             <div className="app flex-child col-flex">
                 <Header user={firebaseStore.userInfo.email}/>
-                <FloatingButton />
                 <SortButton state={homeEditorStore.sortButState}/>
-                <AddMenu />
                 <section className="scroll">
-                <div className="homeInfo col-flex">
+                    <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
 
@@ -147,14 +145,13 @@ interface HomeProps {
 
                 </div>
                 </section>
+                <FloatingButton />
+                <AddMenu />
+                <FolderPopUp />
+                <FilePopUp />
+                <AddProject />
+                <UploadConfirmation />
             </div>
-            
-            <FolderPopUp />
-            <FilePopUp />
-            <AddProject />
-            <UploadConfirmation />
-           
-
         </div>
     }
 }
