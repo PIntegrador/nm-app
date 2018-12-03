@@ -25,6 +25,8 @@ import AddProject from '../../../components/Editor/AddProject/AddProject';
 import { authStore } from '../../../store/AuthStore';
 import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
 import { addStore } from '../../../store/AddDataStore';
+import { folderInStore } from '../../../store/FolderInStore';
+import { SortBarArchive } from '../../../components/Editor/SortBarArchive/SortBarArchive';
 
 interface HomeProps {
     history : any
@@ -52,7 +54,7 @@ interface HomeProps {
                 <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
                 <FloatingButton />
                 <SortButton state={homeEditorStore.sortButState}/>
-                <AddMenu />
+                <AddMenu idLocation={folderInStore.folderIdArchives} />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
@@ -75,13 +77,18 @@ interface HomeProps {
                             <h1 >Proyectos</h1>
                             </div>
                         </Link>
+                        {
+                            (homeEditorStore.sortButState == 'list') ?
+                            <SortBarArchive></SortBarArchive> : ''
+                        }
+                       
                         <div className="flex-child  row-flex moduleCont">
                             {
                                 
-                                (firebaseStore.userArchivesID.length != null) ?
-                                [].map((elem: any) => {
+                                (firebaseStore.userInfo.projects != null) ?
+                                  firebaseStore.userInfo.projects.map((elem: any) => {
                                     return (
-                                        <Module key={elem.id} gridStyle='' type='project' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 }) : (e:any)=> {
                                     return <p>No tienes proyectos aún</p>
@@ -104,6 +111,10 @@ interface HomeProps {
                             <h1 >Carpetas</h1>
                             </div>
                         </Link>
+                        {
+                            (homeEditorStore.sortButState == 'list') ?
+                            <SortBarArchive></SortBarArchive> : ''
+                        }
                         <div className="flex-child  row-flex moduleCont">
                             {
                                   (firebaseStore.userInfo.archives != null) ?
@@ -132,6 +143,10 @@ interface HomeProps {
 
                             </div>                          
                         </Link>
+                        {
+                            (homeEditorStore.sortButState == 'list') ?
+                            <SortBarArchive></SortBarArchive> : ''
+                        }
                         <div className="flex-child  row-flex moduleCont">
                             {
                                 (firebaseStore.userInfo.archives != null) ?
