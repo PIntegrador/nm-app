@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jquery": "^3.3.22",
     "@types/react-router": "^4.0.31",
     "@types/react-router-dom": "^4.3.1",
     "core-js": "^2.5.7",

@@ -47,19 +47,17 @@ interface HomeProps {
     render() {
         console.log(firebaseStore.userInfo.email, 'email');
         return <div className="contHome row-flex">
-
-            <Dash />
-
-            <div className="app flex-child col-flex">
-                <Header user={firebaseStore.userInfo.email}/>
+                <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
+                <div className="app flex-child col-flex">
+                <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
                 <FloatingButton />
                 <SortButton state={homeEditorStore.sortButState}/>
-                <AddMenu idLocation={firebaseStore.userInfo.id}  />
+                <AddMenu />
                 <section className="scroll">
                 <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
-
+                      
                         <Link to="/projects">
                             <div className="titleContainer">
                             <div className="ico">
@@ -79,11 +77,15 @@ interface HomeProps {
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
                             {
+                                
+                                (firebaseStore.userArchivesID.length != null) ?
                                 [].map((elem: any) => {
                                     return (
                                         <Module key={elem.id} gridStyle='' type='project' name={elem.name} numFiles={0} id={elem.id} />
                                     )
-                                })
+                                }) : (e:any)=> {
+                                    return <p>No tienes proyectos aún</p>
+                                }
                             }
                         </div>
 
