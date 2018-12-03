@@ -18,11 +18,11 @@ export class Landing extends React.Component {
                             <img src="/assets/img/landing/logo.svg" alt="" className="logo" />
 
                             <div className="cont">
-                                <Link className="login hvr-grow" to='/Login'>
-                                <a className="login hvr-grow" href="/Login">Iniciar Sesión</a>
+                                <Link className="login hvr-grow" to='/login'>
+                                <a className="login hvr-grow">Iniciar Sesión</a>
                                 </Link>
-                                <Link  className="register hvr-grow" to='/Login'>>
-                                <a className="register hvr-grow" href="/register">Inicia una prueba gratis</a>
+                                <Link  className="register hvr-grow" to='/register'>
+                                <a className="register hvr-grow" >Inicia una prueba gratis</a>
                                 </Link>
                             </div>
                         </div>

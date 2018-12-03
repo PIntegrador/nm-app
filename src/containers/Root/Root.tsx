@@ -12,6 +12,7 @@ import { Login } from '../Login/Login';
 import { ProjectDashBoard } from '../Editor/ProjectDashBoard/ProjectDashBoard';
 import { firebaseStore } from '../../store/FsActionStore';
 import { ProjectContainer } from '../Editor/ProjectContainer/ProjectContainer';
+import { Landing } from '../Landing/Landing';
 
 
 export class Root extends React.Component {
@@ -35,8 +36,10 @@ export class Root extends React.Component {
         return (
             <Router>
                 <div>
-                    <Route exact path="/" component={Login} />
+                    
+                    <Route exact path="/" component={Landing} />
                     <Route exact path="/register" component={Register} />
+                    <Route exact path="/login" component={Login} />
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/folders" component={FolderContainer} />
                     <Route path="/folders/:folder" component={ArchiveContainer} />
