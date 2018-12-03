@@ -78,12 +78,14 @@ interface HomeProps {
                             </div>
                         </Link>
                         <div className="flex-child  row-flex moduleCont">
-                            {
-                                [].map((elem: any) => {
+
+                        {
+                                  (firebaseStore.userInfo.projects != null) ?
+                                  firebaseStore.userInfo.projects.map((elem: any) => {
                                     return (
-                                        <Module key={elem.id} gridStyle='' type='project' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} />
                                     )
-                                })
+                                }) : ''
                             }
                         </div>
 
@@ -93,7 +95,7 @@ interface HomeProps {
                         <Link to="/folders">
                             <div className="titleContainer">
                             <div className="ico">
-                            <svg width="100%" height="100%" viewBox="0 0 55.2 52.5">
+                                <svg width="100%" height="100%" viewBox="0 0 55.2 52.5">
                                     <path className="modulesAsTitles"  d="M52.9,13.8c-1.5-1.4-3.2-2.1-5.2-2.1H25.5v-1c0-2-0.7-3.7-2.2-5.1c-1.5-1.4-3.2-2.1-5.2-2.1H7.5
             c-2,0-3.8,0.7-5.2,2.1c-1.5,1.4-2.2,3.1-2.2,5.1v31.3c0,2,0.7,3.7,2.2,5.1c1.5,1.4,3.2,2.1,5.2,2.1h40.2c2,0,3.8-0.7,5.2-2.1
             c1.5-1.4,2.2-3.1,2.2-5.1V18.9C55.1,16.9,54.4,15.2,52.9,13.8z"/>
@@ -108,7 +110,7 @@ interface HomeProps {
                                   firebaseStore.userInfo.archives.map((elem: any) => {
                                     if(elem.type == 'folder') 
                                     return (
-                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type={elem.type} name={elem.name} numFiles={0} id={elem.id} />
 
                                     )
                                 }) : ''
@@ -135,7 +137,7 @@ interface HomeProps {
                                 (firebaseStore.userInfo.archives != null) ?
                                 firebaseStore.userInfo.archives.map((elem: any) => {
                                     if(elem.type == 'file') 
-                                    return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
+                                    return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type={elem.type} name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 }) : ''
                              

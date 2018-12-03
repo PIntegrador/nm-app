@@ -22,6 +22,8 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
         /*
         firebaseStore.getActualProject(this.getProjectID());
         */
+       firebaseStore.projectidActual = this.getProjectID();
+       firebaseStore.readTasks();
     }
 
     getProjectID() {
@@ -33,15 +35,15 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
     renderSuggested() {
         if (projectDash.renderPopUpAddCollaborator == true) {
             return (
-                projectDash.thisProjectBackup.collaborators != null ? (
-                    (projectDash.thisProjectBackup.collaborators).map((elem: any) => {
+                firebaseStore.listProjectTeam != null ? (
+                    firebaseStore.listProjectTeam.map((elem: any) => {
                         return (
                             <div className="addColaborator" onClick={
                                 (e) => {
                                     projectDash.renderPopUpAddCollaborator = false;
                                     //delete the element was added in array
-                                    projectDash.thisProjectBackup.collaborators.pop();
-                                    projectDash.handleTaskCollaborators(elem.name)
+
+                                    projectDash.handleTaskCollaborators(elem)
                                 }
                             }>
                                 <div className="colicon">
@@ -51,7 +53,7 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                                 </div>
 
                                 <p>
-                                    {elem.name}
+                                    {elem}
                                 </p>
                             </div>)
                     })
@@ -72,6 +74,13 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                             <div className="icon" onClick={
                                 (e) => {
                                     projectDash.renderPopUpAddTask = false;
+                                    firebaseStore.listProjectTeam = firebaseStore.userInfo.projects[0].team;
+
+                                    projectDash.newTask.team = [];
+                                    projectDash.newTask.state = '';
+                                    projectDash.newTask.date = '';
+                                    projectDash.renderPopUpAddTask = false;
+                                    projectDash.renderPopUpAddCollaborator = false;
                                 }
                             }>
                                 <svg width="100%" height="100%" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,8 +107,8 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                                     projectDash.renderPopUpAddCollaborator = true;
                                 }}>
                                     {
-                                        projectDash.newTask.collaborators != null ? (
-                                            (projectDash.newTask.collaborators).map((elem: any) => {
+                                        projectDash.newTask.team != null ? (
+                                            (projectDash.newTask.team).map((elem: any) => {
                                                 return (
                                                     <div className="colicon">
 
@@ -115,12 +124,12 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                                             </svg>
                                         </div>
                                     </div>
-
-                                    <p>
-                                        Añadir participantes...
-                                    </p>
+                                    <input type="text" placeholder='Añadir participantes...'/>
+                                    {//This input must search in the team member
+                                    }
                                 </div>
                                 <div className="suggested">
+
                                     {
                                         this.renderSuggested()
                                     }
@@ -145,13 +154,30 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
                         <button className="addButt" onClick={
                             (e) => {
                                 if (projectDash.newTask.description != '') {
+                                    
+                                    projectDash.addNewTask();
+                                    firebaseStore.listProjectTeam = firebaseStore.userInfo.projects[0].team;
+
+                                    projectDash.newTask.team = [];
+                                    projectDash.newTask.state = '';
+                                    projectDash.newTask.date = '';
+
                                     projectDash.renderPopUpAddTask = false;
+                                    projectDash.renderPopUpAddCollaborator = false;
+
                                 }
                             }
                         }>Agregar tarea</button>
                         <button className="cancel" onClick={
                             (e) => {
+                                firebaseStore.listProjectTeam = firebaseStore.userInfo.projects[0].team;
+
+                                projectDash.newTask.team = [];
+                                projectDash.newTask.state = '';
+                                projectDash.newTask.date = '';
                                 projectDash.renderPopUpAddTask = false;
+                                projectDash.renderPopUpAddCollaborator = false;
+
                             }
                         }>Cancelar</button>
 
@@ -164,9 +190,9 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
         }
     }
     render() {
-        /*
-        let project = firebaseStore.actualProject;
-        */
+
+       // This conditional must check if this project that is being checked exists
+       if (firebaseStore.projectidActual!= '') {
         return <div className="contHome row-flex">
             <Dash />
 
@@ -180,5 +206,9 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
             </div>
 
         </div>
+       } else {
+           return null;
+       }
+
     }
 }

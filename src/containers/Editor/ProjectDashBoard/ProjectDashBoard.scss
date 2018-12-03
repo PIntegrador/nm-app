@@ -89,6 +89,7 @@
                         font-weight: normal;
                         font-size: 12px;
 
+                        
                         color: #808080;
 
 
@@ -125,8 +126,14 @@
                     .suggested {
                         position: absolute;
                         top: 0;
+                        margin-top: 40px;
                         .addColaborator {
-                            width: 100%;
+                            width: 314px;
+                            transition: .2s all ease;
+                            cursor: pointer;
+                            &:hover {
+                                background: #10E6C5;
+                            }
                         }
                     }
                 }

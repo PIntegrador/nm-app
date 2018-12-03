@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { projectDash } from '../../../../store/ProjectDashBoardStore';
 import { getObserverTree } from 'mobx';
 import { observer } from 'mobx-react';
+import { firebaseStore } from '../../../../store/FsActionStore';
 
 
 @observer export class ProjectMenu extends React.Component {
@@ -16,7 +17,7 @@ import { observer } from 'mobx-react';
 
 
     render() {
-
+        let projectName = firebaseStore.userInfo.projects[0].name;
         return (
             <section className="projectMenuComponent">
 
@@ -33,7 +34,7 @@ import { observer } from 'mobx-react';
                             </g>
                         </svg>
                     </div>
-                    <h1 >Aves de Cali</h1>
+                    <h1 >{projectName}</h1>
     
                 </div>
                 <div className="optionMenu">
