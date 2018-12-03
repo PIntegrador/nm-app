@@ -30,17 +30,14 @@ interface FileViewProps {
             <div className="contFolder">
 
                 <RouteBar mainTitle="Mis Archivos" folderName={""} />
-                { ''
-                  //  (homeEditorStore.sortButState == 'list')?<SortBarArchive />:""
-                    }
+                {(homeEditorStore.sortButState == 'list') ? <SortBarArchive /> : ""
+                }
                 <div className="flex-child  row-flex moduleCont">
                     <p></p>
                     {
                         (this.props.folders != null) ? (
                             this.props.folders.map((elem: any) => {
-                                return <Module key={elem.id} gridStyle={ ''
-                                //    homeEditorStore.sortButState
-                                } type='folder' name={elem.name} numFiles={0} id={elem.id} />
+                                return <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type={elem.type} name={elem.name} numFiles={0} id={elem.id} />
                             })) : console.log("Como estas")
                     }
                 </div>

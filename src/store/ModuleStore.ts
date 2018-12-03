@@ -3,20 +3,25 @@ import { db, storage, auth } from '../../config/firebaseConfig';
 
 class ModuleStore {
     constructor() {
-
     }
 
+    //this module move and delete files
+    //if the file, dont have the id inside itself, the drag actions will not work
+
     @observable idTemp: string = "";
+    @observable idToFolder: string = "";
 
     //idTempo is the id of the dragged element
+    //idToFolder is the id of destiny folder
 
     @action deleteFileByID() {
         if (this.idTemp != '') {
-            let refArchive = db.collection("Archives").doc(this.idTemp);
+            let refArchive = db.collection("NewArchives").doc(this.idTemp);
+
+            
 
             refArchive.delete().then(function () {
                 console.log("Document successfully deleted!");
-                this.idTemp = "";
                 return;
             }).catch(function (error) {
                 console.error("Error removing document: ", error);
@@ -24,23 +29,26 @@ class ModuleStore {
         }
     }
 
-    @action deleteProjectByID() {
-        let refArchive = db.collection("Projets");
+    @action moveToFolderById() {
+        if (this.idTemp != '' && this.idToFolder != '') {
 
-        //
-    }
+            console.log("in");
 
-    @action deleteFolderByID() {
-        if (this.idTemp != '') {
-            let refArchive = db.collection("Folders").doc(this.idTemp);
+            let refArchive = db.collection("NewArchives").doc(this.idTemp);
 
-            refArchive.delete().then(function () {
-                console.log("Document successfully deleted!");
-                this.idTemp = "";
-                return;
-            }).catch(function (error) {
-                console.error("Error removing document: ", error);
-            });
+            refArchive.update({
+                parent: this.idToFolder
+            })
+                .then(function () {
+                    console.log("Document successfully moved");
+                })
+                .catch(function (error) {
+                    // The document probably doesn't exist.
+                    console.error("Error updating document: ", error);
+                });
+
+            this.idTemp = '';
+            this.idToFolder = '';
         }
     }
 

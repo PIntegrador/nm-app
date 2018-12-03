@@ -4,6 +4,7 @@ import './SortBarArchive.scss';
 import '../../../../public/css/flex.scss'
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
+import { folderInStore } from '../../../store/FolderInStore';
 
 let orderName: boolean;
 let orderSize: boolean;
@@ -22,7 +23,7 @@ let orderTipe: boolean;
         orderUp = true;
         orderTipe = true;
         //the default value is order by name
-      //  firebaseStore.sortArchivesByName(orderName);
+
     }
 
     getIconName() {
@@ -75,22 +76,14 @@ let orderTipe: boolean;
         return (
             <div className="sortBarArchive" >
                 <section className="cont">
-
                     <h4 className="SortArchiveName hvr-icon-pulse" onClick={(e) => {
                         e.preventDefault();
                         orderName = !orderName;
-                 //       firebaseStore.sortArchivesByName(orderName);
+                        folderInStore.sortArchivesByName(orderName);
                     }}>Nombre
-                    
                     <img src={this.getIconName()} className="hvr-icon" />
                     </h4>
-
-                    <h4 className="SortArchiveSize hvr-icon-pulse" onClick={(e) => {
-                        e.preventDefault();
-                       
-                        orderSize = !orderSize;
-                  //      firebaseStore.sortArchivesBySize(orderSize);
-                    }}>Tamaño
+                    <h4 className="SortArchiveSize hvr-icon-pulse">Tamaño
                     <img src={this.getIconSize()} className="hvr-icon" />
                     </h4>
                     <h4 className="SortArchiveModDate hvr-icon-pulse">Última Modificación
