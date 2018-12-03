@@ -97,16 +97,16 @@ class FolderInStore {
     //metthod to sort by name
     @action sortArchivesByName(order: boolean) {
         function compareDescendente(a: any, b: any, order1: number, order2: number) {
-            if (a.name[0] < b.name[0])
+            if (a.name < b.name)
                 return -1;
-            if (a.name[0] > b.name[0])
+            if (a.name > b.name)
                 return 1;
             return 0;
         }
         function compareAscendente(a: any, b: any, order1: number, order2: number) {
-            if (a.name[0] < b.name[0])
+            if (a.name < b.name)
                 return 1;
-            if (a.name[0] > b.name[0])
+            if (a.name > b.name)
                 return -1;
             return 0;
         }
