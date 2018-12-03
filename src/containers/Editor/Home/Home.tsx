@@ -39,11 +39,12 @@ interface HomeProps {
         if(!authStore.isLogged){
             props.history.push ("/");
         } else {
-
-            let uid = authStore.user.uid;
-            firebaseStore.uidActual = uid;
-            console.log(firebaseStore.uidActual,' userid')
-            firebaseStore.readInfoUser();
+            if(typeof authStore.user != null){
+                let uid = authStore.user.uid;
+                firebaseStore.uidActual = uid;
+                console.log(firebaseStore.uidActual,' userid')
+                firebaseStore.readInfoUser();
+            }
         }
     }
 
@@ -88,7 +89,7 @@ interface HomeProps {
                                   firebaseStore.userInfo.projects.map((elem: any) => {
                                     return (
                                         <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} 
-                                        size = {elem.size} date = {elem.date} />
+                                        size = {elem.size} date = {elem.date} extension={elem.extension}/>
                                     )
                                 }) : (e:any)=> {
                                     return <p>No tienes proyectos aún</p>
@@ -122,7 +123,7 @@ interface HomeProps {
                                     if(elem.type == 'folder') 
                                     return (
                                         <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} 
-                                        size = {elem.size} date = {elem.date} />
+                                        size = {elem.size} date = {elem.date} extension = {elem.extension}/>
 
                                     )
                                 }) : ''
@@ -154,7 +155,7 @@ interface HomeProps {
                                 firebaseStore.userInfo.archives.map((elem: any) => {
                                     if(elem.type == 'file') 
                                     return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} 
-                                    size = {elem.size} date = {elem.date} />
+                                    size = {elem.size} date = {elem.date} extension={elem.extension}/>
                                     )
                                 }) : ''
                              

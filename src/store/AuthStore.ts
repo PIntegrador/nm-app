@@ -20,6 +20,7 @@ class AuthStore {
         rol: "",
     }
     @observable newUser = {
+        name: "",
         email: "",
         rol: "",
         profilePicture: "",
@@ -86,6 +87,7 @@ class AuthStore {
 
     @action signOut() {
         auth.signOut();
+        window.location.replace("/");
         this.isLogged = false;
     }
 

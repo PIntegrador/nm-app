@@ -1,4 +1,4 @@
-import {observable, action} from 'mobx'
+import { observable, action } from 'mobx'
 import { db, storage } from '../../config/firebaseConfig';
 import UploadConfirmation from '../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
 import { authStore } from './AuthStore';
@@ -6,7 +6,7 @@ import { authStore } from './AuthStore';
 class AddDataStore {
     @observable folders: any[] = [];
     @observable projects: any[] = [];
-    
+
     // >>>>>> FLOATING VARIABLES AND FUNCTIONS <<<<<<
 
     // --- AddMenu ---
@@ -28,10 +28,10 @@ class AddDataStore {
     }
 
     @action setToFalse() {
-        this.uploadConfirmation = !this.uploadConfirmation
+        this.uploadConfirmation = false;
     }
 
-     // >>>>>> ADD FILE VARIABLES AND FUNCTIONS <<<<<<
+    // >>>>>> ADD FILE VARIABLES AND FUNCTIONS <<<<<<
 
     // --- PopUp Window ---
 
@@ -41,28 +41,29 @@ class AddDataStore {
         this.filePopUpAdd = !this.filePopUpAdd;
     };
 
-      // --- Drop Zone ---
+    // --- Drop Zone ---
 
-      @observable accepted: any[] = [];
-      @observable rejected: any[] = [];
-      @observable files: any[] = [];
+    @observable accepted: any[] = [];
+    @observable rejected: any[] = [];
+    @observable files: any[] = [];
 
-      @observable newFile: any = {
-          id: "File ID",
-          owner: "",
-          parent: 'none',
-          children: [],
-          fileURL: "",
-          name: "",
-          sourceURL: "",
-          tagnames: [],
-          type: "file",
-          size: "",
-          date: "",
-      };
-  
-      @action clearFile() {
-          this.newFile = {
+    @observable newFile: any = {
+        id: "File ID",
+        owner: "",
+        parent: 'none',
+        children: [],
+        fileURL: "",
+        name: "",
+        sourceURL: "",
+        tagnames: [],
+        type: "file",
+        size: "",
+        date: "",
+        extension: ""
+    };
+
+    @action clearFile() {
+        this.newFile = {
             id: "File ID",
             owner: "",
             parent: 'none',
@@ -74,8 +75,9 @@ class AddDataStore {
             type: "file",
             size: "",
             date: "",
-          };
-      }
+            extension: "",
+        };
+    }
 
     //Upload file to storage
     @action uploadNewFile(file: any) {
@@ -91,24 +93,39 @@ class AddDataStore {
     //Upload file to Firebase
     @action addNewFile() {
         let date = new Date();
-        let month = date.getMonth()+1;
-        this.newFile.date = date.getDate()+"/"+month+"/"+date.getFullYear();
+        let month = date.getMonth() + 1;
+        this.newFile.date = date.getDate() + "/" + month + "/" + date.getFullYear();
         this.newFile.owner = authStore.user.uid;
         this.newFile.parent = authStore.user.uid;
+
+        let newFolderId = "";
         db.collection("NewArchives").add(this.newFile)
-            .then(function (docRef) {
+            .then(function (docRef: any) {
                 console.log("Document written with ID: ", docRef.id);
-                this.newFile.id = docRef.id;
+
+                newFolderId = docRef.id;
+                let newRef = db.collection("NewArchives").doc(docRef.id);
+                newRef.update({
+                    id: docRef.id
+                })
+                    .then(function () {
+                        console.log("Document successfully updated!");
+                    })
+                    .catch(function (error: any) {
+                        console.error("Error updating document: ", error);
+                    });
+
                 this.files.push(this.newFile);
             })
-            .catch(function (error) {
+            .catch(function (error: any) {
                 console.error("Error adding document: ", error);
             });
+        this.newFolder.id = newFolderId;
     }
 
-     // >>>>>> ADD FOLDER VARIABLES AND FUNCTIONS <<<<<<
+    // >>>>>> ADD FOLDER VARIABLES AND FUNCTIONS <<<<<<
 
-        // --- Folder Display ---
+    // --- Folder Display ---
     @observable newFolder: any = {
         id: "Folder ID",
         owner: "",
@@ -120,51 +137,65 @@ class AddDataStore {
         tagnames: [],
         type: "folder",
         size: "",
-        date: "",   
+        date: "",
     };
 
-   
+
     // --- PopUp Window ---
-        @observable folderPopUpAdd: boolean = false;
+    @observable folderPopUpAdd: boolean = false;
 
-        @action folderPopUpAddStatus() {
-            this.folderPopUpAdd = !this.folderPopUpAdd;
-        };
+    @action folderPopUpAddStatus() {
+        this.folderPopUpAdd = !this.folderPopUpAdd;
+    };
 
-        @action addNewFolder() {
-            let date = new Date();
-            let month = date.getMonth()+1;
-            this.newFolder.date = date.getDate()+"/"+month+"/"+date.getFullYear();
-            this.newFolder.owner = authStore.user.uid;
-            this.newFolder.parent = authStore.user.uid;
-            db.collection("NewArchives").add(this.newFolder)
-                .then(function (docRef) {
-                    console.log("Document written with ID: ", docRef.id);
-                    this.newFolder.id = docRef.id;
-                    this.folders.push(this.newFolder);
+    @action addNewFolder() {
+        let date = new Date();
+        let month = date.getMonth() + 1;
+        this.newFolder.date = date.getDate() + "/" + month + "/" + date.getFullYear();
+        this.newFolder.owner = authStore.user.uid;
+        this.newFolder.parent = authStore.user.uid;
+
+        let newFolderId = "";
+        db.collection("NewArchives").add(this.newFolder)
+            .then(function (docRef: any) {
+                newFolderId = docRef.id;
+                let newRef = db.collection("NewArchives").doc(docRef.id);
+                newRef.update({
+                    id: docRef.id
                 })
-                .catch(function (error) {
-                    console.error("Error adding document: ", error);
+                    .then(function () {
+                        console.log("Document successfully updated!");
+                    })
+                    .catch(function (error: any) {
+                        console.error("Error updating document: ", error);
+                    });
+
+                this.folders.push(this.newFolder);
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error: any) {
+                console.error("Error adding document: ", error);
             });
-        }
+        this.newFolder.id = newFolderId;
+    }
 
-        @action clearFolder() {
-            this.newFolder = {
-                id: "Folder ID",
-                owner: "",
-                parent: 'none',
-                children: [],
-                fileURL: "",
-                name: "",
-                sourceURL: "",
-                tagnames: [],
-                type: "folder",
-                size: "",
-                date: "",
-            };
-        }
+    @action clearFolder() {
+        this.newFolder = {
+            id: "Folder ID",
+            owner: "",
+            parent: 'none',
+            children: [],
+            fileURL: "",
+            name: "",
+            sourceURL: "",
+            tagnames: [],
+            type: "folder",
+            size: "",
+            date: "",
+        };
+    }
 
-         // >>>>>> ADD PROJECT VARIABLES AND FUNCTIONS <<<<<<
+    // >>>>>> ADD PROJECT VARIABLES AND FUNCTIONS <<<<<<
 
     // --- PopUp Window ---
     @observable projectPopUpAdd: boolean = false;
@@ -173,8 +204,8 @@ class AddDataStore {
         this.projectPopUpAdd = !this.projectPopUpAdd;
     };
 
-     // --- Project Display ---
-     @observable newProject: any = {
+    // --- Project Display ---
+    @observable newProject: any = {
         owner: 'current user',
         team: [],
         id: "projectID",
@@ -187,30 +218,46 @@ class AddDataStore {
 
     @action addNewProject() {
         let date = new Date();
-        let month = date.getMonth()+1;
-        this.newProject.date = date.getDate()+"/"+month+"/"+date.getFullYear();
+        let month = date.getMonth() + 1;
+        this.newProject.date = date.getDate() + "/" + month + "/" + date.getFullYear();
         this.newProject.owner = authStore.user.uid;
+
+        let newProjectId: string = "";
         db.collection("NewProjects").add(this.newProject)
-            .then(function (docRef) {
-                this.newProject.id = docRef.id;
+            .then(function (docRef: any) {
+                newProjectId = docRef.id;
+
+                let newRef = db.collection("NewProjects").doc(docRef.id);
+                newRef.update({
+                    id: docRef.id
+                })
+                    .then(function () {
+                        console.log("Document successfully updated!");
+                    })
+                    .catch(function (error: any) {
+                        console.error("Error updating document: ", error);
+                    });
+
                 this.projects.push(this.newProject);
                 console.log("Document written with ID: ", docRef.id);
             })
-            .catch(function (error) {
+            .catch(function (error: any) {
                 console.error("Error adding document: ", error);
             });
+            
+        this.newProject.id = newProjectId;
     }
 
     @action clearProject() {
         this.newProject = {
-        owner: 'current user',
-        team: [],
-        id: "projectID",
-        name: "",
-        description: "",
-        tagnames: [],
-        archives: [],
-        date: "",
+            owner: 'current user',
+            team: [],
+            id: "projectID",
+            name: "",
+            description: "",
+            tagnames: [],
+            archives: [],
+            date: "",
         };
     }
 

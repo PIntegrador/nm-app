@@ -1,7 +1,7 @@
 @import '../../../../../public/css/variables.scss';
 .uploadConfirmation {
-    min-width: 180px;
-    max-width: 250px;
+    min-width: 220px;
+    max-width: 280px;
     width: fit-content;
     border-radius: 5px;
     background: $white2;
@@ -13,7 +13,7 @@
     justify-content: space-around;
     position: fixed;
     bottom: 40px;
-    right: 80px;
+    right: 90px;
     header {
         display: flex;
         flex-flow: row;
@@ -71,7 +71,7 @@
         flex-flow: row;
         align-content: center;
         align-items: center;
-        min-height: 40px;
+        min-height: 50px;
         width: 100%;
         padding: 0 10px;
         h3{

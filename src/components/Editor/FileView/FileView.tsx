@@ -38,7 +38,7 @@ interface FileViewProps {
                         (this.props.folders != null) ? (
                             this.props.folders.map((elem: any) => {
                                 return <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type={elem.type} name={elem.name} 
-                                numFiles={0} id={elem.id}     size = {elem.size} date = {elem.date} />
+                                numFiles={0} id={elem.id}     size = {elem.size} date = {elem.date} extension = {elem.extension}/>
                             })) : console.log("Como estas")
                     }
                 </div>
