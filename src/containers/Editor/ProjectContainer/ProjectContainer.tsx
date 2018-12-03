@@ -12,6 +12,13 @@ import SortButton from '../../../components/Editor/SortButton/SortButton';
 import './ProjectContainer.scss';
 import { Link } from 'react-router-dom';
 
+import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
+import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
+import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
+import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
+import AddProject from '../../../components/Editor/AddProject/AddProject';
+import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
+
 @observer export class ProjectContainer extends React.Component {
     constructor(props: any) {
         super(props);
@@ -24,20 +31,12 @@ import { Link } from 'react-router-dom';
 
         return <div className="contHome row-flex">
             <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
-
             <div className="app flex-child col-flex">
             <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
-
                 <SortButton state={''} />
-
                 <section className="scroll">
-                <section className="col-flex projectContainer">
-                {/* Delete all in <Link /> to quit title 
-                */}
-
-
-                <RouteBar mainTitle="Mis Proyectos" folderName = {""} />
-                        
+                    <section className="col-flex projectContainer">
+                        <RouteBar mainTitle="Mis Proyectos" folderName={""} />
                         <div className="flex-child  row-flex moduleCont">
                             {
                                 [].map((elem: any) => {
@@ -47,10 +46,14 @@ import { Link } from 'react-router-dom';
                                 })
                             }
                         </div>
-
                     </section>
-                    </section>
-
+                </section>
+                <FloatingButton />
+                    <AddMenu />
+                    <FolderPopUp />
+                    <FilePopUp />
+                    <AddProject />
+                    <UploadConfirmation />
             </div>
 
         </div>

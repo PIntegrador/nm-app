@@ -1,9 +1,9 @@
 import {observable, action} from 'mobx'
 import { db, storage } from '../../config/firebaseConfig';
 import UploadConfirmation from '../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
+import { authStore } from './AuthStore';
 
 class AddDataStore {
-
     @observable folders: any[] = [];
     @observable projects: any[] = [];
     
@@ -49,6 +49,7 @@ class AddDataStore {
 
       @observable newFile: any = {
           id: "File ID",
+          owner: "",
           parent: 'none',
           children: [],
           fileURL: "",
@@ -58,12 +59,12 @@ class AddDataStore {
           type: "file",
           size: "",
           date: "",
-          owner: ""
       };
   
       @action clearFile() {
           this.newFile = {
             id: "File ID",
+            owner: "",
             parent: 'none',
             children: [],
             fileURL: "",
@@ -73,7 +74,6 @@ class AddDataStore {
             type: "file",
             size: "",
             date: "",
-            owner: ""
           };
       }
 
@@ -90,10 +90,15 @@ class AddDataStore {
 
     //Upload file to Firebase
     @action addNewFile() {
-        this.files.push(this.newFile);
+        let date = new Date();
+        let month = date.getMonth()+1;
+        this.newFile.date = date.getDate()+"/"+month+"/"+date.getFullYear();
+        this.newFile.owner = authStore.user.uid;
         db.collection("NewArchives").add(this.newFile)
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
+                this.newFile.id = docRef.id;
+                this.files.push(this.newFile);
             })
             .catch(function (error) {
                 console.error("Error adding document: ", error);
@@ -105,6 +110,7 @@ class AddDataStore {
         // --- Folder Display ---
     @observable newFolder: any = {
         id: "Folder ID",
+        owner: "",
         parent: 'none',
         children: [],
         fileURL: "",
@@ -113,8 +119,7 @@ class AddDataStore {
         tagnames: [],
         type: "folder",
         size: "",
-        date: "",
-        owner: ""   
+        date: "",   
     };
 
    
@@ -126,12 +131,14 @@ class AddDataStore {
         };
 
         @action addNewFolder() {
+            let date = new Date();
+            let month = date.getMonth()+1;
+            this.newFolder.date = date.getDate()+"/"+month+"/"+date.getFullYear();
+            this.newFolder.owner = authStore.user.uid;
             db.collection("NewArchives").add(this.newFolder)
                 .then(function (docRef) {
                     console.log("Document written with ID: ", docRef.id);
-    
                     this.newFolder.id = docRef.id;
-    
                     this.folders.push(this.newFolder);
                 })
                 .catch(function (error) {
@@ -142,6 +149,7 @@ class AddDataStore {
         @action clearFolder() {
             this.newFolder = {
                 id: "Folder ID",
+                owner: "",
                 parent: 'none',
                 children: [],
                 fileURL: "",
@@ -172,13 +180,19 @@ class AddDataStore {
         name: "",
         description: "",
         tagnames: [],
-        archives: []
+        archives: [],
+        date: "",
     };
 
     @action addNewProject() {
-        this.projects.push(this.newFolder);
+        let date = new Date();
+        let month = date.getMonth()+1;
+        this.newProject.date = date.getDate()+"/"+month+"/"+date.getFullYear();
+        this.newProject.owner = authStore.user.uid;
         db.collection("NewProjects").add(this.newProject)
             .then(function (docRef) {
+                this.newProject.id = docRef.id;
+                this.projects.push(this.newProject);
                 console.log("Document written with ID: ", docRef.id);
             })
             .catch(function (error) {
@@ -194,7 +208,8 @@ class AddDataStore {
         name: "",
         description: "",
         tagnames: [],
-        archives: []
+        archives: [],
+        date: "",
         };
     }
 

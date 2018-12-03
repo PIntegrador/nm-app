@@ -52,11 +52,10 @@ interface HomeProps {
                 <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
                 <div className="app flex-child col-flex">
                 <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
-                <FloatingButton />
                 <SortButton state={homeEditorStore.sortButState}/>
                 <AddMenu idLocation={folderInStore.folderIdArchives} />
                 <section className="scroll">
-                <div className="homeInfo col-flex">
+                    <div className="homeInfo col-flex">
 
                     <section className="allCont col-flex">
                       
@@ -164,14 +163,13 @@ interface HomeProps {
 
                 </div>
                 </section>
+                <FloatingButton />
+                <AddMenu />
+                <FolderPopUp />
+                <FilePopUp />
+                <AddProject />
+                <UploadConfirmation />
             </div>
-            
-            <FolderPopUp />
-            <FilePopUp />
-            <AddProject />
-            <UploadConfirmation />
-           
-
         </div>
     }
 }

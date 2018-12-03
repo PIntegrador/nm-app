@@ -14,8 +14,12 @@ import { homeEditorStore } from '../../../store/HomeEditorStore';
 import { firebaseStore } from '../../../store/FsActionStore';
 
 import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
+import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
+import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
 import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
-
+import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
+import AddProject from '../../../components/Editor/AddProject/AddProject';
+import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
 let folderID: any = '';
 
 @observer export class FolderContainer extends React.Component {
@@ -52,6 +56,12 @@ let folderID: any = '';
                 <AddMenu idLocation={folderID} />
                 <section className="scroll">
                     <FileView folders={folderInStore.folderInArchives} />
+                   <FloatingButton />
+                    <AddMenu />
+                    <FolderPopUp />
+                    <FilePopUp />
+                    <AddProject />
+                    <UploadConfirmation />
                 </section>
             </div>
 
