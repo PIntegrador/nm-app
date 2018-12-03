@@ -36,9 +36,10 @@ class ProjectDashBoardStore {
 
     }
 
-    @action handleTaskCollaborators(id: string) {
+    @action handleTaskCollaborators(id: string, name:string) {
         let teamMember = {
-            'id': id
+            'id': id,
+            'name' : name
         }
 
         this.newTask.team.push(teamMember);
@@ -142,6 +143,23 @@ class ProjectDashBoardStore {
             })
 
         }
+    }
+
+    @action updateProjectID (id: string, name: string) {
+        
+        console.log (id, 'this is the id of the user clicked')
+        
+        let newRef = db.collection('NewProjects').doc(firebaseStore.projectidActual);
+
+        newRef.update({
+            team: firebaseStore.actualProject.team.concat({'id' : id , 'name' : name}) 
+
+        }).then(function () {
+
+        }).catch(function () {
+
+        })
+
     }
 
 }

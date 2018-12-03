@@ -22,6 +22,7 @@ export class Root extends React.Component {
         firebaseStore.readFiles();
         firebaseStore.readProjects();
         firebaseStore.readTasks()
+        firebaseStore.readUsers();
         if(authStore.isLogged){
             let uid = authStore.user.uid;
             firebaseStore.uidActual = uid;

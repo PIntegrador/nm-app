@@ -51,15 +51,14 @@ let projectID: any = '';
     renderSuggested() {
         if (projectDash.renderPopUpAddCollaborator == true) {
             return (
-                firebaseStore.listProjectTeam != null ? (
-                    firebaseStore.listProjectTeam.map((elem: any) => {
+                firebaseStore.actualProject.team != null ? (
+                    firebaseStore.actualProject.team.map((elem: any) => {
                         return (
                             <div className="addColaborator" onClick={
                                 (e) => {
                                     projectDash.renderPopUpAddCollaborator = false;
-                                    //delete the element was added in array
-
-                                    projectDash.handleTaskCollaborators(elem)
+                                    //update elements
+                                    projectDash.handleTaskCollaborators(elem.id, elem.name)
                                 }
                             }>
                                 <div className="colicon">
@@ -69,7 +68,7 @@ let projectID: any = '';
                                 </div>
 
                                 <p>
-                                    {elem}
+                                    {elem.name}
                                 </p>
                             </div>)
                     })
@@ -173,7 +172,7 @@ let projectID: any = '';
                                 if (projectDash.newTask.description != '') {
                                     
                                     projectDash.addNewTask();
-                                    firebaseStore.listProjectTeam =firebaseStore. actualProject.team;
+                                    firebaseStore.listProjectTeam = firebaseStore. actualProject.team;
 
                                     projectDash.newTask.team = [];
                                     projectDash.newTask.state = '';

@@ -30,6 +30,9 @@ class FsActionStore {
     @observable listInnerArchives: any = [];
     @observable innerArchivesID: any = [];
 
+    @observable listAllUsers: any = [];
+
+
     /* This method search the document of the user in the database by the uid of the auth store,
     we need to know the id of the documents that the user have in the db */
 
@@ -73,6 +76,31 @@ class FsActionStore {
             this.readFiles();
             this.readProjects();
             this.readTasks();
+            this.readUsers();
+        });
+
+    }
+
+    @action readUsers() {
+        let dbRef = db.collection('NewUsers');
+        let temp: any = []
+
+        dbRef.onSnapshot((querySnapshot: any) => {
+            this.listAllArchives = []
+            temp = []
+
+            querySnapshot.forEach((doc:any) => {
+
+                    let ele = {
+                        name: doc.data().name,
+                        uid: doc.data().uid
+                    }
+                     temp.push(ele);
+                
+            });
+            this.listAllUsers = temp;
+
+            console.log(this.listAllUsers, "These are all the users")
         });
 
     }
