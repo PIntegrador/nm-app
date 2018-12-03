@@ -46,6 +46,8 @@ interface HomeProps {
                 firebaseStore.uidActual = uid;
                 console.log(firebaseStore.uidActual,' userid')
                 firebaseStore.readInfoUser();
+                //
+                addStore.projectIdActual = "";
             }
         }
     }

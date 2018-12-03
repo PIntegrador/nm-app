@@ -12,6 +12,7 @@ import { ArchiveView } from '../../../../components/Editor/ArchiveView/ArchiveVi
 import SortButton from '../../../../components/Editor/SortButton/SortButton';
 import { homeEditorStore } from '../../../../store/HomeEditorStore';
 import { folderInStore } from '../../../../store/FolderInStore';
+import { addStore } from '../../../../store/AddDataStore';
 
 import DeleteButton from '../../../../components/Editor/DeleteButton/DeleteButton';
 import FloatingButton from '../../../../components/Editor/FloatingButton/FloatingButton';
@@ -44,6 +45,7 @@ let folderID: any = '';
     }
 
     updateFolder(folderID: string) {
+        addStore.projectIdActual = folderID;
         projectStore.projectId = folderID;
         projectStore.updateArchives();
     }
@@ -71,11 +73,17 @@ let folderID: any = '';
     renderOption(option: string, arrayOption: any) {
         if (option == 'archivos') {
             return (
-                <div className="app flex-child col-flex">
+                <div className="contProjectFles flex-child col-flex">
                     <SortButton state={homeEditorStore.sortButState} />
                     <section className="scroll">
                         <ProjectFileView archives={projectStore.projectArchives} />
                     </section>
+                    <FloatingButton />
+                    <AddMenu />
+                    <FolderPopUp />
+                    <FilePopUp />
+                    <AddProject />
+                    <UploadConfirmation />
                 </div>
             )
         } else if (option == 'tareas') {
