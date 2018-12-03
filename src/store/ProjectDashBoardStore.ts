@@ -10,26 +10,11 @@ class ProjectDashBoardStore {
     @observable renderPopUpAddTask: boolean = false;
     @observable renderPopUpAddCollaborator: boolean = false;
 
-    @observable thisProject: any = {
-        collaborators: [{
-            'name': 'Carlos'
-        }, {
-            'name': 'Juliana'
-        }]
-    }
-    @observable thisProjectBackup: any = {
-        collaborators: [{
-            'name': 'Carlos'
-        }, {
-            'name': 'Juliana'
-        }]
-    }
-
     @observable newTask: any = {
         state: '',
         description: '',
         date: '',
-        collaborators: []
+        team: []
     }
 
     @action handleTaskName(name: string) {
@@ -49,16 +34,18 @@ class ProjectDashBoardStore {
 
     }
 
-    @action handleTaskCollaborators(name: string) {
-
-        let collaborator = {
-            'name': name
+    @action handleTaskCollaborators(id: string) {
+        let teamMember = {
+            'id': id
         }
 
-        this.newTask.collaborators.push(collaborator);
-        console.log(this.newTask.collaborators);
+        this.newTask.team.push(teamMember);
+        console.log(this.newTask);
     }
 
+    @action addNewTask(){
+
+    }
 }
 
 export const projectDash = new ProjectDashBoardStore();
