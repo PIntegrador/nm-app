@@ -103,7 +103,7 @@ p {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 /* Track */
@@ -113,7 +113,8 @@ p {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $selectedColor; 
+    background: $selectedColor;
+    transition: all 0.2s ease;
 }
 
 /* Handle on hover */

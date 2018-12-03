@@ -9,6 +9,12 @@ class HomeEditorStore {
     @observable sideMenuState: string = 'open';
     @observable selectedMenuItem: string = 'home'
 
+    @observable dropDownMenu: boolean = false;
+    @action changeDropMenuState(){
+       this.dropDownMenu = !this.dropDownMenu;
+       console.log(this.dropDownMenu);
+    }
+
 }
 
 export const homeEditorStore = new HomeEditorStore();
