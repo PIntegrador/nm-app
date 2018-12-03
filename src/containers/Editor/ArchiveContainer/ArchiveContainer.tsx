@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import '../../../../public/css/flex.scss'
 import './ArchiveContainer.scss';
 
@@ -19,7 +18,9 @@ import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/Folder
 import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
 import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 import AddProject from '../../../components/Editor/AddProject/AddProject';
-import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';let folderID: any = '';
+import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
+
+let folderID: any = '';
 
 @observer export class ArchiveContainer extends React.Component {
     constructor(props: any) {
@@ -64,13 +65,13 @@ import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirm
                 <AddMenu  />
                 <section className="scroll">
                 <ArchiveView archives={folderInStore.folderInArchives} folderName={folderInStore.folderParentName} />
+                </section>
                 <FloatingButton />
                     <AddMenu />
                     <FolderPopUp />
                     <FilePopUp />
                     <AddProject />
                     <UploadConfirmation />
-                </section>
             </div>
 
         </div>
