@@ -13,10 +13,32 @@ import SortButton from '../../../components/Editor/SortButton/SortButton';
 import { homeEditorStore } from '../../../store/HomeEditorStore';
 
 import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
+import { folderInStore } from '../../../store/FolderInStore';
+import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
 
+let folderID: any = '';
 
 @observer export class FolderContainer extends React.Component {
 
+    constructor(props: any) {
+        super(props);
+        folderID = this.getFolderId();
+        this.updateFolder(folderID);
+    }
+     getFolderId() {
+        let id = firebaseStore.userInfo.uid;
+        return id;
+    }
+     updateFolder(folderID: string) {
+        folderInStore.folderIdArchives = folderID;
+        folderInStore.updateArchives();
+    }
+     componentDidUpdate() {
+        if (folderID != this.getFolderId()) {
+            folderID = this.getFolderId();
+            this.updateFolder(folderID);
+        }
+    }
     render() {
 
 
@@ -24,10 +46,11 @@ import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
             <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
             <div className="app flex-child col-flex">
             <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
-                <SortButton state= '' />
+            <SortButton state={homeEditorStore.sortButState} />
                 <DeleteButton />
+                <AddMenu></AddMenu>
                 <section className="scroll">
-                    <FileView folders={[]} />
+                    <FileView folders={folderInStore.folderInArchives} />
                 </section>
             </div>
 
