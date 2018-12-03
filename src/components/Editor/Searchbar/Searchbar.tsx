@@ -6,6 +6,7 @@ import { firebaseStore } from '../../../store/FsActionStore';
 
 //"Mis Archivos"
 import { folderInStore } from '../../../store/FolderInStore';
+import { projectStore } from '../../../store/ProjectStore';
 
 /*
 <button type="submit">
@@ -20,6 +21,7 @@ const Searchbar = () => {
 
 
                 folderInStore.filterNameArchive();
+                projectStore.filterNameArchive();
 
                 //     firebaseStore.filterName();
                 //   firebaseStore.filterNameArchive();
@@ -28,6 +30,7 @@ const Searchbar = () => {
                     e.preventDefault();
                     
                     folderInStore.filterNameArchive();
+                    projectStore.filterNameArchive();
 
                     //     firebaseStore.filterName();
                     //   firebaseStore.filterNameArchive();
@@ -38,6 +41,7 @@ const Searchbar = () => {
                     e.preventDefault();
 
                     folderInStore.nameFilterArchive = e.target.value;
+                    projectStore.nameFilterArchive = e.target.value;
 
                     // firebaseStore.handleNameFilter(e.target.value);
                     //firebaseStore.handleNameArchive(e.target.value);

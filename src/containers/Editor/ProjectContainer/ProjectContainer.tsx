@@ -51,13 +51,7 @@ import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirm
                         </div>
                     </section>
                 </section>
-                <FloatingButton />
                 <SortButton state={homeEditorStore.sortButState} />
-                <AddMenu />
-                <FolderPopUp />
-                <FilePopUp />
-                <AddProject />
-                <UploadConfirmation />
             </div>
 
         </div>

@@ -37,7 +37,7 @@ interface ModuleProps {
 
     onDrop = (ev: any, idFolder: string, type: string) => {
         ev.preventDefault();
-        if (type == 'folder'){
+        if (type == 'folder') {
             moduleStore.idToFolder = this.props.id;
             moduleStore.moveToFolderById();
             console.log("Drop Folder " + idFolder);
@@ -101,12 +101,24 @@ interface ModuleProps {
         return nameTest;
     }
 
+    linkType() {
+        if (this.props.type != 'file') {
+            return <Link to={`/${this.props.type}s/${this.props.id}`} className={this.props.gridStyle == 'list' ? 'superCont' : ''}>
+                {this.assignGridStyle()}
+            </Link>;
+        } else {
+            return <Link to="#" className={this.props.gridStyle == 'list' ? 'superCont' : ''}>
+                {this.assignGridStyle()}
+            </Link>
+        }
+    }
+
     render() {
 
         return (
-            <Link to={`/${this.props.type}s/${this.props.id}`} className={this.props.gridStyle == 'list' ? 'superCont' : ''}>
-                {this.assignGridStyle()}
-            </Link>
+
+            this.linkType()
+
         )
     }
 }

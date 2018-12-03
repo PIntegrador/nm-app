@@ -5,6 +5,7 @@ import '../../../../public/css/flex.scss'
 import { firebaseStore } from '../../../store/FsActionStore';
 import { observer } from 'mobx-react';
 import { folderInStore } from '../../../store/FolderInStore';
+import { projectStore } from '../../../store/ProjectStore';
 
 let orderName: boolean;
 let orderSize: boolean;
@@ -80,6 +81,7 @@ let orderTipe: boolean;
                         e.preventDefault();
                         orderName = !orderName;
                         folderInStore.sortArchivesByName(orderName);
+                        projectStore.sortArchivesByName(orderName);
                     }}>Nombre
                     <img src={this.getIconName()} className="hvr-icon" />
                     </h4>

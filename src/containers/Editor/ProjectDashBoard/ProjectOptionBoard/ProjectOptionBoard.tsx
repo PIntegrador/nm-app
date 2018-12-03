@@ -8,14 +8,55 @@ import { observer } from 'mobx-react';
 import { Task } from './Task/Task';
 import { ProjectComment } from '../ProjectComment/ProjectComment';
 import { firebaseStore } from '../../../../store/FsActionStore';
+import { ArchiveView } from '../../../../components/Editor/ArchiveView/ArchiveView';
+import SortButton from '../../../../components/Editor/SortButton/SortButton';
+import { homeEditorStore } from '../../../../store/HomeEditorStore';
+import { folderInStore } from '../../../../store/FolderInStore';
+
+import DeleteButton from '../../../../components/Editor/DeleteButton/DeleteButton';
+import FloatingButton from '../../../../components/Editor/FloatingButton/FloatingButton';
+import FolderPopUp from '../../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
+import AddMenu from '../../../../components/Editor/AddMenu/AddMenu';
+import FilePopUp from '../../../../components/Editor/AddFile/FilePopUp/FilePopUp';
+import AddProject from '../../../../components/Editor/AddProject/AddProject';
+import UploadConfirmation from '../../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
+
+import Dash from '../../../../components/Editor/Dash/Dash';
+import Header from '../../../../components/Common/Header/Header';
+import { projectStore } from '../../../../store/ProjectStore';
+import { ProjectFileView } from '../../../../components/Editor/ProjectFileView/ProjectFileView';
+
+let folderID: any = '';
 
 
 @observer export class ProjectOptionBoard extends React.Component {
     constructor(props: any) {
         super(props);
 
-
+        folderID = this.getFolderId();
+        this.updateFolder(folderID);
     }
+
+    getFolderId() {
+        let locationWindow = window.location.pathname;
+        let locationArray = locationWindow.split('/');
+        return locationArray.slice(-1)[0];
+    }
+
+    updateFolder(folderID: string) {
+        projectStore.projectId = folderID;
+        projectStore.updateArchives();
+    }
+
+    componentDidUpdate() {
+        if (folderID != this.getFolderId()) {
+
+            folderID = this.getFolderId();
+
+            this.updateFolder(folderID);
+        }
+    }
+
     // This method filters tasks list for the use in the taskContainers
     renderTask(taskArray: any, type: string) {
         let resultArray = taskArray.filter((e: any) => {
@@ -29,7 +70,22 @@ import { firebaseStore } from '../../../../store/FsActionStore';
     //The variable option is obtained from projectStore
     renderOption(option: string, arrayOption: any) {
         if (option == 'archivos') {
-            return null;
+            return (
+                <div className="app flex-child col-flex">
+                    <SortButton state={homeEditorStore.sortButState} />
+                    <DeleteButton />
+                    <AddMenu />
+                    <section className="scroll">
+                        <ProjectFileView archives={projectStore.projectArchives} />
+                    </section>
+                    <FloatingButton />
+                    <AddMenu />
+                    <FolderPopUp />
+                    <FilePopUp />
+                    <AddProject />
+                    <UploadConfirmation />
+                </div>
+            )
         } else if (option == 'tareas') {
             return (
 
@@ -58,7 +114,7 @@ import { firebaseStore } from '../../../../store/FsActionStore';
 
                                         this.renderTask(arrayOption, 'todo').map((elem: any) => {
                                             return (
-                                                <Task key={elem.id} id= {elem.id} type={elem.state} description={elem.description} date={elem.date} team={elem.team} />)
+                                                <Task key={elem.id} id={elem.id} type={elem.state} description={elem.description} date={elem.date} team={elem.team} />)
                                         })
                                     ) : ''
                                 }
@@ -74,7 +130,7 @@ import { firebaseStore } from '../../../../store/FsActionStore';
                                     arrayOption != null ? (
                                         this.renderTask(arrayOption, 'doing').map((elem: any) => {
                                             return (
-                                                <Task key={elem.id} id= {elem.id} type={elem.state} description={elem.description} date={elem.date} team={elem.team} />)
+                                                <Task key={elem.id} id={elem.id} type={elem.state} description={elem.description} date={elem.date} team={elem.team} />)
                                         })
                                     ) : ''
                                 }
@@ -90,7 +146,7 @@ import { firebaseStore } from '../../../../store/FsActionStore';
                                     arrayOption != null ? (
                                         this.renderTask(arrayOption, 'done').map((elem: any) => {
                                             return (
-                                                <Task key={elem.id} id= {elem.id} type={elem.state} description={elem.description} date={elem.date} team={elem.team} />)
+                                                <Task key={elem.id} id={elem.id} type={elem.state} description={elem.description} date={elem.date} team={elem.team} />)
                                         })
                                     ) : ''
                                 }
@@ -126,7 +182,7 @@ import { firebaseStore } from '../../../../store/FsActionStore';
 
         return (
             <section className="projectBoardComponent">
-            {console.log (firebaseStore.taskInfo)}
+                {console.log(firebaseStore.taskInfo)}
                 {
                     (tasks != null) ? (this.renderOption(projectDash.menuOptionSelected, tasks)) : ''
                 }

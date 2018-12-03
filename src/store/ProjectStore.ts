@@ -3,14 +3,12 @@ import db from '../../config/firebaseConfig';
 import { readFileSync } from 'fs';
 import { Children } from 'react';
 
-class FolderInStore {
+class ProjectStore {
     constructor() {
-
     }
 
-    @observable folderIdArchives: string = "";
-    @observable folderInArchives: any = [];
-    @observable folderParentName: string = "";
+    @observable projectId: string = "";
+    @observable projectArchives: any = [];
 
     //method that read the files, it depends of and folder's id, o the user's id
     @action updateArchives() {
@@ -19,24 +17,26 @@ class FolderInStore {
         let temp: any = [];
 
         dbRef.onSnapshot((querySnapshot: any) => {
-            this.folderInArchives = [];
+            this.projectArchives = [];
 
-            let idFolder = this.folderIdArchives;
+            let idFolder = this.projectId;
 
             temp = [];
 
             querySnapshot.forEach((doc: any) => {
-                this.folderInArchives = [];
+                this.projectArchives = [];
 
-                idFolder = this.folderIdArchives;
+                idFolder = this.projectId;
+                console.log(idFolder);
 
-                if (doc.data().parent == idFolder) {
+                if (doc.data().projectParent == idFolder) {
 
                     let ele = {
                         name: doc.data().name,
                         type: doc.data().type,
                         id: doc.data().id,
                         parent: doc.data().parent,
+                        projectParent: doc.data().projectParent,
                         size: doc.data().size,
                         sourceURL: doc.data().sourceURL,
                         fileURL: doc.data().fileURL,
@@ -47,53 +47,11 @@ class FolderInStore {
 
                     temp.push(ele);
 
+
                 }
             });
 
-            this.folderInArchives = temp;
-        });
-    }
-
-    //method to update the name of the folder you are
-    @action updateParentName() {
-        this.folderParentName = "";
-
-        let parentRef = db.collection("NewArchives");
-
-        parentRef.onSnapshot((querySnapshot: any) => {
-            this.folderParentName = "";
-
-            let temp: any = [];
-
-            let idFolder = this.folderIdArchives;
-
-            querySnapshot.forEach((doc: any) => {
-
-                idFolder = this.folderIdArchives;
-
-                if (doc.data().id == idFolder) {
-
-                    let ele = {
-                        name: doc.data().name,
-                        type: doc.data().type,
-                        id: doc.data().id,
-                        parent: doc.data().parent,
-                        size: doc.data().size,
-                        sourceURL: doc.data().sourceURL,
-                        fileURL: doc.data().fileURL,
-                        tagnames: doc.data().tagnames,
-                        children: doc.data().children,
-                        owner: doc.data().owner
-                    }
-
-                    temp.push(ele);
-                }
-            });
-
-            if(temp != null && temp[0] != null && temp[0].name != undefined){
-                this.folderParentName = temp[0].name;
-
-            }
+            this.projectArchives = temp;
         });
     }
 
@@ -113,12 +71,12 @@ class FolderInStore {
                 return -1;
             return 0;
         }
-        if (this.folderInArchives != null) {
+        if (this.projectArchives != null) {
             if (order) {
-                this.folderInArchives.replace(this.folderInArchives.slice().sort(compareAscendente));
+                this.projectArchives.replace(this.projectArchives.slice().sort(compareAscendente));
             }
             if (!order) {
-                this.folderInArchives.replace(this.folderInArchives.slice().sort(compareDescendente));
+                this.projectArchives.replace(this.projectArchives.slice().sort(compareDescendente));
             }
         }
     }
@@ -134,12 +92,12 @@ class FolderInStore {
     @action filterNameArchive() {
 
         if (this.nameFilterArchive != '') {
-            if (this.folderInArchives.some((e: any) => {
+            if (this.projectArchives.some((e: any) => {
                 return e.name.toLowerCase().indexOf(this.nameFilterArchive.toLowerCase());
             })) {
                 //is filtering
 
-                this.folderInArchives = this.folderInArchives.filter((e: any) => {
+                this.projectArchives = this.projectArchives.filter((e: any) => {
                     return e.name.toLowerCase().includes(this.nameFilterArchive.toLowerCase());
                 });
             } else {
@@ -155,4 +113,4 @@ class FolderInStore {
 
 }
 
-export const folderInStore = new FolderInStore();
+export const projectStore = new ProjectStore();
