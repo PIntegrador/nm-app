@@ -90,7 +90,10 @@ class FolderInStore {
                 }
             });
 
-            this.folderParentName = temp[0].name;
+            if( temp[0].name != undefined){
+                this.folderParentName = temp[0].name;
+
+            }
         });
     }
 

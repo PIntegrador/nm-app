@@ -78,18 +78,16 @@ class FsActionStore {
                         tagnames: doc.data().tagnames,
                         children: doc.data().children,
                     }
-
                      temp.push(ele);
                      temptags =  doc.data().tagnames;
                      tempChildren = doc.data().children;
                      ele.tagnames = temptags;
                      ele.children = tempChildren;
                 }
-
             });
             this.listAllArchives = temp;
             this.userInfo.archives = this.listAllArchives;
-            console.log(this.userInfo.archives, "User Info Archives")
+            console.log(this.userInfo.archives.length, "User Info Archives")
         });
     }
 
@@ -117,7 +115,6 @@ class FsActionStore {
                         ele.archives = this.listInnerArchives;
                         temp.push(ele);
                     } 
-
             });
           
             this.listAllProjects = temp;

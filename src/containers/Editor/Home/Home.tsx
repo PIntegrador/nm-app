@@ -149,14 +149,14 @@ interface HomeProps {
                         }
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                (firebaseStore.userInfo.archives != null) ?
+                            (firebaseStore.userInfo.archives != null) ?
                                 firebaseStore.userInfo.archives.map((elem: any) => {
                                     if(elem.type == 'file') 
                                     return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
                                     )
                                 }) : ''
                              
-                            } <p></p>
+                            } 
                               
                         </div>
 
