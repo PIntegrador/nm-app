@@ -53,7 +53,7 @@ let folderID: any = '';
                 <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
                 <SortButton state={homeEditorStore.sortButState} />
                 <DeleteButton />
-                <AddMenu idLocation={folderID} />
+                <AddMenu />
                 <section className="scroll">
                     <FileView folders={folderInStore.folderInArchives} />
                    <FloatingButton />

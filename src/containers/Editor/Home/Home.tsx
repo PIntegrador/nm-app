@@ -39,6 +39,7 @@ interface HomeProps {
         if(!authStore.isLogged){
             props.history.push ("/");
         } else {
+
             let uid = authStore.user.uid;
             firebaseStore.uidActual = uid;
             console.log(firebaseStore.uidActual,' userid')
@@ -52,8 +53,7 @@ interface HomeProps {
                 <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
                 <div className="app flex-child col-flex">
                 <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
-                <SortButton state={homeEditorStore.sortButState}/>
-                <AddMenu idLocation={folderInStore.folderIdArchives} />
+                <AddMenu />
                 <section className="scroll">
                     <div className="homeInfo col-flex">
 
@@ -87,7 +87,8 @@ interface HomeProps {
                                 (firebaseStore.userInfo.projects != null) ?
                                   firebaseStore.userInfo.projects.map((elem: any) => {
                                     return (
-                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id} 
+                                        size = {elem.size} date = {elem.date} />
                                     )
                                 }) : (e:any)=> {
                                     return <p>No tienes proyectos aún</p>
@@ -120,7 +121,8 @@ interface HomeProps {
                                   firebaseStore.userInfo.archives.map((elem: any) => {
                                     if(elem.type == 'folder') 
                                     return (
-                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} />
+                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='folder' name={elem.name} numFiles={0} id={elem.id} 
+                                        size = {elem.size} date = {elem.date} />
 
                                     )
                                 }) : ''
@@ -151,7 +153,8 @@ interface HomeProps {
                             (firebaseStore.userInfo.archives != null) ?
                                 firebaseStore.userInfo.archives.map((elem: any) => {
                                     if(elem.type == 'file') 
-                                    return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} />
+                                    return (<Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='file' name={elem.name} numFiles={0} id={elem.id} 
+                                    size = {elem.size} date = {elem.date} />
                                     )
                                 }) : ''
                              
@@ -164,11 +167,13 @@ interface HomeProps {
                 </div>
                 </section>
                 <FloatingButton />
-                <AddMenu />
+                <AddMenu  />
                 <FolderPopUp />
                 <FilePopUp />
                 <AddProject />
                 <UploadConfirmation />
+                <SortButton state={homeEditorStore.sortButState}/>
+
             </div>
         </div>
     }

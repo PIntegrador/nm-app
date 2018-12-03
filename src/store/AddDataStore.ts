@@ -94,6 +94,7 @@ class AddDataStore {
         let month = date.getMonth()+1;
         this.newFile.date = date.getDate()+"/"+month+"/"+date.getFullYear();
         this.newFile.owner = authStore.user.uid;
+        this.newFile.parent = authStore.user.uid;
         db.collection("NewArchives").add(this.newFile)
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -135,6 +136,7 @@ class AddDataStore {
             let month = date.getMonth()+1;
             this.newFolder.date = date.getDate()+"/"+month+"/"+date.getFullYear();
             this.newFolder.owner = authStore.user.uid;
+            this.newFolder.parent = authStore.user.uid;
             db.collection("NewArchives").add(this.newFolder)
                 .then(function (docRef) {
                     console.log("Document written with ID: ", docRef.id);
@@ -159,7 +161,6 @@ class AddDataStore {
                 type: "folder",
                 size: "",
                 date: "",
-                owner: ""
             };
         }
 

@@ -106,6 +106,7 @@ interface dashProps {
                         <article onClick={() => {
                             homeEditorStore.selectedMenuItem = 'config'
                             this.toggleClass();
+                            authStore.signOut();
                         }} id="config" className="menuItem row-flex" 
                        >
                            <img src="/assets/svg/config.svg" className="flex-child icon open" />

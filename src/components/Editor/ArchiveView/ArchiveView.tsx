@@ -34,7 +34,8 @@ interface ArchiveViewProps {
                     {
                         (this.props.archives[0] != null && this.props.archives[0] != null) ? (
                             this.props.archives.map((elem: any) => {
-                                return <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type={elem.type} name={elem.name} numFiles={0} id={elem.id} />
+                                return <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type={elem.type} name={elem.name} 
+                                numFiles={0} id={elem.id}    size = {elem.size} date = {elem.date}  />
                             })) : <section className="noArchives">
                                 <div className="cont">
                                     <img src="/assets/svg/modules/file.svg" alt="" />

@@ -61,7 +61,7 @@ import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirm
                 <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
                 <SortButton state={homeEditorStore.sortButState} />
                 <DeleteButton />
-                <AddMenu idLocation={folderID} />
+                <AddMenu  />
                 <section className="scroll">
                 <ArchiveView archives={folderInStore.folderInArchives} folderName={folderInStore.folderParentName} />
                 <FloatingButton />

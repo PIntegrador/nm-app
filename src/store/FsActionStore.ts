@@ -77,6 +77,7 @@ class FsActionStore {
                         fileURL: doc.data().fileURL,
                         tagnames: doc.data().tagnames,
                         children: doc.data().children,
+                        date: doc.data().date
                     }
                      temp.push(ele);
                      temptags =  doc.data().tagnames;
@@ -107,7 +108,9 @@ class FsActionStore {
                             owner: doc.data().owner,
                             tagnames: doc.data().tagnames,
                             team: doc.data().team,
-                            archives: [{}]
+                            archives: [{}],
+                            date: doc.data().date
+
                         }
                         this.innerArchivesID = doc.data().archives;
                         this.readInnerArchive(doc.data().id);

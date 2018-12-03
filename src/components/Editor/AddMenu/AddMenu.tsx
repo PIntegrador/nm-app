@@ -5,10 +5,9 @@ import { observer } from 'mobx-react';
 import { addStore } from '../../../store/AddDataStore';
 
 interface AddMenuProps {
-    idLocation: string;
 }
 
-const AddMenu = observer(({ idLocation }: AddMenuProps) => {
+const AddMenu = observer(({  }: AddMenuProps) => {
     return (
         <section className="addMenu"
             onClick={() => {

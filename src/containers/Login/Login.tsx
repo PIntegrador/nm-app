@@ -15,9 +15,7 @@ interface LoginProps {
 
     constructor(props: any) {
         super(props);
-
-        authStore.login("san.or.gue@gmail.com", "santy0630");
-
+       // authStore.login("san.or.gue@gmail.com", "santy0630");
     }
 
 
