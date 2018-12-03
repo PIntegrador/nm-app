@@ -3,10 +3,12 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import './Task.scss';
+import { projectDash } from '../../../../../store/ProjectDashBoardStore';
 
 interface TaskProps {
 
     type: string;
+    id: string;
     description: string;
     date: string;
     team: any;
@@ -20,7 +22,9 @@ interface TaskProps {
     render() {
 
         return (
-            <div className="task">
+            <div className="task" onClick={(e: any) => {
+                projectDash.updateTaskState(this.props.type);
+            }}>
                 <p className='descriptionTask'>
                     {this.props.description}
                 </p>
@@ -50,7 +54,11 @@ interface TaskProps {
 
                     </div>
                     <button className="buttons">
-                        <div className="icon">
+                        <div className="icon" onClick={(e: any) => {
+                            console.log(this.props.id);
+                            projectDash.deleteTask(this.props.id);
+                        }
+                        }>
                             <svg width="85%" height="100%" viewBox="0 0 18 21" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.4571 20.5H4.97136C2.95707 20.5 1.28564 18.7083 1.28564 16.5417V5.12501C1.28564 4.45834 1.6285 4.12501 1.9285 4.00001C2.2285 3.83334 2.5285 3.83334 2.8285 3.83334H15.1714C15.5142 3.83334 15.8142 3.83334 16.1142 4.00001C16.4142 4.12501 16.7571 4.45834 16.7571 5.12501V16.9583C16.7142 18.9167 15.2571 20.5 13.4571 20.5ZM2.99993 5.50001V16.5417C2.99993 17.6667 3.81422 18.8333 4.97136 18.8333H13.4142C14.3571 18.8333 14.9571 17.875 14.9571 16.9583V5.50001H2.99993Z" fill="white" />
                                 <path d="M17.1429 5.50001H0.857143C0.385714 5.50001 0 5.12501 0 4.66668C0 4.20834 0.385714 3.83334 0.857143 3.83334H17.1429C17.6143 3.83334 18 4.20834 18 4.66668C18 5.12501 17.6143 5.50001 17.1429 5.50001Z" fill="white" />

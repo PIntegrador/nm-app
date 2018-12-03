@@ -17,7 +17,7 @@ import { firebaseStore } from '../../../../store/FsActionStore';
 
 
     render() {
-        let projectName = firebaseStore.userInfo.projects[0].name;
+        let projectName = firebaseStore.actualProject.name;
         return (
             <section className="projectMenuComponent">
 
