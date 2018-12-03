@@ -60,11 +60,9 @@
                     >.title {
                         color: $darkColor;
                         font-weight: 800;
-                   
                     }
 
                     img{
-                            
                         &.icon  { 
                             filter: invert(0.8)
                          }
@@ -79,6 +77,13 @@
                         color: $darkColor;
                         font-weight: 800;
                     }
+
+                    img{
+                        &.icon  { 
+                            filter: invert(0.8)
+                         }
+                                               
+                        }
                 }
 
                 >.icon {

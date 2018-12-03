@@ -17,7 +17,7 @@ interface dashProps {
 
     constructor(props: any){
         super(props)
-
+        this.toggleClass = this.toggleClass.bind(this)
     }
 
     componentDidUpdate(prevProps:any) {
@@ -29,7 +29,8 @@ interface dashProps {
       }
 
     toggleClass() {
-
+        $('.menuItem').removeClass('selected');
+        $('#'+ homeEditorStore.selectedMenuItem).addClass('selected');
     }
 
 
@@ -53,8 +54,7 @@ interface dashProps {
                             <Link to="/home">
                                 <article id="home" className="menuItem row-flex"  onClick={(e) => {
                                     homeEditorStore.selectedMenuItem = 'home'
-                                    $('.menuItem').removeClass('selected');
-                                    $('#'+ homeEditorStore.selectedMenuItem).addClass('selected');
+                                   this.toggleClass();
                                     console.log(e, this.props.selected)
                                 }}>
                                     <img src="/assets/svg/home.svg" className="flex-child icon open" />
@@ -65,8 +65,7 @@ interface dashProps {
                             <Link to="/folders">
                                 <article id="archives" className="menuItem row-flex"  onClick={(e) => {
                                     homeEditorStore.selectedMenuItem = 'archives'
-                                    $('.menuItem').removeClass('selected');
-                                    $('#'+ homeEditorStore.selectedMenuItem).addClass('selected');
+                                    this.toggleClass();
                                     console.log(e, this.props.selected)
                                 }}>
                                     <img src="/assets/svg/file.svg" className="flex-child icon open" />
@@ -74,15 +73,11 @@ interface dashProps {
                                 </article>
                             </Link>
     
-                            <Link to="/projects" onClick={
-                                () => {
-                                    homeEditorStore.selectedMenuItem = 'proyects'
-                                }
-                            }>
+                            <Link to="/projects">
     
                             <article id="proyects" className="menuItem row-flex"  onClick={(e) => {
-                                    $('.menuItem').removeClass('selected');
-                                    $('#'+ homeEditorStore.selectedMenuItem).addClass('selected');
+                                    homeEditorStore.selectedMenuItem = 'proyects'
+                                    this.toggleClass();
                                 }}>
                                     <img src="/assets/svg/proyectos.svg" className="flex-child icon open" />
                                 <h2 className="flex-child title">Mis Proyectos</h2>
@@ -92,8 +87,7 @@ interface dashProps {
     
                             <article id="asign" className="menuItem row-flex"  onClick={(e) => {
                                     homeEditorStore.selectedMenuItem = 'asign'
-                                    $('.menuItem').removeClass('selected');
-                                    $('#'+ homeEditorStore.selectedMenuItem).addClass('selected');
+                                    this.toggleClass();
                                 }}>
                                     <img src="/assets/svg/asignar.svg" className="flex-child icon open" />
                                 <h2 className="flex-child title">Por Asignar</h2>
@@ -101,8 +95,7 @@ interface dashProps {
     
                             <article id="trash" className="menuItem row-flex"  onClick={(e) => {
                                     homeEditorStore.selectedMenuItem = 'trash'
-                                    $('.menuItem').removeClass('selected');
-                                    $('#'+homeEditorStore.selectedMenuItem).addClass('selected');
+                                    this.toggleClass();
                                 }}>
                                     <img src="/assets/svg/papelera.svg" className="flex-child icon open" />
                                 <h2 className="flex-child title">Papelera</h2>
@@ -112,11 +105,8 @@ interface dashProps {
     
                         <article onClick={() => {
                             homeEditorStore.selectedMenuItem = 'config'
-                            authStore.signOut();
-                            $('.menuItem').removeClass('selected');
-                            $('#'+ homeEditorStore.selectedMenuItem).addClass('selected');
+                            this.toggleClass();
                         }} id="config" className="menuItem row-flex" 
-                            
                        >
                            <img src="/assets/svg/config.svg" className="flex-child icon open" />
     
@@ -144,38 +134,54 @@ interface dashProps {
                         <section className="options">
     
                             <Link to="/home">
-                                <article id="home" className="menuItem selected row-flex">
+                                <article id="home" className="menuItem row-flex"  onClick={(e) => {
+                                    homeEditorStore.selectedMenuItem = 'home'
+                                    this.toggleClass();
+                                }}>
                                     <img src="/assets/svg/home.svg" className="flex-child icon closed" />
                                 </article>
                             </Link>
     
                             <Link to="/folders">
-                                <article id="archives" className="menuItem row-flex">
+                                <article id="archives" className="menuItem row-flex"  onClick={(e) => {
+                                    homeEditorStore.selectedMenuItem = 'archives'
+                                    this.toggleClass();
+                                }}>
                                     <img src="/assets/svg/file.svg" className="flex-child icon closed" />
                                 </article>
                             </Link>
     
                             <Link to="/projects">
     
-                            <article id="proyects" className="menuItem row-flex">
+                            <article id="proyects" className="menuItem row-flex"  onClick={(e) => {
+                                    homeEditorStore.selectedMenuItem = 'proyects'
+                                    this.toggleClass();
+                                }}>
                                     <img src="/assets/svg/proyectos.svg" className="flex-child icon closed" />
                             </article>
     
                             </Link>
     
-                            <article id="asign" className="menuItem row-flex">
+                            <article id="asign" className="menuItem row-flex"  onClick={(e) => {
+                                    homeEditorStore.selectedMenuItem = 'asign'
+                                    this.toggleClass();
+                                }}>
                                     <img src="/assets/svg/asignar.svg" className="flex-child icon closed" />
                             </article>
     
-                            <article id="trash" className="menuItem row-flex">
+                            <article id="trash" className="menuItem row-flex"  onClick={(e) => {
+                                    homeEditorStore.selectedMenuItem = 'trash'
+                                    this.toggleClass();
+                                }}>
                                     <img src="/assets/svg/papelera.svg" className="flex-child icon closed" />
                             </article>
     
                         </section>
     
-                        <article onClick={() => {
-                            authStore.signOut();
-                        }} id="config" className="menuItem row-flex">
+                        <article  id="config" className="menuItem row-flex"  onClick={(e) => {
+                                    homeEditorStore.selectedMenuItem = 'trash'
+                                    this.toggleClass();
+                                }}>
                            <img src="/assets/svg/config.svg" className="flex-child icon closed" />
     
                         </article>
