@@ -158,7 +158,8 @@ class AddDataStore {
                 tagnames: [],
                 type: "folder",
                 size: "",
-                date: ""  
+                date: "",
+                owner: ""
             };
         }
 

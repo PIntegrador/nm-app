@@ -20,10 +20,20 @@ body {
         flex-wrap: nowrap;
         height: 100%;
         .dash {
-            flex: 18% 0 1;
             height: 100vh;
-            min-width: 233px;
-            max-width: 233px;
+          
+            
+            &.open {
+                flex: 18% 0 1;
+                min-width: 233px;
+                max-width: 233px;
+    
+             }   
+            &.closed {
+                min-width: 83px;
+                max-width: 83px;
+    
+            }
         }
 
         .app {

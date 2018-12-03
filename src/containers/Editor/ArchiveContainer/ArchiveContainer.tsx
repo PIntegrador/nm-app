@@ -19,9 +19,7 @@ import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/Folder
 import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
 import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 import AddProject from '../../../components/Editor/AddProject/AddProject';
-import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
-
-let folderID: any = '';
+import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';let folderID: any = '';
 
 @observer export class ArchiveContainer extends React.Component {
     constructor(props: any) {
@@ -41,7 +39,7 @@ let folderID: any = '';
     updateFolder(folderID: string) {
         folderInStore.folderIdArchives = folderID;
         folderInStore.updateArchives();
-        folderInStore.updateParentName()
+        folderInStore.updateParentName();
     }
 
     componentDidUpdate() {
@@ -56,15 +54,17 @@ let folderID: any = '';
     render() {
 
         return <div className="contHome row-flex">
-            <Dash />
+            <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
 
             <div className="app flex-child col-flex">
-                <Header user={firebaseStore.userInfo.email} />
+
+                <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
                 <SortButton state={homeEditorStore.sortButState} />
                 <DeleteButton />
+                <AddMenu idLocation={folderID} />
                 <section className="scroll">
-                    <ArchiveView archives={folderInStore.folderInArchives} folderName={folderInStore.folderParentName} />
-                    <FloatingButton />
+                <ArchiveView archives={folderInStore.folderInArchives} folderName={folderInStore.folderParentName} />
+                <FloatingButton />
                     <AddMenu />
                     <FolderPopUp />
                     <FilePopUp />
