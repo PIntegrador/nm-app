@@ -39,7 +39,9 @@ interface HomeProps {
         if(!authStore.isLogged){
             props.history.push ("/");
         } else {
-            if(typeof authStore.user != null){
+            if(authStore.user == null){
+                console.log("está null")
+            } else {
                 let uid = authStore.user.uid;
                 firebaseStore.uidActual = uid;
                 console.log(firebaseStore.uidActual,' userid')
