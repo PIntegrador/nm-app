@@ -117,16 +117,7 @@ import { firebaseStore } from '../../../../store/FsActionStore';
                 </div>
                 <div className="projectTeamMates">
                 <div className="contain">
-                {
-                                        firebaseStore.actualProject.team != null ? (
-                                            (firebaseStore.actualProject.team).map((elem: any) => {
-                                                return (
-                                                    <div className="colicon">
-
-                                                    </div>)
-                                            })
-                                        ) : ''
-                                    }
+                
                             <div className="addColaboratorContainer">
                                 <div className="addColaborator" onClick={(e: any) => {
                                     projectDash.renderPopUpAddCollaborator = true;
@@ -152,6 +143,16 @@ import { firebaseStore } from '../../../../store/FsActionStore';
                                 </div>
 
                             </div>
+                            {
+                                        firebaseStore.actualProject.team != null ? (
+                                            (firebaseStore.actualProject.team).map((elem: any) => {
+                                                return (
+                                                    <div className="colicon">
+
+                                                    </div>)
+                                            })
+                                        ) : ''
+                                    }
                         </div>
                 </div>
             </section>

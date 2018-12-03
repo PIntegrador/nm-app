@@ -77,7 +77,9 @@
         height: 80px;
         position: absolute;
         box-sizing: border-box;
-        right: 0;
+        left: 0;
+        z-index: 1;
+        margin-left: 25px;
         .contain {
             padding: 20px 0;
             display: flex;
