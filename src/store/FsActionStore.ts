@@ -59,6 +59,8 @@ class FsActionStore {
     @action readFiles() {
         let dbRef = db.collection('NewArchives');
         let temp: any = []
+        let temptags =[]
+        let tempChildren = []
 
         dbRef.onSnapshot((querySnapshot: any) => {
             this.listAllArchives = []
