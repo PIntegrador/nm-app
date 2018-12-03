@@ -167,13 +167,13 @@ interface HomeProps {
 
                 </div>
                 </section>
+                <SortButton state={homeEditorStore.sortButState}/>
                 <FloatingButton />
                 <AddMenu  />
                 <FolderPopUp />
                 <FilePopUp />
                 <AddProject />
                 <UploadConfirmation />
-                <SortButton state={homeEditorStore.sortButState}/>
 
             </div>
         </div>
