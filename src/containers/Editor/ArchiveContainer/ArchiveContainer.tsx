@@ -18,6 +18,8 @@ import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/Folder
 import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
 import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 import AddProject from '../../../components/Editor/AddProject/AddProject';
+import { addStore } from '../../../store/AddDataStore';
+
 import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
 
 let folderID: any = '';
@@ -27,6 +29,7 @@ let folderID: any = '';
         super(props);
 
         folderID = this.getFolderId();
+        addStore.projectIdActual = "";
 
         this.updateFolder(folderID);
     }
@@ -45,6 +48,7 @@ let folderID: any = '';
 
     componentDidUpdate() {
         if (folderID != this.getFolderId()) {
+            addStore.projectIdActual = "";
 
             folderID = this.getFolderId();
 

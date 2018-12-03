@@ -15,11 +15,12 @@ import { homeEditorStore } from '../../../store/HomeEditorStore';
 import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 import FloatingButton from '../../../components/Editor/FloatingButton/FloatingButton';
 import FolderPopUp from '../../../components/Editor/AddFolder/FolderPopUp/FolderPopUp';
-import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
 import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 import AddProject from '../../../components/Editor/AddProject/AddProject';
 import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
 import { folderInStore } from '../../../store/FolderInStore';
+import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
+import { addStore } from '../../../store/AddDataStore';
 
 let folderID: any = '';
 
@@ -27,6 +28,7 @@ let folderID: any = '';
 
     constructor(props: any) {
         super(props);
+        addStore.projectIdActual = "";
         folderID = this.getFolderId();
         this.updateFolder(folderID);
     }
@@ -40,6 +42,7 @@ let folderID: any = '';
     }
      componentDidUpdate() {
         if (folderID != this.getFolderId()) {
+            addStore.projectIdActual = "";
             folderID = this.getFolderId();
             this.updateFolder(folderID);
         }

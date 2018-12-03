@@ -47,6 +47,8 @@ class AddDataStore {
     @observable rejected: any[] = [];
     @observable files: any[] = [];
 
+    @observable projectIdActual:string = "";
+
     @observable newFile: any = {
         id: "File ID",
         owner: "",
@@ -59,7 +61,8 @@ class AddDataStore {
         type: "file",
         size: "",
         date: "",
-        extension: ""
+        extension: "",
+        projectParent: ""
     };
 
     @action clearFile() {
@@ -76,6 +79,7 @@ class AddDataStore {
             size: "",
             date: "",
             extension: "",
+            projectParent: ""
         };
     }
 
@@ -97,6 +101,7 @@ class AddDataStore {
         this.newFile.date = date.getDate() + "/" + month + "/" + date.getFullYear();
         this.newFile.owner = authStore.user.uid;
         this.newFile.parent = authStore.user.uid;
+        this.newFile.projectParent = this.projectIdActual;
 
         let newFolderId = "";
         db.collection("NewArchives").add(this.newFile)
@@ -138,6 +143,7 @@ class AddDataStore {
         type: "folder",
         size: "",
         date: "",
+        projectParent: ""
     };
 
 
@@ -154,6 +160,8 @@ class AddDataStore {
         this.newFolder.date = date.getDate() + "/" + month + "/" + date.getFullYear();
         this.newFolder.owner = authStore.user.uid;
         this.newFolder.parent = authStore.user.uid;
+
+        this.newFolder.projectParent = this.projectIdActual;
 
         let newFolderId = "";
         db.collection("NewArchives").add(this.newFolder)
@@ -192,6 +200,7 @@ class AddDataStore {
             type: "folder",
             size: "",
             date: "",
+            projectParent: ""
         };
     }
 
