@@ -7,12 +7,18 @@
 }
 
 .dash {
+
+    &.open {
+        width: $dashmenutam;
+    }
+    &.closed {
+        width: $dashmenutam;
+    }
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
     top: 0;
     left: 0;
-    width: $dashmenutam;
     background-color: $darkColor;
     color: $white;
     height: 100%;
@@ -49,22 +55,50 @@
                 align-content: center;
                 align-items: center;
 
+                &.selected {
+                    background-color: $activeSection;
+                    >.title {
+                        color: $darkColor;
+                        font-weight: 800;
+                    }
+
+                    img{
+                        &.icon  { 
+                            filter: invert(0.8)
+                         }
+                                               
+                        }
+                }
                 &:hover {
                     background-color: $activeSection;
                     cursor: pointer;
 
                     >.title {
-
                         color: $darkColor;
                         font-weight: 800;
                     }
+
+                    img{
+                        &.icon  { 
+                            filter: invert(0.8)
+                         }
+                                               
+                        }
                 }
 
                 >.icon {
-                    flex: 0 1 auto;
-                    width: 16px;
 
-                    margin-right: 15px;
+                    &.closed {
+                        flex: 0 1 auto;
+                        width: 30px;
+                    }
+                    
+                    &.open {
+                        flex: 0 1 auto;
+                        width: 16px;
+                        margin-right: 15px;
+                        transition: width 0.3s;   
+                    }
                 }
 
                 >.title {
@@ -100,13 +134,38 @@
                 }
 
                 >div {
-                    background-image: url('/assets/svg/logo-negativo.svg');
                     width: 110px;
                     background-position: center;
                     background-size: cover;
                     height: 45px;
 
                     border-radius: 0;
+                }
+            }
+
+            >#logoClosed {
+                padding: 0;
+                height: 83px;
+                width: 100%;
+                justify-content: center;
+
+                &:hover {
+                    background: none;
+                    cursor: auto;
+                    color: $white;
+                }
+
+                >div {
+                    background-position: center;
+                    background-size: cover;
+                    height: 45px;
+                    border-radius: 0;
+                    margin-left: -5px;
+
+                    >img {
+                        margin-left: 10px;
+
+                    }
                 }
             }
 

@@ -19,12 +19,21 @@ body {
         align-items: flex-start;
         flex-wrap: nowrap;
         height: 100%;
-
         .dash {
-            flex: 18% 0 1;
             height: 100vh;
-            min-width: 233px;
-            max-width: 233px;
+          
+            
+            &.open {
+                flex: 18% 0 1;
+                min-width: 233px;
+                max-width: 233px;
+    
+             }   
+            &.closed {
+                min-width: 83px;
+                max-width: 83px;
+    
+            }
         }
 
         .app {
@@ -52,7 +61,7 @@ body {
                 justify-content: flex-start;
                 align-content: flex-start;
                 align-items: center;
-
+                position: relative;
                 .homeInfo {
                     width: 100%;
                     min-height: fit-content;

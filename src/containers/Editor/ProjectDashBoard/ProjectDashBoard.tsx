@@ -194,11 +194,11 @@ import { ProjectOptionBoard } from './ProjectOptionBoard/ProjectOptionBoard';
        // This conditional must check if this project that is being checked exists
        if (firebaseStore.projectidActual!= '') {
         return <div className="contHome row-flex">
-            <Dash />
+            <Dash state = {homeEditorStore.sideMenuState} selected= {homeEditorStore.selectedMenuItem}/>
 
             <div className="app projectDashBoard flex-child col-flex">
                 {this.renderPopUp()}
-                 <Header user={firebaseStore.userInfo.email}/>
+                <Header user={firebaseStore.userInfo.email} state={homeEditorStore.sideMenuState}/>
                 <ProjectMenu />
 
                 <ProjectOptionBoard />

@@ -58,7 +58,6 @@ const FolderPopUp = observer(() => {
                                 onEmptied={() => {
                                     addStore.clearTags();
                                 }}
-                            value={addStore.tags.join(" ") == this.value ?  this.value : addStore.tags.join("")}
                             />
                             <label className="tagAmount"><b>{
                               3 - addStore.tags.length
@@ -66,9 +65,6 @@ const FolderPopUp = observer(() => {
 
                         </li>
                         <li>
-                            <button type="reset" onClick={() => {
-                               addStore.clearTags()
-                            }}>RESET</button>
                             <button
                                 onClick={() => {
                                     // ----- TESTING ------

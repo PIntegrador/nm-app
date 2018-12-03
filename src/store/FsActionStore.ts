@@ -1,4 +1,3 @@
-
 import { observable, action, computed, extendObservable } from 'mobx';
 import db from '../../config/firebaseConfig';
 import { readFileSync } from 'fs';
@@ -64,32 +63,32 @@ class FsActionStore {
         dbRef.onSnapshot((querySnapshot: any) => {
             this.listAllArchives = []
             temp = []
-            querySnapshot.forEach((doc: any) => {
-                this.userArchivesID.map((e: any) => {
-                    this.listAllArchives = []
-
-                    if (doc.data().id == e) {
-                        let ele = {
-                            name: doc.data().name,
-                            type: doc.data().type,
-                            id: doc.data().id,
-                            parent: doc.data().parent,
-                            size: doc.data().size,
-                            sourceURL: doc.data().sourceURL,
-                            fileURL: doc.data().fileURL,
-                            tagnames: doc.data().tagnames,
-                            children: doc.data().children,
-                        }
-                        temp.push(ele);
-
+            temptags =[]
+            tempChildren = []
+            querySnapshot.forEach((doc:any) => {
+                if (doc.data().owner == this.uidActual) {
+                    let ele = {
+                        name: doc.data().name,
+                        type: doc.data().type,
+                        id: doc.data().id,
+                        parent: doc.data().parent,
+                        size: doc.data().size,
+                        sourceURL: doc.data().sourceURL,
+                        fileURL: doc.data().fileURL,
+                        tagnames: doc.data().tagnames,
+                        children: doc.data().children,
+                        date: doc.data().date
                     }
-                    return temp
-                })
-
+                     temp.push(ele);
+                     temptags =  doc.data().tagnames;
+                     tempChildren = doc.data().children;
+                     ele.tagnames = temptags;
+                     ele.children = tempChildren;
+                }
             });
             this.listAllArchives = temp;
             this.userInfo.archives = this.listAllArchives;
-            console.log(this.userInfo.archives, "User Info Archives")
+            console.log(this.userInfo.archives.length, "User Info Archives")
         });
 
     }
@@ -103,15 +102,16 @@ class FsActionStore {
             this.listAllProjects = []
             temp = []
             querySnapshot.forEach((doc: any) => {
-                this.userProjectID.map((e: any) => {
-                    if (doc.data().id == e) {
+                       if (doc.data().owner == this.uidActual) {
                         let ele = {
                             name: doc.data().name,
                             id: doc.data().id,
                             owner: doc.data().owner,
                             tagnames: doc.data().tagnames,
                             team: doc.data().team,
-                            archives: [{}]
+                            archives: [{}],
+                            date: doc.data().date
+
                         }
                         this.innerArchivesID = doc.data().archives;
                         this.readInnerArchive(doc.data().id);
@@ -120,13 +120,7 @@ class FsActionStore {
                         this.listProjectTeam = doc.data().team;
 
                         temp.push(ele);
-
-                    } else {
-
-                    }
-                    return temp
-                })
-
+                    } 
             });
             this.listAllProjects = temp;
             this.userInfo.projects = this.listAllProjects;

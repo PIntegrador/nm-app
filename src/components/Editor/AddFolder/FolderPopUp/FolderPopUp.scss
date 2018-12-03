@@ -1,7 +1,7 @@
 @import '../../../../../public/css/variables.scss';
 .modalFolderAdd {
     .popUp {
-        width: 560px;
+        width: 600px;
         position: relative;
         overflow: hidden;
         transition: all 0.2s ease;
@@ -10,19 +10,8 @@
         justify-content: center;
         align-content: center;
         align-items: center;
-        box-shadow: 0px 0px 25px -5px rgba(0, 0, 0, 0.5);
         form {
-            flex: 0 1 auto;
-            width: 100%;
-            height: 100%;
-            height: fit-content;
-            display: flex;
-            flex-flow: column;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
             ul {
-                width: 100%;
                 height: fit-content;
                 display: flex;
                 flex-flow: column;
@@ -37,7 +26,6 @@
                     align-content: center;
                     align-items: center;
                     width: 85%;
-                    margin-bottom: 15px;
                     position: relative;
                     &:last-child {
                         width: 100%;
@@ -47,21 +35,10 @@
                     label {
                         width: 100px;
                         flex: 0 1 auto;
-                        font-size: 12px;
                         color: $fondoGrisOscuto;
                         position: absolute;
                         text-align: right;
                         left: -110px;
-                    }
-                    input {
-                        flex: 1 1 auto;
-                        border: none;
-                        background: white;
-                        height: 90%;
-                        padding: 0 10px;
-                        border-radius: 5px;
-                        outline: none;
-                        padding-right: 10px;
                     }
                 }
                 button {
@@ -71,16 +48,16 @@
                     height: 30px;
                     width: 100px;
                     border-radius: 5px;
-                    margin:0 0 0 10px;
+                    margin-top: 10px;
                     color: white;
-                    background: $negroTexto;
+                    background: $secondaryColor;
                     border: none;
                     outline: none;
                     font-size: 12px;
                     padding: 0 10px;
                     &:hover {
-                        color: $negroTexto;
-                        background: white;
+                        color: white;
+                        background: $secondaryColorHover;
                         cursor: pointer;
                     }
                 }
@@ -99,17 +76,18 @@
                             flex: 0 1 auto;
                             padding: 0 10px;
                             height: 30px;
-                            max-width: 111px;
-                            background: $fondoGris;
+                            max-width: 95px;
+                            background: #eaeaea;
                             border-radius: 15px;
                             margin-right: 10px;
                             span{
-                                font-size: 11px;
-                                text-transform: uppercase;
+                                font-size: 10px;
+                                text-transform: capitalize;
                                 font-weight: 600;
                                 text-align: center;
                                 max-width: 100px;
-                                min-width: 50px;
+                                min-width: 30px;
+                                color: #4D4D4D;
                                 overflow: hidden;
                                 margin-right: 8px;
                                 &::selection{
@@ -121,11 +99,6 @@
                             }
                             p {
                                 font-size: 14px;
-                                font-weight: 600;
-                                box-sizing: border-box;
-                                background: $fondoBlanco;
-                                padding: 0 3px;
-                                border-radius: 10px;
                                 &::selection{
                                     background: none;
                                 }
@@ -137,14 +110,14 @@
                     }
                     input{
                         flex: 1 1 auto;
-                        padding-right: 35px;
+                        padding-right: 45px;
                         padding-left: 10px;
                         position: relative;
                         min-width: 45px;
                     }
                     .tagAmount {
                         width: fit-content;
-                        left: 375px;
+                        left: 335px;
                         top: 12px;
                         letter-spacing: 0.1em;
                     }
