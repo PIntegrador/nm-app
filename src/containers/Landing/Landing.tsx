@@ -17,7 +17,7 @@ export class Landing extends React.Component {
                             <img src="/assets/img/landing/logo.svg" alt="" className="logo" />
 
                             <div className="cont">
-                                <a className="login hvr-grow" href="/login">Iniciar Sesion</a>
+                                <a className="login hvr-grow" href="/login">Iniciar Sesión</a>
                                 <a className="register hvr-grow" href="/register">Inicia una prueba gratis</a>
                             </div>
                         </div>
@@ -34,7 +34,9 @@ export class Landing extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="right"></div>
+                            <div className="right">
+                                <img  src="/assets/img/landing/mockupcortado.png" alt="" ></img>
+                            </div>
                         </div>
 
                         <div className="empty"></div>
@@ -87,7 +89,7 @@ export class Landing extends React.Component {
                             <div className="contCol">
                                 <img src="/assets/img/landing/comilla.svg" alt="" />
                                 <h2>Vibo nos ayuda a mantener todo al día y así ejecutar los proyectos sin problemas.
-Con Vibo, nuestro equipo sabe lo que está sucediendo y qué es necesario hacer.</h2>
+                                    Con Vibo, nuestro equipo sabe lo que está sucediendo y qué es necesario hacer.</h2>
                                 <h3>Mariana Escobar</h3>
                                 <h4>Directora de Investigación UX</h4>
                             </div>
@@ -100,7 +102,34 @@ Con Vibo, nuestro equipo sabe lo que está sucediendo y qué es necesario hacer.
                         </div>
                     </div>
                 </section>
+                <section className='helpTeam'>
+                    <h4>Ayuda a tu equipo a realizar un mejor trabajo</h4>
+                    <p>Registrate para comenzar tu prueba gratis y descubrir por qué Vibo es la plataforma más empleada por equipos de investigación alrededor del globo.</p>
+                    <div className="cont">
 
+                                    <input type="text" placeholder="nombre@correo.com" />
+                                    <a className="register hvr-grow" href="/register">Inicia una prueba gratis</a>
+
+                                </div>
+                </section>
+                <footer className='col-flex'>
+                    <div className='row-flex flex-child subscriberow'>
+                    <p>Regístrate y comienza a ser parte de Vibo</p>
+
+                    <div className='input'>
+                        <input type="text" placeholder="nombre@correo.com" />
+                    </div>
+                    <a className="subscribe hvr-grow" href="">Registrarse</a>
+                    </div>
+                    <div className="logofooter">
+                        <img src="/assets/img/landing/whitelogo.svg" alt=""></img>
+                    </div>
+                    <div className='socialnetworks'>
+                        <img src="/assets/img/landing/ig.svg" alt=""></img>
+                        <img src="/assets/img/landing/twitter.svg" alt=""></img>
+                        <img src="/assets/img/landing/facebook.svg" alt=""></img>
+                    </div>
+                </footer>
             </div >
         )
     }
