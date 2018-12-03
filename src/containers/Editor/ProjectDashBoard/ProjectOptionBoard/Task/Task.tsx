@@ -9,7 +9,7 @@ interface TaskProps {
     type: string;
     description: string;
     date: string;
-    colaborators: any;
+    team: any;
 }
 @observer export class Task extends React.Component<TaskProps> {
 
@@ -30,8 +30,8 @@ interface TaskProps {
                 <div className="lowerBarContainer">
                     <div className="colaborators">
                         {
-                            this.props.colaborators != null ? (
-                                this.props.colaborators.map((elem: any) => {
+                            this.props.team != null ? (
+                                this.props.team.map((elem: any) => {
                                     return (
                                         <div className="colaborator">
                                         </div>)

@@ -15,13 +15,15 @@ class FsActionStore {
     @observable taskInfo: any = {};
 
     @observable uidActual: string = "";
-    @observable projectidActual: string = "ppF0uGT4zbdSrhXmYw5V";
+    @observable projectidActual: string = "";
 
     @observable userArchivesID: any = [];
     @observable listAllArchives: any = [];
 
     @observable userProjectID: any = [];
     @observable listAllProjects: any = [];
+    @observable listProjectTeam: any = [];
+
 
     @observable listInnerArchives: any = [];
     @observable innerArchivesID: any = [];
@@ -56,9 +58,9 @@ class FsActionStore {
     //GET ALL FILES
     @action readFiles() {
         let dbRef = db.collection('NewArchives');
-        let temp:any = []
-        let temptags:any = []
-        let tempChildren:any = []
+        let temp: any = []
+        let temptags =[]
+        let tempChildren = []
 
         dbRef.onSnapshot((querySnapshot: any) => {
             this.listAllArchives = []
@@ -90,9 +92,10 @@ class FsActionStore {
             this.userInfo.archives = this.listAllArchives;
             console.log(this.userInfo.archives.length, "User Info Archives")
         });
+
     }
 
-        //GET ALL PROJECTS
+    //GET ALL PROJECTS
     @action readProjects() {
         let dbRef = db.collection('NewProjects');
         let temp: any = []
@@ -116,37 +119,43 @@ class FsActionStore {
                         this.readInnerArchive(doc.data().id);
                         console.log(this.listInnerArchives, 'List inner archives')
                         ele.archives = this.listInnerArchives;
+                        this.listProjectTeam = doc.data().team;
+
                         temp.push(ele);
                     } 
             });
-          
             this.listAllProjects = temp;
             this.userInfo.projects = this.listAllProjects;
+
             console.log(this.userInfo.projects, "User Info Projects")
 
         });
 
     }
 
+
     @action readTasks() {
-        let dbRef = db.collection('NewProjects').doc(this.projectidActual).collection('Task');
+        if (this.projectidActual!='') {
+            let dbRef = db.collection('NewProjects').doc(this.projectidActual).collection('Task');
 
-        dbRef.onSnapshot((querySnapshot: any) => {
-            this.taskInfo = []
-
-            querySnapshot.forEach((querySnapshot: any) => {
-                let tempTask = {
-                    date: querySnapshot.data().date,
-                    state: querySnapshot.data().state,
-                    id: querySnapshot.data().id,
-                    description: querySnapshot.data().description,
-                    team: querySnapshot.data().team
-                }
-
-                this.taskInfo.push(tempTask)
+            dbRef.onSnapshot((querySnapshot: any) => {
+                this.taskInfo = []
+    
+                querySnapshot.forEach((querySnapshot: any) => {
+                    let tempTask = {
+                        date: querySnapshot.data().date,
+                        state: querySnapshot.data().state,
+                        id: querySnapshot.data().id,
+                        description: querySnapshot.data().description,
+                        team: querySnapshot.data().team
+                    }
+    
+                    this.taskInfo.push(tempTask)
+                });
+                console.log(this.taskInfo);
             });
-            console.log(this.taskInfo);
-        });
+        }
+
     }
     //This method search an array of archives of an array of archive id's
     readInnerArchive(id: string) {
