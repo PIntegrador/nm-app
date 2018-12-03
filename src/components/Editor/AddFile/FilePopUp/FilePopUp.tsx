@@ -40,17 +40,31 @@ const FilePopUp = observer(() => {
                     <ul>
                         <li>
                             <label>Nombre</label>
-                            <input type="text" name="archivo" placeholder="Archivo.csv" value={
-                                (typeof addStore.accepted[0] != 'undefined') ? addStore.accepted[0].name : ""
-                            } disabled />
+                            <input
+                                type="text"
+                                name="archivo"
+                                placeholder="Nombre del Archivo"
+                                value={
+                                    (typeof addStore.accepted[0] != 'undefined') ? addStore.newFile.name : ""
+                                }
+                                onFocus={(e:any) => {
+                                    e.target.select();
+                                }}
+                                onChange={(e: any) => {
+                                    addStore.newFile.name = e.target.value;
+                                    console.log(addStore.newFile.name);
+                                }}
+                            />
                         </li>
                         <li style={{ display: "none" }} >
                             <label>Nombre</label>
-                            <input type="text" name="nombre" placeholder="Nombre" onChange={(e: any) => {
-                                addStore.newFile.name = e.target.value;
-                            }} value={
-                                (typeof addStore.accepted[0] != 'undefined') ? addStore.accepted[0].name : ""
-                            } />
+                            <input
+                                type="text"
+                                name="nombre"
+                                placeholder="Nombre"
+                                value={
+                                    (typeof addStore.accepted[0] != 'undefined') ? addStore.accepted[0].name : ""
+                                } />
                         </li>
                         <li className="descripcion">
                             <label>Descipción</label>
@@ -90,8 +104,9 @@ const FilePopUp = observer(() => {
                         <button
                             onClick={() => {
                                 addStore.newFile.tagnames = addStore.tags;
-                                addStore.newFile.size = addStore.accepted[0].size / 1000 + "Kb";
-                                addStore.newFile.name = addStore.accepted[0].name;
+                                addStore.newFile.size = (addStore.accepted[0].size / 100000).toFixed(2);
+                                let extension = addStore.accepted[0].name.split(".");
+                                addStore.newFile.extension = extension[1];
                                 addStore.confirmUpload("Archivo", addStore.newFile.name);
                                 function upload() {
                                     addStore.setToFalse()

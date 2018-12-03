@@ -42,8 +42,9 @@ import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirm
                                  (firebaseStore.userInfo.projects != null) ?
                                  firebaseStore.userInfo.projects.map((elem: any) => {
                                     return (
-                                        <Module key={elem.id} gridStyle={homeEditorStore.sortButState} type='project' name={elem.name} numFiles={0} id={elem.id}
-                                        size = {elem.size} date = {elem.date}  />
+                                        <Module key={elem.id} gridStyle={''} type='project' name={elem.name} numFiles={0} id={elem.id}
+                                        size = {elem.size} date = {elem.date}  extension={elem.extension}/>
+
                                     )
                                 }) : ''
                             }

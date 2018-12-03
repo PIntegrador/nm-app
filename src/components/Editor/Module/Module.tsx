@@ -11,7 +11,8 @@ interface ModuleProps {
     id: any;
     gridStyle: string;
     size: number;
-    date: string
+    date: string;
+    extension: string;
 }
 
 @observer export class Module extends React.Component<ModuleProps> {
@@ -64,13 +65,13 @@ interface ModuleProps {
                         <h3 className="flex-child moduleName moduleListText">{(this.props.name.substring(0, 25)) + (this.props.name.length >= 25 ? '...' : '')}</h3>
                     </div>
                     <div className="sizeCont">
-                        <p className="moduleListText">{this.props.size} Kb</p>
+                        <p className="moduleListText">{this.props.size} Mb</p>
                     </div>
                     <div className="modifDateCont">
-                        <p className="moduleListText">--</p>
+                        <p className="moduleListText">{this.props.date}</p>
                     </div>
                     <div className="fileTypeCont">
-                        <p className="moduleListText">--</p>
+                        <p className="moduleListText">.{this.props.extension}</p>
                     </div>
                     <div className="creationDateCont">
                         <p className="moduleListText">{this.props.date}</p>
