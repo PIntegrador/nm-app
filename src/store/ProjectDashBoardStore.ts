@@ -94,20 +94,56 @@ class ProjectDashBoardStore {
         }
     }
 
-    @action updateTaskState (type : string ) {
+    @action updateTaskState (type : string , id: string ) {
+        console.log(id, 'PANAAAAAAAAAAAA')
         if (type == 'todo') {
             //change state to doing
             console.log ('IT WILL CHANGE TO DOING')
+
+            let newRef = db.collection('NewProjects').doc(firebaseStore.projectidActual).collection('Task').doc(id);
+
+            newRef.update({
+                state: 'doing'
+
+            }).then(function () {
+
+            }).catch(function () {
+
+            })
         } else if (type == 'doing') {
             //change state to done
             console.log ('IT WILL CHANGE TO DONE')
 
+            
+            let newRef = db.collection('NewProjects').doc(firebaseStore.projectidActual).collection('Task').doc(id);
+
+            newRef.update({
+                state: 'done'
+
+            }).then(function () {
+
+            }).catch(function () {
+
+            })
         } else if (type == 'done') {
             //change state to doing
             console.log ('IT WILL CHANGE TO TODO')
 
+            
+            let newRef = db.collection('NewProjects').doc(firebaseStore.projectidActual).collection('Task').doc(id);
+
+            newRef.update({
+                state: 'todo'
+
+            }).then(function () {
+
+            }).catch(function () {
+
+            })
+
         }
     }
+
 }
 
 export const projectDash = new ProjectDashBoardStore();
