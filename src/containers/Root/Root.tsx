@@ -9,9 +9,9 @@ import { authStore } from '../../../src/store/AuthStore';
 import { homeEditorStore } from '../../../src/store/HomeEditorStore';
 import Register from '../Register/Register';
 import { Login } from '../Login/Login';
-import { ProjectContainer } from '../Editor/ProjectContainer/ProjectContainer';
 import { ProjectDashBoard } from '../Editor/ProjectDashBoard/ProjectDashBoard';
 import { firebaseStore } from '../../store/FsActionStore';
+import { ProjectContainer } from '../Editor/ProjectContainer/ProjectContainer';
 
 
 export class Root extends React.Component {

@@ -73,17 +73,9 @@ let folderID: any = '';
             return (
                 <div className="app flex-child col-flex">
                     <SortButton state={homeEditorStore.sortButState} />
-                    <DeleteButton />
-                    <AddMenu />
                     <section className="scroll">
                         <ProjectFileView archives={projectStore.projectArchives} />
                     </section>
-                    <FloatingButton />
-                    <AddMenu />
-                    <FolderPopUp />
-                    <FilePopUp />
-                    <AddProject />
-                    <UploadConfirmation />
                 </div>
             )
         } else if (option == 'tareas') {

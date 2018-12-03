@@ -66,12 +66,7 @@ let folderID: any = '';
                 <section className="scroll">
                 <ArchiveView archives={folderInStore.folderInArchives} folderName={folderInStore.folderParentName} />
                 </section>
-                <FloatingButton />
-                    <AddMenu />
-                    <FolderPopUp />
-                    <FilePopUp />
-                    <AddProject />
-                    <UploadConfirmation />
+               
             </div>
 
         </div>

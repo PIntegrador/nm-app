@@ -18,6 +18,7 @@ import AddMenu from '../../../components/Editor/AddMenu/AddMenu';
 import FilePopUp from '../../../components/Editor/AddFile/FilePopUp/FilePopUp';
 import AddProject from '../../../components/Editor/AddProject/AddProject';
 import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirmation/UploadConfirmation';
+import DeleteButton from '../../../components/Editor/DeleteButton/DeleteButton';
 
 @observer export class ProjectContainer extends React.Component {
     constructor(props: any) {
@@ -51,7 +52,15 @@ import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirm
                         </div>
                     </section>
                 </section>
+                
                 <SortButton state={homeEditorStore.sortButState} />
+                <DeleteButton></DeleteButton>
+                <FloatingButton />
+                    <AddMenu />
+                    <FolderPopUp />
+                    <FilePopUp />
+                    <AddProject />
+                    <UploadConfirmation />
             </div>
 
         </div>
