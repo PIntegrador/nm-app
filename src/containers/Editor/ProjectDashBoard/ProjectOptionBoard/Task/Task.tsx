@@ -23,8 +23,9 @@ interface TaskProps {
 
         return (
             <div className="task" onClick={(e: any) => {
-                projectDash.updateTaskState(this.props.type);
+                projectDash.updateTaskState(this.props.type, this.props.id);
             }}>
+
                 <p className='descriptionTask'>
                     {this.props.description}
                 </p>
