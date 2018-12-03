@@ -7,6 +7,8 @@ class ProjectStore {
     constructor() {
     }
 
+
+    //------ FILES IN PROJECT ------//
     @observable projectId: string = "";
     @observable projectArchives: any = [];
 
