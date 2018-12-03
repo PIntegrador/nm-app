@@ -39,12 +39,14 @@ import UploadConfirmation from '../../../components/Editor/AddMenu/UploadConfirm
                         <RouteBar mainTitle="Mis Proyectos" folderName={""} />
                         <div className="flex-child  row-flex moduleCont">
                             {
-                                [].map((elem: any) => {
+                                 (firebaseStore.userInfo.projects != null) ?
+                                 firebaseStore.userInfo.projects.map((elem: any) => {
                                     return (
                                         <Module key={elem.id} gridStyle={''} type='project' name={elem.name} numFiles={0} id={elem.id}
                                         size = {elem.size} date = {elem.date}  extension={elem.extension}/>
+
                                     )
-                                })
+                                }) : ''
                             }
                         </div>
                     </section>

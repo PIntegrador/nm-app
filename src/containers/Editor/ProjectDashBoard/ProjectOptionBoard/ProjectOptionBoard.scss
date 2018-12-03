@@ -85,6 +85,8 @@
     .taskSuperContainer {
         display: block;
         text-align: center;
+
+        
         .addTask {
             display: flex;
             flex-direction: column;
@@ -113,6 +115,7 @@
             margin: 25px 25px 0 25px;
             display: inline-block;
             text-align: left;
+            vertical-align: top;
             .title {
                 font-family: $fontText;
                 font-size: 16px;
